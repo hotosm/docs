@@ -47,6 +47,10 @@ plugins:
 
 nav:
   - Home: index.md
+  - Modularization:
+      - Info: modules.md
+      - Backend: modules_backend.md
+      - Frontend: modules_frontend.md
   - Services:
       - Tasking Manager: https://hotosm.github.io/tasking-manager/
       - FMTM: https://hotosm.github.io/fmtm/
