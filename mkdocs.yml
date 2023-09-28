@@ -1,5 +1,5 @@
-site_name: HOTOSM Docs
-site_description: Documentation index across HOTOSM tools.
+site_name: HOT Docs
+site_description: Documentation index across HOT's tools.
 # strict: true
 site_url: "https://www.hotosm.org"
 
@@ -44,27 +44,30 @@ plugins:
       glob:
         - plugins/*
         - __pycache__/*
-  - mkdocstrings:
-      handlers:
-        python:
-          paths: [.]
-          options:
-            members_order: source
-            separate_signature: true
-            filters: ["!^_"]
-            docstring_options:
-              ignore_init_summary: true
-            merge_init_into_class: true
 
 nav:
   - Home: index.md
   - Services:
+      - Tasking Manager: https://hotosm.github.io/tasking-manager/
       - FMTM: https://hotosm.github.io/fmtm/
+      - fAIr: https://hotosm.github.io/fAIr/
+      - Raw Data API: https://hotosm.github.io/raw-data-api/
+      - Underpass: https://hotosm.github.io/underpass/
+      - Open Aerial Map:
+          - Browser: https://hotosm.github.io/oam-browser/
+          - API: https://hotosm.github.io/oam-api/
+      - Export Tool: https://hotosm.github.io/osm-export-tool/
   - Python Libs:
       - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
       - OSM RawData: https://hotosm.github.io/osm-rawdata/
       - OSM Login: https://hotosm.github.io/osm-login-python/
       - FMTM Splitter: https://hotosm.github.io/fmtm-splitter/
+      - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
   - UI / Design:
       - UI Components: https://hotosm.github.io/shared-ui-components/
       - Map Component: https://hotosm.github.io/shared-map-components/
+      - Underpass UI: https://hotosm.github.io/underpass-ui/
+  - DevOps:
+      - Reusable Workflows: https://hotosm.github.io/gh-workflows/
+  - E2E Diagrams:
+      - TODO: https://hotosm.org
