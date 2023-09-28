@@ -4,13 +4,13 @@
 
 A way to consistently implement OSM login (via underlying OAuth2) in our applications.
 
-[link](#osm-login-python)
+[link](https://hotosm.github.io/osm-login-python)
 
 ## OSM Raw Data
 
 Processing of raw OpenStreetMap data extracts into various formats.
 
-[link](#osm-rawdata)
+[link](https://hotosm.github.io/osm-rawdata)
 
 ## OSM Fieldwork
 
@@ -20,7 +20,7 @@ Various utility programs useful for field data collection.
 - Basemap generation for offline fieldwork.
 - Used extensively in FMTM for a variety of tasks.
 
-[link](#osm-fieldwork)
+[link](https://hotosm.github.io/osm-fieldwork)
 
 ## FMTM Splitter
 
@@ -29,10 +29,10 @@ factoring in prominent map features (roads, rivers, etc).
 
 The division is configurable via various parameters.
 
-[link](#fmtm-splitter)
+[link](https://hotosm.github.io/fmtm-splitter)
 
 ## fAIr Utilities
 
 Various machine learning utils used within the fAIr backend.
 
-[link](#fair-utilities)
+[link](https://hotosm.github.io/fAIr-utilities)

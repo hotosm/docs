@@ -7,7 +7,7 @@ Consistent styling and component functionality across all of our projects.
 Currently in design and prototype stage,
 but will be rolled out for all projects eventually.
 
-[link](#ui-components)
+[link](https://hotosm.github.io/shared-ui-components)
 
 ## Shared Map Components
 
@@ -33,4 +33,4 @@ The plan would be to support various cloud optimised geo data formats:
 There is also the possibility of designing this with [Svelte](https://svelte.dev/),
 then embedding the compiled plain JS into our React apps (in discussion).
 
-[link](#map-components)
+[link](https://hotosm.github.io/shared-map-components)
