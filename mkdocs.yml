@@ -40,10 +40,6 @@ markdown_extensions:
 
 plugins:
   - search
-  - exclude:
-      glob:
-        - plugins/*
-        - __pycache__/*
 
 nav:
   - Home: index.md
