@@ -6,7 +6,7 @@ groups = ["default", "docs"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:4536f5875c681d77a8cfd115874e8f1d9ba0b371cb404e1711ed1e00a7215316"
+content_hash = "sha256:a2934e544b099027a2ead41ef1e66a63878f974bbe69ee103d73d33b1dfd6d35"
 
 [[package]]
 name = "babel"
@@ -208,17 +208,6 @@ dependencies = [
 files = [
     {file = "mkdocs-1.5.3-py3-none-any.whl", hash = "sha256:3b3a78e736b31158d64dbb2f8ba29bd46a379d0c6e324c2246c3bc3d2189cfc1"},
     {file = "mkdocs-1.5.3.tar.gz", hash = "sha256:eb7c99214dcb945313ba30426c2451b735992c73c2e10838f76d09e39ff4d0e2"},
-]
-
-[[package]]
-name = "mkdocs-exclude"
-version = "1.0.2"
-summary = "A mkdocs plugin that lets you exclude files or trees."
-dependencies = [
-    "mkdocs",
-]
-files = [
-    {file = "mkdocs-exclude-1.0.2.tar.gz", hash = "sha256:ba6fab3c80ddbe3fd31d3e579861fd3124513708271180a5f81846da8c7e2a51"},
 ]
 
 [[package]]
