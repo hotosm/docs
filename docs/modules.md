@@ -7,7 +7,7 @@ Modularization of backend and frontend components allows us to avoid repeating c
 ## Backend
 
 Backend Python modules are released on
-[PyPi](pypi.org) to be installed across multiple services.
+[PyPi](https://pypi.org) to be installed across multiple services.
 
 See the [backend](https://hotosm.github.io/docs/modules_backend) page for more info.
 

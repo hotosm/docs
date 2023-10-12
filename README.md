@@ -1,9 +1,10 @@
-# HOT Technical Documentation
+# HOT Tech Docs
 
 🕮 Welcome to the HOT Technical [documentation](https://hotosm.github.io/docs/)
 for all of our open-source tools.
 
-This website is an index of tools available from HOT, and it is primarily intended for a software development audience.
+This website is an index of tools available from HOT,
+and it is primarily intended for a software development audience.
 
 The docs go into specific technical detail for:
 
