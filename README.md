@@ -1,7 +1,13 @@
 # HOT Tech Docs
 
-🕮 Welcome to the HOT Technical [documentation](https://hotosm.github.io/docs/)
+📖 Welcome to the HOT Technical [documentation](https://hotosm.github.io/docs/)
 for all of our open-source tools.
+
+<!-- markdownlint-disable -->
+<label class="md-header__button md-icon" for="__drawer">
+👈 Click here to open the sidebar content.
+</label>
+<!-- markdownlint-enable -->
 
 This website is an index of tools available from HOT,
 and it is primarily intended for a software development audience.
