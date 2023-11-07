@@ -74,5 +74,19 @@ nav:
       - Underpass UI: https://hotosm.github.io/underpass-ui/
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
+  - Roadmaps:
+      - Tasking Manager: https://github.com/orgs/hotosm/projects/28
+      - FMTM: https://github.com/orgs/hotosm/projects/22/views/6
+      - fAIr: https://github.com/orgs/hotosm/projects/30/views/1
+      - Raw Data API: https://github.com/orgs/hotosm/projects/29
+      - Underpass: https://github.com/orgs/hotosm/projects/23/views/3
+      - Export Tool: https://github.com/orgs/hotosm/projects/29
+  - Task Trackers:
+      - Tasking Manager: https://github.com/orgs/hotosm/projects/14/views/2
+      - FMTM: https://github.com/orgs/hotosm/projects/22
+      - fAIr: https://github.com/orgs/hotosm/projects/30/views/2
+      - Raw Data API: https://github.com/orgs/hotosm/projects/29/views/2
+      - Underpass: https://github.com/orgs/hotosm/projects/23
+      - Export Tool: https://github.com/orgs/hotosm/projects/29/views/2
   - E2E Diagrams:
       - TODO: https://hotosm.org
