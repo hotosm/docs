@@ -53,15 +53,33 @@ nav:
       - Backend: modules_backend.md
       - Frontend: modules_frontend.md
   - Services:
-      - Tasking Manager: https://hotosm.github.io/tasking-manager/
-      - FMTM: https://hotosm.github.io/fmtm/
-      - fAIr: https://fair-dev.hotosm.org/
-      - Raw Data API: https://hotosm.github.io/raw-data-api/
-      - Underpass: https://hotosm.github.io/underpass/
+      - Tasking Manager:
+          - Docs: https://hotosm.github.io/tasking-manager/
+          - Roadmap: https://github.com/orgs/hotosm/projects/28
+          - Task Tracker: https://github.com/orgs/hotosm/projects/14/views/2
+      - FMTM:
+          - Docs: https://hotosm.github.io/fmtm/
+          - Roadmap: https://github.com/orgs/hotosm/projects/22/views/6
+          - Task Tracker: https://github.com/orgs/hotosm/projects/22
+      - fAIr:
+          - Docs: https://fair-dev.hotosm.org/
+          - Roadmap: https://github.com/orgs/hotosm/projects/30/views/1
+          - Task Tracker: https://github.com/orgs/hotosm/projects/30/views/2
+      - Raw Data API:
+          - Docs: https://hotosm.github.io/raw-data-api/
+          - Roadmap: https://github.com/orgs/hotosm/projects/29
+          - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
+      - Underpass:
+          - Docs: https://hotosm.github.io/underpass/
+          - Roadmap: https://github.com/orgs/hotosm/projects/23/views/3
+          - Task Tracker: https://github.com/orgs/hotosm/projects/23
       - Open Aerial Map:
           - Browser: https://hotosm.github.io/oam-browser/
           - API: https://hotosm.github.io/oam-api/
-      - Export Tool: https://hotosm.github.io/osm-export-tool/
+      - Export Tool:
+          - Docs: https://hotosm.github.io/osm-export-tool/
+          - Roadmap: https://github.com/orgs/hotosm/projects/29
+          - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
   - Python Libs:
       - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
       - OSM RawData: https://hotosm.github.io/osm-rawdata/
@@ -74,19 +92,5 @@ nav:
       - Underpass UI: https://hotosm.github.io/underpass-ui/
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
-  - Roadmaps:
-      - Tasking Manager: https://github.com/orgs/hotosm/projects/28
-      - FMTM: https://github.com/orgs/hotosm/projects/22/views/6
-      - fAIr: https://github.com/orgs/hotosm/projects/30/views/1
-      - Raw Data API: https://github.com/orgs/hotosm/projects/29
-      - Underpass: https://github.com/orgs/hotosm/projects/23/views/3
-      - Export Tool: https://github.com/orgs/hotosm/projects/29
-  - Task Trackers:
-      - Tasking Manager: https://github.com/orgs/hotosm/projects/14/views/2
-      - FMTM: https://github.com/orgs/hotosm/projects/22
-      - fAIr: https://github.com/orgs/hotosm/projects/30/views/2
-      - Raw Data API: https://github.com/orgs/hotosm/projects/29/views/2
-      - Underpass: https://github.com/orgs/hotosm/projects/23
-      - Export Tool: https://github.com/orgs/hotosm/projects/29/views/2
   - E2E Diagrams:
       - TODO: https://hotosm.org
