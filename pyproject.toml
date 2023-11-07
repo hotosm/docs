@@ -12,8 +12,8 @@ license = {file = "LICENSE"}
 keywords = ["hot", "hotosm", "docs", "documentation", "humanitarian"]
 
 [project.urls]
-homepage = "https://hotosm.github.io/docs"
-documentation = "https://hotosm.github.io/docs"
+homepage = "https://docs.hotosm.org"
+documentation = "https://docs.hotosm.org"
 repository = "https://github.com/hotosm/docs"
 
 [project.optional-dependencies]
