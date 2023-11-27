@@ -95,7 +95,7 @@ nav:
   - Developer Guidelines:
       - Intro: dev-guide/intro.md
       - Git: dev-guide/git.md
-      - Pre-Commit: pre_commit.md
+      - Pre-Commit: dev-guide/pre_commit.md
       - Containers 101: dev-guide/containers_101.md
       - Dependency Management: dev-guide/dep_management.md
       - Version Control: dev-guide/version_control.md
