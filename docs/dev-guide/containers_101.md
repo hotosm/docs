@@ -31,7 +31,7 @@
   installing directly on your machine. Clean.
 - Packaging your code for distribution or deployment: written a
   backend in Django? It can be packaged up into an image and deployed
-  anywhere that has a container engine. Your laptop, WSL server,
+  anywhere that has a container engine. Your laptop, local server,
   AWS, Azure… you name it.
 
 **Containers are now the de-facto way to distribute software.
