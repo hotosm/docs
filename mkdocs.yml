@@ -101,5 +101,6 @@ nav:
       - Version Control: dev-guide/version_control.md
       - Generating Docs: dev-guide/doc_gen.md
       - Web Frameworks: dev-guide/web_frameworks.md
+      - Testing: dev-guide/testing.md
   - E2E Diagrams:
       - TODO: https://hotosm.org
