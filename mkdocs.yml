@@ -95,12 +95,12 @@ nav:
   - Developer Guidelines:
       - Intro: dev-guide/intro.md
       - Git: dev-guide/git.md
-      - Pre-Commit: dev-guide/pre_commit.md
-      - Containers 101: dev-guide/containers_101.md
-      - Dependency Management: dev-guide/dep_management.md
-      - Version Control: dev-guide/version_control.md
-      - Generating Docs: dev-guide/doc_gen.md
-      - Web Frameworks: dev-guide/web_frameworks.md
+      - Pre-Commit: dev-guide/pre-commit.md
+      - Containers 101: dev-guide/containers-101.md
+      - Dependency Management: dev-guide/dep-management.md
+      - Version Control: dev-guide/version-control.md
+      - Generating Docs: dev-guide/doc-gen.md
+      - Web Frameworks: dev-guide/web-frameworks.md
       - Testing: dev-guide/testing.md
   - E2E Diagrams:
       - TODO: https://hotosm.org
