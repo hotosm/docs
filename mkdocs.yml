@@ -50,9 +50,10 @@ nav:
   - Home: index.md
   - Modularization:
       - Info: modules.md
-      - Backend: modules_backend.md
-      - Frontend: modules_frontend.md
+      - Backend: modules-backend.md
+      - Frontend: modules-frontend.md
   - Services:
+      - Intro: tools-summary.md
       - Tasking Manager:
           - Docs: https://hotosm.github.io/tasking-manager/
           - Roadmap: https://github.com/orgs/hotosm/projects/28
@@ -87,7 +88,7 @@ nav:
       - FMTM Splitter: https://hotosm.github.io/fmtm-splitter/
       - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
   - UI / Design:
-      - UI Components: https://hotosm.github.io/shared-ui-components/
+      - UI Components: https://hotosm.github.io/ui/
       - Map Component: https://hotosm.github.io/shared-map-components/
       - Underpass UI: https://hotosm.github.io/underpass-ui/
   - DevOps:
@@ -96,7 +97,9 @@ nav:
       - Intro: dev-guide/intro.md
       - Git: dev-guide/git.md
       - Pre-Commit: dev-guide/pre-commit.md
-      - Containers 101: dev-guide/containers-101.md
+      - Containers:
+          - Intro: dev-guide/containers-101.md
+          - Cheat Sheet: dev-guide/containers-cheat-sheet.md
       - Dependency Management: dev-guide/dep-management.md
       - Version Control: dev-guide/version-control.md
       - Generating Docs: dev-guide/doc-gen.md
