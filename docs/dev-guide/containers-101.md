@@ -60,7 +60,7 @@ how to build an image, and how to use a container.**
 - In the graphic above, Docker would be the **Container Engine**. It is
   what actually executes the commands to run the container and keep it running.
 - Docker runs on your local machine with single containers.
-  The Docker Inc made a product called Docker Swarm, to allow for the
+  Docker Inc made a product called Docker Swarm, to allow for the
   management of containers across a fleet of servers.
   It essentially lost the battle to a Google-backed tool called Kubernetes.
 - Kubernetes is a container orchestration tool and now the standard for
