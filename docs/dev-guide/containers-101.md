@@ -81,12 +81,13 @@ how to build an image, and how to use a container.**
 docker run -it docker.io/ubuntu:focal bash
 ```
 
-- The -it flag is to tell docker to open an interactive ('i') terminal
-  ('t') for you to type commands into the container.
+- The `-it` flag is to tell docker to open an interactive (`i`) terminal
+  (`t`) for you to type commands into the container.
 - The command after the image name is simply `bash`, which runs a bash
   terminal (as opposed to a basic shell terminal: `sh`).
-- The other mode to run containers is detached (-d), but for this you
-  need a process to run, for example python /app/code/main.py
+- The other mode to run containers is detached (`-d`), but for this you
+  need a process to run, instead of a terminal session, for example
+  `python /app/code/main.py`.
 
 ### Building Images
 
@@ -99,8 +100,25 @@ Two components are required here:
   giving it a name etc:
   [https://docs.docker.com/engine/reference/commandline/build/](https://docs.docker.com/engine/reference/commandline/build/)
 
+An example Dockerfile:
+
+```dockerfile
+# Use a base image with pre-installed dependencies
+FROM node:18-alpine
+# Set the directory to run commands in
+WORKDIR /app
+# Copy your code into the container image
+COPY . .
+# Install your node dependencies to run the app
+RUN yarn install --production
+# Command to execute at container start (i.e. run a server)
+CMD ["node", "src/index.js"]
+```
+
+#### Additional References
+
 Example build:
-[https://docs.docker.com/get\-started/02_our_app/](https://docs.docker.com/get-started/02_our_app/)
+[https://docs.docker.com/get-started/02_our_app/](https://docs.docker.com/get-started/02_our_app/)
 
 Lots of good tutorials can be found online, search for:
 Dockerfile build example / tutorial.
