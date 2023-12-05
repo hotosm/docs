@@ -101,7 +101,7 @@ This means breaking changes may be introduced if v2.0.0 is released.
 This is not recommended for applications, as installing one day may work,
 then break the next day due a dependency update.
 
-#### Locking for Packages
+#### Locking for Libraries / Packages
 
 Sometimes we develop a package that is used as a dependency in other
 tools.
