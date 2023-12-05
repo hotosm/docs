@@ -25,6 +25,7 @@ tools have attempted to replicate.
 - Use `pyproject.toml` over `requirements.txt` and separate config files.
 - Use PDM to solve the depenedencies for your packages.
 - Lock with `>=` for libraries, and `==` for applications.
+- Upper bound caping should not be used, e.g. `<=x.x.x`.
 
 ### Using pyproject.toml
 
@@ -133,6 +134,10 @@ predict.
 
 For longevity, it is best to provide the most flexible option for dependency
 solvers: **>=**.
+
+> Only add a cap if a dependency is known to be incompatible or there is
+> a high (>75%) chance of it being incompatible in its next release.
+> An example of a library that should probably be capped is GDAL.
 
 Some more in depth technical reading can be found
 [here](https://iscinumpy.dev/post/bound-version-constraints/#tldr).
