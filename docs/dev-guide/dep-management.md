@@ -119,6 +119,11 @@ The packages should **never** have pinned dependencies to a specific version.
 **It is recommended that versions should be pinned in an open ended way, using
 greater than or equal too (>=)**.
 
+> For this to work, a minimum required version of a dependency should
+> be established. There is little point pinning >= if a very up to
+> date version of a dependency is used (forcing the installer to update
+> to a very recent version).
+
 This ensures that a minimum version of the dependency is used, but does not
 prevent dependency upgrades for those using the package.
 
