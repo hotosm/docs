@@ -9,7 +9,7 @@ Modularization of backend and frontend components allows us to avoid repeating c
 Backend Python modules are released on
 [PyPi](https://pypi.org) to be installed across multiple services.
 
-See the [backend](https://docs.hotosm.org/modules_backend) page for more info.
+See the [backend](modules-backend) page for more info.
 
 ## Frontend
 
@@ -24,5 +24,5 @@ We also use frontend map libraries extensively (obviously).
 Currently we favour [OpenLayers](https://openlayers.org/)
 due to it's breadth of functionality
 
-See the [frontend](https://docs.hotosm.org/modules_frontend)
+See the [frontend](modules-frontend)
 page for more info.
