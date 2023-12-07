@@ -19,6 +19,6 @@ The docs go into specific technical detail for:
 - Options and variables for CLI commands.
 - Web API references to better understand expected inputs and responses.
 - Library API references for developing against.
-- Info about [modularization](https://docs.hotosm.org/modules) of our code.
+- Info about [modularization](modules) of our code.
 
 Each sidebar item will link to the documentation specific to each repo.
