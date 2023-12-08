@@ -1,8 +1,11 @@
 # Modularization
 
-HOT has many tools and services, of which there is potential for code duplication.
-
-Modularization of backend and frontend components allows us to avoid repeating code.
+HOT has many tools which have similar requirements for backend and
+frontend functionality. To reduce long-term maintainance and code
+duplication, it's better to have the shared functionality in
+standalone modules. The other advantage of small sharable modules is
+it's much easy to enhance or debug when not buried in much larger
+prohects. 
 
 ## Backend
 
@@ -13,16 +16,15 @@ See the [backend](modules-backend) page for more info.
 
 ## Frontend
 
-As a form of standardisation,
-we use [React](https://react.dev/) as our frontend framework.
+As a form of standardisation, we use [React](https://react.dev/) as
+our frontend framework.
 
-Many services have common UI components that
-can be shared (headers, buttons, sidebars, etc).
+Many services have common UI components that can be shared (headers,
+buttons, sidebars, etc).
 
 We also use frontend map libraries extensively (obviously).
 
-Currently we favour [OpenLayers](https://openlayers.org/)
-due to it's breadth of functionality
+Currently we favour [OpenLayers](https://openlayers.org/) due to it's
+breadth of functionality.
 
-See the [frontend](modules-frontend)
-page for more info.
+See the [frontend](modules-frontend) page for more info.
