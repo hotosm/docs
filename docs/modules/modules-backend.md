@@ -91,7 +91,7 @@ The division is configurable via various parameters.
 Various machine learning utils used within the fAIr backend.
 
 ***
-## Conflator
+## [Conflator](https://github.com/hotosm/conflator)
 
 This is a project for conflating external data sets with OpenStreetMap
 data.
@@ -107,3 +107,42 @@ building footprints.
 ### ConflatePOI()
 
 Conflate POIs from external datasets like ODK Collect.
+
+***
+## [TM Admin](https://github.com/hotosm/tm-admin)
+
+This is a project for profile management of Tasking Manager style
+projects.
+
+
+### [TmAdminManage](https://github.com/hotosm/tm-admin/blob/main/tm_admin/tmadmin-manage.py)
+
+This class and utility program handles creating the data type files,
+and the database tables. It also support migration as the database
+schema changes.
+
+### [DBSupport](https://github.com/hotosm/tm-admin/blob/main/tm_admin/dbsupport.py)
+
+Base class for database functions, used by the generated wrapper
+classes.
+
+### [Generator](https://github.com/hotosm/tm-admin/blob/main/tm_admin/generator.py)
+
+This class reads in the YAML config file for a database table, and
+generates the protobuf files, SQL files, and Python class.
+
+### [ProtoBuf](https://github.com/hotosm/tm-admin/blob/main/tm_admin/proto.py)
+
+Used by generator for protobuf specific file creation.
+
+### Wrapper Classes
+
+These wrapper classes are generated from the YAML config file, and
+contain all the columns from the database table as a Python
+class. This is used to create, update, and query the database tables.
+
+* UsersDB()
+* TeamsDB()
+* ProjectsDB()
+* TasksDB()
+* OrganizationsDB()
