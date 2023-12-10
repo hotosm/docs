@@ -50,8 +50,8 @@ nav:
   - Home: index.md
   - Modularization:
       - Info: modules.md
-      - Backend: modules-backend.md
-      - Frontend: modules-frontend.md
+      - Backend: modules/modules-backend.md
+      - Frontend: modules/modules-frontend.md
   - Services:
       - Intro: tools-summary.md
       - Tasking Manager:
@@ -70,6 +70,14 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/orgs/hotosm/projects/29
           - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
+      - OSM Rawdata:
+          - Docs: https://hotosm.github.io/osm-rawdata/
+      - Conflator:
+          - Docs: https://hotosm.github.io/conflator/
+      - OSM Fieldwork:
+          - Docs: https://hotosm.github.io/osm-fieldwork/
+      - TM Admin:
+          - Docs: https://hotosm.github.io/tm-admin/
       - Underpass:
           - Docs: https://hotosm.github.io/underpass/
           - Roadmap: https://github.com/orgs/hotosm/projects/23/views/3
