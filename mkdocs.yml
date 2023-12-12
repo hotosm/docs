@@ -105,6 +105,7 @@ nav:
       - Dependency Management: dev-guide/dep-management.md
       - Version Control: dev-guide/version-control.md
       - Generating Docs: dev-guide/doc-gen.md
+      - Web APIs: dev-guide/web-apis.md
       - Web Frameworks: dev-guide/web-frameworks.md
       - Testing: dev-guide/testing.md
   - E2E Diagrams: diagrams.md
