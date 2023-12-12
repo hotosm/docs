@@ -50,8 +50,8 @@ nav:
   - Home: index.md
   - Modularization:
       - Info: modules.md
-      - Backend: modules/modules-backend.md
-      - Frontend: modules/modules-frontend.md
+      - Backend: modules/backend.md
+      - Frontend: modules/frontend.md
   - Services:
       - Intro: tools-summary.md
       - Tasking Manager:
@@ -105,7 +105,7 @@ nav:
       - Dependency Management: dev-guide/dep-management.md
       - Version Control: dev-guide/version-control.md
       - Generating Docs: dev-guide/doc-gen.md
+      - Web APIs: dev-guide/web-apis.md
       - Web Frameworks: dev-guide/web-frameworks.md
       - Testing: dev-guide/testing.md
-  - E2E Diagrams:
-      - TODO: https://hotosm.org
+  - E2E Diagrams: diagrams.md
