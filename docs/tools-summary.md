@@ -29,7 +29,7 @@ space - it tells you where your data is!**
 
 This is point, polygon, and line data - what you find on OSM!
 
-The shapes are represented by mathematical formulae underneath and
+The shapes are represented by some complex maths underneath and
 rendered on your screen.
 
 **This is the data that is typically layered on top of basemaps (either
@@ -45,10 +45,10 @@ raster or vector-based basemaps) for usage.**
     of interest (AOIs), over a certain time period. Often higher resolution.
 - Vector Data:
   - OpenStreeMap (OSM) is the biggest reference of open map data.
-    - HOT's Export Tool & raw-data-api provide easy access to this.
+    - HOT's Export Tool & Raw Data API provide easy access to this.
   - Any other vector data in various formats:
     - GIS layers provided by governments: region boundaries, roads, etc.
-    - Data collected by NGOs and other organisations, open or not.
+    - Data collected by NGOs and other organizations, open or not.
 
 **All of this data can be used for various purposes, involving processing
 and data analysis**.
@@ -71,9 +71,26 @@ additional value:
 
 With the above as context, HOT's tools roughly can be categorised as such:
 
-TABLE HERE
-Input Data: OAM imagery, raw-data-api / underpass (OSM)
-Output Data: TM, FMTM, fAIr, Export Tool
+### Input
+
+| Tool            | Description                                  |
+| --------------- | -------------------------------------------- |
+| OAM             | Get base imagery.                            |
+| Raw Data API    | Extract data from OSM easily _for software_. |
+| Underpass (OSM) | Assure data quality.                         |
+
+> Note: input may be into our own tools, or workflows of others.
+>
+> Each tool is fully open to use by the public.
+
+### Output
+
+| Tool        | Description                                               |
+| ----------- | --------------------------------------------------------- |
+| TM          | Digitize map features remotely.                           |
+| fAIr        | Speed up the remote digitization process                  |
+| FMTM        | Add extra information to digitised features in the field. |
+| Export Tool | Extract data from OSM easily _for humans_.                |
 
 ### OpenAerialMap (OAM)
 
@@ -93,20 +110,20 @@ but OAM should be more targeted - the highest resolution imagery we can
 get over a time period of interest, for a specific AOI that may be used
 in TM or FMTM.
 
-### RawDataAPI & Underpass
+### Raw Data API & Underpass
 
 They use an innovative database structure to make OSM data much more usable.
 The idea to make OSM data more accessible, searchable / filterable, and
 create extracts in formats that can be consumed either by software or users.
 
-Underpass is a quality control tool that will sit on top of RawDataAPI.
+Underpass is a quality control tool that will sit on top of Raw Data API.
 
 ### Export Tool
 
 The purpose of Export Tool is to:
 
 - Take the users input for what data they need, over what area.
-- Calls raw-data-api to extract and filter the data.
+- Calls Raw Data API to extract and filter the data.
 - Receives back the data in the user requested format, e.g. a JSON
   for use in another tool, or a geopackage for use in GIS software by a user.
 
@@ -148,10 +165,6 @@ part of the solution.
 
 However, FMTM allows mapping to be done **collaboratively**.
 
-### User Flow
+### Diagrams
 
-Diagram showing typical user flow between tools.
-
-### Data Flow
-
-Diagram showing typical data flow between tools.
+For diagrams of the tools explained above, see: [e2e diagrams](diagrams.md).
