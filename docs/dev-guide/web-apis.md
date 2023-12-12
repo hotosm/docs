@@ -20,6 +20,19 @@ APIs (return HTML).
 Without going into the details, this standard has many advantages over
 REST Data APIs, with much more efficient queries being possible.
 
+### RPC
+
+The Remote Procedure Call (RPC) protocol can return XML or JSON responses.
+
+It is used to trigger code remotely, so good for internal communication
+between different services.
+HOT uses gRPC for internal communication between tools, outside of their
+REST API.
+
+While a RESTful API returns a document, the response from an RPC server is
+confirmation that the function was triggered, or an error indicating why
+it failed to run.
+
 ### Others
 
 SOAP is a historic API design using XML, and is no longer recommended.
