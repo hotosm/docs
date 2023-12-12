@@ -12,10 +12,10 @@ Postgres database. There is more detail on these modules on the [project
 website](https://hotosm.github.io/osm-rawdata)).
 
 ### [PostgresClient()](https://hotosm.github.io/osm-rawdata/api/#postgrespy)
- 
+
 This program extracts data from a local postgres data, or the remote
 Underpass one. A boundary polygon is used to define the area to be
-covered in the extract. 
+covered in the extract.
 
 ### [MapImporter()](https://hotosm.github.io/osm-rawdata/api/#importerpy)
 
@@ -35,7 +35,8 @@ Parses Overture Parquet files and creates a data structure of the
 data so it can be imported into postgres, or generate an output
 GeoJson file.
 
-***
+---
+
 ## [OSM Fieldwork](https://hotosm.github.io/osm-fieldwork)
 
 Various utility programs useful for field data collection using ODK
@@ -78,7 +79,8 @@ This supports working with the REST API for ODK Central.
 
 Produces OSM XML out files.
 
-***
+---
+
 ## [FMTMSplitter](https://hotosm.github.io/fmtm-splitter)
 
 A splitting algorithm using PostGIS to divide an idea into task areas,
@@ -90,7 +92,8 @@ The division is configurable via various parameters.
 
 Various machine learning utils used within the fAIr backend.
 
-***
+---
+
 ## [Conflator](https://github.com/hotosm/conflator)
 
 This is a project for conflating external data sets with OpenStreetMap
@@ -108,12 +111,12 @@ building footprints.
 
 Conflate POIs from external datasets like ODK Collect.
 
-***
+---
+
 ## [TM Admin](https://github.com/hotosm/tm-admin)
 
 This is a project for profile management of Tasking Manager style
 projects.
-
 
 ### [TmAdminManage](https://github.com/hotosm/tm-admin/blob/main/tm_admin/tmadmin-manage.py)
 
@@ -141,8 +144,8 @@ These wrapper classes are generated from the YAML config file, and
 contain all the columns from the database table as a Python
 class. This is used to create, update, and query the database tables.
 
-* UsersDB()
-* TeamsDB()
-* ProjectsDB()
-* TasksDB()
-* OrganizationsDB()
+- UsersDB()
+- TeamsDB()
+- ProjectsDB()
+- TasksDB()
+- OrganizationsDB()
