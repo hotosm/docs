@@ -99,12 +99,12 @@ data.
 There is more detail on these modules on the [project
 website](https://hotosm.github.io/conflator/)
 
-### ConflateBuildings()
+### [ConflateBuildings()](https://hotosm.github.io/conflator/api/#conflator.conflateBuildings)
 
 Conflate buildings from external datasets like the Microsoft or Google
 building footprints.
 
-### ConflatePOI()
+### [ConflatePOI()](https://hotosm.github.io/conflator/api/#conflator.conflatePOI)
 
 Conflate POIs from external datasets like ODK Collect.
 
