@@ -100,7 +100,7 @@ Asynchronous programming can be a learning curve for Python developers.
   are available to take new requests.
 - If all of the workers/threads are blocked by tasks, the server will hang / be unresponsive!
 
-##### Using Synchronous Code
+#### Using Synchronous Code
 
 It is of course possible to use synchronous code, but if necessary, be
 sure to run this in another thread.
@@ -229,9 +229,213 @@ async def parent_func(db, project_id, data, no_of_buildings, has_data_extracts):
     geoms = await split_multi_geom_into_tasks()
 ```
 
-#### Note
+##### Note
 
 - If you regularly find you are running out of workers/threads and the
   server is overloaded, it may be time to add a task queuing system to your stack.
 - Celery is made for just this - defer tasks to a queue, and run gradually
   to reduce the immediate load.
+
+#### Best Practices
+
+##### 1. Logical Project Structure
+
+- Group together related code into units.
+- An example template could be:
+
+```bash
+fastapi-project
+├── src
+│   ├── projects
+│   │   ├── routes.py  # endpoints + router
+│   │   ├── schemas.py  # pydantic models
+│   │   └── logic.py  # logic separate from routes for easier testing
+│   ├── tasks
+│   │   ├── routes.py
+│   │   ├── schemas.py
+│   │   └── logic.py
+│   ├── db
+│   │   ├── models.py  # global database models (can also be per subdir)
+│   │   ├── enums.py  # enum mapping for the database
+│   │   └── database.py  # database connection config
+│   ├── config.py  # global settings
+│   └── main.py
+├── tests/
+```
+
+##### Use the Correct Response Type
+
+- FastAPI has many in-built Response types:
+
+  - HTMLResponse: this would be useful paired with a HTMX frontend.
+  - JSONResponse: to return a JSON.
+  - ORJSONResponse: a faster JSON encoder. If you need to encode a large number
+    of object, this might be a good choice.
+  - RedirectResponse: use this for linking to an S3 file, to avoid handling it
+    in the FastAPI server (frontend goes directly to S3).
+  - FileResponse: load an entire file from disk and serve to the user.
+  - StreamingResponse: better for serving large file in chunks.
+
+- Don't forget to include the correct HTTP `status_code` with your response:
+  - 200: Success, used as the final return for most endpoints.
+  - 204: Success, but no response data necessary.
+  - 400: Bad request, usually malformed syntax or incorrect HTTP method (POST/GET).
+  - 401: Unauthorized, if the client does did not provide an auth token.
+  - 403: Forbidden, if the client does not have permission to access the content.
+  - 404: Not found, if the requested content is not present. E.g. wrong project id.
+  - 422: Unprocessable entity, if the request data is in the incorrect format.
+    e.g. a string provided in a form body variable when it should be an int.
+  - 500: Generic error if no other error is provided, like Exception in Python.
+
+##### Use Pydantic for Validation
+
+Settings config, plus validators:
+
+```python
+from functools import lru_cache
+from typing import Any, Optional
+
+from pydantic import PostgresDsn, ValidationInfo, field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    """Main settings class, defining environment variables."""
+
+    # Required field
+    VAR1: str
+    # Required field, but nullable
+    VAR2: Optional[str]
+    # Required field, with default
+    VAR3: Optional[str] = "7050"
+    # Not required field
+    VAR4: Optional[str] = None
+
+    DB_HOST: Optional[str] = "fmtm-db"
+    DB_USER: Optional[str] = "fmtm"
+    DB_PASSWORD: Optional[str] = "fmtm"
+    DB_NAME: Optional[str] = "fmtm"
+
+    FMTM_DB_URL: Optional[PostgresDsn] = None
+
+    # Using a field validator to build a variable
+    @field_validator("FMTM_DB_URL", mode="after")
+    @classmethod
+    def assemble_db_connection(cls, v: Optional[str], info: ValidationInfo) -> Any:
+        """Build Postgres connection from environment variables."""
+        if isinstance(v, str):
+            return v
+        pg_url = PostgresDsn.build(
+            scheme="postgresql",
+            username=info.data.get("DB_USER"),
+            password=info.data.get("DB_PASSWORD"),
+            host=info.data.get("DB_HOST"),
+            path=info.data.get("DB_NAME", ""),
+        )
+        return pg_url
+
+    # Using env_file param loads from .env
+    model_config = SettingsConfigDict(
+        case_sensitive=True, env_file=".env", extra="allow"
+    )
+
+# lru_cache prevents building obj every time settings.var is invoked
+@lru_cache
+def get_settings():
+    """Cache settings when accessed throughout app."""
+    _settings = Settings()
+    if _settings.DEBUG:
+        print(f"Loaded settings: {_settings.model_dump()}")
+    return _settings
+
+settings = get_settings()
+```
+
+Data validation in models:
+
+```python
+from enum import Enum
+from pydantic import AnyUrl, BaseModel, EmailStr, Field, constr
+
+class MusicBand(str, Enum):
+   AEROSMITH = "AEROSMITH"
+   QUEEN = "QUEEN"
+   ACDC = "AC/DC"
+
+
+class UserBase(BaseModel):
+    first_name: str = Field(min_length=1, max_length=128)
+    username: constr(regex="^[A-Za-z0-9-_]+$", to_lower=True, strip_whitespace=True)
+    email: EmailStr
+    age: int = Field(ge=18, default=None)  # must be greater or equal to 18
+    # only "AEROSMITH", "QUEEN", "AC/DC" values are allowed to be inputted
+    favorite_band: MusicBand = None
+    website: AnyUrl = None
+    valid_genre: Optional[boolean] = False
+
+    @field_validator("valid_genre", mode="before")
+    @classmethod
+    def get_genre_from_band_name(cls, value: Any, info: ValidationInfo) -> str:
+        """Get genre from band name."""
+        if band := info.data.get("favorite_band"):
+            log.debug(f"Determining genre from band {band}")
+            genre = band_genre_mapping(band)
+            if genre:
+                return True
+        return False
+```
+
+Data serialization in model:
+
+```python
+class TaskBase(BaseModel):
+    """Base Task model to inherit."""
+    # ConfigDict has many options
+    # https://docs.pydantic.dev/latest/api/config/
+    # E.g. use_enum_values automatically runs .value on enums
+    # So a returned object will have
+    #   `somefield: 1`
+    # instead of
+    #   `somefield: SomeEnum.TYPE1`
+    model_config = ConfigDict(
+        use_enum_values=True,
+        validate_default=True,
+    )
+
+    # Exclude fields: for example we want to get these values from the database,
+    # and then process them into different fields in our returned model.
+    # outline (a WKB element from Postgis) --> outline_geojson
+    outline: Any = Field(exclude=True)
+    lock_holder: Any = Field(exclude=True)
+
+    id: int
+    outline_geojson: Optional[Feature] = None
+    task_history: Optional[List[TaskHistoryBase]] = None
+
+
+class TaskOut(TaskBase):
+    """Task to return from endpoint."""
+
+    locked_by_uid: Optional[int] = None
+    outline_geojson: Optional[int] = None
+
+    @field_serializer("locked_by_uid")
+    def get_locked_by_uid(self, value: str) -> str:
+        """Get lock uid from lock_holder details."""
+        if self.lock_holder:
+            return self.lock_holder.id
+        return None
+
+    @field_serializer("outline_geojson")
+    def get_geojson_from_outline(self, value: Any, info: ValidationInfo) -> str:
+        """Get outline_geojson from Shapely geom."""
+        if outline := info.data.get("outline"):
+            properties = {
+                "fid": info.data.get("project_task_index"),
+                "uid": info.data.get("id"),
+                "name": info.data.get("project_task_name"),
+            }
+            log.debug("Converting task outline to geojson")
+            return geometry_to_geojson(outline, properties, info.data.get("id"))
+        return None
+```
