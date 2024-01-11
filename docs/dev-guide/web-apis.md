@@ -290,7 +290,7 @@ fastapi-project
 
 ##### 3. Use Pydantic for Validation
 
-Settings config, plus validators:
+###### Settings Config
 
 ```python
 from functools import lru_cache
@@ -352,7 +352,9 @@ def get_settings():
 settings = get_settings()
 ```
 
-Data validation in models:
+###### Model Validation
+
+- Used for 'incoming' (user provided) data that needs to be validated.
 
 ```python
 from enum import Enum
@@ -386,7 +388,9 @@ class UserBase(BaseModel):
         return False
 ```
 
-Data serialization in model:
+###### Model Data Serialization
+
+- Used to format 'outgoing' data that is returned to a user.
 
 ```python
 class TaskBase(BaseModel):
@@ -445,7 +449,7 @@ class TaskOut(TaskBase):
 
 ###### Validation of additional constraints
 
-- Pydantic can only validate the values from client input.
+- Pydantic can only validate the 'incoming' data from client input.
 - Use dependencies (Depends) to validate input against other constraints:
   - Database constraints, such as project or email already exists, user not found.
   - Auth constraints, where the users level of authorization should be assessed
@@ -478,12 +482,12 @@ async def update_post(
     return updated_post
 ```
 
-If we didn't put data validation in a dependency, we would have to add post_id
-validation for every endpoint and write the same check for each of them.
+If we didn't put data validation in a dependency, we would have to do the same
+checks for on each endpoint (duplicating code).
 
 ###### Reuse & chain dependencies
 
-- Dependencies can use other dependencies and avoid code repetition for similar logic.
+- Dependencies can use other dependencies and repeating code.
 
 Example:
 
@@ -522,7 +526,7 @@ async def get_user_post(post: Mapping = Depends(valid_owned_post)):
 ###### Dependency call are cached
 
 - Dependencies can be reused multiple times, and they won't be recalculated.
-- FastAPI caches dependency's result within a request's scope by default:
+- FastAPI caches dependency's result within a **request's scope** by default:
   - If a dependency makes a DB call, this can be cached when the dependency is
     called again.
   - With this in mind, try to de-couple dependencies, i.e. write smaller
@@ -531,11 +535,13 @@ async def get_user_post(post: Mapping = Depends(valid_owned_post)):
 Example:
 
 ```python
-# dependencies.py
+# logic.py (contains dependencies here)
 from fastapi import BackgroundTasks
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 
+
+# Dependency 1
 async def valid_post_id(post_id: UUID4) -> Mapping:
     post = await service.get_by_id(post_id)
     if not post:
@@ -543,7 +549,7 @@ async def valid_post_id(post_id: UUID4) -> Mapping:
 
     return post
 
-
+# Dependency 2
 async def parse_jwt_data(
     token: str = Depends(OAuth2PasswordBearer(tokenUrl="/auth/token"))
 ) -> dict:
@@ -554,7 +560,7 @@ async def parse_jwt_data(
 
     return {"user_id": payload["id"]}
 
-
+# Dependency 3 uses both 1 & 2
 async def valid_owned_post(
     post: Mapping = Depends(valid_post_id),
     token_data: dict = Depends(parse_jwt_data),
@@ -564,7 +570,7 @@ async def valid_owned_post(
 
     return post
 
-
+# Dependency 4 also uses dependency 2 (and is cached)
 async def valid_active_creator(
     token_data: dict = Depends(parse_jwt_data),
 ):
@@ -578,7 +584,7 @@ async def valid_active_creator(
     return user
 
 
-# router.py
+# routes.py (uses both Dependency 3 & 4)
 @router.get("/users/{user_id}/posts/{post_id}", response_model=PostResponse)
 async def get_user_post(
     worker: BackgroundTasks,
