@@ -596,6 +596,54 @@ async def get_user_post(
     return post
 ```
 
+###### Dependencies can include route parameters
+
+- Sometimes a dependency requires additional variables to run it's logic.
+- As an example we can imagine an app that has users and projects:
+  - To determine if a user has permission to access a project we need both:
+    - The user id
+    - The project id
+  - The user id could be determined via another dependency.
+  - However, the project id must be passed in by the user.
+
+```python
+# logic.py (where dependencies are located)
+
+from app.auth.osm import AuthUser, login_required # imported dependency
+
+async def validator(
+    project_id: int, # The route parameter
+    db: Session = Depends(get_db),
+    user_data: AuthUser = Depends(login_required), # from imported dependency
+) -> AuthUser:
+    user_id = await get_uid(user_data)
+
+    match = (
+        db.query(DbUserRoles).filter_by(user_id=user_id, project_id=project_id).first()
+    )
+
+    if not match:
+        raise HTTPException(status_code=403, detail="User has no access to project")
+
+    if match.role.value < ProjectRole.VALIDATOR.value:
+        raise HTTPException(
+            status_code=403, detail="User is not a validator for this project"
+        )
+
+    return user_data
+
+# routes.py (endpoints)
+@router.get("/get_validator/")
+async def validator(
+    db: Session = Depends(database.get_db),
+    user: AuthUser = Depends(validator),
+):
+    return user
+```
+
+When the user calls the `/get_validator` endpoint, they will need to provide the
+parameter `project_id`, as it is present in the `validator` sub dependency.
+
 ##### 5. Always Use Typing
 
 - FastAPI relies on Typing heavily for it's functionality.
