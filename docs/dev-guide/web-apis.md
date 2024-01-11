@@ -263,7 +263,7 @@ fastapi-project
 ├── tests/
 ```
 
-##### Use the Correct Response Type
+##### 2. Use the Correct Response Type
 
 - FastAPI has many in-built Response types:
 
@@ -277,6 +277,7 @@ fastapi-project
   - StreamingResponse: better for serving large file in chunks.
 
 - Don't forget to include the correct HTTP `status_code` with your response:
+
   - 200: Success, used as the final return for most endpoints.
   - 204: Success, but no response data necessary.
   - 400: Bad request, usually malformed syntax or incorrect HTTP method (POST/GET).
@@ -287,7 +288,7 @@ fastapi-project
     e.g. a string provided in a form body variable when it should be an int.
   - 500: Generic error if no other error is provided, like Exception in Python.
 
-##### Use Pydantic for Validation
+##### 3. Use Pydantic for Validation
 
 Settings config, plus validators:
 
@@ -438,4 +439,174 @@ class TaskOut(TaskBase):
             log.debug("Converting task outline to geojson")
             return geometry_to_geojson(outline, properties, info.data.get("id"))
         return None
+```
+
+##### 4. FastAPI Dependencies (Depends)
+
+###### Validation of additional constraints
+
+- Pydantic can only validate the values from client input.
+- Use dependencies (Depends) to validate input against other constraints:
+  - Database constraints, such as project or email already exists, user not found.
+  - Auth constraints, where the users level of authorization should be assessed
+    in an endpoint.
+
+Example:
+
+```python
+# logic.py (where the dependency is written)
+async def valid_post_id(post_id: UUID4) -> Mapping:
+    post = await service.get_by_id(post_id)
+    if not post:
+        raise PostNotFound()
+
+    return post
+
+
+# routes.py (where Depends is used)
+@router.get("/posts/{post_id}", response_model=PostResponse)
+async def get_post_by_id(post: Mapping = Depends(valid_post_id)):
+    return post
+
+
+@router.put("/posts/{post_id}", response_model=PostResponse)
+async def update_post(
+    update_data: PostUpdate,
+    post: Mapping = Depends(valid_post_id),
+):
+    updated_post: Mapping = await service.update(id=post["id"], data=update_data)
+    return updated_post
+```
+
+If we didn't put data validation in a dependency, we would have to add post_id
+validation for every endpoint and write the same check for each of them.
+
+###### Reuse & chain dependencies
+
+- Dependencies can use other dependencies and avoid code repetition for similar logic.
+
+Example:
+
+```python
+# logic.py
+from fastapi.security import OAuth2PasswordBearer
+from jose import JWTError, jwt
+
+# Depends on pre-existing FastAPI dependency OAuth2PasswordBearer
+async def parse_jwt_data(
+    token: str = Depends(OAuth2PasswordBearer(tokenUrl="/auth/token"))
+) -> dict:
+    try:
+        payload = jwt.decode(token, "JWT_SECRET", algorithms=["HS256"])
+    except JWTError:
+        raise InvalidCredentials()
+
+    return {"user_id": payload["id"]}
+
+# Depends on parse_jwt_data (chained)
+async def valid_owned_post(
+    post: Mapping = Depends(valid_post_id),
+    token_data: dict = Depends(parse_jwt_data),
+) -> Mapping:
+    if post["creator_id"] != token_data["user_id"]:
+        raise UserNotOwner()
+
+    return post
+
+# routes.py (where the final Depends is used)
+@router.get("/users/{user_id}/posts/{post_id}", response_model=PostResponse)
+async def get_user_post(post: Mapping = Depends(valid_owned_post)):
+    return post
+```
+
+###### Dependency call are cached
+
+- Dependencies can be reused multiple times, and they won't be recalculated.
+- FastAPI caches dependency's result within a request's scope by default:
+  - If a dependency makes a DB call, this can be cached when the dependency is
+    called again.
+  - With this in mind, try to de-couple dependencies, i.e. write smaller
+    functions that do specific things, then chain them.
+
+Example:
+
+```python
+# dependencies.py
+from fastapi import BackgroundTasks
+from fastapi.security import OAuth2PasswordBearer
+from jose import JWTError, jwt
+
+async def valid_post_id(post_id: UUID4) -> Mapping:
+    post = await service.get_by_id(post_id)
+    if not post:
+        raise PostNotFound()
+
+    return post
+
+
+async def parse_jwt_data(
+    token: str = Depends(OAuth2PasswordBearer(tokenUrl="/auth/token"))
+) -> dict:
+    try:
+        payload = jwt.decode(token, "JWT_SECRET", algorithms=["HS256"])
+    except JWTError:
+        raise InvalidCredentials()
+
+    return {"user_id": payload["id"]}
+
+
+async def valid_owned_post(
+    post: Mapping = Depends(valid_post_id),
+    token_data: dict = Depends(parse_jwt_data),
+) -> Mapping:
+    if post["creator_id"] != token_data["user_id"]:
+        raise UserNotOwner()
+
+    return post
+
+
+async def valid_active_creator(
+    token_data: dict = Depends(parse_jwt_data),
+):
+    user = await users_service.get_by_id(token_data["user_id"])
+    if not user["is_active"]:
+        raise UserIsBanned()
+
+    if not user["is_creator"]:
+       raise UserNotCreator()
+
+    return user
+
+
+# router.py
+@router.get("/users/{user_id}/posts/{post_id}", response_model=PostResponse)
+async def get_user_post(
+    worker: BackgroundTasks,
+    post: Mapping = Depends(valid_owned_post),
+    user: Mapping = Depends(valid_active_creator),
+):
+    """Get post that belong the active user."""
+    worker.add_task(notifications_service.send_email, user["id"])
+    return post
+```
+
+##### 5. Always Use Typing
+
+- FastAPI relies on Typing heavily for it's functionality.
+- Typing also helps linting and IDE code completion.
+
+##### 6. Save Files in Chunks
+
+- If the API needs to receive a large file from a user, receive it in chunks:
+
+```python
+import aiofiles
+from fastapi import UploadFile
+
+DEFAULT_CHUNK_SIZE = 1024 * 1024 * 50  # 50 megabytes
+
+async def save_video(video_file: UploadFile):
+   async with aiofiles.open("/file/path/name.mp4", "wb") as f:
+     while chunk := await video_file.read(DEFAULT_CHUNK_SIZE):
+         await f.write(chunk)
 ```
