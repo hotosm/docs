@@ -111,12 +111,13 @@ To do this you have several options.
 
 ##### 1) Using sync code within an `async def` function
 
-- Use the BackgroundTasks implementation we have, with polling for the
-  task completion.
-- The task should be written as a standard `def`. FastAPI will handle
-  this automatically and ensure it runs in a separate thread.
+- Use FastAPI BackgroundTasks, with polling for the task completion.
+  - The task should be written as a standard `def`. FastAPI will handle
+    this automatically and ensure it runs in a separate thread.
 - Alternatively, if you wish to run the task in the foreground and return
-  the response, use the FastAPI helper `run_in_threadpool`:
+  the response, use the FastAPI helper `run_in_threadpool`.
+  - This will run the function in a separate thread to ensure that the main
+    thread does not get blocked.
 
 ```python
 from fastapi.concurrency import run_in_threadpool
@@ -125,7 +126,7 @@ def long_running_sync_task(time_to_sleep):
     sleep(time_to_sleep)
 
 async def some_func():
-    data = await run_in_threadpool(lambda: long_running_sync_task(time_to_sleep))
+    data = await run_in_threadpool(lambda: long_running_sync_task(10))
 ```
 
 ##### 2) Running multiple standard `def` from within an `async def` function
@@ -168,11 +169,12 @@ def a_synchronous_function(db):
         wait(futures)
 ```
 
-Note that in the above example, we cannot pass the db object from the parent
-function into the functions spawned in threads. A single database
-connection should not be written to by multiple processes at the same time,
-as you may get data inconsistencies. To solve this we generate a new
-db connection within the pool for each separate task we run in a thread.
+**Note** that in the above example, we cannot pass the db object from the parent
+function into the functions spawned in threads.
+This is becaue a single database connection should not be written to by
+multiple processes at the same time, as you may get data inconsistencies.
+To solve this we generate a new db connection within the pool for each separate
+task we run in a thread.
 
 > To avoid issues, look into limiting the thread usage via:
 > <https://stackoverflow.com/questions/73195338/how-to-avoid-database-connection-pool-from-being-exhausted-when-using-fastapi-in>
@@ -445,6 +447,56 @@ class TaskOut(TaskBase):
         return None
 ```
 
+###### Response models
+
+- FastAPI integrates Pydantic very nicely.
+- Endpoints allow us to define a `response_model`, which is a Pydantic model.
+- This specifies the fields that must be present in the endpoint JSON response.
+- Validators and serialisers are all called when a response_model is used.
+  - This means that formatting and validation of the returned data does not
+    need to be done in the endpoint code.
+  - It is instead handled by Pydantic, and will throw an error if validation
+    does not pass.
+
+Example:
+
+```python
+# project_schemas.py
+class ProjectBase(BaseModel):
+    id: int
+    name: str
+
+class ProjectInt(ProjectBase)
+    organization: str  # org abbreviation provided by frontend
+
+    @field_validator("organization", mode="before")
+    @classmethod
+    def get_org_long_name(cls, value: str) -> str:
+        return get_org_long_name_from_abbreviation(value)
+
+class ProjectOut(ProjectBase):
+    date_created: datetime.date
+
+    @field_serializer("date_created")
+    def format_date(self, value: datetime.date):
+          # Format: Monday 01 2023
+          return last_active.strftime("%d %b %Y")
+
+
+# project_routes.py
+@router.put("/{id}", response_model=ProjectOut)
+async def update_project(
+    id: int,
+    project_info: ProjectIn,
+    db: Session = Depends(database.get_db),
+):
+    """Update an existing project by ID."""
+    project = await project_crud.update_project_info(db, project_info, id)
+    if not project:
+        raise HTTPException(status_code=422, detail="Project update failed")
+    return project
+```
+
 ##### 4. FastAPI Dependencies (Depends)
 
 ###### Validation of additional constraints
@@ -648,8 +700,43 @@ parameter `project_id`, as it is present in the `validator` sub dependency.
 
 - FastAPI relies on Typing heavily for it's functionality.
 - Typing also helps linting and IDE code completion.
+- Pydantic models can be used as types.
+- If endpoints often reference data in the same format, it's useful to have a model.
 
-##### 6. Save Files in Chunks
+For example an authenticated user model:
+
+```python
+class AuthUser(BaseModel):
+    id: int
+    username: str
+    img_url: Optional[str]
+
+# Usage
+user: AuthUser = get_auth_user()
+```
+
+##### 6. Use REST Endpoint Naming
+
+REST APIs are formatted as such:
+
+```bash
+GET /projects/:project_id
+GET /projects/:project_id/tasks/:task_id/submissions
+GET /users/:user_id
+```
+
+In summary:
+
+- `projects` is the noun in this example.
+- Always use plural nouns: `projects/xxx` vs `project/xxx`.
+- Never use verbs in endpoint: `projects/11/create`
+  - Instead use GET, POST, PUT, PATCH, DELETE methods.
+
+> It is also recommended to add a version, e.g. `/v2/projects`, to the API.
+>
+> However, if the project is small, this may not always be necessary.
+
+##### 7. Save Files in Chunks
 
 - If the API needs to receive a large file from a user, receive it in chunks:
 
