@@ -21,13 +21,21 @@ Git has **hooks**, which can run code on various events:
 
 ## Pre-Commit (Python Tool)
 
-- Pre-commit is a Python tool for simplifying and applying Git pre-commit hooks.
+- [Pre-commit](https://pre-commit.com/) is a Python tool for simplifying
+  and applying Git pre-commit hooks.
 - Hooks can be configured via a YAML file, then applied on each attempted commit.
 - There are many hooks available from different sources.
 
+Install it with:
+
+```bash
+pip install pre-commit
+```
+
 ### Add pre-commit-config.yaml
 
-A best practice config file, taken from FMTM:
+- Add a `pre-commit-config.yaml` to your repo root.
+- A best practice config file, taken from FMTM:
 
 ```yaml
 repos:
