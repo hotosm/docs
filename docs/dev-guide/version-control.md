@@ -43,7 +43,31 @@ automatically determined based on the commit types.
 
 ## Tools
 
-Some tools can make your life easier when working with conventional commits
-and SemVer.
+Some tools can make your life easier when working with conventional
+commits and SemVer.
 
 ### Commitizen
+
+- Versions are managed by Commitizen from the `pyproject.toml` file in a repo.
+
+- Versions are determined by conventional commit messages:
+  - `fix: xxx` denotes a patch, `feat: xxx` denotes a minor increment.
+  - Breaking changes are applied every year to increment the `YYYY` in place
+    of `MAJOR`.
+
+#### Bumping Versions
+
+Install commitizen:
+
+```bash
+pip install commitizen
+```
+
+Bump the version:
+
+```bash
+# cd to the directory containing the pyproject.toml
+cz bump --check-consistency --changelog
+git push
+git push --tag
+```
