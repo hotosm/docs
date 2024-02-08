@@ -19,8 +19,8 @@
 
 ## CalVer and others
 
-- Sometimes SemVer doesn't make sense. For example, in a user-facing **software
-  service/tool**, what does a 'breaking' change denote?
+- Sometimes SemVer doesn't make sense. For example, in a user-facing
+  **software service/tool**, what does a 'breaking' change denote?
 - In these cases, other conventions may be better suited.
 - At HOT, we use `YYYY.VERSION.PATCH`, in line with the developers of the ODK ecosystem.
   - YYYY: the current year.
