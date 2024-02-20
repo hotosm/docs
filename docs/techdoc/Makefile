@@ -9,6 +9,8 @@ PDFS := $(DOCS:.odt=.pdf)
 # source files, insted of having to commit both to git after
 # any changes.
 all: pngs pdfs
+	-@cd templates && make
+	-@cd overview && make
 
 pngs: $(PNGS)
 
@@ -28,6 +30,8 @@ apidoc:
 	# -@mv *Profile.png images
 
 clean:
-	-$(RM) *.png *.pdf
+	-$(RM) $(PDFS) $(PNGS)
+	-@cd templates && make clean
+	-@cd overview && make clean
 
 force:
