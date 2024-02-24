@@ -4,9 +4,10 @@ While today HOT architecture consists of a wide range of applications
 and modules, the vision for the future is a more unified ecosystem.
 
 The key features of this architecture are:
-* An integrated set of back-end modules
-* A common data model based on standards and only extending as required
-* Fit for purpose front-ends, built on REACT
+
+- An integrated set of back-end modules
+- A common data model based on standards and only extending as required
+- Fit for purpose front-ends, built on REACT
 
 ## HOT Overview
 
@@ -55,7 +56,6 @@ instance, but a set of shared modules used for connectivity.
 ## E2E Integration Sequence Diagrams
 
 These show the interactions between multiple components at a more detailed level.
-
 
 | <img src="OSDs/OverarchingOSD-TMUserProfilestoFTM.png" width="90%"/> | <img src="OSDs/OverarchingOSD-TMOrgProfilestoFTM.png" width="90%"/> |
 | <img src="OSDs/OverarchingOSD-TMProjectstoFTM.png" width="90%"/> | . |
