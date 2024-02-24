@@ -68,7 +68,6 @@ repos:
             --no-error-on-unmatched-pattern,
             "!CHANGELOG.md",
             "!CONTRIBUTING.md",
-            "!LICENSE.md",
             "!src/frontend/pnpm-lock.yaml",
           ]
 
@@ -90,16 +89,7 @@ repos:
     rev: v0.38.0
     hooks:
       - id: markdownlint
-        args:
-          [
-            --fix,
-            --ignore,
-            LICENSE.md,
-            --ignore,
-            CHANGELOG.md,
-            --ignore,
-            .github,
-          ]
+        args: [--fix, --ignore, CHANGELOG.md, --ignore, .github]
 ```
 
 > Note: the config above is for a monorepo configuration.

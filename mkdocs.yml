@@ -112,3 +112,4 @@ nav:
       - Testing: dev-guide/testing.md
   - E2E Diagrams: diagrams.md
   - Code of Conduct: code-of-conduct.md
+  - License: LICENSE.md
