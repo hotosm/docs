@@ -14,6 +14,9 @@ Backend Python modules are released on
 
 See the [backend](modules/backend.md) page for more info.
 
+Here's a recent [Presentation](modules/modules.pdf) that covers the backend
+modules in more detail.
+
 ## Frontend
 
 As a form of standardization, we use [React](https://react.dev/) as

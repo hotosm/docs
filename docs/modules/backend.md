@@ -5,6 +5,11 @@
 A way to consistently implement OSM login (via underlying OAuth2) in
 our applications.
 
+## [TM Extractor](https://github.com/hotosm/TM-Extractor)
+
+The TM Extractor script is designed to trigger extraction requests for
+Tasking Manager projects.
+
 ## [OSM Raw Data](https://hotosm.github.io/osm-rawdata)
 
 OMS Raw Data supports the creation of data extracts into GeoJson or a
