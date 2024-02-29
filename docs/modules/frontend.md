@@ -34,3 +34,8 @@ There is also the possibility of designing this with [Svelte](https://svelte.dev
 then embedding the compiled plain JS into our React apps (in discussion).
 
 [link](https://hotosm.github.io/shared-map-components)
+
+## QR Codes
+
+[Reads and decodes](https://github.com/hotosm/qrcodes) base64 and zlib
+encoded JSON data within a QRCode in Javascript
