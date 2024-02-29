@@ -109,4 +109,4 @@ This will:
 6. Add a description if possible, then release.
 
 This should trigger the PyPi publishing workflow (for HOT repos), and
-your version will be available on [PyPi.org](pypi.org).
+your version will be available on [PyPi.org](https://www.pypi.org).
