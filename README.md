@@ -19,6 +19,14 @@ The docs go into specific technical detail for:
 - Options and variables for CLI commands.
 - Web API references to better understand expected inputs and responses.
 - Library API references for developing against.
-- Info about [modularization](modules) of our code.
 
 Each sidebar item will link to the documentation specific to each repo.
+
+HOT is working towards the modularization of our code to improve
+maintainability and implement an end-to-end user flow between multiple
+tools. There is more info about [modularization](modules.md) of our code.
+
+## The HOT Ecosystem
+
+![simple-e2e](images/hot-tool-overview.png)
+

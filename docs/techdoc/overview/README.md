@@ -1,11 +1,12 @@
-# Overarching Architecture Folder
+# Overviews
 
 While today HOT architecture consists of a wide range of applications
 and modules, the vision for the future is a more unified ecosystem.
 
 The key features of this architecture are:
 * An integrated set of back-end modules
-* A common data model based on standards and only extending as required
+* A common data model based on standards and only extending as
+  required
 * Fit for purpose front-ends, built on REACT
 
 ## HOT Overview
@@ -44,7 +45,14 @@ diagram and notation
 
 ![Component Diagram](HOTComponentDiagram.png)
 
-## E2E Data Integration Diagrams
+## End-To-End (E2E)
+
+This is a plan, currently in progress, to have a better end user
+experience between multiple HOT projects. Since often multiple
+projects are used, Tasking Manager, Export Tool, Field Mapping Tasking
+Manager, etc... the journey between them should be efficient.
+
+### E2E Data Integration Diagrams
 
 This is the high level concept for the E2E data integration
 approach. The TD Admin components in the center are not actually a hub
@@ -52,10 +60,9 @@ instance, but a set of shared modules used for connectivity.
 ![Conceptual Data Model](E2EDataIntegrationLayer.png)
 <br/>
 
-## E2E Integration Sequence Diagrams
+### E2E Integration Sequence Diagrams
 
 These show the interactions between multiple components at a more detailed level.
-
 
 | <img src="OSDs/OverarchingOSD-TMUserProfilestoFTM.png" width="90%"/> | <img src="OSDs/OverarchingOSD-TMOrgProfilestoFTM.png" width="90%"/> |
 | <img src="OSDs/OverarchingOSD-TMProjectstoFTM.png" width="90%"/> | . |
