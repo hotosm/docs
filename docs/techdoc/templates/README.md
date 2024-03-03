@@ -11,4 +11,3 @@ These are templates that can be used to document HOT's tech projects.
 ![Component Diagram](ComponentDiagram.png)
 
 ![Information Flow Diagram](InformationFlow.png)
-
