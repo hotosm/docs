@@ -42,29 +42,25 @@ markdown_extensions:
   - pymdownx.emoji:
   - pymdownx.tabbed:
       alternate_style: true
-  - mdx_truly_sane_lists
 
 plugins:
   - search
-  - git-revision-date-localized
 
 nav:
   - Home: index.md
-  - Modularization:
-      - Info: modules.md
-      - Backend: modules/backend.md
-      - Frontend: modules/frontend.md
-  - Services:
+  - Projects:
       - Intro: tools-summary.md
       - Tasking Manager:
           - Docs: https://hotosm.github.io/tasking-manager/
           - Roadmap: https://github.com/orgs/hotosm/projects/28
           - Task Tracker: https://github.com/orgs/hotosm/projects/14/views/2
       - FMTM:
+          - Overview: techdoc/overview/FMTMProductPitch.pdf
           - Docs: https://hotosm.github.io/fmtm/
           - Roadmap: https://github.com/orgs/hotosm/projects/22/views/6
           - Task Tracker: https://github.com/orgs/hotosm/projects/22
       - fAIr:
+          - Overview: techdoc/overview/fAIrProductPitch.pdf
           - Docs: https://fair-dev.hotosm.org/
           - Roadmap: https://github.com/orgs/hotosm/projects/30/views/1
           - Task Tracker: https://github.com/orgs/hotosm/projects/30/views/2
@@ -77,26 +73,31 @@ nav:
           - Roadmap: https://github.com/orgs/hotosm/projects/23/views/3
           - Task Tracker: https://github.com/orgs/hotosm/projects/23
       - Open Aerial Map:
+          - Overview: techdoc/overview/OAMProductPitch.pdf
           - Browser: https://hotosm.github.io/oam-browser/
           - API: https://hotosm.github.io/oam-api/
       - Export Tool:
           - Docs: https://hotosm.github.io/osm-export-tool/
           - Roadmap: https://github.com/orgs/hotosm/projects/29
           - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
-  - Python Libs:
-      - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
-      - OSM RawData: https://hotosm.github.io/osm-rawdata/
-      - Conflator: https://hotosm.github.io/conflator/
-      - TM Admin: https://hotosm.github.io/tm-admin/
-      - OSM Login: https://hotosm.github.io/osm-login-python/
-      - FMTM Splitter: https://hotosm.github.io/fmtm-splitter/
-      - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
-  - UI / Design:
-      - UI Components: https://hotosm.github.io/ui/
-      - Map Component: https://hotosm.github.io/shared-map-components/
-      - Underpass UI: https://hotosm.github.io/underpass-ui/
-  - DevOps:
-      - Reusable Workflows: https://hotosm.github.io/gh-workflows/
+      - Roadmap: roadmap.md
+
+  - Modularization:
+      - Info: modules.md
+      - Backend: modules/backend.md
+      - Frontend: modules/frontend.md
+      - UI / Design:
+          - UI Components: https://hotosm.github.io/ui/
+#          - Map Component: https://hotosm.github.io/shared-map-components/
+#          - Underpass UI: https://hotosm.github.io/underpass-ui/
+      - Python Modules:
+          - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
+          - OSM RawData: https://hotosm.github.io/osm-rawdata/
+          - Conflator: https://hotosm.github.io/conflator/
+          - TM Admin: https://hotosm.github.io/tm-admin/
+          - OSM Login: https://hotosm.github.io/osm-login-python/
+          - FMTM Splitter: https://hotosm.github.io/fmtm-splitter/
+          - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
   - Developer Guidelines:
       - Intro: dev-guide/intro.md
       - Git: dev-guide/git.md
@@ -110,5 +111,8 @@ nav:
       - Web APIs: dev-guide/web-apis.md
       - Web Frameworks: dev-guide/web-frameworks.md
       - Testing: dev-guide/testing.md
-  - E2E Diagrams: diagrams.md
+      - Documentation: techdoc/README.md
+  - DevOps:
+      - Reusable Workflows: https://hotosm.github.io/gh-workflows/
   - Code of Conduct: code-of-conduct.md
+  - Project Overviews: techdoc/overview/README.md
