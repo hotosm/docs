@@ -165,6 +165,3 @@ part of the solution.
 
 However, FMTM allows mapping to be done **collaboratively**.
 
-### Diagrams
-
-For diagrams of the tools explained above, see: [e2e diagrams](diagrams.md).
