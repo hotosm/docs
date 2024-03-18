@@ -2,9 +2,7 @@
 
 ## Types of Testing
 
-### Code Tests
-
-![test-pyramid](../images/test_pyramid.webp)
+![test-pyramid](./images/test_pyramid.webp)
 
 - **Unit Testing:**
 
@@ -17,11 +15,20 @@
 - **Integration Testing:**
 
   - Verifies that different units or modules work together as expected.
-  - Identifies issues in interactions between integrated components.
-  - For example and endpoint on a web API can be tested for expected
-    output, which may run various different functions throughout the code.
+  - For example and endpoint on a web API can be tested as such:
+    - Call and endpoint that triggers code in various modules.
+    - Standarise the input to the test, for example a specific JSON.
+    - Check the output data matches the expected output, every time it runs.
   - Typically backend tests, but can also be written to group together
-    multiple frontend unit tests (e.g. testing a component state).
+    multiple frontend unit tests (for example, testing a component state).
+
+- **End-to-End (E2E) Testing:**
+
+  - Similar to integration tests, except the entire expected user
+    workflow is tested (i.e. the ordering is important).
+  - For example, if you expect a user to create a user account -->
+    create a project --> perform some processing, then these steps will
+    be tested in order (as if the user was using the software).
 
 - **User Interface (UI) Testing:**
 
@@ -38,32 +45,33 @@
     properties](https://playwright.dev/docs/locators), such as element
     names, ids, labels, to lower level CSS and XPath if required.
 
-- **End-to-End (E2E) Testing:**
-
-  - Similar to integration tests, except the entire expected user
-    workflow is tested.
-  - For example, if you expect a user to create a user account -->
-    create a project --> perform some processing, then these steps will
-    be tested in order (as if the user was using the software).
-
-### Other Tests
-
 - **Performance Testing:**
 
   - Evaluates the system's responsiveness, scalability, and stability
     under different conditions.
-  - Includes load testing, stress testing, and scalability testing.
+  - Includes:
+    - Load testing, for expected and peak load.
+    - Stress testing, for abnormally high load / upper limit testing.
+    - Scalability testing, used to identify optimal configuration to handle load.
+  - Generally for backend or database code.
+  - An example could be using a profiler to determine response time in a web API,
+    or using `EXPLAIN ANALYSE` on a database to determine bottlenecks.
 
 - **Security Testing:**
 
-  - Identifies vulnerabilities and weaknesses in the software's security features.
-  - Ensures that sensitive data is protected and the system is resistant to attacks.
+  - Identifies Common Vulnerabilities and Exposures (CVEs) in software.
+  - CVEs are publically available lists of identified security flaws in code.
+  - One way to test this could be container image scanning, which checks for
+    vulnerabilities in the underlying operating system, plus the code and dependencies.
 
 - **Smoke Testing:**
 
   - A test to pretty much see if your application starts up.
   - If a smoke test fails, then you application failed to initialise.
   - Particularly useful to test if a container runs as expected.
+  - Useful to include in CI to prevent deployment if smoke test fails.
+
+## Testing Terminology
 
 - **White Box Testing:**
 
@@ -99,6 +107,9 @@
     testing, for example database entries.
   - Parameterised testing: allowing you to run the same test with
     different input values.
+- With the help of plugins, it's easy to write **integration tests** too.
+- For example a FastAPI endpoint can be called with inputs, to test the
+  outputs are as expected.
 
 Usage:
 
@@ -112,6 +123,8 @@ pytest
   is executed during unit tests.
 - This metric is a rough approximation of how thoroughly your tests
   actually test your code.
+- Use with care, this is only an assessment of how much code is touched by
+  your tests. A 100% coverage codebase may still be poorly tested.
 
 Usage:
 
@@ -126,3 +139,7 @@ coverage report -m
 ```
 
 ## Javascript
+
+### ViTest
+
+### Playwright
