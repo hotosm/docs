@@ -83,15 +83,14 @@ nav:
           - Roadmap: https://github.com/orgs/hotosm/projects/29
           - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
       - Roadmap: roadmap.md
-
   - Modularization:
       - Info: modules.md
       - Backend: modules/backend.md
       - Frontend: modules/frontend.md
       - UI / Design:
           - UI Components: https://hotosm.github.io/ui/
-#          - Map Component: https://hotosm.github.io/shared-map-components/
-#          - Underpass UI: https://hotosm.github.io/underpass-ui/
+      #          - Map Component: https://hotosm.github.io/shared-map-components/
+      #          - Underpass UI: https://hotosm.github.io/underpass-ui/
       - Python Modules:
           - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
           - OSM RawData: https://hotosm.github.io/osm-rawdata/
@@ -114,6 +113,7 @@ nav:
       - Web Frameworks: dev-guide/web-frameworks.md
       - Testing: dev-guide/testing.md
       - Documentation: techdoc/README.md
+      - Licensing: dev-guide/licensing.md
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
   - Code of Conduct: code-of-conduct.md
