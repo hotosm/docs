@@ -3,6 +3,9 @@
 We will use an official tool Kubernetes-In-Docker (KIND) to run Kubernetes via
 Docker locally.
 
+This is useful for testing Kubernetes configuration locally,
+and trialing software too.
+
 ## Install Tools
 
 ### Kubectl
@@ -46,9 +49,7 @@ rm -rf "$temp_dir"
   <summary>Optional Config</summary>
 <!-- markdownlint-enable -->
 
-### Kubie
-
-Used to easily switch Kubernetes context (i.e. multiple clusters).
+Kubie: used to easily switch Kubernetes context (i.e. multiple clusters).
 
 ```bash
 temp_dir=$(mktemp -d)
@@ -64,9 +65,7 @@ sudo mv ./kubie /usr/local/bin/kubie
 rm -rf "$temp_dir"
 ```
 
-### Helm
-
-Used to install software into the cluster.
+Helm: used to install software into the cluster.
 
 ```bash
 temp_dir=$(mktemp -d)
@@ -81,9 +80,7 @@ sudo mv $(uname -s | tr '[:upper:]' '[:lower:]')-amd64/helm /usr/local/bin/helm
 rm -rf "$temp_dir"
 ```
 
-### bashrc aliases
-
-- If using BASH shell, it may be useful to add some aliases:
+BASH (bashrc) aliases
 
 ```bash
 echo alias k='kubectl' >> ~/.bashrc
@@ -92,9 +89,7 @@ echo alias ns='kubie ns' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### fish aliases
-
-- If using FISH shell, the aliases go in a different file:
+fish aliases
 
 ```bash
 echo alias k='kubectl' >> ~/.config/fish/config.fish
@@ -133,7 +128,7 @@ nodes:
 EOF
 ```
 
-> The cluster will be named 'local'
+> The cluster will be named 'kind-local'
 
 <!-- markdownlint-disable -->
 <details>
@@ -171,7 +166,8 @@ nodes:
 ## Deploy the Ingress Controller
 
 Contour uses Envoy and may be a good choice in production.
-The simplest and most battle tested in the Nginx ingress.
+
+But the simplest and most battle tested in the Nginx ingress.
 
 Deploy with:
 
@@ -276,8 +272,6 @@ spec:
 EOF
 ```
 
-> The cluster will be named 'local'
-
 <!-- markdownlint-disable -->
 <details>
   <summary>Fish shell equivalent</summary>
@@ -369,15 +363,15 @@ spec:
 </details>
 <!-- markdownlint-enable -->
 
-> should output "foo-app"
->
 > $ curl localhost:7080/foo/hostname
 >
-> should output "bar-app"
+> should output "foo-app"
 >
 > $ curl localhost:7080/bar/hostname
+>
+> should output "bar-app"
 
-Cleanup test service:
+Cleanup test resources:
 
 ```bash
 kubectl delete pod foo-app
