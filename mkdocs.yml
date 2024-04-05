@@ -106,6 +106,7 @@ nav:
       - Containers:
           - Intro: dev-guide/containers-101.md
           - Cheat Sheet: dev-guide/containers-cheat-sheet.md
+          - Local Kubernetes: dev-guide/kubernetes-local-kind.md
       - Dependency Management: dev-guide/dep-management.md
       - Version Control: dev-guide/version-control.md
       - Generating Docs: dev-guide/doc-gen.md
