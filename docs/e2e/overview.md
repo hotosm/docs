@@ -72,7 +72,7 @@ Outcome: to enable communities to generate their own maps for their area of inte
   - This process of fAIr-->TM-->fAIr could be done multiple times.
 - Output the final validated features as a GeoJSON.
 
-### 6. Input Into FMTM
+### 7. Input Into FMTM
 
 - Now we have validated, AI-generated features for an area, they can be field
   validated and tagged.

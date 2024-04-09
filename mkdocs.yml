@@ -86,6 +86,7 @@ nav:
       - Roadmap: roadmap.md
   - End-to-End Workflow:
       - Overview: e2e/overview.md
+      - Learnings: e2e/learnings.md
   - Modularization:
       - Info: modules.md
       - Backend: modules/backend.md
