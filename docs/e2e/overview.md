@@ -47,7 +47,7 @@ Outcome: to enable communities to generate their own maps for their area of inte
 - Only map a small sample area that is representative of the entire area.
 
 🚧 We need an instance of TM isolated from OSM, so we don't mess with existing data.
-🚧 Alternatively we need a way to bulk delete geoms via iD Editor.
+Alternatively we need a way to bulk delete geoms via iD Editor.
 
 ### 4. Generate a Model Using fAIr
 
@@ -63,7 +63,9 @@ Outcome: to enable communities to generate their own maps for their area of inte
   geoms.
 
 🚧 We should assess if we need this step, or the input from a single experienced
-🚧 validator directly in fAIr would be good enough.
+validator directly in fAIr would be good enough.
+
+🚧 Can iD Editor be used to split buildings nicely? Is this a good workflow?
 
 ### 6. Process Final Features in fAIr
 
@@ -82,3 +84,5 @@ Outcome: to enable communities to generate their own maps for their area of inte
 - As part of a field (mobile) survey, the features will be validated and tagged with
   useful information.
 - The final validated and tagged geometries will be bulk uploaded to OSM.
+
+🚧 A way to feed validation failures back to TM for re-digitisation would be great.
