@@ -138,3 +138,45 @@ git reset --hard feat/new-thing
 git stash apply
 git stash drop
 ```
+
+### Anticipating a Merge
+
+- Often in a developers workflow, they create on PR, then while waiting for review
+  work on another PR.
+- If `PR-2` relies on work from `PR-1` to be merged, this can be an issue.
+- One approach to solving this dilemma is informally called 'anticipating a merge'.
+
+#### Anticipating a Merge Workflow
+
+1. Complete work on branch `PR-1` and push to create a PR.
+
+2. Ensure you are on branch `PR-1`:
+
+   ```bash
+   git checkout pr-1
+   ```
+
+3. Create branch `PR-2` **based off** `PR-1`:
+
+   ```bash
+   git checkout -b pr-2
+   ```
+
+4. Build your feature on top of the code in `PR-1`.
+5. Complete work on branch `PR-2` and push to create a PR.
+
+**Important Notes**:
+
+- The new `PR-2` will initially include the commits from `PR-1`.
+- However, the commits shown in the PR changelog will disappear once `PR-1` is merged
+  into the target branch (e.g. `development`).
+- You should mention in the `PR-2` description that this PR 'relies on PR-1 being
+  accepted and merged'.
+
+#### Updating PR-1 While PR-2 Is In Progress
+
+- You may encounter a situation where the review of `PR-1` takes some time.
+- If `PR-2` makes progress, but the reviewer says that `PR-1` requires updates.
+- In this case you have two options:
+  - Merge `PR-1` and add the required updates to `PR-2`.
+  - Update `PR-1` and merge, then rebase `PR-2` against the target branch.
