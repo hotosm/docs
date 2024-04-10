@@ -26,7 +26,6 @@ HOT is working towards the modularization of our code to improve
 maintainability and implement an end-to-end user flow between multiple
 tools. There is more info about [modularization](modules.md) of our code.
 
-## The HOT Ecosystem
+## The HOT Ecosystem of Tools
 
-![simple-e2e](techdoc/overview/HOTInformationFlow.png)
-
+![Basic E2E Diagram](docs/techdoc/overview/HOTInformationFlow.png)
