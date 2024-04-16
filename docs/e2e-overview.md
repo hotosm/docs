@@ -85,4 +85,9 @@ validator directly in fAIr would be good enough.
   useful information.
 - The final validated and tagged geometries will be bulk uploaded to OSM.
 
+### 8. Extract from OpenSreetMap
+
+- Now final validation from FMTM is uploaded to OpenStreetMap , Now we need to download them in useful fileformats that we want 
+- This will be achieved with HOT Export Tool which allows us to export the data we created in different file formats including ( Shpaefile , Geojson , KML , CSV , Flatgeobuff and manymore ) 
+
 🚧 A way to feed validation failures back to TM for re-digitisation would be great.
