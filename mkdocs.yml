@@ -58,8 +58,7 @@ nav:
       - FMTM:
           - Overview: techdoc/overview/FMTMProductPitch.pdf
           - Docs: https://hotosm.github.io/fmtm/
-          - Roadmap: https://github.com/orgs/hotosm/projects/22/views/6
-          - Task Tracker: https://github.com/orgs/hotosm/projects/22
+          - Roadmap: https://github.com/orgs/hotosm/projects/22/views/1?sliceBy%5BcolumnId%5D=Milestone
           - Field Pilots:
               - Monrovia: projects/FMTM/Monrovia E2E Request.pdf
       - fAIr:
