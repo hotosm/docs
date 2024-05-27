@@ -164,4 +164,3 @@ As with TM, another tool, StreeComplete, can help with this & may be
 part of the solution.
 
 However, FMTM allows mapping to be done **collaboratively**.
-
