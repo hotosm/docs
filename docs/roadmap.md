@@ -4,7 +4,7 @@ The HOT Tech Team is working to improve the user experience across
 multiple tools, and working towards an end to end data flow between
 projects. Since often a disaster response, or humanitarian mapping
 campaign, a project manager or mapper may use the [Tasking
-Manager](https://hotosm.github.io/tasking-manager/), [Export Tool](https://hotosm.github.io/osm-export-tool/),
+Manager](https://hotosm.github.io/tasking-manager/), [Export Tool](https://github.com/hotosm/osm-export-tool),
 [fAIr](https://fair-dev.hotosm.org/), 
 [FMTM](https://hotosm.github.io/fmtm/), etc... For more information,
 here's a short [E2E Presentation](techdoc/e2e.pdf).
