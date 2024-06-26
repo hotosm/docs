@@ -56,9 +56,11 @@ nav:
           - Roadmap: https://github.com/orgs/hotosm/projects/28
           - Task Tracker: https://github.com/orgs/hotosm/projects/14/views/2
       - FMTM:
-          - Overview: techdoc/overview/FMTMProductPitch.pdf
-          - Docs: https://hotosm.github.io/fmtm/
-          - Roadmap: https://roadmap.fmtm.dev
+          - Landing Page: https://fmtm.dev
+          - About: techdoc/overview/FMTMProductPitch.pdf
+          - Docs: https://docs.fmtm.dev
+          - Dev Roadmap: https://github.com/orgs/hotosm/projects/22/views/8
+          - User Roadmap: https://roadmap.fmtm.dev
           - Field Pilots:
               - Monrovia: projects/FMTM/Monrovia E2E Request.pdf
       - fAIr:
