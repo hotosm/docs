@@ -46,10 +46,15 @@ software development practices.
     > If there are, consider breaking them down to smaller tasks.
 
 - The quality control status can be tracked:
+
   - `qa:ready`: the issue has been fixed and is ready to test.
   - `qa:fail`: the issue was not fixed as intended and requires additional
     work from the developer.
   - The `qa:xx` label can be removed when an issue is closed.
+
+- Issues marked `good first issue` are approachable to newcomers in the repo.
+  - Ideally the repo should always have a few low priority `good first issue`
+    tags to help foster open source contribution / onboarding.
 
 #### Issue Assignment
 

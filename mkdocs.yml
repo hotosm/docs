@@ -25,6 +25,10 @@ theme:
   favicon: assets/images/favicon.png
   logo: assets/images/hot_logo.png
   # custom_dir: docs/overrides
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
 
 extra_css:
   - css/extra.css
