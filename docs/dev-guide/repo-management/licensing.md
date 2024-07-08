@@ -22,10 +22,10 @@ website), and some older code using the BSD license or pubic domain.
 ## The GPLv3 and AGPLv3
 
 - These are strong 'copyleft' licences, meaning that anyone
-modifiying the software is required to make those changes openly
-available. This is commonly called the derivative work clause. Any
-derivative software must be contributes it back to the original
-software project with no restrictions.
+  modifiying the software is required to make those changes openly
+  available. This is commonly called the derivative work clause. Any
+  derivative software must be contributes it back to the original
+  software project with no restrictions.
 
 - The main purpose of this license is to prevent commercial
   exploitation of open code, making any modifications open so the
@@ -55,12 +55,12 @@ licenses](https://www.gnu.org/licenses/license-list.en.html). This in
 far from an exhaustive list, only the most common ones are listed
 here.
 
-* Public Domain
-* Mozilla Public License (MPL) version 2.0
-* Apache License 2.0
-* Modified BSD license
-* Intel Open Source License
-* FreeBSD license
+- Public Domain
+- Mozilla Public License (MPL) version 2.0
+- Apache License 2.0
+- Modified BSD license
+- Intel Open Source License
+- FreeBSD license
 
 ### Incompatible Licenses
 
@@ -72,15 +72,15 @@ HOT even though they are considered premissive licenses.
 Here is a short list of common non-permissive licenses, and can't be
 used for any code in HOT software projects.
 
-* Mozilla Public License (MPL) version 1.1
-* Apache License, Version 1.0 and 1.1
-* Apple Public Source License (APSL), version 2
-* Microsoft Public License (Ms-PL)
-* NASA Open Source Agreement
-* Original BSD license
-* Common Development and Distribution License (CDDL), version 1.0
-* Common Public Attribution License 1.0 (CPAL)
-* Common Public License Version 1.0
-* European Union Public License (EUPL) version 1.1 and 1.2
-* IBM Public License, Version 1.0
-* Open Software License, all versions through 3.0
+- Mozilla Public License (MPL) version 1.1
+- Apache License, Version 1.0 and 1.1
+- Apple Public Source License (APSL), version 2
+- Microsoft Public License (Ms-PL)
+- NASA Open Source Agreement
+- Original BSD license
+- Common Development and Distribution License (CDDL), version 1.0
+- Common Public Attribution License 1.0 (CPAL)
+- Common Public License Version 1.0
+- European Union Public License (EUPL) version 1.1 and 1.2
+- IBM Public License, Version 1.0
+- Open Software License, all versions through 3.0

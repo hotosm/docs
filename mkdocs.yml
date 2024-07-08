@@ -92,8 +92,6 @@ nav:
       - Frontend: modules/frontend.md
       - UI / Design:
           - UI Components: https://hotosm.github.io/ui/
-      #          - Map Component: https://hotosm.github.io/shared-map-components/
-      #          - Underpass UI: https://hotosm.github.io/underpass-ui/
       - Python Modules:
           - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
           - OSM RawData: https://hotosm.github.io/osm-rawdata/
@@ -101,22 +99,23 @@ nav:
           - OSM Login: https://hotosm.github.io/osm-login-python/
           - FMTM Splitter: https://hotosm.github.io/fmtm-splitter/
           - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
-  - Developer Guidelines:
+  - Developer Guide:
       - Intro: dev-guide/intro.md
-      - Git: dev-guide/git.md
-      - Pre-Commit: dev-guide/pre-commit.md
-      - Containers:
-          - Intro: dev-guide/containers-101.md
-          - Cheat Sheet: dev-guide/containers-cheat-sheet.md
-          - Local Kubernetes: dev-guide/kubernetes-local-kind.md
-      - Dependency Management: dev-guide/dep-management.md
-      - Version Control: dev-guide/version-control.md
-      - Generating Docs: dev-guide/doc-gen.md
-      - Web APIs: dev-guide/web-apis.md
-      - Web Frameworks: dev-guide/web-frameworks.md
+      - Managing Repos:
+          - Git: dev-guide/repo-management/git.md
+          - Pre-Commit: dev-guide/repo-management/pre-commit.md
+          - Version Control: dev-guide/repo-management/version-control.md
+          - Dependency Management: dev-guide/repo-management/dependencies.md
+          - Licensing: dev-guide/repo-management/licensing.md
+      - Web Dev (Backend): dev-guide/web-backend.md
+      - Web Dev (Frontend): dev-guide/web-frontend.md
       - Testing: dev-guide/testing.md
       - Documentation: techdoc/README.md
-      - Licensing: dev-guide/licensing.md
+      - Generating API Docs: dev-guide/api-doc-gen.md
+      - Containers:
+          - Intro: dev-guide/containers/containers-101.md
+          # - Cheat Sheet: dev-guide/containers/containers-cheat-sheet.md
+          - Local Kubernetes: dev-guide/containers/kubernetes-local-kind.md
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
   - Code of Conduct: code-of-conduct.md
