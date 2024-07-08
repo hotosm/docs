@@ -32,6 +32,7 @@ software development practices.
 #### Issue Labels
 
 - Label issues where appropriate, for example as backend or frontend.
+
 - Priorities can be assigned:.
 
   - `priority:critical`: blocking current tasks or user workflow.
@@ -116,7 +117,7 @@ software development practices.
 
 Example (from FMTM):
 
-![technical roadmap](./images/technical_roadmap.png)
+![technical roadmap](./images/technical-roadmap-example.png)
 
 #### User Roadmap
 
@@ -133,24 +134,7 @@ track my mapping progress more effectively`.
 
 Example user roadmap (from FMTM):
 
-<!-- markdownlint-disable -->
-
-```md
-| In Progress | Next | Future |
-| ----------- | ---- | ------ |
-
-|
-| 🚀 As a mapper, I can have live mapping updates when online or can work entirely offline, for maximum flexibility. | 🗺️ As a mapper, I can easily download offline basemaps so I can navigate without connectivity. | 📻 As a project manager, I can deploy FMTM on a small field-based device in environments with connectivity restrictions. |
-|
-| 🎨 As a project manager, I have a standard/advanced project creation workflow, depending on my preferences and familiarity with the tools. | 🌍 As a project manager, I can export (+merge) the final data to OpenStreetMap to make it accessible. | 📱 As software developers, we will continue to collaborate with ODK to improve the experience in ODK Collect. |
-|
-| 🔗 As I mapper, I can open ODK Collect directly from FMTM, with a feature pre-selected, speeding up my workflow. | 🪓 As a project manager, I expect and reliable and configurable task splitting algorithm. | 📖 All users of FMTM have up to date documentation and tutortials for each step. |
-|
-| |🔒 As a project manager, I need to manage various additional user roles (validator, field admin) to ensure my project runs smoothly. | |
-|
-```
-
-<!-- markdownlint-restore -->
+![user roadmap](./images/user-roadmap-example.png.png)
 
 ### Task Board
 
@@ -166,7 +150,7 @@ Example user roadmap (from FMTM):
 
 Example:
 
-![dev task board](./images/dev_task_board.png)
+![dev task board](./images/dev-task-board-example.png)
 
 ### Discussions
 
@@ -180,6 +164,8 @@ Example:
 
 - No technical details, move those to a dropdown in markdown:
 
+Example:
+
 ```md
 <details>
   <summary>Technical Summary</summary>
@@ -188,6 +174,8 @@ Example:
     * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/fmtm/pull/1557
 </details>
 ```
+
+![release notes dropdown](./images/release-notes-technical-dropdown.png)
 
 - Higher level info on bugs fixed, new features added, things improved.
 - Add screenshots throughout.
