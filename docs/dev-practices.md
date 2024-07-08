@@ -33,15 +33,16 @@ software development practices.
 
 - Label issues where appropriate, for example as backend or frontend.
 - Priorities can be assigned:.
+
   - `priority:critical`: blocking current tasks or user workflow.
   - `priority:high`: should be addressed as a priority.
   - `priority:low`: backlog of tasks that will be addressed in time.
+
 - Difficulty can be **estimated** (and may not be accurate):
 
   - `effort:low`: small task, likely a few hours.
   - `effort:medium`: larger task, may take a day or two.
   - `effort:high`: a broader scope task with unclear timeline.
-
     > Ideally there should not be many tasks with `effort:high`.
     > If there are, consider breaking them down to smaller tasks.
 
@@ -110,9 +111,12 @@ software development practices.
 - Higher level roadmap based on releases and milestones.
 - Managed on the Git repo hosting service (e.g. Github), linked in the README.
 - The roadmap should include:
-  - Milestones spanning the work start and end date.
-  - Releases labelled over the top, showing the anticipated next release date
-    and how it relates to the milestones.
+  - Milestones (with optional dates) and issues linked to releases.
+  - Releases labelled over the top, showing the anticipated next release date.
+
+Example (from FMTM):
+
+![technical roadmap](./images/technical_roadmap.png)
 
 #### User Roadmap
 
@@ -123,6 +127,30 @@ software development practices.
   - In Progress: what is being worked on right now.
   - Next: what will be worked on in upcoming releases.
   - Future: a concept envisioned, but not fully planned out.
+- The content should be worded as user stories:
+  For example: `As a user I should be able to push the button, to allow me to
+track my mapping progress more effectively`.
+
+Example user roadmap (from FMTM):
+
+<!-- markdownlint-disable -->
+
+```md
+| In Progress | Next | Future |
+| ----------- | ---- | ------ |
+
+|
+| 🚀 As a mapper, I can have live mapping updates when online or can work entirely offline, for maximum flexibility. | 🗺️ As a mapper, I can easily download offline basemaps so I can navigate without connectivity. | 📻 As a project manager, I can deploy FMTM on a small field-based device in environments with connectivity restrictions. |
+|
+| 🎨 As a project manager, I have a standard/advanced project creation workflow, depending on my preferences and familiarity with the tools. | 🌍 As a project manager, I can export (+merge) the final data to OpenStreetMap to make it accessible. | 📱 As software developers, we will continue to collaborate with ODK to improve the experience in ODK Collect. |
+|
+| 🔗 As I mapper, I can open ODK Collect directly from FMTM, with a feature pre-selected, speeding up my workflow. | 🪓 As a project manager, I expect and reliable and configurable task splitting algorithm. | 📖 All users of FMTM have up to date documentation and tutortials for each step. |
+|
+| |🔒 As a project manager, I need to manage various additional user roles (validator, field admin) to ensure my project runs smoothly. | |
+|
+```
+
+<!-- markdownlint-restore -->
 
 ### Task Board
 
@@ -135,6 +163,10 @@ software development practices.
 - Ideally we can keep track of which developer is working on
   what task.
 - This becomes especially important when we also have outside collaborators.
+
+Example:
+
+![dev task board](./images/dev_task_board.png)
 
 ### Discussions
 

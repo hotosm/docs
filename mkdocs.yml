@@ -27,9 +27,6 @@ theme:
   # custom_dir: docs/overrides
   features:
     - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
-    - navigation.expand
 
 extra_css:
   - css/extra.css
