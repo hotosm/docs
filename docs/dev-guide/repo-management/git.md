@@ -24,8 +24,8 @@ The primary branches, in order:
 - **Development**: the branch that fixes or features are continually merged.
 - **Staging**: where development branch fixes/features are grouped and tested
   together, with the intention to push to production once QA/QC passes.
-- **Production**: where staging is stabilised and released at intervals as actual
-  versions of your tool/software.
+- **Production**: where staging is stabilised and released at intervals as
+  actual versions of your tool/software.
 
 Additional supporting branches:
 

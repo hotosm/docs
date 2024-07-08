@@ -118,4 +118,5 @@ nav:
           - Local Kubernetes: dev-guide/containers/kubernetes-local-kind.md
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
+  - Our Development Practices: dev-practices.md
   - Code of Conduct: code-of-conduct.md

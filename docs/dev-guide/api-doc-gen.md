@@ -9,7 +9,7 @@
   - MKDocs has a great extension `mkdocstrings-python` for this purpose.
   - Example markdown page to automatically extract docs:
 
-```markdown
+```md
 # your_module.py
 
 ::: your_package.your_module.function1
