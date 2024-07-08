@@ -29,6 +29,7 @@ theme:
     - navigation.instant
     - navigation.instant.prefetch
     - navigation.instant.progress
+    - navigation.expand
 
 extra_css:
   - css/extra.css
