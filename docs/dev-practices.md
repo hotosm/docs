@@ -24,9 +24,64 @@ software development practices.
 > - Open Aerial Map
 >   [More details here](./dev-guide/repo-management/licensing.md)
 
-## Repo Management
+## Defining **What** We Build
 
-### Branches
+### Gathering Requirements
+
+- When a project is first conceived, we have an idea of requirements / direction.
+- Over time the requirements are dynamic and interative. We have two approaches.
+
+#### Translating User Requirements Into Actions
+
+- Our main feedback mechanism is through user testing. This should be done in
+  collaboration with our hubs and partners to determine: what works well, and what
+  doesn't. The general public will also use our tools and provide feedback.
+- For field-based tools (FMTM, DroneTM), this would involve running mapping campaigns
+  and gathering feedback from the teams involved.
+- For desk-based tools (everything else), we mostly gather feedback through informal
+  channels such as Slack.
+- All tools have a public channel on Slack for discussion, providing feedback, and
+  gathering requirements.
+- Once we have gathered feedback, this should be divided up into actionable Git
+  issues by the PO / Tech Lead and grouped into milestones or releases.
+
+  > See the [milestones](#milestones) and [releases](#releases) sections
+  > for details about grouping tasks into themes.
+
+#### Gathering Direct Technical Feedback
+
+- Users that are more tech-focused can create issues directly on our Git project.
+- Discussions can also be used on our Git tracker for more general user input or
+  feedback.
+- Most often this will be bug reports, which should generally be high priority for
+  the next release (or a hotfix to production if `critical` priority).
+- The PO / Tech Lead should triage tasks, assign priorities, and group into milestones
+  or releases.
+
+  > See the [issue labels section](#issue-tags) for details about priority assignment.
+
+#### A Note On Priorities
+
+- Generally bugs will take priority over new features, particularly those blocking
+  the users workflow.
+- Milestones for a tool will be assessed based on internal team discussion, in
+  addition to public Slack and Git-based discussion.
+- The determined priorities and milestones will be a tradeoff between:
+  - Original vision and goals of the tool.
+  - Most prominent user requests.
+  - Global events and crisis response (activations).
+  - Requirements from actively engaged stakeholders / organization.
+
+> In future, we would like to better involve the public via a technical steering
+> commitee or similar.
+
+## Defining **How** We Build
+
+### Git Repo Management
+
+Management of tasks and code via a shared Git repository (Github, Gitlab, etc).
+
+#### Branches
 
 - Generally our repos will have three key branches:
   - **dev**: the ongoing development to which PRs are made.
@@ -34,11 +89,11 @@ software development practices.
     stages prior to deployment to the main website.
   - **main**: the code that is currently deployed to the main website.
 
-### Issues
+#### Issues / Features
 
-#### Issue Labels
+##### Issue Tags
 
-- Label issues where appropriate, for example as backend or frontend.
+- Label / tag issues where appropriate, for example as backend or frontend.
 
 - Priorities can be assigned:.
 
@@ -65,29 +120,32 @@ software development practices.
   - Ideally the repo should always have a few low priority `good first issue`
     tags to help foster open source contribution / onboarding.
 
-#### Issue Assignment
+##### Issue Assignment
 
 - Assign issues to the dev who will work on it.
 - Issues can be assigned in advance if the devs is known.
 - Devs can self-assign tasks.
 
-### PRs
+#### Writing & Merging Code
 
-#### PR Drafts
+PR = pull request, merge request, or similar terminology simply meaning to merge
+code!
+
+##### PR Drafts
 
 - Create a draft PR for works in progress.
 - Push as early as possible to draft, especially if there is a chance you
   may get sidetracked on other work (so another dev could feasibly pick
   up where you left off).
 
-#### PR Assignment
+##### PR Assignment
 
 - Assign yourself if you are working on the issue.
 - Assign another dev if you need to pass off the development to them.
 - The re-assigned dev can then assign the task back to the original dev for
   validation.
 
-#### PR Review
+##### PR Review
 
 - Any developer can review a PR, **as long as one dev reviews** prior to
   merge.
@@ -95,7 +153,12 @@ software development practices.
 - Once review is complete and the PR is out of draft state, then any dev can
   merge.
 
-### Milestones
+### Project Management
+
+Still related to the Git repository, but related to higher level project management
+and project direction.
+
+#### Milestones
 
 - Encapsulates a set of issues into a logical bigger task, with or without
   an assigned deadline.
@@ -104,7 +167,7 @@ software development practices.
   are required to achieve that goal.
 - Milestones are grouped into a release, which has a set deadline.
 
-### Releases
+#### Releases
 
 - A release encompasses multiple milestones, plus additional bugfixes
   and minor improvements.
@@ -112,9 +175,9 @@ software development practices.
 - Ideally releases should be around once a month at minimum, to regularly
   deliver incremental updates to the user (~agile project management).
 
-### Roadmaps
+#### Roadmaps
 
-#### Technical Roadmap
+##### Technical Roadmap
 
 - Higher level roadmap based on releases and milestones.
 - Managed on the Git repo hosting service (e.g. Github), linked in the README.
@@ -126,7 +189,7 @@ Example (from FMTM):
 
 ![technical roadmap](./images/technical-roadmap-example.png)
 
-#### User Roadmap
+##### User Roadmap
 
 - Most users do not want to delve into Github roadmaps and issues.
 - A simpler user-centric roadmap can be written in simple Markdown
@@ -141,9 +204,9 @@ track my mapping progress more effectively`.
 
 Example user roadmap (from FMTM):
 
-![user roadmap](./images/user-roadmap-example.png.png)
+![user roadmap](./images/user-roadmap-example.png)
 
-### Task Board
+#### Task Board
 
 - An optional stage to easier visualise developer time.
 - Should be as automated as possible:
@@ -159,7 +222,7 @@ Example:
 
 ![dev task board](./images/dev-task-board-example.png)
 
-### Discussions
+#### Discussions
 
 - To discuss more general topics in the public, so that anyone can contribute.
 - Partly used to document the design decisions we have taken.
@@ -167,7 +230,7 @@ Example:
 - We can also use these for the staging server tests on each release cycle,
   e.g. <https://github.com/hotosm/fmtm/discussions/1335>
 
-### Release Notes
+#### Release Notes
 
 - No technical details, move those to a dropdown in markdown:
 
