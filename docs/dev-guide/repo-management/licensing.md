@@ -31,6 +31,16 @@ website), and some older code using the BSD license or pubic domain.
   exploitation of open code, making any modifications open so the
   entire community can benefit.
 
+> Originally HOT was using BSD-2-Clause, which is more permissive
+> and not copyleft, meaning it is fully open but there is no protection
+> from commercial exploitation.
+>
+> Tools using BSD-2-Clause:
+>
+> - Tasking Manager
+> - Export Tool
+> - Open Aerial Map
+
 ## Other Content is CC-BY
 
 - Creative content, such as translations and designs are copyrighted
