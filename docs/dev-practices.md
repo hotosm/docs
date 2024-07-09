@@ -60,7 +60,7 @@ software development practices.
 
   > See the [issue labels section](#issue-tags) for details about priority assignment.
 
-#### A Note On Priorities
+### A Note On Priorities
 
 - Generally bugs will take priority over new features, particularly those blocking
   the users workflow.
@@ -75,11 +75,24 @@ software development practices.
 > In future, we would like to better involve the public via a technical steering
 > commitee or similar.
 
+### Keeping Track Of Tasks
+
+Users can keep informed about ongoing tasks in various ways:
+
+- Public announcements on Slack / blog posts.
+- Releases on Github and included release notes.
+- The overarching [roadmap](#roadmaps), showing progress for milestones and releases.
+- Progress towards specific [milestones](#milestones), for new features.
+- The [task tracker](#task-board) for individual issue progress (particularly
+  for bugs).
+- Any [discussions](#discussions) around particular features that have not been agreed
+  upon and translated into an issue / milestone.
+
 ## Defining **How** We Build
 
 ### Git Repo Management
 
-Management of tasks and code via a shared Git repository (Github, Gitlab, etc).
+Management of tasks and code via Github.
 
 #### Branches
 
@@ -155,7 +168,7 @@ code!
 
 ### Project Management
 
-Still related to the Git repository, but related to higher level project management
+Still related to Github, but describing higher level project management
 and project direction.
 
 #### Milestones
@@ -180,7 +193,7 @@ and project direction.
 ##### Technical Roadmap
 
 - Higher level roadmap based on releases and milestones.
-- Managed on the Git repo hosting service (e.g. Github), linked in the README.
+- Managed on Github, linked in the README.
 - The roadmap should include:
   - Milestones (with optional dates) and issues linked to releases.
   - Releases labelled over the top, showing the anticipated next release date.
