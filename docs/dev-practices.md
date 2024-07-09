@@ -88,6 +88,21 @@ Users can keep informed about ongoing tasks in various ways:
 - Any [discussions](#discussions) around particular features that have not been agreed
   upon and translated into an issue / milestone.
 
+### Questions / Clarification
+
+- HOT works fully in the open and is accountable for being clear about changes
+  made to our tools.
+- If clarity is poor about what the vision of our tools are, features we are planning,
+  how we work, when requirements will be met, or anything else, then we have open
+  channels of communication:
+  - Via our public [Slack](https://slack.hotosm.org), either in channels related
+    to a tool, or as a private message to a member of the tech team.
+  - Via Github [issues](#issues--features) or [discussions](#discussions).
+  - Direct message or email to the Product Owner or Tech Lead of the tool in question.
+  - In the monthly 'Open Tech and Innovation Space' calls advertised on Slack.
+  - In future, we also hope to have something akin to a 'Technical Steering Commitee',
+    in which any tech-facing member of the public is welcome to provide input.
+
 ## Defining **How** We Build
 
 ### Git Repo Management
