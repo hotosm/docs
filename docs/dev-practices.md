@@ -60,7 +60,7 @@ software development practices.
 
   > See the [issue labels section](#issue-tags) for details about priority assignment.
 
-### A Note On Priorities
+### Setting Priorities
 
 - Generally bugs will take priority over new features, particularly those blocking
   the users workflow.
