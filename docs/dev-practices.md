@@ -96,8 +96,10 @@ Users can keep informed about ongoing tasks in various ways:
   how we work, when requirements will be met, or anything else, then we have open
   channels of communication:
   - Via our public [Slack](https://slack.hotosm.org), either in channels related
-    to a tool, or as a private message to a member of the tech team.
-  - Via Github [issues](#issues--features) or [discussions](#discussions).
+  to a tool, or as a private message to a member of the tech team.
+  <!-- markdownlint-disable -->
+  - Via Github [issues](#issues-features) or [discussions](#discussions).
+  <!-- markdownlint-enable -->
   - Direct message or email to the Product Owner or Tech Lead of the tool in question.
   - In the monthly 'Open Tech and Innovation Space' calls advertised on Slack.
   - In future, we also hope to have something akin to a 'Technical Steering Commitee',
@@ -117,7 +119,7 @@ Management of tasks and code via Github.
     stages prior to deployment to the main website.
   - **main**: the code that is currently deployed to the main website.
 
-#### Issues / Features
+#### Issues \ Features
 
 ##### Issue Tags
 
