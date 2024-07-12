@@ -71,7 +71,9 @@ additional value:
 
 With the above as context, HOT's tools roughly can be categorised as such:
 
-### Input
+### Tool Division
+
+#### Input
 
 | Tool         | Description                                  |
 | ------------ | -------------------------------------------- |
@@ -81,7 +83,7 @@ With the above as context, HOT's tools roughly can be categorised as such:
 
 > Note: input may be into our own tools, or workflows of others.
 
-### Output
+#### Output
 
 | Tool        | Description                                               |
 | ----------- | --------------------------------------------------------- |
@@ -90,7 +92,9 @@ With the above as context, HOT's tools roughly can be categorised as such:
 | FMTM        | Add extra information to digitised features in the field. |
 | Export Tool | Extract data from OSM easily _for humans_.                |
 
-### Drone TM
+### The Tools
+
+#### Drone TM
 
 Drone TM is the newest tool being developed by HOT.
 
@@ -103,7 +107,7 @@ plans generated for each users specific drone.
 In a **collaborative** manner a large amount of high quality base
 imagery can be generated very quickly and with minimal cost.
 
-### OpenAerialMap (OAM)
+#### OpenAerialMap (OAM)
 
 OAM should underpin all of our tools.
 
@@ -116,7 +120,7 @@ data source, by the community.
 The imagery is made available to other tools via the Tile Map Service
 protocol (TMS).
 
-### Raw Data API
+#### Raw Data API
 
 Uses an innovative database structure to make OSM data much more easily
 searchable with excellent performance.
@@ -126,7 +130,7 @@ can request OSM data within specific filter criteria.
 
 Data can be exported in various formats, from GeoJSON to GeoPackage and Flatgeobuf.
 
-### Export Tool
+#### Export Tool
 
 The purpose of Export Tool is to:
 
@@ -136,7 +140,7 @@ The purpose of Export Tool is to:
 
 > This is essentially the more user-centric frontend for raw-data-api.
 
-### Tasking Manager
+#### Tasking Manager
 
 Creating additional vector data to go into OSM, using raster imagery as a
 source.
@@ -154,14 +158,14 @@ Resulting data needs to be validated.
 > It allows users without any prior OSM or mapping experience to contribute more
 > effectively, from a mobile device or web browser.
 
-### fAIr
+#### fAIr
 
 TM is labour intensive. fAIr uses localised training data to generate
 a model that can be used to predict vector features from a raster image.
 
 Integration into TM means mapping of features can be a lot faster.
 
-### FMTM
+#### FMTM
 
 Adding useful tags, in the field, from the vector data created in TM.
 
