@@ -54,7 +54,7 @@ software development practices.
 - Discussions can also be used on our Git tracker for more general user input or
   feedback.
 - Most often this will be bug reports, which should generally be high priority for
-  the next release (or a hotfix to production if `critical` priority).
+  the next release (or a [hotfix](#hotfixes) to production if `critical` priority).
 - The PO / Tech Lead should triage tasks, assign priorities, and group into milestones
   or releases.
 
@@ -279,3 +279,77 @@ Example:
 
 - Higher level info on bugs fixed, new features added, things improved.
 - Add screenshots throughout.
+
+### Deployment Flow
+
+These stages go in order, from local development, through to production deployment.
+
+#### Local Development
+
+- Devs develop features on their local instance.
+- Use `docker-compose.yml` setup for testing.
+- Once feature and testing complete, make a PR to the `dev` branch.
+
+#### Development Deployment
+
+- Once a PR is approved, it is merged to `dev`.
+- This triggers a workflow to automatically deploy the code changes on the dev server.
+- The purpose of this stage is for:
+  - Fast CI, i.e. the developer sees their code in action quickly.
+  - Easy QA tests by the project manager on the dev server.
+
+#### Staging Deployment
+
+- The purpose of this step is to regularly release versions of the software that
+  power users (and the project owners) can test.
+  - Anyone who doesn't mind occasional breakage is welcome to use this server publicly.
+- At a set interval (approx bi-weekly), the updates made on `dev` are merged into
+  `staging` for feature stabilisation.
+  - This can be done via PR, although sometimes there may be merge conflicts to resolve.
+  - Alternatively, the branch can be reset to the latest `dev` and built upon:
+    `git reset --hard origin/dev`
+- Once merged, the functionality is thoroughly tested and patched (if required).
+  - Patches can either me made on `dev` and merged into `staging`.
+  - Or be made directly to `staging` if there branches have diverged significantly.
+- Once approved, the `staging` branch auto-deploys to the staging server.
+
+#### Production Deployment
+
+- The staging server instance is thoroughly tested by the product owner, and
+  bug reports filed.
+- The release is hardened into longer interval (approx bi-monthly) production releases.
+- A PR is made from `staging` to `main` branch.
+- Once approved and the code merged, a Github **release** is made.
+- A release is available on Github, including all relevant release notes for
+  what has been updated.
+- The **release** will trigger the workflow to deploy to the production server.
+
+##### Hotfixes
+
+- If an issue is found after a production release is made, a hotfix can be used to
+  patch the production code.
+- There are two methods to do this:
+  - If the `dev` and `main` branches have diverged significantly, the hotfix can
+    be made as a PR directly to `main`, then reconciled later with `dev`.
+  - Otherwise, the fix can be made as a PR to `dev`, then `cherry-picked` upstream
+    through `staging` then to `main`.
+
+#### Other: Feature Demo Releases
+
+- A feature demo release is a throwaway instance of the tool with a particular purpose.
+- Functionality is developed here for various reasons:
+  - Specific updates for a single project that won't be used elsewhere.
+  - Very fast updating of the server, without interfering with the typical release
+    flow.
+- The key point is that these branch instances are **single use** and will be
+  **shut down** once the project has ended.
+- The easiest approach is probably to:
+  - Create and login to a server.
+  - Clone the repo and checkout to the feature branch `feature-demo/some-feature`.
+  - Run the commands to build and run the tool.
+- Alternatively, a workflow can be made to auto-deploy:
+  - Triggering on a branch naming convention: `feature-demo/some-feature`.
+  - The user will have to enter an SSH key into the Gitlab secrets.
+  - The workflow will deploy to the server remotely when the branch is pushed to.
+  - This approach is less preferred, as the user requires write access to the
+    Github repo.
