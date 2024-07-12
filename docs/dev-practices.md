@@ -17,12 +17,13 @@ software development practices.
   [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html)
   unless otherwise specified.
 
-> Note: some tools still use BSD-2-Clause:
->
-> - Tasking Manager
-> - Export Tool
-> - Open Aerial Map
->   [More details here](./dev-guide/repo-management/licensing.md)
+  > Note: some tools still use BSD-2-Clause:
+  >
+  > - Tasking Manager
+  > - Export Tool
+  > - Open Aerial Map
+  >
+  > [More details here](./dev-guide/repo-management/licensing.md)
 
 ## Defining **What** We Build
 
