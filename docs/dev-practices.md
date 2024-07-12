@@ -1,6 +1,6 @@
 # HOT's Development Practices
 
-This was last updated on 08/07/2024 and details our idealised
+This was last updated on 12/07/2024 and details our idealised
 software development practices.
 
 ## Open-Source Model
@@ -10,7 +10,7 @@ software development practices.
   - Contribution from **anyone** is welcome.
 - We follow a git-flow, or fork-and-pr model:
   - Developers should create a fork of the repo they wish to modify.
-  - Code is added to a branch inside _the fork_.
+  - Code is added to a branch inside **the fork**.
   - A pull request (merge request or PR) is made against the development
     branch of the original repository.
 - Our code is generally licensed
@@ -76,11 +76,12 @@ software development practices.
 > In future, we would like to better involve the public via a technical steering
 > commitee or similar.
 
-### Keeping Track Of Tasks
+### Keeping Users Updated
 
 Users can keep informed about ongoing tasks in various ways:
 
-- Public announcements on Slack / blog posts.
+- Public announcements on [Slack](https://slack.hotosm.org) / blog posts on HOT's
+  website, OSM Diaries, Dev.to, or other platforms.
 - Releases on Github and included release notes.
 - The overarching [roadmap](#roadmaps), showing progress for milestones and releases.
 - Progress towards specific [milestones](#milestones), for new features.
@@ -116,7 +117,7 @@ Management of tasks and code via Github.
 
 - Generally our repos will have three key branches:
   - **dev**: the ongoing development to which PRs are made.
-  - **stage**: optional branch where new features pass quality control
+  - **stage**: optional branch where new features pass additional testing
     stages prior to deployment to the main website.
   - **main**: the code that is currently deployed to the main website.
 
@@ -124,7 +125,7 @@ Management of tasks and code via Github.
 
 ##### Issue Tags
 
-- Label / tag issues where appropriate, for example as backend or frontend.
+- Label / tag issues where appropriate, for example as `backend` or `frontend`.
 
 - Priorities can be assigned:.
 
@@ -140,12 +141,14 @@ Management of tasks and code via Github.
     > Ideally there should not be many tasks with `effort:high`.
     > If there are, consider breaking them down to smaller tasks.
 
-- The quality control status can be tracked:
+- The testing status can be tracked:
 
-  - `qa:ready`: the issue has been fixed and is ready to test.
-  - `qa:fail`: the issue was not fixed as intended and requires additional
+  - `testing:ready`: the issue has been fixed and is ready to test.
+  - `testing:fail`: the issue was not fixed as intended and requires additional
     work from the developer.
-  - The `qa:xx` label can be removed when an issue is closed.
+  - The `testing:xx` label can be removed when an issue is closed.
+    > Note that `testing` is used as a simpler alternative to project management
+    > terminology such as `quality control` or `quality assurance`.
 
 - Issues marked `good first issue` are approachable to newcomers in the repo.
   - Ideally the repo should always have a few low priority `good first issue`
@@ -218,7 +221,7 @@ and project direction.
 
 Example (from FMTM):
 
-![technical roadmap](./images/technical-roadmap-example.png)
+![technical roadmap](./images/dev-practices/technical-roadmap-example.png)
 
 ##### User Roadmap
 
@@ -235,7 +238,7 @@ track my mapping progress more effectively`.
 
 Example user roadmap (from FMTM):
 
-![user roadmap](./images/user-roadmap-example.png)
+![user roadmap](./images/dev-practices/user-roadmap-example.png)
 
 #### Task Board
 
@@ -251,7 +254,7 @@ Example user roadmap (from FMTM):
 
 Example:
 
-![dev task board](./images/dev-task-board-example.png)
+![dev task board](./images/dev-practices/dev-task-board-example.png)
 
 #### Discussions
 
@@ -276,7 +279,7 @@ Example:
 </details>
 ```
 
-![release notes dropdown](./images/release-notes-technical-dropdown.png)
+![release notes dropdown](./images/dev-practices/release-notes-technical-dropdown.png)
 
 - Higher level info on bugs fixed, new features added, things improved.
 - Add screenshots throughout.
