@@ -65,6 +65,8 @@ nav:
           - User Roadmap: https://docs.fmtm.dev/user-roadmap/
           - Field Pilots:
               - Monrovia: projects/FMTM/Monrovia E2E Request.pdf
+      - Drone TM:
+          - Repo: https://github.com/hotosm/drone-tm
       - fAIr:
           - Overview: techdoc/overview/fAIrProductPitch.pdf
           - Docs: https://fair-dev.hotosm.org/
@@ -74,16 +76,12 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/orgs/hotosm/projects/29
           - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
-      - Underpass:
-          - Docs: https://hotosm.github.io/underpass/
-          - Roadmap: https://github.com/orgs/hotosm/projects/23/views/3
-          - Task Tracker: https://github.com/orgs/hotosm/projects/23
       - Open Aerial Map:
           - Overview: techdoc/overview/OAMProductPitch.pdf
           - Browser: https://hotosm.github.io/oam-browser/
           - API: https://hotosm.github.io/oam-api/
       - Export Tool:
-          - Docs: https://hotosm.github.io/osm-export-tool/
+          - Repo: https://github.com/hotosm/osm-export-tool
           - Roadmap: https://github.com/orgs/hotosm/projects/29
           - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
       - Roadmap: roadmap.md

@@ -18,13 +18,13 @@ website](https://hotosm.github.io/osm-rawdata)).
 
 ### [PostgresClient()](https://hotosm.github.io/osm-rawdata/api/#postgrespy)
 
-This program extracts data from a local postgres data, or the remote
-Underpass one. A boundary polygon is used to define the area to be
+This program extracts data from a local postgres data, or via a
+remote database. A boundary polygon is used to define the area to be
 covered in the extract.
 
 ### [MapImporter()](https://hotosm.github.io/osm-rawdata/api/#importerpy)
 
-Imports data into a postgres database that is using the Underpass
+Imports data into a postgres database that is using the raw-data-api
 schema. This currently supports three input formats, Geojson, all OSM
 formats, and Parquet files from Overture.
 

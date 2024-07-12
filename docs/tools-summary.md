@@ -40,7 +40,7 @@ raster or vector-based basemaps) for usage.**
 ### Input Data
 
 - Raster Basemaps:
-  - Google, Bing, ESRI, Mapbox et al all provide web basemaps we can use.
+  - Google, Bing, ESRI, Mapbox all provide web basemaps we can use.
   - Open Aerial Map (OAM) provides more bespoke basemaps of particular areas
     of interest (AOIs), over a certain time period. Often higher resolution.
 - Vector Data:
@@ -73,15 +73,13 @@ With the above as context, HOT's tools roughly can be categorised as such:
 
 ### Input
 
-| Tool            | Description                                  |
-| --------------- | -------------------------------------------- |
-| OAM             | Get base imagery.                            |
-| Raw Data API    | Extract data from OSM easily _for software_. |
-| Underpass (OSM) | Assure data quality.                         |
+| Tool         | Description                                  |
+| ------------ | -------------------------------------------- |
+| Drone TM     | Get base imagery.                            |
+| OAM          | Stored and accessible base imagery.          |
+| Raw Data API | Extract data from OSM easily _for software_. |
 
 > Note: input may be into our own tools, or workflows of others.
->
-> Each tool is fully open to use by the public.
 
 ### Output
 
@@ -92,31 +90,41 @@ With the above as context, HOT's tools roughly can be categorised as such:
 | FMTM        | Add extra information to digitised features in the field. |
 | Export Tool | Extract data from OSM easily _for humans_.                |
 
+### Drone TM
+
+Drone TM is the newest tool being developed by HOT.
+
+It's purpose is to fill the gap of reliable, high-quality, base imagery
+that can be used during the digitisation process.
+
+Given an AOI, an area can be subdivided into task areas and flight
+plans generated for each users specific drone.
+
+In a **collaborative** manner a large amount of high quality base
+imagery can be generated very quickly and with minimal cost.
+
 ### OpenAerialMap (OAM)
 
 OAM should underpin all of our tools.
 
-Integrations into other tools allow for basemaps to be loaded to better
-inform mapping.
+It is essentially a repository of base imagery, which is ideally
+high-resolution for a specifically targetted mapping area.
 
-The thing with satellite imagery is that you have lots of different
-resolutions available, through different providers.
+Imagery can be uploaded from Drone TM, or any other openly available
+data source, by the community.
 
-You need to use a mix of providers and decide on the best quality
-usable for mapping.
+The imagery is made available to other tools via the Tile Map Service
+protocol (TMS).
 
-Many providers (ESRI, Bing, etc) provide free base maps we can use,
-but OAM should be more targeted - the highest resolution imagery we can
-get over a time period of interest, for a specific AOI that may be used
-in TM or FMTM.
+### Raw Data API
 
-### Raw Data API & Underpass
+Uses an innovative database structure to make OSM data much more easily
+searchable with excellent performance.
 
-They use an innovative database structure to make OSM data much more usable.
-The idea to make OSM data more accessible, searchable / filterable, and
-create extracts in formats that can be consumed either by software or users.
+This database is made accessible behind an API, where users (or software)
+can request OSM data within specific filter criteria.
 
-Underpass is a quality control tool that will sit on top of Raw Data API.
+Data can be exported in various formats, from GeoJSON to GeoPackage and Flatgeobuf.
 
 ### Export Tool
 
@@ -124,8 +132,9 @@ The purpose of Export Tool is to:
 
 - Take the users input for what data they need, over what area.
 - Calls Raw Data API to extract and filter the data.
-- Receives back the data in the user requested format, e.g. a JSON
-  for use in another tool, or a geopackage for use in GIS software by a user.
+- Receives back the data in the user requested format.
+
+> This is essentially the more user-centric frontend for raw-data-api.
 
 ### Tasking Manager
 
@@ -139,8 +148,11 @@ The mapping is crowdsourced, or organised by NGOs.
 
 Resulting data needs to be validated.
 
-Another tool, MapSwipe, can help with this & may be part of the solution.
-However, TM allows mapping to be done **collaboratively**.
+> Another tool, MapSwipe, also fills this niche but takes a much more minimalistic
+> approach.
+>
+> It allows users without any prior OSM or mapping experience to contribute more
+> effectively, from a mobile device or web browser.
 
 ### fAIr
 
@@ -160,8 +172,7 @@ Again, the mapping can be crowdsourced, but more likely organised by NGOs / govs
 The FMTM mapping could also provide a feedback loop to TM, helping to
 validate that features were mapped correctly.
 
-As with TM, another tool, StreeComplete, can help with this & may be
-part of the solution.
-
-However, FMTM allows mapping to be done **collaboratively**.
-
+> As with TM, another tool, StreeComplete, can help with this & may be
+> part of the solution.
+>
+> However, FMTM allows mapping to be done **collaboratively**.
