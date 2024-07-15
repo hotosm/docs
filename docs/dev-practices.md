@@ -154,6 +154,12 @@ Management of tasks and code via Github.
   - Ideally the repo should always have a few low priority `good first issue`
     tags to help foster open source contribution / onboarding.
 
+> Note that to attach labels to an issue, the Github user requires at least
+> `triage` level permission for the repo.
+>
+> This can be tracked at a repo level with a `contributors` group, including
+> those that have contributed regularly to include them in the development flow.
+
 ##### Issue Assignment
 
 - Assign issues to the dev who will work on it.
