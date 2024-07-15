@@ -155,9 +155,9 @@ kubectl cnpg install generate \
 - To retrieve them:
 
 ```bash
-kubectl get secret fmtm-app -o jsonpath='{.data.password}' | base64 -d
+kubectl get secret fmtm-db-app -o jsonpath='{.data.password}' | base64 -d
 
-kubectl get secret fmtm-app -o jsonpath='{.data.pgpass}' | base64 -d
+kubectl get secret fmtm-db-app -o jsonpath='{.data.pgpass}' | base64 -d
 ```
 
 > In production the `superuserSecret` and `initdb.secret` spec values can be
