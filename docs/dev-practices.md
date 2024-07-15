@@ -183,9 +183,35 @@ code!
 
 - Any developer can review a PR, **as long as one dev reviews** prior to
   merge.
-- Assign devs for review - frontend can review backend and vice versa.
-- Once review is complete and the PR is out of draft state, then any dev can
-  merge.
+- In addition to a sanity check, a review should ideally be a **technical**
+  ideally suggesting feedback where code could be reused, best practices that
+  should be used, etc.
+- **Assign** devs for review - frontend can review backend and vice versa.
+- Once review is complete and the PR is out of draft state, then **any dev can
+  merge**.
+
+> Note that once a PR is merged, the merged should ensure that the
+> `testing:ready` label is applied to the relevant issue, if required.
+
+##### Linking Issues
+
+- Issues can be linked via either:
+  - `fixed #123` syntax to automatically close the issue on merge.
+  - `related #123` syntax to allow the Product Owner / Manager close the issue
+    manually once they are satisfied the issue is resolved fully.
+- Generally the second approach is preferred
+
+#### Marking Issues As Solved
+
+- Once merged, code should be deployed automatically from the `dev` branch
+  to the `dev` server.
+- This allows for the Project Owner / Manager to thoroughly test the changes
+  and either close the issue, or add the `testing:fail` tag.
+- Once closed, this will be reflected on the milestone percentage, roadmap
+  progress, and task board complete tasks.
+
+> Note the distinction here between the **technical code review** and the
+> the review of the solution from a **user perspective** via testing.
 
 ### Project Management
 
@@ -248,6 +274,7 @@ Example user roadmap (from FMTM):
   - Issues assigned to a dev are moved to 'In Progress'.
   - Issues labelled with `QA Ready` are moved to 'Review'.
   - Issues completed should be moved to 'Complete'.
+- By automating this processes, the developer does not have duplicated work.
 - Ideally we can keep track of which developer is working on
   what task.
 - This becomes especially important when we also have outside collaborators.
