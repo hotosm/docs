@@ -3,24 +3,20 @@
 📖 Welcome to the HOT Technical [documentation](https://docs.hotosm.org)
 for all of our open-source tools.
 
-<!-- markdownlint-disable -->
-<label class="md-header__button md-icon" for="__drawer">
-👈 Click here to open the sidebar content.
-</label>
-<!-- markdownlint-enable -->
+This website is primary an index linking to the documentation for each
+specific tool, including including setup and usage instructions, API
+documentation, and product roadmaps.
 
-This website is an index of tools available from HOT,
-and it is primarily intended for a software development audience.
+This documentation is available under the `Projects` section in the sidebar.
 
-The docs go into specific technical detail for:
+The following additional documentation is provided:
 
-- Code structure and higher level overviews to get started.
-- Deployment / installation of software tools, including configuration options.
-- Options and variables for CLI commands.
-- Web API references to better understand expected inputs and responses.
-- Library API references for developing against.
-
-Each sidebar item will link to the documentation specific to each repo.
+- A high level overview of how our tools inter-relate and can be used to
+  form an End-To-End mapping workflow.
+- Information on our development practices at HOT.
+- Our community code of conduct for contribution.
+- Our privacy policy for most of our tools.
+- Developer guidelines and information to assist the development workflow.
 
 HOT is working towards the modularization of our code to improve
 maintainability and implement an end-to-end user flow between multiple
