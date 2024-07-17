@@ -67,7 +67,18 @@ Retention periods are determined based on the type of data and its usage.
 ## Account Deletion
 
 It is possible to delete you account for all of our Tools, however references
-to your username may be retained on public mapping tools.
+to your user identifier may be retained on public mapping tools.
+
+If deletion of your account is not possible from within the Tool, then please
+contact
+
+<!-- markdownlint-disable -->
+
+<a href="mailto:<sysadmin@hotosm.org>"><sysadmin@hotosm.org></a>
+
+<!-- markdownlint-restore -->
+
+to request deletion.
 
 Deletion is permanent and cannot be reversed.
 
@@ -102,4 +113,9 @@ This policy is effective as of 2024-07-17
 
 If you have any questions or suggestions about our Privacy Policy, do not
 hesitate to contact us at
-<a href="mailto:<sysadmin@hotosm.org>><sysadmin@hotosm.org></a>
+
+<!-- markdownlint-disable -->
+
+<a href="mailto:<sysadmin@hotosm.org>"><sysadmin@hotosm.org></a>
+
+<!-- markdownlint-restore -->
