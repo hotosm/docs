@@ -42,13 +42,13 @@ The most basic version of this would be:
 
 `feature` or `fix` --> `main` (production)
 
-![GitFlow](../images/git_flow.png)
+![GitFlow](../../images/git_flow.png)
 
 Adding in the extra steps of the described development lifecycle, we get:
 
 `feature` or `fix` --> `development` --> `staging` --> `main` (production)
 
-![GitFlow](../images/git_flow_plus.png)
+![GitFlow](../../images/git_flow_plus.png)
 
 The number of additional stages can be flexible depending on requirements.
 
@@ -109,7 +109,7 @@ will show your commits on top of the most recent `develop` commits.
 
 Visually this will be:
 
-![Rebase](../images/rebase.png)
+![Rebase](../../images/rebase.png)
 
 ### Merge vs Rebase
 

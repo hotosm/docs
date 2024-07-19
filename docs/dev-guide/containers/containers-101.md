@@ -10,7 +10,7 @@
   - At times of heavy load the machine resources are limited.
   - At times of low load the resources are under-utilised.
 
-![ContainersVsVMS](../images/containers_vs_vms.png)
+![ContainersVsVMS](../../images/containers_vs_vms.png)
 
 ### The New Way
 
