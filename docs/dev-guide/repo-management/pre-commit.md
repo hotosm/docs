@@ -41,7 +41,7 @@ pip install pre-commit
 repos:
   # Versioning: Commit messages & changelog
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.13.0
+    rev: v3.28.0
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -49,7 +49,7 @@ repos:
   # Lint / autoformat: Python code
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: "v0.1.13"
+    rev: "v0.5.4"
     hooks:
       # Run the linter
       - id: ruff
@@ -58,8 +58,8 @@ repos:
       - id: ruff-format
 
   # Autoformat: YAML, JSON, Markdown, etc.
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+  - repo: https://github.com/pycontribs/mirrors-prettier
+    rev: v3.3.3
     hooks:
       - id: prettier
         args:
@@ -86,7 +86,7 @@ repos:
 
   # Lint: Markdown
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.38.0
+    rev: v0.41.0
     hooks:
       - id: markdownlint
         args: [--fix, --ignore, CHANGELOG.md, --ignore, .github]
