@@ -371,6 +371,24 @@ These stages go in order, from local development, through to production deployme
   - Otherwise, the fix can be made as a PR to `dev`, then `cherry-picked` upstream
     through `staging` then to `main`.
 
+##### Security Vulnerabilities
+
+- Vulnerabilities in software are an inevitability and may be reported by
+  users, developers, or automated CI tools.
+- They will typically be referenced by a Common Vulnerabilities and Exposures  
+  (CVE) reference ID, which can be looked up in various CVE tracking websites.
+- Once a vulnerability is reported and verified, actions can be taken:
+  - **System dependencies**: generally updating a container image version,
+    or rebuilding the image should fix these, as vendors update regularly.
+  - **Package dependencies**: an issue in your bundled sub-dependencies
+    may be fixed by updating the package version to the latest. CVEs are
+    generally fixed quickly by the package maintainer.
+  - **In our repo code**: these may be picked up by static and dynamic code
+    scanners and are generally fixed as part of the pre-commit or PR
+    review process (CI workflows).
+- Fixes should be pushed through to production as soon as possible, as a
+  `hotfix` branch including the updated image/package version or code.
+
 #### Other: Feature Demo Releases
 
 - A feature demo release is a throwaway instance of the tool with a particular purpose.
