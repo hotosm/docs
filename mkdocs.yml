@@ -115,6 +115,7 @@ nav:
       - Documentation:
           - Intro: techdoc/README.md
           - Automatically Generated Docs: dev-guide/api-doc-gen.md
+          - Diátaxis Framework: https://diataxis.fr
       - Containers:
           - Intro: dev-guide/containers/containers-101.md
           # - Cheat Sheet: dev-guide/containers/containers-cheat-sheet.md
