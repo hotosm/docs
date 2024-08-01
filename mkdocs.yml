@@ -85,7 +85,7 @@ nav:
           - Roadmap: https://github.com/orgs/hotosm/projects/29
           - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
       - Roadmap: roadmap.md
-      - End-to-End Workflow: e2e-overview.md
+      - End-to-End Workflow: https://hotosm.github.io/e2e-mapping
   - Modularization:
       - Info: modules.md
       - Backend: modules/backend.md

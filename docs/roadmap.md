@@ -12,7 +12,8 @@ manager or mapper may require:
 - Field-verified information about these features.
 - Data exported in a useful format for further analysis.
 
-The goal of our proposed [E2E Flow](./e2e-overview.md) is to fill in these
+The goal of our proposed
+[E2E Flow](https://hotosm.github.io/e2e-mapping) is to fill in these
 gaps to aid an effective response.
 
 ## Block Model Diagram
