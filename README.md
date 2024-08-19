@@ -1,4 +1,4 @@
-# HOT Tech Docs
+# HOTOSM Docs
 
 📖 Welcome to the HOT Technical [documentation](https://docs.hotosm.org)
 for all of our open-source tools.
