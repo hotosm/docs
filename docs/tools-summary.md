@@ -92,7 +92,7 @@ With the above as context, HOT's tools roughly can be categorised as such:
 | FMTM        | Add extra information to digitised features in the field. |
 | Export Tool | Extract data from OSM easily _for humans_.                |
 
-### The Tools
+### Project Summaries
 
 #### Drone TM
 
