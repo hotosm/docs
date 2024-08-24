@@ -17,13 +17,14 @@ software development practices.
   [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html)
   unless otherwise specified.
 
-  > Note: some tools still use BSD-2-Clause:
-  >
-  > - Tasking Manager
-  > - Export Tool
-  > - Open Aerial Map
-  >
-  > [More details here](./dev-guide/repo-management/licensing.md)
+!!! note
+
+    Some tools still use BSD-2-Clause:
+    - Tasking Manager
+    - Export Tool
+    - Open Aerial Map
+
+    [More details here](./dev-guide/repo-management/licensing.md)
 
 ## Defining **What** We Build
 
@@ -154,11 +155,13 @@ Management of tasks and code via Github.
   - Ideally the repo should always have a few low priority `good first issue`
     tags to help foster open source contribution / onboarding.
 
-> Note that to attach labels to an issue, the Github user requires at least
-> `triage` level permission for the repo.
->
-> This can be tracked at a repo level with a `contributors` group, including
-> those that have contributed regularly to include them in the development flow.
+!!! note
+
+    To attach labels to an issue, the Github user requires at least
+    `triage` level permission for the repo.
+
+    This can be tracked at a repo level with a `contributors` group, including
+    those that have contributed regularly to include them in the development flow.
 
 ##### Issue Assignment
 
@@ -196,8 +199,10 @@ code!
 - Once review is complete and the PR is out of draft state, then **any dev can
   merge**.
 
-> Note that once a PR is merged, the merged should ensure that the
-> `testing:ready` label is applied to the relevant issue, if required.
+!!! note
+
+    Once a PR is merged, the merged should ensure that the
+    `testing:ready` label is applied to the relevant issue, if required.
 
 ##### Linking Issues
 
@@ -216,8 +221,10 @@ code!
 - Once closed, this will be reflected on the milestone percentage, roadmap
   progress, and task board complete tasks.
 
-> Note the distinction here between the **technical code review** and the
-> the review of the solution from a **user perspective** via testing.
+!!! note
+
+    Note the distinction here between the **technical code review** and the
+    the review of the solution from a **user perspective** via testing.
 
 ### Project Management
 
@@ -260,17 +267,27 @@ Example (from FMTM):
 - Most users do not want to delve into Github roadmaps and issues.
 - A simpler user-centric roadmap can be written in simple Markdown
   table syntax.
-- The key columns / categories in order:
-  - In Progress: what is being worked on right now.
-  - Next: what will be worked on in upcoming releases.
-  - Future: a concept envisioned, but not fully planned out.
-- The content should be worded as user stories:
-  For example: `As a user I should be able to push the button, to allow me to
-track my mapping progress more effectively`.
+- The table is a chronological timeline, divided into three categories:
+  - ✅ for done tasks
+  - ⚙️ for ongoing tasks
+  - [no emoji] for upcoming tasks
 
-Example user roadmap (from FMTM):
+Example user roadmap (from Drone TM):
 
 ![user roadmap](./images/dev-practices/user-roadmap-example.png)
+
+!!! note
+
+    Previously we used to use a three-column table with categories:
+    - In Progress
+    - Next
+    - Future
+
+    However after agreeing as a team, we decided to streamline the approach to
+    be less verbose, and to better show the ordering of priorities, as above.
+
+    The user-story based wording was also partially replaced using emojis for
+    the context of each feature (for brevity when used in a README file / front page).
 
 #### Task Board
 
@@ -303,14 +320,14 @@ Example:
 
 Example:
 
-```md
-<details>
-  <summary>Technical Summary</summary>
-    * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/fmtm/pull/1555
-    * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/fmtm/pull/1559
-    * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/fmtm/pull/1557
-</details>
-```
+    ```md
+    <details>
+      <summary>Technical Summary</summary>
+        * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/fmtm/pull/1555
+        * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/fmtm/pull/1559
+        * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/fmtm/pull/1557
+    </details>
+    ```
 
 ![release notes dropdown](./images/dev-practices/release-notes-technical-dropdown.png)
 
