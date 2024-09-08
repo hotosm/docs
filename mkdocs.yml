@@ -100,7 +100,7 @@ nav:
       - Python Modules:
           - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
           - OSM RawData: https://hotosm.github.io/osm-rawdata/
-          - Conflator: https://hotosm.github.io/conflator/
+          - OSM Merge: https://hotosm.github.io/osm-merge/
           - OSM Login: https://hotosm.github.io/osm-login-python/
           - FMTM Splitter: https://hotosm.github.io/fmtm-splitter/
           - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
