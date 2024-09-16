@@ -60,14 +60,20 @@ Skills with the following would be beneficial:
 - Docker
 - CI/CD workflows
 
-### 📝 Report bugs and suggest improvements 📝
+### 📝 Report bugs / suggest improvements 📝
 
 The issue queue for a tool on Github is the best way to get started here.
 
 There are issue templates for BUGs and FEATURES that you can use,
 or you could also create your own.
 
-Discussions can also be used to higher level discussions or to ask questions.
+### 💬 Discussions 💬
+
+Your input into the direction of the tool, features to include, or how they
+should be implemented are valuable.
+
+Please use Github discussions or the community discussion channels to discuss
+topics and provide your insight.
 
 ### 🔒 Report security vulnerabilities 🔒
 
