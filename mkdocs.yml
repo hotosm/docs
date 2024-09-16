@@ -129,5 +129,6 @@ nav:
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
   - Our Development Practices: dev-practices.md
+  - Become a Contributor: become-a-contributor.md
   - Code of Conduct: code-of-conduct.md
   - Privacy Policy: privacy-policy.md
