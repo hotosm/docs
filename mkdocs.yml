@@ -82,14 +82,7 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/orgs/hotosm/projects/29
           - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
-      - Open Aerial Map:
-          - Overview: techdoc/overview/OAMProductPitch.pdf
-          - Browser: https://hotosm.github.io/oam-browser/
-          - API: https://hotosm.github.io/oam-api/
-      - Export Tool:
-          - Repo: https://github.com/hotosm/osm-export-tool
-          - Roadmap: https://github.com/orgs/hotosm/projects/29
-          - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
+      - Other Tools: other-tools.md
       - Diagrams: diagrams.md
       - End-to-End Workflow: https://hotosm.github.io/e2e-mapping
   - Modularization:
