@@ -74,7 +74,7 @@ contact
 
 <!-- markdownlint-disable -->
 
-<a href="mailto:<sysadmin@hotosm.org>"><sysadmin@hotosm.org></a>
+<a href="mailto:sysadmin@hotosm.org">sysadmin@hotosm.org</a>
 
 <!-- markdownlint-restore -->
 
@@ -116,6 +116,6 @@ hesitate to contact us at
 
 <!-- markdownlint-disable -->
 
-<a href="mailto:<sysadmin@hotosm.org>"><sysadmin@hotosm.org></a>
+<a href="mailto:sysadmin@hotosm.org">sysadmin@hotosm.org</a>
 
 <!-- markdownlint-restore -->
