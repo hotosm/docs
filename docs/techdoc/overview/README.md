@@ -4,10 +4,11 @@ While today HOT architecture consists of a wide range of applications
 and modules, the vision for the future is a more unified ecosystem.
 
 The key features of this architecture are:
-* An integrated set of back-end modules
-* A common data model based on standards and only extending as
+
+- An integrated set of back-end modules
+- A common data model based on standards and only extending as
   required
-* Fit for purpose front-ends, built on REACT
+- Fit for purpose front-ends, built on REACT
 
 ## HOT Overview
 
