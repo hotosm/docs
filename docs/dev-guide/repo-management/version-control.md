@@ -69,20 +69,22 @@ and automated changelogs.
 
 - When you decide it is time to create a new version:
 
-1. Create a new branch
+  ```bash
+  pip install commitizen # (if not installed)
 
-   `git checkout -b bump/new_release`
+  cz bump --check-consistency --changelog
 
-2. Bump the version and push
+  git push
+  git push --tag
+  ```
 
-   ```bash
-   pip install commitizen # (if not installed)
+<!-- markdownlint-disable -->
 
-   cz bump --check-consistency --changelog
+!!! warning
 
-   git push
-   git push --tag
-   ```
+    This assumes you have repo write access and are working on the main branch.
+
+<!-- markdownlint-enable -->
 
 This will:
 
@@ -94,8 +96,24 @@ This will:
 - Automatically update CHANGELOG.md with all changes since the last version.
 - Create a tag matching the version number.
 
-> Note: in a repo where you have direct push access, you would simply
-> update on main and push. As we are using Git-Flow, a PR is necessary.
+<!-- markdownlint-disable -->
+
+!!! tip
+
+    Oh no I made a mistake!
+
+    Worry not, the version increment can be reverted:
+
+    ```bash
+    # Revert the commit
+    git reset --soft HEAD~1
+
+    # Delete the branch
+    git branch -d v0.x.x
+    git push --delete origin v0.x.x
+    ```
+
+<!-- markdownlint-enable -->
 
 ## Creating Releases
 
