@@ -53,13 +53,13 @@ nav:
   - Home: index.md
   - Become a Contributor: become-a-contributor.md
   - Projects:
-      - Intro: tools-summary.md
+      - Intro: projects/tools-summary.md
       - Tasking Manager:
           - Docs: https://hotosm.github.io/tasking-manager/
           - Roadmap: https://github.com/hotosm/tasking-manager?tab=readme-ov-file#product-roadmap
           - Dev Roadmap: https://github.com/orgs/hotosm/projects/28
           - Task Tracker: https://github.com/orgs/hotosm/projects/14/views/2
-      - FMTM:
+      - Field Mapping TM (FMTM):
           - Landing Page: https://fmtm.dev
           - About: techdoc/overview/FMTMProductPitch.pdf
           - Docs: https://docs.fmtm.dev
@@ -78,10 +78,16 @@ nav:
           - Roadmap: https://github.com/hotosm/fair?tab=readme-ov-file#product-roadmap
           - Dev Roadmap: https://github.com/orgs/hotosm/projects/30/views/1
           - Task Tracker: https://github.com/orgs/hotosm/projects/30/views/2
+      - OpenAerialMap:
+          - Overview: projects/openaerialmap.md
+      - Export Tool:
+          - Docs: https://export.hotosm.org/v3/learn
+          - Roadmap: https://github.com/hotosm/osm-export-tool?tab=readme-ov-file#product-roadmap
+          - Task Tracker: https://github.com/orgs/hotosm/projects/29
       - Raw Data API:
           - Docs: https://hotosm.github.io/raw-data-api/
-          - Roadmap: https://github.com/orgs/hotosm/projects/29
-          - Task Tracker: https://github.com/orgs/hotosm/projects/29/views/2
+          - Roadmap: https://github.com/hotosm/raw-data-api?tab=readme-ov-file#product-roadmap
+          - Task Tracker: https://github.com/orgs/hotosm/projects/29
       - Other Tools: other-tools.md
       - Diagrams: diagrams.md
       - End-to-End Workflow: https://hotosm.github.io/e2e-mapping
