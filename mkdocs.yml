@@ -88,7 +88,6 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/hotosm/raw-data-api?tab=readme-ov-file#product-roadmap
           - Task Tracker: https://github.com/orgs/hotosm/projects/29
-      - Other Tools: other-tools.md
       - Diagrams: diagrams.md
       - End-to-End Workflow: https://hotosm.github.io/e2e-mapping
   - Modularization:
