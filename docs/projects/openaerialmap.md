@@ -4,12 +4,12 @@
 
 ![OAM overview][1]
 
-!!! note
+!!! important
 
     OpenAerialMap was originally developed by HOT in 2015 and has since
     undergone multiple revisions.
 
-    HOT and partners are now actively seeking for funding to maintain and
+    HOT and partners are now **actively seeking for funding** to maintain and
     upgrade OAM as it is a critical tool in the Open Mapping System.
 
 Links:
