@@ -24,4 +24,4 @@ tools. There is more info about [modularization](modules.md) of our code.
 
 ## The HOT Ecosystem of Tools
 
-![Basic E2E Diagram](./techdoc/overview/HOTInformationFlow.png)
+![hot-tools-ecosystem](./diagrams/e2e-ecosystem.drawio)

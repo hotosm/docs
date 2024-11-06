@@ -23,3 +23,7 @@ gaps to aid an effective response.
 ## Overall Architecture
 
 ![detailed-e2e](./images/hot-components-model.png)
+
+## Old HOT Ecosystem Digram (2023)
+
+![Basic E2E Diagram](./techdoc/overview/HOTInformationFlow.png)
