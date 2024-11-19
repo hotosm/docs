@@ -99,7 +99,7 @@ With the above as context, HOT's tools roughly can be categorised as such:
 Drone TM is the newest tool being developed by HOT.
 
 It's purpose is to fill the gap of reliable, high-quality, base imagery
-that can be used during the digitisation process.
+that can be used during the digitization process.
 
 Given an AOI, an area can be subdivided into task areas and flight
 plans generated for each users specific drone.

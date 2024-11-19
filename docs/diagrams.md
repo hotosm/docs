@@ -16,6 +16,12 @@ The goal of our proposed
 [E2E Flow](https://hotosm.github.io/e2e-mapping) is to fill in these
 gaps to aid an effective response.
 
+## E2E
+
+### 2. Digitization
+
+![e2e-digitization](./diagrams/e2e-2-digitization.drawio)
+
 ## Block Model Diagram
 
 ![block-model](./images/hot-tools-block-model.png)
