@@ -92,11 +92,10 @@ rationale for doing so should be explained on a case-by-case basis.
 
 The Open Source Initiative also has a list of [approved open source
 licenses](https://opensource.org/licenses). Not all of these are
-compatible with copylefted software, so not appropriate for code at
-HOT even though they are considered premissive licenses.
+compatible with copylefted software, so may not be appropriate for code at
+HOT even though they are considered permissive licenses.
 
-Here is a short list of common non-permissive licenses, and can't be
-used for any code in HOT software projects.
+Licenses that can't be used for any code in HOT software projects:
 
 - Mozilla Public License (MPL) version 1.1
 - Apache License, Version 1.0 and 1.1
