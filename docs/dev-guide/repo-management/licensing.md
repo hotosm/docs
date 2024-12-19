@@ -72,6 +72,22 @@ here.
 - Intel Open Source License
 - FreeBSD license
 
+### Uncertain Licenses
+
+Being technologists, and not lawyers, we do not have the time or
+expertise to identify and assess every license type available.
+
+There are some licenses that could potentially be compatible,
+but we do not have a well formed opinion about their usage.
+Typically we would defer to an authority such as the FSF.
+
+These licenses may include, but are not limited to:
+
+- EUPL-1.2
+
+For the moment we do not expressly forbid their usage, but the
+rationale for doing so should be explained on a case-by-case basis.
+
 ### Incompatible Licenses
 
 The Open Source Initiative also has a list of [approved open source
