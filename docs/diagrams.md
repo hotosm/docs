@@ -18,6 +18,10 @@ gaps to aid an effective response.
 
 ## E2E
 
+### 1. Imagery Collection
+
+![e2e-imagery](./diagrams/e2e-1-imagery.drawio)
+
 ### 2. Digitization
 
 ![e2e-digitization](./diagrams/e2e-2-digitization.drawio)
