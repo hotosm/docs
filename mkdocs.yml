@@ -66,8 +66,6 @@ nav:
           - Docs: https://docs.fmtm.dev
           - Roadmap: https://github.com/hotosm/fmtm/tree/main?tab=readme-ov-file#roadmap
           - Dev Roadmap: https://roadmap.fmtm.dev
-          - Field Pilots:
-              - Monrovia: projects/FMTM/Monrovia E2E Request.pdf
       - Drone TM:
           - Repo: https://github.com/hotosm/drone-tm
           - Docs: https://hotosm.github.io/drone-tm
