@@ -31,6 +31,10 @@ theme:
 extra_css:
   - css/extra.css
 
+extra_javascript:
+  - https://viewer.diagrams.net/js/viewer-static.min.js
+  - javascripts/drawio-reload.js
+
 markdown_extensions:
   - tables
   - toc:
