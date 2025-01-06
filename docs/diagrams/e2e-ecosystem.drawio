@@ -4,7 +4,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <UserObject label="" tooltip="Click for detailed view" link="https://docs.hotosm.org/diagrams/#1-imagery" id="zaEynsyPZS4Wm3Ech8gQ-18">
+        <UserObject label="" tooltip="Click for detailed view" link="https://docs.hotosm.org/diagrams/#1-imagery-collection" id="zaEynsyPZS4Wm3Ech8gQ-18">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
             <mxGeometry x="164" y="94" width="840" height="350" as="geometry" />
           </mxCell>
