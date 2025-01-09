@@ -11,17 +11,16 @@ but will be rolled out for all projects eventually.
 
 ## Shared Map Components
 
-Map components using OpenLayers underneath.
+We are contributing to and building out the
+[svelte-maplibre](https://github.com/dimfeld/svelte-maplibre)
+package.
 
-Currently in design and prototype stage,
-but will be rolled out for all projects eventually.
+This is built around MapLibre, with a goal to export the components
+to standard web components (custom elements) that could be embedded
+into any frontend framework.
 
-Will likely use PlanetLab's [Maps](https://github.com/planetlabs/maps)
-at it's core, with fleshed out higher level components:
-
-- Layer switcher
-- Attribute table
-- Various layer types
+This would allow for a consistent declarative API for a web map
+library to be integrated into our tools.
 
 The plan would be to support various cloud optimised geo data formats:
 
@@ -29,11 +28,6 @@ The plan would be to support various cloud optimised geo data formats:
 - flatgeobuf
 - GeoParquet
 - PMTiles
-
-There is also the possibility of designing this with [Svelte](https://svelte.dev/),
-then embedding the compiled plain JS into our React apps (in discussion).
-
-[link](https://hotosm.github.io/shared-map-components)
 
 ## QR Codes
 

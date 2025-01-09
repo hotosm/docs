@@ -8,17 +8,13 @@ our applications.
 ## [OSM Raw Data](https://hotosm.github.io/osm-rawdata)
 
 OMS Raw Data supports the creation of data extracts into GeoJson or a
-Postgres database. There is more detail on these modules on the [project
-website](https://hotosm.github.io/osm-rawdata)).
+Postgres database.
 
 ## [OSM Fieldwork](https://hotosm.github.io/osm-fieldwork)
 
 Various utility programs useful for field data collection using ODK
 Collect. These modules are used extensively in FMTM for all the
 backend data processing.
-
-There is more detail on these modules on the [project
-website](https://hotosm.github.io/osm-fieldwork).
 
 ## [FMTMSplitter](https://hotosm.github.io/fmtm-splitter)
 
@@ -27,7 +23,7 @@ factoring in prominent map features (roads, rivers, etc).
 
 The division is configurable via various parameters.
 
-## [fAIr Utilities](https://hotosm.github.io/fAIr-utilities)
+## [fAIr Utilities](https://github.com/hotosm/fAIr-utilities)
 
 Various machine learning utils used within the fAIr backend.
 
