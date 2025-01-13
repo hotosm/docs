@@ -141,10 +141,10 @@ nav:
           - Local Kubernetes: dev-guide/containers/kubernetes-local-kind.md
           - Production DB: dev-guide/containers/production-db.md
       - Tech Decisions:
-          - React: decisions/0003-react.md
-          - Python: decisions/0004-python.md
-          - Github: decisions/0005-github.md
-          - Slack: decisions/0006-slack.md
+          - Frontend framework: decisions/0003-react.md
+          - Backend language: decisions/0004-python.md
+          - Code hosting + CI/CD: decisions/0005-github.md
+          - Community engagement: decisions/0006-slack.md
           - Frontend dependencies: decisions/0007-pnpm.md
           - Backend dependencies: decisions/0008-uv.md
           - API Documentation: decisions/0002-mkdocs.md

@@ -65,3 +65,12 @@ newly started projects.
   but also extends to the code complexity and ease of understanding / onboarding.
 - Bad, because we don't necessarily need a web framework for all our tools!
   We could probably build more resilient code using HTML with progressive enhancement.
+
+!!! note
+
+    With JavaScript being the language of web browsers, this page makes the
+    assumption that TypeScript is the general consensus best **language** to
+    be developing frontend software with.
+
+    However, do note that there are alternative approaches to typing, such
+    as JSDocs, but the goal of type safety is the same regardless.
