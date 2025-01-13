@@ -145,6 +145,8 @@ nav:
           - Python: decisions/0004-python.md
           - Github: decisions/0005-github.md
           - Slack: decisions/0006-slack.md
+          - Frontend dependencies: decisions/0007-pnpm.md
+          - Backend dependencies: decisions/0008-uv.md
           - API Documentation: decisions/0002-mkdocs.md
           - Technical Diagrams: decisions/0001-draw-io.md
   - DevOps:
