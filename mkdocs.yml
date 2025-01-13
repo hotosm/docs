@@ -140,6 +140,11 @@ nav:
           # - Cheat Sheet: dev-guide/containers/containers-cheat-sheet.md
           - Local Kubernetes: dev-guide/containers/kubernetes-local-kind.md
           - Production DB: dev-guide/containers/production-db.md
+      - Tech Decisions:
+          - React: decisions/0003-react.md
+          - Python: decisions/0004-python.md
+          - API Documentation: decisions/0002-mkdocs.md
+          - Technical Diagrams: decisions/0001-draw-io.md
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
   - Our Development Practices: dev-practices.md
