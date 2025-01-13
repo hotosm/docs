@@ -143,6 +143,8 @@ nav:
       - Tech Decisions:
           - React: decisions/0003-react.md
           - Python: decisions/0004-python.md
+          - Github: decisions/0005-github.md
+          - Slack: decisions/0006-slack.md
           - API Documentation: decisions/0002-mkdocs.md
           - Technical Diagrams: decisions/0001-draw-io.md
   - DevOps:
