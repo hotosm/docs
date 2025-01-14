@@ -59,6 +59,8 @@ nav:
   - Become a Contributor: become-a-contributor.md
   - Projects:
       - Intro: projects/tools-summary.md
+      - Diagrams: diagrams.md
+      - End-to-End Workflow: https://hotosm.github.io/e2e-mapping
       - Tasking Manager:
           - Landing Page: https://tasks.hotosm.org
           - Summary: https://www.hotosm.org/tech-suite/tasking-manager
@@ -103,8 +105,6 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/hotosm/raw-data-api/tree/master?tab=readme-ov-file#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
-      - Diagrams: diagrams.md
-      - End-to-End Workflow: https://hotosm.github.io/e2e-mapping
   - Modularization:
       - Info: modules.md
       - Backend: modules/backend.md
