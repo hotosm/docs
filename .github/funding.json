@@ -16,7 +16,7 @@
       "name": "HOT Tasking Manager",
       "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. ",
       "webpageUrl": {
-        "url": "https://tasks.hotosm.org",
+        "url": "https://tasks.hotosm.org"
       },
       "repositoryUrl": {
         "url": "https://github.com/hotosm/tasking-manager"
