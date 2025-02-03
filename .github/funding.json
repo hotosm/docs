@@ -1,4 +1,3 @@
-
 {
   "version": "v1.0.0",
   "entity": {
@@ -6,37 +5,39 @@
     "role": "maintainer",
     "name": "Humanitarian OpenStreetMap Team",
     "email": "tech-data@hotosm.org",
-    "description": "HOT is an international team dedicated to humanitarian action and community development through open mapping. We develop open-source products to address ecosystem gaps in the use of geospatial technology in development and humanitarian projects, aiming for a world where everyone has access to the right technology to use open map data for social change",
+    "description": "HOT is an international team dedicated to humanitarian action and community development through open mapping. We develop open-source products to address ecosystem gaps in the use of geospatial technology in development and humanitarian projects, aiming for a world where everyone has access to the right technology to use open map data for social change.",
     "webpageUrl": {
-      "url": "https://www.hotosm.org/"
+      "url": "https://www.hotosm.org",
+      "wellKnown": "https://github.com/hotosm"
     }
   },
   "projects": [
     {
       "guid": "hotosm/tasking-manager",
       "name": "HOT Tasking Manager",
-      "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. However, optimizing task assignment and prioritization remains a challenge, often relying on manual intervention.Integrating AI into Tasking Manager will improve efficiency by automating task difficulty estimation, prioritisation, and assignment. AI models will analyse satellite imagery, terrain, feature density, and historical trends to assess task complexity. Additionally, AI-driven task distribution will match volunteers based on skill level, ensuring better accuracy and faster mapping. This innovation will enhance collaboration, reduce manual effort, and improve mapping quality for humanitarian impact.",
+      "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. ",
       "webpageUrl": {
-        "url": "https://tasks.hotosm.org"
+        "url": "https://tasks.hotosm.org",
+        "wellKnown": "https://github.com/hotosm/tasking-manager"
       },
       "repositoryUrl": {
         "url": "https://github.com/hotosm/tasking-manager"
       },
       "licenses": [
-        "AGPL-3.0 license"
+        "BSD-2-Clause license"
       ],
       "tags": [
-        "open-mapping",
-        "openstreetmap",
-        "community",
-        "social-impact",
-        "geospatial",
-        "artifical-intelligence",
-        "humanitarian",
-        "python",
-        "fastAPI",
-        "terraform",
-        "reactjs"
+        "\"open-mapping\"",
+        "\"openstreetmap\"",
+        "\"community\"",
+        "\"social-impact\"",
+        "\"geospatial\"",
+        "\"artifical-intelligence\"",
+        "\"humanitarian\"",
+        "\"python\"",
+        "\"fastAPI\"",
+        "\"terraform\"",
+        "\"reactjs\""
       ]
     }
   ],
@@ -45,8 +46,7 @@
       {
         "guid": "github-sponsors",
         "type": "payment-provider",
-        "address": "https://github.com/sponsors/hotosm",
-        "description": "You can donate to HOTOSM projects using our Github sponsor page: https://github.com/sponsors/hotosm\n\nAn alternative method is also using Paypal or Venmo via our website:  https://www.hotosm.org/donate/"
+        "description": "You can donate to HOTOSM projects using our Github sponsor page: https://github.com/sponsors/hotosm\\n\\nAn alternative method is also using Paypal or Venmo via our website:  https://www.hotosm.org/donate/\n  "
       }
     ],
     "plans": [
@@ -54,14 +54,19 @@
         "guid": "github-sponsors",
         "status": "active",
         "name": "Support the development of AI workflows in HOT Tasking Manager",
+        "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. However, optimizing task assignment and prioritization remains a challenge, often relying on manual intervention.\nIntegrating AI into Tasking Manager will improve efficiency by automating task difficulty estimation, prioritisation, and assignment. AI models will analyse satellite imagery, terrain, feature density, and historical trends to assess task complexity. Additionally, AI-driven task distribution will match volunteers based on skill level, ensuring better accuracy and faster mapping. This innovation will enhance collaboration, reduce manual effort, and improve mapping quality for humanitarian impact.",
         "amount": 100000,
         "currency": "USD",
-        "frequency": "one time",
+        "frequency": "one-time",
         "channels": [
-        {
+          "github-sponsors"
+        ]
+      },
+      {
         "guid": "github-sponsors",
         "status": "active",
         "name": "Support the maintanence of the HOTOSM Tools",
+        "description": "Support the maintenance of the core HOTOSM tech stack: https://www.hotosm.org/tech-suite",
         "amount": 10000,
         "currency": "USD",
         "frequency": "monthly",
