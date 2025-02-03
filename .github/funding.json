@@ -7,8 +7,7 @@
     "email": "tech-data@hotosm.org",
     "description": "HOT is an international team dedicated to humanitarian action and community development through open mapping. We develop open-source products to address ecosystem gaps in the use of geospatial technology in development and humanitarian projects, aiming for a world where everyone has access to the right technology to use open map data for social change.",
     "webpageUrl": {
-      "url": "https://www.hotosm.org",
-      "wellKnown": "https://github.com/hotosm"
+      "url": "https://www.hotosm.org"
     }
   },
   "projects": [
