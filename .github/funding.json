@@ -15,8 +15,7 @@
     {
       "guid": "hotosm/tasking-manager",
       "name": "HOT Tasking Manager",
-      "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. However, optimizing task assignment and prioritization remains a challenge, often relying on manual intervention.
-Integrating AI into Tasking Manager will improve efficiency by automating task difficulty estimation, prioritisation, and assignment. AI models will analyse satellite imagery, terrain, feature density, and historical trends to assess task complexity. Additionally, AI-driven task distribution will match volunteers based on skill level, ensuring better accuracy and faster mapping. This innovation will enhance collaboration, reduce manual effort, and improve mapping quality for humanitarian impact.",
+      "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. However, optimizing task assignment and prioritization remains a challenge, often relying on manual intervention.Integrating AI into Tasking Manager will improve efficiency by automating task difficulty estimation, prioritisation, and assignment. AI models will analyse satellite imagery, terrain, feature density, and historical trends to assess task complexity. Additionally, AI-driven task distribution will match volunteers based on skill level, ensuring better accuracy and faster mapping. This innovation will enhance collaboration, reduce manual effort, and improve mapping quality for humanitarian impact.",
       "webpageUrl": {
         "url": "https://tasks.hotosm.org"
       },
@@ -28,15 +27,15 @@ Integrating AI into Tasking Manager will improve efficiency by automating task d
       ],
       "tags": [
         "open-mapping",
-        "openstreetmap"
+        "openstreetmap",
         "community",
-        "social-impact"
-        "geospatial"
-        "artifical-intelligence"
-        "humanitarian"
-        "python"
-        "fastAPI"
-        "terraform"
+        "social-impact",
+        "geospatial",
+        "artifical-intelligence",
+        "humanitarian",
+        "python",
+        "fastAPI",
+        "terraform",
         "reactjs"
       ]
     }
