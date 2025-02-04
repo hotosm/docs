@@ -7,19 +7,21 @@
     "email": "tech-data@hotosm.org",
     "description": "HOT is an international team dedicated to humanitarian action and community development through open mapping. We develop open-source products to address ecosystem gaps in the use of geospatial technology in development and humanitarian projects, aiming for a world where everyone has access to the right technology to use open map data for social change.",
     "webpageUrl": {
-      "url": "https://www.hotosm.org"
+      "url": "https://github.com/hotosm"
+      "wellKnown": "https://github.com/hotosm/*/.well-known/funding-manifest-urls`"
     }
   },
   "projects": [
     {
       "guid": "hotosm/tasking-manager",
       "name": "HOT Tasking Manager",
-      "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. ",
+      "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. The HOT Tasking Manager has over 515,000 registered volunteer mappers using the tool to contribute to mapping projects.",
       "webpageUrl": {
         "url": "https://tasks.hotosm.org"
       },
       "repositoryUrl": {
         "url": "https://github.com/hotosm/tasking-manager"
+        "wellKnown": "https://github.com/hotosm/tasking-manager/*/.well-known/funding-manifest-urls`"
       },
       "licenses": [
         "BSD-2-Clause license"
