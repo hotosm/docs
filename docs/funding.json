@@ -24,9 +24,7 @@
         "url": "https://github.com/hotosm/tasking-manager",
         "wellKnown": "https://github.com/hotosm/tasking-manager/blob/main/frontend/public/.well-known/funding-manifest-urls"
       },
-      "licenses": [
-        "BSD-2-Clause license"
-      ],
+      "licenses": ["BSD-2-Clause license"],
       "tags": [
         "open-mapping",
         "openstreetmap",
@@ -59,9 +57,7 @@
         "amount": 100000,
         "currency": "USD",
         "frequency": "one-time",
-        "channels": [
-          "github-sponsors"
-        ]
+        "channels": ["github-sponsors"]
       },
       {
         "guid": "github-sponsors",
@@ -71,9 +67,7 @@
         "amount": 10000,
         "currency": "USD",
         "frequency": "monthly",
-        "channels": [
-          "github-sponsors"
-        ]
+        "channels": ["github-sponsors"]
       }
     ],
     "history": []
