@@ -46,19 +46,51 @@
         "guid": "github-sponsors",
         "type": "payment-provider",
         "address": "",
-        "description": "You can donate to HOTOSM projects using our Github sponsor page: https://github.com/sponsors/hotosm\n\nAn alternative method is also using Paypal or Venmo via our website:  https://www.hotosm.org/donate/\n"
+        "description": "https://github.com/sponsors/hotosm"
+      },
+      {
+        "guid": "direct-donation",
+        "type": "payment-provider",
+        "address": "",
+        "description": "https://www.hotosm.org/donate"
+      },
+      {
+        "guid": "paypal",
+        "type": "payment-provider",
+        "address": "",
+        "description": "https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=8VBN9QHNVKVS6&ssrt=1738692308532"
       }
     ],
     "plans": [
       {
-        "guid": "monthly-tech-team",
+        "guid": "monthly-donate",
         "status": "active",
-        "name": "Support the maintanence of the HOTOSM Tools",
+        "name": "Support the maintanence of the HOTOSM Tools (monthly)",
         "description": "Support the maintenance of the core HOTOSM tech stack: https://www.hotosm.org/tech-suite",
         "amount": 10000,
         "currency": "USD",
         "frequency": "monthly",
-        "channels": ["github-sponsors"]
+        "channels": ["github-sponsors", "direct-donation", "paypal"]
+      },
+      {
+        "guid": "one-time-donate",
+        "status": "active",
+        "name": "Support the maintanence of the HOTOSM Tools (one-time)",
+        "description": "Support the maintenance of the core HOTOSM tech stack: https://www.hotosm.org/tech-suite",
+        "amount": 100000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": ["github-sponsors", "direct-donation", "paypal"]
+      },
+      {
+        "guid": "tasking-manager",
+        "status": "active",
+        "name": "Support the Tasking Manager",
+        "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. The HOT Tasking Manager has over 515,000 registered volunteer mappers using the tool to contribute to mapping projects.",
+        "amount": 100000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": ["github-sponsors", "direct-donation", "paypal"]
       }
     ],
     "history": []
