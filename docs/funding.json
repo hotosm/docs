@@ -8,7 +8,8 @@
     "phone": "",
     "description": "HOT is an international team dedicated to humanitarian action and community development through open mapping. We develop open-source products to address ecosystem gaps in the use of geospatial technology in development and humanitarian projects, aiming for a world where everyone has access to the right technology to use open map data for social change.",
     "webpageUrl": {
-      "url": "https://docs.hotosm.org"
+      "url": "https://docs.hotosm.org",
+      "wellKnown": "https://docs.hotosm.org/.well-known/funding-manifest-urls"
     }
   },
   "projects": [
@@ -24,7 +25,9 @@
         "url": "https://github.com/hotosm/tasking-manager",
         "wellKnown": "https://github.com/hotosm/tasking-manager/blob/main/frontend/public/.well-known/funding-manifest-urls"
       },
-      "licenses": ["BSD-2-Clause license"],
+      "licenses": [
+        "BSD-2-Clause license"
+      ],
       "tags": [
         "open-mapping",
         "openstreetmap",
@@ -57,7 +60,9 @@
         "amount": 100000,
         "currency": "USD",
         "frequency": "one-time",
-        "channels": ["github-sponsors"]
+        "channels": [
+          "github-sponsors"
+        ]
       },
       {
         "guid": "github-sponsors",
@@ -67,7 +72,9 @@
         "amount": 10000,
         "currency": "USD",
         "frequency": "monthly",
-        "channels": ["github-sponsors"]
+        "channels": [
+          "github-sponsors"
+        ]
       }
     ],
     "history": []
