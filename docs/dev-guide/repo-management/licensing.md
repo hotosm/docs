@@ -49,6 +49,8 @@ website), and some older code using the BSD license or pubic domain.
 - It allows others modify and built upon our own, even for commercial
   purposes, as long as they **credit us** and
   **license their work under the same terms as CC-BY**.
+- The current CC-BY license available would be
+  Creative Commons Attribution 4.0 International.
 
 ## What Licenses Can We Use
 
