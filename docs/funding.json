@@ -16,7 +16,7 @@
     {
       "guid": "hotosm-tech-team",
       "name": "HOTOSM",
-      "description": "You can donate to HOTOSM projects using our Github sponsor page: https://github.com/sponsors/hotosm\n\nAn alternative method is also using Paypal or Venmo via our website:  https://www.hotosm.org/donate/\n",
+      "description": " The Humanitarian OpenStreetMap Team develops open-source products to address ecosystem gaps in the use of geospatial technology in development and humanitarian projects, aiming for a world where everyone has access to the right technology to use open map data for social change. We focus on an end to end open mapping solutions for our users, including tools like the HOT Tasking Manager, fAIr (our AI Assisted mapping service), Field Mapping Tasking Manager, Open Aerial Map, HOT Export Tool and others. You can see more about individual HOT Tech tools here: https://www.hotosm.org/tech-suite",
       "webpageUrl": {
         "url": "https://docs.hotosm.org",
         "wellKnown": "https://docs.hotosm.org/.well-known/funding-manifest-urls"
@@ -86,7 +86,7 @@
         "guid": "tasking-manager",
         "status": "active",
         "name": "Support the Tasking Manager",
-        "description": "The HOT Tasking Manager is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It allows volunteers to divide large mapping tasks into smaller, manageable units. The HOT Tasking Manager has over 515,000 registered volunteer mappers using the tool to contribute to mapping projects.",
+        "description": "The HOT Tasking Manager (https://tasks.hotosm.org) is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It has over 515,000 registered volunteers mappers. The HOT Tasking Manager allows these volunteers to divide large mapping tasks into smaller, manageable units. However, optimizing task assignment and prioritization remains a challenge, often relying on manual intervention.Integrating AI into Tasking Manager will improve efficiency by automating task difficulty estimation, prioritisation, and assignment. AI models will analyse satellite imagery, terrain, feature density, and historical trends to assess task complexity. Additionally, AI-driven task distribution will match volunteers based on skill level, ensuring better accuracy and faster mapping. This innovation will enhance collaboration, reduce manual effort, and improve mapping quality for humanitarian impact",
         "amount": 100000,
         "currency": "USD",
         "frequency": "one-time",
