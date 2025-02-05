@@ -45,20 +45,20 @@
       {
         "guid": "github-sponsors",
         "type": "payment-provider",
-        "address": "",
-        "description": "https://github.com/sponsors/hotosm"
+        "address": "https://github.com/sponsors/hotosm",
+        "description": " You can contribute and fund our projects using our Github sponsor page."
       },
       {
         "guid": "direct-donation",
         "type": "payment-provider",
-        "address": "",
-        "description": "https://www.hotosm.org/donate"
+        "address": "https://www.hotosm.org/donate",
+        "description": "Alternatively you can see differnt donation option on our website. To donate via wire transfer, please email donations@hotosm.org."
       },
       {
         "guid": "paypal",
         "type": "payment-provider",
-        "address": "",
-        "description": "https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=8VBN9QHNVKVS6&ssrt=1738692308532"
+        "address": "https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=8VBN9QHNVKVS6&ssrt=1738692308532",
+        "description": "You can also donate directly by using PayPal."
       }
     ],
     "plans": [
