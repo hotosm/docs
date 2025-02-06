@@ -86,7 +86,7 @@
         "guid": "tasking-manager",
         "status": "active",
         "name": "Support the Tasking Manager",
-        "description": "The HOT Tasking Manager (https://tasks.hotosm.org) is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM), particularly for humanitarian response and development projects. It has over 515,000 registered volunteers mappers. The HOT Tasking Manager allows these volunteers to divide large mapping tasks into smaller, manageable units. However, optimizing task assignment and prioritization remains a challenge, often relying on manual intervention.Integrating AI into Tasking Manager will improve efficiency by automating task difficulty estimation, prioritisation, and assignment. AI models will analyse satellite imagery, terrain, feature density, and historical trends to assess task complexity. Additionally, AI-driven task distribution will match volunteers based on skill level, ensuring better accuracy and faster mapping. This innovation will enhance collaboration, reduce manual effort, and improve mapping quality for humanitarian impact",
+        "description": "The HOT Tasking Manager (https://tasks.hotosm.org) is an open-source tool that enables coordinated mapping efforts on OpenStreetMap (OSM). It has over 515,000 registered volunteer mappers. This project proposes integrating AI to improve efficiency by automating task difficulty estimation, prioritisation, and assignment. Additionally, AI-driven task distribution will match volunteers based on skill level, ensuring better accuracy and faster mapping.",
         "amount": 100000,
         "currency": "USD",
         "frequency": "one-time",
