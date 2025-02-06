@@ -25,7 +25,12 @@
         "url": "https://github.com/hotosm/docs",
         "wellKnown": "https://github.com/hotosm/docs/blob/main/docs/.well-known/funding-manifest-urls"
       },
-      "licenses": ["BSD-2-Clause license"],
+      "licenses": [
+        "spdx:BSD-2-Clause",
+        "spdx:AGPL-3.0-or-later",
+        "spdx:GPL-3.0-or-later",
+        "spdx:CC-BY-4.0"
+      ],
       "tags": [
         "open-mapping",
         "openstreetmap",
