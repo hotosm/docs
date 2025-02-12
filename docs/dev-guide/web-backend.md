@@ -92,18 +92,34 @@ Asynchronous programming can be a learning curve for Python developers.
     in the crud functions, OR could be from a library that you use
     (e.g. osm-fieldwork is synchronous for the most part).
 
-#### Workers & Thread Blocking
+#### Workers, Processes, Threads
 
-- We run FastAPI (uvicorn) with a number of workers defined. This is the
-  number of threads available to run processes.
-- If a process blocks a thread (as described above), then the remaining threads
-  are available to take new requests.
-- If all of the workers/threads are blocked by tasks, the server will hang / be unresponsive!
+- FastAPI uses `uvicorn` as the actual web server.
+- Uvicorn has a number of `workers` defined. One worker equals
+  one process running on the system (using multiprocessing underneath).
+  - Each process is independent and does not share memory.
+  - Each process is essentially a separate Python interpreter.
+- Each worker process will have it's own `event loop` for running async
+  code:
+  - The event loop runs in the main thread of the worker process.
+  - This main thread handles all incoming requests, **unless** offloaded
+    to a different thread or process.
+- If the main thread blocks (e.g., via a sync function doing heavy I/O or
+  CPU work), then the API server inside that worker becomes unresponsive!
+- To mitigate this, we must either:
+  - Use a **ThreadPoolExecutor** (run_in_threadpool()): runs blocking tasks
+    in a separate thread inside the same worker process.
+  - Use a **ProcessPoolExecutor**: spawns a new process outside the worker
+    process to handle CPU-heavy tasks.
+  - Use **BackgroundTasks** (FastAPI feature): Runs tasks after returning
+    the response, often in a separate thread inside the same worker process.
+
+Workers / processes --> event loop --> threads.
 
 #### Using Synchronous Code
 
 It is of course possible to use synchronous code, but if necessary, be
-sure to run this in another thread.
+sure to run this in **another thread**.
 
 To do this you have several options.
 
@@ -231,6 +247,37 @@ async def parent_func(db, project_id, data, no_of_buildings, has_data_extracts):
     geoms = await split_multi_geom_into_tasks()
 ```
 
+##### 5) Running computationally intensive tasks
+
+- Most code on a web server is typically IO-bound, meaning a related to
+  file operations, or a web request.
+- But sometimes we must run code that demands high CPU usage over time.
+- In these cases, it is best to use `concurrent.futures.ProcessPoolExecutor`
+  built into Python.
+
+```python
+from asyncio import get_running_loop
+from concurrent.futures import ProcessPoolExecutor
+
+async def run_generate_project_basemap():
+    loop = get_running_loop()
+    with ProcessPoolExecutor() as pool:
+        return await loop.run_in_executor(
+            pool,  # process pool
+            project_crud.generate_project_basemap,  # function
+            db_pool,  # args
+            project_id,
+            org_id,
+            background_task_id,
+            basemap_in.tile_source,
+            basemap_in.file_format,
+            basemap_in.tms_url,
+        )
+```
+
+> Note this is very similar to MultiProcessing in Python, but the
+> code is much simpler to use (requires less manual config).
+
 ##### Note
 
 - If you regularly find you are running out of workers/threads and the
@@ -238,7 +285,7 @@ async def parent_func(db, project_id, data, no_of_buildings, has_data_extracts):
 - Celery is made for just this - defer tasks to a queue, and run gradually
   to reduce the immediate load.
 
-#### Best Practices
+#### Best Practices / Tips
 
 ##### 1. Logical Project Structure
 
@@ -715,6 +762,20 @@ class AuthUser(BaseModel):
 user: AuthUser = get_auth_user()
 ```
 
+For FastAPI routes, it's good to use the `Annotated` class:
+
+```python
+@router.get("/me", response_model=FMTMUser)
+async def my_data(
+    db: Annotated[Connection, Depends(db_conn)],
+    current_user: Annotated[AuthUser, Depends(login_required)],
+    another_param: Annotated[Optional[str], None],
+):
+```
+
+> It allows us to very effectively define params, including defaults,
+> and dependency injection.
+
 ##### 6. Use REST Endpoint Naming
 
 REST APIs are formatted as such:
@@ -750,4 +811,48 @@ async def save_video(video_file: UploadFile):
    async with aiofiles.open("/file/path/name.mp4", "wb") as f:
      while chunk := await video_file.read(DEFAULT_CHUNK_SIZE):
          await f.write(chunk)
+```
+
+##### 8. File Uploads Alongside Other Data
+
+- FormData is the only request type that can include both data **fields** and
+  data **files** at the same time.
+- In the following example we have an endpoint that accepts params `submission_xml`
+  (large text field), and `device_id` (small text field), plus a list of attached
+  `submission_attachments` files uploaded alongside the data:
+
+```python
+# First we create a dependency for file uploads - this could easily be generic
+from io import BytesIO
+from typing import Optional
+from fastapi import UploadFile
+async def read_submission_uploads(
+    submission_files: Optional[list[UploadFile]] = None,
+) -> Optional[dict[str, BytesIO]]:
+    """Read all uploaded submission attachments for upload to ODK Central."""
+    if not submission_files:
+        return None
+
+    file_data_dict = {
+        file.filename: BytesIO(await file.read()) for file in submission_files
+    }
+    return file_data_dict
+
+# Then we define our endpoint and variables
+# Imports here...
+@router.post("", response_model=CentralSubmissionOut) # response model for serialisation
+async def create_submission(
+    project_user: Annotated[ProjectUserDict, Depends(mapper)], # check auth
+    submission_xml: Annotated[str, Body(embed=True)], # embed=True puts var in FormData
+    device_id: Annotated[Optional[str], Body(embed=True)] = None,
+    submission_attachments: Annotated[
+        Optional[dict[str, BytesIO]], Depends(submission_deps.read_submission_uploads)
+    ] = None, # We use a dependency to get the uploaded file name and file data
+              # then wrap them in a dict {filename1: bytesio_data1, ...}
+):
+    # Say we want to write the file data somewhere
+    for file_name, file_data in submission_attachments.items():
+        temp_path = f"/tmp/{file_name}"
+        with open(temp_path, "wb") as temp_file:
+            temp_file.write(file_data.getvalue())
 ```
