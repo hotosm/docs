@@ -1,7 +1,7 @@
 repos:
   # Autoformat: YAML, JSON, Markdown, etc.
   - repo: https://github.com/pycontribs/mirrors-prettier
-    rev: v3.5.1
+    rev: v3.5.2
     hooks:
       - id: prettier
         args: [--ignore-unknown]
