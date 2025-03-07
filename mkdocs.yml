@@ -154,6 +154,12 @@ nav:
           - Technical Diagrams: decisions/0001-draw-io.md
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
+      - Kubernetes: https://github.com/hotosm/k8s-infra
+  - Other Sites:
+      - Toolbox: https://toolbox.hotosm.org
+      - Learn OSM: https://learnosm.org
+      - UAV Mapping Guidelines: https://uav-guidelines.openaerialmap.org
+      - PDC Training: https://hotosm.github.io/pdc-documentation
   - Our Development Practices: dev-practices.md
   - Code of Conduct: code-of-conduct.md
   - Privacy Policy: https://www.hotosm.org/privacy.html
