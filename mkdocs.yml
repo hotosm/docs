@@ -159,6 +159,7 @@ nav:
       - Toolbox: https://toolbox.hotosm.org
       - Learn OSM: https://learnosm.org
       - SDG Docs: https://sdgs.hotosm.org
+      - Data Protection For Mapping: https://github.com/hotosm/data_protection_project
       - UAV Mapping Guidelines: https://uav-guidelines.openaerialmap.org
       - PDC Training: https://hotosm.github.io/pdc-documentation
   - Our Development Practices: dev-practices.md
