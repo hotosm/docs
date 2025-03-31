@@ -125,6 +125,7 @@ nav:
       - Intro: dev-guide/intro.md
       - Managing Repos:
           - Git: dev-guide/repo-management/git.md
+          - Monorepos: dev-guide/repo-management/monorepos.md
           - Pre-Commit: dev-guide/repo-management/pre-commit.md
           - Version Control: dev-guide/repo-management/version-control.md
           - Dependency Management: dev-guide/repo-management/dependencies.md
