@@ -23,7 +23,8 @@ tools have attempted to replicate.
 ### tl;dr
 
 - Use `pyproject.toml` over `requirements.txt` and separate config files.
-- Use PDM to solve the depenedencies for your packages.
+- Use [uv](https://docs.astral.sh/uv) to solve the depenedencies for your
+  packages.
 - Lock with `>=` for libraries, and `==` for applications.
 - Upper bound caping should not be used, e.g. `<=x.x.x`.
 
@@ -39,9 +40,17 @@ suites (pytest), etc.
 
 ### Dependency Solvers
 
-[PDM](https://pdm-project.org/latest/) is recommended.
+[uv](https://docs.astral.sh/uv) is recommended.
 
-TODO add extra info.
+Their docs are quite comprensive, so we won't duplicate here.
+
+Main reasoning:
+
+- Full support for current PEP standards.
+- Replaces multiple tools in one (pip, pyenv, twine, venv).
+- Ridiculously fast dependency solving (seconds).
+- Very comprehensive feature set, active community, and full
+  time paid developers working on it (funded by astraL.sh).
 
 ### Locking Dependency Versions
 
