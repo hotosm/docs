@@ -31,6 +31,10 @@ website), and some older code using the BSD license or pubic domain.
   exploitation of open code, making any modifications open so the
   entire community can benefit.
 
+- The distinction between the two is that AGPL is used for code
+  distributed via a network (i.e. a website), whereas, GPL can be
+  used for all other code (e.g. PyPi packages).
+
 > Originally HOT was using BSD-2-Clause, which is more permissive
 > and not copyleft, meaning it is fully open but there is no protection
 > from commercial exploitation.
