@@ -7,7 +7,7 @@ Consistent styling and component functionality across all of our projects.
 Currently in design and prototype stage,
 but will be rolled out for all projects eventually.
 
-[link](https://hotosm.github.io/shared-ui-components)
+[link](https://github.com/hotosm/ui)
 
 ## Shared Map Components
 
