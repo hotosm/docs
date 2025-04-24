@@ -15,9 +15,8 @@ software](https://en.wikipedia.org/wiki/Free_software) culture, while
 following the collaborative development processes common for open
 source software projects.
 
-All of the software at HOT uses permissive licenses, commonly the
-GPLv3 for compiled code, the AGPLv3 for code shared over a network (a
-website), and some older code using the BSD license or pubic domain.
+All of the software at HOT uses permissive licenses, mostly the
+GPLv3 or AGPLv3, with some older code using the BSD license.
 
 ## The GPLv3 and AGPLv3
 
@@ -33,7 +32,7 @@ website), and some older code using the BSD license or pubic domain.
 
 - The distinction between the two is that AGPL is used for code
   distributed via a network (i.e. a website), whereas, GPL can be
-  used for all other code (e.g. PyPi packages).
+  used for all other code (e.g. PyPi packages, compiled code).
 
 > Originally HOT was using BSD-2-Clause, which is more permissive
 > and not copyleft, meaning it is fully open but there is no protection
@@ -49,7 +48,7 @@ website), and some older code using the BSD license or pubic domain.
 
 - Creative content, such as translations and designs are copyrighted
   different.
-- As with AGPL for code, this license is 'copyleft'
+- As with AGPL for code, this license is 'copyleft'.
 - It allows others modify and built upon our own, even for commercial
   purposes, as long as they **credit us** and
   **license their work under the same terms as CC-BY**.
