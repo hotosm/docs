@@ -80,7 +80,7 @@ documentation is as follows:
 - Features: A breakdown of each integral part of the product, their
   functionality and purpose
 - Benefits: How the features give users an edge over other similar
-  products. In other words, what’s in it for the user.
+  products. In other words, what's in it for the user.
 - Usage: A step by step process of how to use the product
 - Support / Frequently Asked Questions (about the product)
 - License
@@ -93,7 +93,7 @@ these are what I believe to be some of the most important.
 #### 2. Structure for Project Documentation
 
 Project documentation is the process of recording the key project
-details that are needed to implement a project. It’s like a roadmap of
+details that are needed to implement a project. It's like a roadmap of
 what the project is and all necessary information about what it
 entails. Main structural components are in the following order:
 
@@ -112,7 +112,7 @@ entails. Main structural components are in the following order:
 
 System documentation is an all-encompassing record of details of a
 full working system. It is very similar to the structure of product
-documentation but it’s usually on a wider scale. It may even include
+documentation but it's usually on a wider scale. It may even include
 some forms of product and process documentation within it. In addition
 to the structure of product documentation above, other key components
 it might include are: **architecture design**, **program source code**
@@ -146,7 +146,7 @@ added to and built upon.
    negates confusion for readers / users and just simplifies things.
 
 2. **Important features should be put in bold**. For example “select
-   from map” and ‘’ODK Collect” can be easily overlooked by readers if
+   from map” and 'ODK Collect' can be easily overlooked by readers if
    they aren't highlighted, even though they are important features.
 
 3. **Generally simplifying words and phrases**. This makes
@@ -156,8 +156,8 @@ added to and built upon.
    “ODK incorporates a new functionality” can become “ODK has brought in a new feature”.
 
    “Field Mappers select (or are allocated) individual tasks within a
-   project’s AOI” could be changed to “Field Mappers choose or are
-   given tasks that are part of a project’s Areas Of Interest.”
+   project's AOI” could be changed to “Field Mappers choose or are
+   given tasks that are part of a project's Areas Of Interest.”
 
 4. **Avoid long paragraphs**. Short paragraphs that pass a clear
    message are less clumsy and flustering for readers. Breaking down
@@ -165,8 +165,8 @@ added to and built upon.
    friendly.
 
 5. **Maintain a positive tone in the writing.**. Keep the text
-   positive and informative. Avoid words like ‘obviously’ and
-   ‘basically’, that may be interpreted as demeaning or
+   positive and informative. Avoid words like 'obviously' and
+   'basically', that may be interpreted as demeaning or
    condescending. Do not expect readers to have a certain amount of
    knowledge on specific aspects, break down everything that needs to
    be broken down.

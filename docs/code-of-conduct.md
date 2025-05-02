@@ -40,7 +40,7 @@ The HOT community principles are:
 - **Be respectful.** Not all of us will agree all the time, but disagreement is
   no excuse for poor behavior and poor manners. We might all experience some
   frustration now and then, but we cannot allow that frustration to turn into a
-  personal attack. It’s important to remember that a community where people feel
+  personal attack. It's important to remember that a community where people feel
   uncomfortable or threatened is not a productive one. Members of the HOT
   community should be respectful when dealing with other members as well as with
   people outside the HOT community.
@@ -79,9 +79,9 @@ The HOT community principles are:
   technical, happen easily and often. It is important that we resolve such
   disagreements and differing views constructively. At times it can be hard to
   appreciate a viewpoint that contradicts your own perceptions. Instead of pushing
-  back, try to understand where the other person is coming from, and don’t be
+  back, try to understand where the other person is coming from, and don't be
   afraid to ask questions. You can be most helpful if your own replies serve to
-  clarify, rather than to escalate an issue. Also don’t forget that it can be
+  clarify, rather than to escalate an issue. Also don't forget that it can be
   easy to make mistakes, and allow for the possibility that the mistake may have
   been yours. When this happens it is better to resolve the issue together, and
   to learn from the experience together, than to place blame.
