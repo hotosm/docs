@@ -115,6 +115,19 @@ This will:
 
 <!-- markdownlint-enable -->
 
+## Tool: uv
+
+- Using **workspaces** it's possible to setup your Python packages in a
+  [monorepo](./monorepos.md).
+- `uv` can be used to manage, and publish, each package independently.
+- To publish a specific package from a monorepo, go to the directory
+  where the `pyproject.toml` is located:
+
+  ```bash
+  uv --project=./packages/project1 build
+  uv --project=./packages/project1 publish
+  ```
+
 ## Creating Releases
 
 1. Update the version throughout the code ([Bumping a Version](#bumping-a-version)).
