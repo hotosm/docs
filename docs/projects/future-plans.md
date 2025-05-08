@@ -210,10 +210,16 @@ We have a lot of duplicated logic that could be centralised:
   the community, and validated.
 - Final data is uploaded to OSM.
 
-### Miscellaneous
+### QGIS Plugins: Easy Data Access
 
 - Now we have [raw-data-api-py](https://github.com/hotosm/raw-data-api-py),
   it would be quite simple to make a QGIS plugin for this. Users of QGIS
   could download the latest OSM data directly into their project.
 - We could also have a QGIS plugin to easily access data via the
   [Humanitarian Data Exchange](https://data.humdata.org)
+
+!!! note
+
+    Before embarking on these plugin ideas, we should first assess if there
+    is an actual need amongst communities first. Nothing worse than developing
+    something that isn't actually needed / wanted.
