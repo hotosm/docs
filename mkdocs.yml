@@ -108,7 +108,7 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/hotosm/raw-data-api/tree/master?tab=readme-ov-file#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
-      - Future Plans / Ideas:
+      - Future Plans / Ideas: projects/future-plans.md
   - Modularization:
       - Info: modules.md
       - Backend: modules/backend.md
