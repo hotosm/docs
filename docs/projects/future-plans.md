@@ -60,7 +60,7 @@ fun, and exciting, feel free to reach out about one of these ideas.
   as the login will likely be faciliated within a 'header' component,
   containing OAuth flows for various providers (OSM, Google, etc).
 
-## Kubernetes
+## Kubernetes: Cost & Efficiency
 
 - Every HOT tool should be hosted in a Kubernetes cluster.
 - This means every tool needs to be containerized and follow
@@ -73,7 +73,46 @@ fun, and exciting, feel free to reach out about one of these ideas.
 - Autoscaling capabilities when high load is detected for a tool,
   automatically spawning new containers as needed.
 
-## Shared UI Components
+## Community²
+
+### Building Tools With Community In Mind
+
+The full [end-to-end](#end-to-end) mapping flow is built with community
+mappers in mind. Empowering groups of people who wish to map the area
+they live in, and produce open data for the benefit of others.
+
+- **Tasking Manager**: collaborative mapping amongst remotely distributed
+  communities.
+- **FieldTM**: collaborative field mapping amongst local
+  mapping groups (e.g. regional OSM chapters, or local NGOs).
+- **DroneTM**: collective base imagery collection using affordable
+  drones distributed amongst a community of operators.
+- **fAIr**: a local geo-AI marketplace for the community to contribute
+  feature prediction models, collectively test and rank model effectiveness,
+  and assist the digitization effort with AI.
+- **OpenAerialMap**: a centralized repository for aerial imagery, collected
+  from DroneTM or other sources within the aerial imagery community.
+- **Export Tool**: simple data export from OpenStreetMap, as a free service
+  to the OSM community and mappers globally.
+
+### Software Dev Contributions
+
+- We want to continue to foster the growth of a software development
+  community around our tools.
+- We should be open, inclusive, and welcome contribution in
+  [many places](../become-a-contributor.md).
+- HOT has excellent connections to NGOs and organizations, plus a
+  very large community of active and engaged **mappers**, however,
+  we have limited software development capabilities due to the size
+  of our team!
+- With some of our tools being recognized as
+  [Digital Public Goods](https://www.un.org/digital-emerging-technologies/content/digital-public-goods),
+  support the development of them has huge potential for impact on the
+  end users in our priority regions.
+
+## Reduced Code Duplication
+
+### Shared UI Components
 
 See [this page](../modules/frontend.md) for more details.
 
@@ -96,7 +135,7 @@ See [this page](../modules/frontend.md) for more details.
   as part of the [HOTOSM UI](https://github.com/hotosm/ui) library. For
   example, a consistent header, footer, and sidebar for every tool.
 
-## Shared Map Components
+### Shared Map Components
 
 See [this page](../modules/frontend.md) for more details.
 
@@ -114,7 +153,7 @@ See [this page](../modules/frontend.md) for more details.
   is anticipated that community support would be high for this, being entirely
   framework agnostic and embeddable anywhere.
 
-## Python Modules (Backend)
+### Python Modules (Backend)
 
 See [this page](../modules/backend.md) for more details.
 
@@ -132,7 +171,9 @@ We have a lot of duplicated logic that could be centralised:
   plug the XLSForms into FieldTM, for easy OSM-centric mapping of an area
   (to improve the map tags available, then push to OSM).
 
-## AI / LLMs
+## Other Ideas
+
+### AI / LLMs
 
 - OSM tag extraction from images or free text. Some work has started
   on this in [osm-tagger](https://github.com/hotosm/osm-tagger).
@@ -140,13 +181,13 @@ We have a lot of duplicated logic that could be centralised:
   area. The LLM can provide commands / ways to get this data, either
   via raw-data-api, overpass, or other available tools.
 
-## Easy OSM Conflation
+### Easy OSM Conflation
 
 - Various tools in our stack need to contribute data back to OSM, merging
   it with the existing data present there (conflation).
 - There are two possible approaches we could take, listed below.
 
-### Conflation Web Component
+#### Conflation Web Component
 
 - A standalone 'conflation' web component that could be embedded in any
   tool.
@@ -160,7 +201,7 @@ We have a lot of duplicated logic that could be centralised:
 - If features came from FieldTM are **field verified** they should
   take precedence, and will be tagged as such in OSM.
 
-### Tasking Manager Conflation
+#### Tasking Manager Conflation
 
 - Use Tasking Manager as a collaborative conflation tool.
 - Create a new 'conflation' project type.
@@ -169,7 +210,7 @@ We have a lot of duplicated logic that could be centralised:
   the community, and validated.
 - Final data is uploaded to OSM.
 
-## Other Ideas
+### Miscellaneous
 
 - Now we have [raw-data-api-py](https://github.com/hotosm/raw-data-api-py),
   it would be quite simple to make a QGIS plugin for this. Users of QGIS
