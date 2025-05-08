@@ -27,12 +27,12 @@ See [this page](../modules/frontend.md) for more details.
 - We don't have the resources to implement a very in-depth design
   system across all of our tools.
 - We also have existing tech debt due to development velocity and
-  no centralised design from the start (a need to move quickly...).
-- The proposed solution is to converse around a single **web component**
+  no centralized design from the start (a need to move quickly...).
+- The proposed solution is to converge around a single **web component**
   library, such as [Web Awesome](https://backers.webawesome.com).
 - Web Awesome is free to use / open-source, has strong backers, and
   would allow for a consistent style across all tools, regardless of
-  framework used (framework agnostic, web standards).
+  framework used (framework-agnostic, web standards).
 - It should also improve maintainability, as part of the promise of web
   components, is minimal requirement to upgrade into the future, as the
   World Wide Web Consortium (W3C) does not break existing web functionality.
@@ -49,7 +49,7 @@ See [this page](../modules/frontend.md) for more details.
 
 - Historically we may have used OpenLayers and Leaflet in some places.
   This should be consolidated around MapLibre.
-- We have many implementation of MapLibre in our different tools. Ideally
+- We have many implementations of MapLibre in our different tools. Ideally
   we can use the same wrapper implementation, improving developer experience
   and speed of development.
 - **Option 1**: contribute to an existing established tool, that can compile
@@ -67,7 +67,7 @@ See [this page](../modules/backend.md) for more details.
 
 We have a lot of duplicated logic that could be centralised:
 
-- Parsing of user uploaded GeoJSON AOIs (no as simple as it
+- Parsing of user uploaded GeoJSON AOIs (not as simple as it
   sounds to do right).
   [geojson-aoi-parser](https://github.com/hotosm/geojson-aoi-parser)
 - Download of OSM data via raw-data-api. Every tool doing this should
@@ -97,14 +97,14 @@ We have a lot of duplicated logic that could be centralised:
 
 - A standalone 'conflation' web component that could be embedded in any
   tool.
-- It will load various dataset sources: OSM, custom data, Overture, etc.
+- It will load various data sources: OSM, custom data, Overture, etc.
 - Various imagery sources can be loaded in. Ideally high-resolution drone
   or recent open satellite imagery.
 - The UI allows the user to select the best geometry / tags for a given
   feature, based on the available imagery.
 - The feature is validated by others (optional), then uploaded to OSM
   as the new source of truth.
-- If features came from FieldTM are are **field verified** they should
+- If features came from FieldTM are **field verified** they should
   take precedence, and will be tagged as such in OSM.
 
 ### Tasking Manager Conflation
@@ -112,7 +112,7 @@ We have a lot of duplicated logic that could be centralised:
 - Use Tasking Manager as a collaborative conflation tool.
 - Create a new 'conflation' project type.
 - Users load the imagery, and datasets required.
-- Tasking allow the conflation process to be subdivided amongst
+- Tasking allows the conflation process to be subdivided amongst
   the community, and validated.
 - Final data is uploaded to OSM.
 
