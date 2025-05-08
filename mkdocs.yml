@@ -108,6 +108,7 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/hotosm/raw-data-api/tree/master?tab=readme-ov-file#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
+      - Future Plans / Ideas:
   - Modularization:
       - Info: modules.md
       - Backend: modules/backend.md
@@ -116,10 +117,11 @@ nav:
           - UI Components: https://hotosm.github.io/ui/
       - Python Modules:
           - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
-          - OSM RawData: https://hotosm.github.io/osm-rawdata/
-          - OSM Merge: https://hotosm.github.io/osm-merge/
+          - raw-data-api-py: https://hotosm.github.io/raw-data-api-py/
+          - pg-nearest-city: https://hotosm.github.io/pg-nearest-city/
+          - geojson-aoi-parser: https://hotosm.github.io/geojson-aoi-parser/
           - OSM Login: https://hotosm.github.io/osm-login-python/
-          - FMTM Splitter: https://hotosm.github.io/fmtm-splitter/
+          - FieldTM Splitter: https://hotosm.github.io/fmtm-splitter/
           - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
   - Developer Guide:
       - Intro: dev-guide/intro.md
