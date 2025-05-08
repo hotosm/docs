@@ -210,6 +210,37 @@ We have a lot of duplicated logic that could be centralised:
   the community, and validated.
 - Final data is uploaded to OSM.
 
+### Embeddable Web Components
+
+Three projects spring to mind, where it would be really neat to have a small
+lightweight web component, that could be embedded into any web tool / web page:
+
+- [GCP Editor](https://github.com/hotosm/gcp-editor): developed for DroneTM,
+  as a way to mark Ground Control Points on to captured images for more
+  accurate georeferencing of the final imagery mosaic.
+- [FieldTM Splitter](https://github.com/hotosm/fmtm-splitter/issues/66): this
+  has yet to be developed, but the idea would be to have a self-contained
+  splitting component, where an AOI can be divided based on certain criteria
+  into task area. All of our tasking-manager type tools could benefit from this,
+  in addition to organization wishing to subdivide areas for field activities.
+- [OSM-Tagger](https://github.com/hotosm/osm-tagger): development of a web
+  component is underway that would receive images or text from a user, and extract
+  out potential OSM tags that could be applicable to the final dataset.
+
+In general, it's great to have a completely standalone web component, with no
+requirement to call an API.
+
+This could be achievable by using JavaScript libs, WebAssembly, and awesome
+projects such as [PGLite](https://pglite.dev/), an embedded Postgres database
+in the browser.
+
+For example, OSM-Tagger will probably always rely on an external API due to
+it's reliance on Python Machine Learning libraries (this may change in future
+as JavaScript / Web Machine Learning libraries improve).
+
+But FieldTM Splitter could utilise PGLite to do the SQL splitting algorithms
+entirely in the web browser.
+
 ### QGIS Plugins: Easy Data Access
 
 - Now we have [raw-data-api-py](https://github.com/hotosm/raw-data-api-py),
