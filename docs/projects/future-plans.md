@@ -60,21 +60,6 @@ fun, and exciting, feel free to reach out about one of these ideas.
   as the login will likely be faciliated within a 'header' component,
   containing OAuth flows for various providers (OSM, Google, etc).
 
-## Kubernetes: Cost & Efficiency
-
-- Every HOT tool should be hosted in a Kubernetes cluster.
-- This means every tool needs to be containerized and follow
-  a [12factor](https://12factor.net) app development approach.
-- Tools should be deployed using a GitOps approach, via ArgoCD.
-  This means the container repositories for each tool are scanned,
-  and when a new version is uploaded, it is automatically deployed.
-- Load is shared amongst tools on cluster nodes, reducing overall
-  costs of running multiple separate servers.
-- Autoscaling capabilities when high load is detected for a tool,
-  automatically spawning new containers as needed.
-
-## Community²
-
 ### Building Tools With Community In Mind
 
 The full [end-to-end](#end-to-end) mapping flow is built with community
@@ -95,7 +80,20 @@ they live in, and produce open data for the benefit of others.
 - **Export Tool**: simple data export from OpenStreetMap, as a free service
   to the OSM community and mappers globally.
 
-### Software Dev Contributions
+## Kubernetes: Cost & Efficiency
+
+- Every HOT tool should be hosted in a Kubernetes cluster.
+- This means every tool needs to be containerized and follow
+  a [12factor](https://12factor.net) app development approach.
+- Tools should be deployed using a GitOps approach, via ArgoCD.
+  This means the container repositories for each tool are scanned,
+  and when a new version is uploaded, it is automatically deployed.
+- Load is shared amongst tools on cluster nodes, reducing overall
+  costs of running multiple separate servers.
+- Autoscaling capabilities when high load is detected for a tool,
+  automatically spawning new containers as needed.
+
+## Growing Our Software Dev Community
 
 - We want to continue to foster the growth of a software development
   community around our tools.
@@ -109,6 +107,10 @@ they live in, and produce open data for the benefit of others.
   [Digital Public Goods](https://www.un.org/digital-emerging-technologies/content/digital-public-goods),
   support the development of them has huge potential for impact on the
   end users in our priority regions.
+- To facilitate this, we need to ensure that potential for contribution
+  is well publicized and common knowledge. The onboarding process should
+  be easy for new developers, plus we should be responsive and give back
+  to users who continually demonstate their willingness to contribute.
 
 ## Reduced Code Duplication
 
