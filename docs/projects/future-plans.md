@@ -7,6 +7,59 @@ projects.
 If you are software developer and wish to contribute to something new,
 fun, and exciting, feel free to reach out about one of these ideas.
 
+## End-To-End
+
+- We are hard at work building a full end-to-end mapping workflow, from
+  our suite of available tools.
+- A conceptual diagram of this can be seen on the
+  [home page](https://docs.hotosm.org/#the-hot-ecosystem-of-tools)
+  of this site.
+- The whole idea is to allow a community to either:
+  - Create a map, starting from absolutely nothing using the entire
+    suite of tools. Imagery --> digitize --> field map --> export.
+  - Choose a subset of our tools to fill the data gaps missing for
+    their map. For example, maybe they have great digitized features
+    already, but need to field-verify them and add extra tag info.
+
+### E2E Site
+
+- We need a centralized entrypoint for E2E mapping.
+- Work a website to achieve this was started in
+  [this project](https://hotosm.github.io/e2e-mapping), however,
+  capacity has been limited to continue it!
+- Eventually, it is envisioned that we will have a place that users
+  can access, to:
+  - Explain what E2E is, and what is possible.
+  - Showcase the tools used in E2E and their capabilities.
+  - Some hand-holding tutorials to easily link together all the tools
+    required to successfully carry out an E2E mapping project.
+- The key part here is an **interactive** tutorial, where the user can
+  start by drawing an AOI for where they need to map, then each step
+  will be explained, with helper buttons and visualisations to assist
+  in the E2E mapping journey.
+
+### Shared Login
+
+- All of our tools need a shared login mechanism.
+- Currently every tool has separate login, so a user visiting one tool
+  needs to log in again when accessing another in the E2E suite.
+- A very **nice to have** feature would be seamless login between our
+  entire suite of tools:
+  - **Simple**: the same auth cookie work across all apps, but user
+    information is managed per-app still. Users are seamlessly logged
+    in when moving between apps. This would be possible as every app
+    shares the domain hotosm.org.
+  - **Hard**: the authentication is managed somewhere centrally. The
+    user logs in and user details are stored in a centralised 'HOT' database.
+    The auth details are then passed to each application, but the app
+    doesn't store user data. This one is technically difficult and I
+    wouldn't advocate for it (we are essentially creating our own
+    OAuth provider). In this case I think it's better to centralise
+    around OSM auth.
+- This links in to [shared ui components](#shared-ui-components) below,
+  as the login will likely be faciliated within a 'header' component,
+  containing OAuth flows for various providers (OSM, Google, etc).
+
 ## Kubernetes
 
 - Every HOT tool should be hosted in a Kubernetes cluster.
