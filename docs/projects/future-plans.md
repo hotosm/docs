@@ -9,21 +9,22 @@ fun, and exciting, feel free to reach out about one of these ideas.
 
 ## End-To-End
 
-- We are hard at work building a full end-to-end mapping workflow, from
+- We are hard at work building a full end-to-end mapping workflow, leveraging
   our suite of available tools.
 - A conceptual diagram of this can be seen on the
   [home page](https://docs.hotosm.org/#the-hot-ecosystem-of-tools)
   of this site.
-- The whole idea is to allow a community to either:
-  - Create a map, starting from absolutely nothing using the entire
-    suite of tools. Imagery --> digitize --> field map --> export.
+- The goal is to allow the mapping commmunity to go trhough the entire mapping proces through community ownership and tools.
+  This can include: 
+  - Creating a map, starting from absolutely nothing using the entire
+    suite of tools. Imagery --> digitize (extract data) --> field map --> export.
   - Choose a subset of our tools to fill the data gaps missing for
     their map. For example, maybe they have great digitized features
     already, but need to field-verify them and add extra tag info.
 
 ### E2E Site
 
-- We need a centralized entrypoint for E2E mapping.
+- We need a centralized entrypoint for E2E mapping to make the workflow more accessilbe.
 - Work a website to achieve this was started in
   [this project](https://hotosm.github.io/e2e-mapping), however,
   capacity has been limited to continue it!
