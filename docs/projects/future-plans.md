@@ -7,7 +7,7 @@ projects.
 If you are software developer and wish to contribute to something new,
 fun, and exciting, feel free to reach out about one of these ideas.
 
-## End-To-End
+## End-To-End concept
 
 - We are hard at work building a full end-to-end mapping workflow, leveraging
   our suite of available tools.
@@ -15,6 +15,7 @@ fun, and exciting, feel free to reach out about one of these ideas.
   [home page](https://docs.hotosm.org/#the-hot-ecosystem-of-tools)
   of this site.
 - The goal is to allow the mapping commmunity to go trhough the entire mapping proces through community ownership and tools.
+  Tools in the end-to-end mapping worklfow include a spectrum of solutions one can use depending on the need, not necessearily full set of tools.
   This can include: 
   - Creating a map, starting from absolutely nothing using the entire
     suite of tools. Imagery --> digitize (extract data) --> field map --> export.
@@ -22,24 +23,23 @@ fun, and exciting, feel free to reach out about one of these ideas.
     their map. For example, maybe they have great digitized features
     already, but need to field-verify them and add extra tag info.
 
-### E2E Site
+### A centralized E2E Site 
 
 - We need a centralized entrypoint for E2E mapping to make the workflow more accessilbe.
 - Work a website to achieve this was started in
   [this project](https://hotosm.github.io/e2e-mapping), however,
-  capacity has been limited to continue it!
-- Eventually, it is envisioned that we will have a place that users
+  capacity has been limited to continue it so far.
+- We envision to have a central place that users
   can access, to:
-  - Explain what E2E is, and what is possible.
+  - Understand what E2E is, and what it enables.
   - Showcase the tools used in E2E and their capabilities.
   - Some hand-holding tutorials to easily link together all the tools
     required to successfully carry out an E2E mapping project.
-- The key part here is an **interactive** tutorial, where the user can
-  start by drawing an AOI for where they need to map, then each step
-  will be explained, with helper buttons and visualisations to assist
+    For the latter, we target an **interactive** tutorial, where the user can  start by drawing an AOI for where they need to map,
+  then each step will be explained, with helper buttons and visualisations to assist
   in the E2E mapping journey.
 
-### Shared Login
+### Shared Login accross tools
 
 - All of our tools need a shared login mechanism.
 - Currently every tool has separate login, so a user visiting one tool
@@ -67,21 +67,24 @@ The full [end-to-end](#end-to-end) mapping flow is built with community
 mappers in mind. Empowering groups of people who wish to map the area
 they live in, and produce open data for the benefit of others.
 
+
+- **DroneTM**: collective base imagery collection using affordable
+  drones distributed amongst a community of operators.
+- **OpenAerialMap**: a centralized repository for aerial imagery, collected
+  from DroneTM or other sources within the aerial imagery community.
+- **fAIr**: a local geo-AI marketplace for the community to contribute
+  feature prediction models, collectively test and rank model effectiveness,
+  and assist the digitization effort with AI.
 - **Tasking Manager**: collaborative mapping amongst remotely distributed
   communities.
 - **FieldTM**: collaborative field mapping amongst local
   mapping groups (e.g. regional OSM chapters, or local NGOs).
-- **DroneTM**: collective base imagery collection using affordable
-  drones distributed amongst a community of operators.
-- **fAIr**: a local geo-AI marketplace for the community to contribute
-  feature prediction models, collectively test and rank model effectiveness,
-  and assist the digitization effort with AI.
-- **OpenAerialMap**: a centralized repository for aerial imagery, collected
-  from DroneTM or other sources within the aerial imagery community.
 - **Export Tool**: simple data export from OpenStreetMap, as a free service
   to the OSM community and mappers globally.
 
-## Kubernetes: Cost & Efficiency
+  Each of these tools needs continuous improvement. User roadmaps are available on the respective github pages
+
+##  Cost-efficient and optimized architecture
 
 - Every HOT tool should be hosted in a Kubernetes cluster.
 - This means every tool needs to be containerized and follow
