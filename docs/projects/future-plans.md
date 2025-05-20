@@ -84,19 +84,6 @@ they live in, and produce open data for the benefit of others.
 
   Each of these tools needs continuous improvement. User roadmaps are available on the respective github pages
 
-##  Cost-efficient and optimized architecture
-
-- Every HOT tool should be hosted in a Kubernetes cluster.
-- This means every tool needs to be containerized and follow
-  a [12factor](https://12factor.net) app development approach.
-- Tools should be deployed using a GitOps approach, via ArgoCD.
-  This means the container repositories for each tool are scanned,
-  and when a new version is uploaded, it is automatically deployed.
-- Load is shared amongst tools on cluster nodes, reducing overall
-  costs of running multiple separate servers.
-- Autoscaling capabilities when high load is detected for a tool,
-  automatically spawning new containers as needed.
-
 ## Growing Our Software Dev Community
 
 - We want to continue to foster the growth of a software development
@@ -115,6 +102,19 @@ they live in, and produce open data for the benefit of others.
   is well publicized and common knowledge. The onboarding process should
   be easy for new developers, plus we should be responsive and give back
   to users who continually demonstate their willingness to contribute.
+
+  ##  Cost-efficient and optimized architecture
+
+- Every HOT tool should be hosted in a Kubernetes cluster.
+- This means every tool needs to be containerized and follow
+  a [12factor](https://12factor.net) app development approach.
+- Tools should be deployed using a GitOps approach, via ArgoCD.
+  This means the container repositories for each tool are scanned,
+  and when a new version is uploaded, it is automatically deployed.
+- Load is shared amongst tools on cluster nodes, reducing overall
+  costs of running multiple separate servers.
+- Autoscaling capabilities when high load is detected for a tool,
+  automatically spawning new containers as needed.
 
 ## Reduced Code Duplication
 
