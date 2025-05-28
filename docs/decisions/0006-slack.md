@@ -39,6 +39,10 @@ proprietary nature and closed ecosystem present issues.
 Migrating to an open platform would align better with our values, but the migration
 cost and risk of fracturing our community are currently too high.
 
+In 2025, we will be revisiting the use of Slack and possible open source alternatives
+(as Slack changed their subscription model and will be costly to maintain with
+many users).
+
 ## Consequences
 
 - ✅ Good, because our community is already established on Slack.
