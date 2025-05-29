@@ -21,6 +21,8 @@ Requirements include:
 
 ## Decision Outcome
 
+In reality, different tools cover different use cases.
+
 We adopted a hybrid approach using oha for simple benchmarks and
 k6 for more advanced, scripted load tests.
 
@@ -30,6 +32,10 @@ but with a simpler interface and better reporting).
 k6 is a developer-centric load testing tool that supports JavaScript
 scripting for complex test scenarios, integrates well with CI pipelines,
 and produces meaningful metrics.
+
+Locust is also an acceptable choice if Python is preferred, CI-integration
+is not a priority, and complex user flows need to be simulated (such as
+authentication and other multi-step workflows).
 
 ## Consequences
 
