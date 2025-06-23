@@ -315,7 +315,6 @@ fastapi-project
 ##### 2. Use the Correct Response Type
 
 - FastAPI has many in-built Response types:
-
   - HTMLResponse: this would be useful paired with a HTMX frontend.
   - JSONResponse: to return a JSON.
   - ORJSONResponse: a faster JSON encoder. If you need to encode a large number
@@ -326,7 +325,6 @@ fastapi-project
   - StreamingResponse: better for serving large file in chunks.
 
 - Don't forget to include the correct HTTP `status_code` with your response:
-
   - 200: Success, used as the final return for most endpoints.
   - 204: Success, but no response data necessary.
   - 400: Bad request, usually malformed syntax or incorrect HTTP method (POST/GET).
