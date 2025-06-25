@@ -16,14 +16,14 @@ fun, and exciting, feel free to reach out about one of these ideas.
   of this site.
 - The goal is to allow the mapping commmunity to go trhough the entire mapping proces through community ownership and tools.
   Tools in the end-to-end mapping worklfow include a spectrum of solutions one can use depending on the need, not necessearily full set of tools.
-  This can include: 
+  This can include:
   - Creating a map, starting from absolutely nothing using the entire
     suite of tools. Imagery --> digitize (extract data) --> field map --> export.
   - Choose a subset of our tools to fill the data gaps missing for
     their map. For example, maybe they have great digitized features
     already, but need to field-verify them and add extra tag info.
 
-### A centralized E2E Site 
+### A centralized E2E Site
 
 - We need a centralized entrypoint for E2E mapping to make the workflow more accessilbe.
 - Work a website to achieve this was started in
@@ -35,9 +35,9 @@ fun, and exciting, feel free to reach out about one of these ideas.
   - Showcase the tools used in E2E and their capabilities.
   - Some hand-holding tutorials to easily link together all the tools
     required to successfully carry out an E2E mapping project.
-    For the latter, we target an **interactive** tutorial, where the user can  start by drawing an AOI for where they need to map,
-  then each step will be explained, with helper buttons and visualisations to assist
-  in the E2E mapping journey.
+    For the latter, we target an **interactive** tutorial, where the user can start by drawing an AOI for where they need to map,
+    then each step will be explained, with helper buttons and visualisations to assist
+    in the E2E mapping journey.
 
 ### Shared Login accross tools
 
@@ -66,7 +66,6 @@ fun, and exciting, feel free to reach out about one of these ideas.
 The full [end-to-end](#end-to-end) mapping flow is built with community
 mappers in mind. Empowering groups of people who wish to map the area
 they live in, and produce open data for the benefit of others.
-
 
 - **DroneTM**: collective base imagery collection using affordable
   drones distributed amongst a community of operators.
@@ -103,7 +102,7 @@ they live in, and produce open data for the benefit of others.
   be easy for new developers, plus we should be responsive and give back
   to users who continually demonstate their willingness to contribute.
 
-  ##  Cost-efficient and optimized architecture
+  ## Cost-efficient and optimized architecture
 
 - Every HOT tool should be hosted in a Kubernetes cluster.
 - This means every tool needs to be containerized and follow
