@@ -1,5 +1,6 @@
 # Use [tool-name]-[component]-[env].[cluster-namespace].hotosm.org for
-  kubernetes namespace
+
+kubernetes namespace
 
 ## Context and Problem Statement
 
@@ -62,7 +63,7 @@ We have a list of tools already in use as required AWS tags: `oam`,
 `tasking-manager`, `fmtm`, `dronetm`, `fair`, `export-tool`, `raw-data-api`. We
 also have a list of accepted environment tags: `dev`, `staging`, `production`,
 `demo`, `testing`. Example components could be `api`, `frontend`, `backend`,
-`uploader`, `scheduler`, `database`, or `storage`. 
+`uploader`, `scheduler`, `database`, or `storage`.
 
 ### Consequences
 
