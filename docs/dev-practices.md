@@ -312,7 +312,7 @@ Example:
 - Partly used to document the design decisions we have taken.
 - Tag people specially for input, as it makes them more likely to add ideas.
 - We can also use these for the staging server tests on each release cycle,
-  e.g. <https://github.com/hotosm/fmtm/discussions/1335>
+  e.g. <https://github.com/hotosm/field-tm/discussions/1335>
 
 #### Release Notes
 
@@ -323,9 +323,9 @@ Example:
     ```md
     <details>
       <summary>Technical Summary</summary>
-        * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/fmtm/pull/1555
-        * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/fmtm/pull/1559
-        * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/fmtm/pull/1557
+        * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/field-tm/pull/1555
+        * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/field-tm/pull/1559
+        * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/field-tm/pull/1557
     </details>
     ```
 
