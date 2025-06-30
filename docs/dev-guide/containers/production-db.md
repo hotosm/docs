@@ -40,7 +40,8 @@ helm upgrade --install cnpg \
 ### Install Kubectl Plugin
 
 - To simplify management of databases, it's best to install the cnpg plugin.
-- Details [here](https://cloudnative-pg.io/documentation/1.20/kubectl-plugin)
+- Details on their
+  [documentation site](https://cloudnative-pg.io/documentation/1.20/kubectl-plugin)
 - This allows us to easily do maintenance tasks such as backup, re-scale
   replicas, delete specific replicas, upgrade the db image, etc.
 
@@ -134,8 +135,8 @@ Notes:
 - This will use the latest PostGIS version.
   - For Postgres 16 this is PostGIS 3.4.
 - For testing, the `backup` section can be removed.
-- Full API reference for options (v1.21)
-  [here](https://cloudnative-pg.io/documentation/1.21/cloudnative-pg.v1/)
+- Full API reference for options (v1.21) on the
+  [docs site](https://cloudnative-pg.io/documentation/1.21/cloudnative-pg.v1/)
 
 Alternatively, generate the spec using the `cnpg` plugin:
 

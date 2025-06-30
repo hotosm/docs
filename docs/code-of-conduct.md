@@ -140,7 +140,7 @@ means of enforcement for our community standards. You start it by emailing
 [complaints@hotosm.org](mailto:compaints@hotosm.org) with a description of
 your complaint, your name, and the name of the offending party.
 All complaints will be considered confidential.
-The full process is described [here][13] .
+The full process is [described here][13] .
 
 [1]: https://www.hotosm.org/code-of-conduct
 [3]: https://adainitiative.org/2014/02/18/howto-design-a-code-of-conduct-for-your-community/
