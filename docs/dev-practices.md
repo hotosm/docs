@@ -129,13 +129,11 @@ Management of tasks and code via Github.
 - Label / tag issues where appropriate, for example as `backend` or `frontend`.
 
 - Priorities can be assigned:.
-
   - `priority:critical`: blocking current tasks or user workflow.
   - `priority:high`: should be addressed as a priority.
   - `priority:low`: backlog of tasks that will be addressed in time.
 
 - Difficulty can be **estimated** (and may not be accurate):
-
   - `effort:low`: small task, likely a few hours.
   - `effort:medium`: larger task, may take a day or two.
   - `effort:high`: a broader scope task with unclear timeline.
@@ -143,7 +141,6 @@ Management of tasks and code via Github.
     > If there are, consider breaking them down to smaller tasks.
 
 - The testing status can be tracked:
-
   - `testing:ready`: the issue has been fixed and is ready to test.
   - `testing:fail`: the issue was not fixed as intended and requires additional
     work from the developer.
