@@ -1,5 +1,6 @@
 # Use [component]-[env].[tool].[cluster-namespace].hotosm.org for kubernetes
-  namespace
+
+namespace
 
 ## Context and Problem Statement
 
