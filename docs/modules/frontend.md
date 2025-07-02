@@ -29,6 +29,18 @@ The plan would be to support various cloud optimised geo data formats:
 - GeoParquet
 - PMTiles
 
+## GCP Editor
+
+HOT's [GCP Editor](https://github.com/hotosm/gcp-editor) is a web component
+that can be embedded into any web application.
+
+It's purpose is to mark Ground Control Points on collected aerial imagery,
+assisting the processing workflow for accurately matching collected
+imagery to known coordinates in the field.
+
+The goal is to work alongside the OpenDroneMap team and possibly have this
+as a shared component amongst tools.
+
 ## QR Codes
 
 [Reads and decodes](https://github.com/hotosm/qrcodes) base64 and zlib
