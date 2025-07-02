@@ -1,6 +1,4 @@
-# Use [component]-[env].[tool].[cluster-namespace].hotosm.org for kubernetes
-
-namespace
+# Use pattern convention for kubernetes namespace subdomains
 
 ## Context and Problem Statement
 
@@ -57,17 +55,39 @@ frontend as _oam.hotosm.org_.
 
 For the kubernetes namespace we will go with the following naming scheme:
 
-> [component]-[env].[tool].[cluster-namespace].hotosm.org
+> [tool-name]-[component]-[env].[cluster-namespace].[cluster-name].hotosm.org
 
-Our cluster namespace will be "k8s-prod" (including the environment), so the OAM
-eoAPI will be _backend-prod.eoapi.k8s-prod.hotosm,org_ which will resolve
-to _oam-api.hotosm.org_.
+Our cluster name will be "k8s-prod" (including the environment), so the OAM
+eoAPI will be _eoapi-backend-prod.imagery-services.k8s-prod.hotosm.org_ which
+will resolve to _oam-api.hotosm.org_.
 
-We have a list of tools already in use as required AWS tags: `oam`,
-`tasking-manager`, `fmtm`, `dronetm`, `fair`, `export-tool`, `raw-data-api`. We
-also have a list of accepted environment tags: `dev`, `staging`, `production`,
-`demo`, and `testing`. Example components could be `api`, `frontend`,
-`backend`, `uploader`, `scheduler`, `worker`, `database`, or `storage`.
+Cluster namespaces will use project tag values whenever possible. If not, tool
+tag value or a unique identifier will also work.
+
+The deepest subdomain `[toolname]-[component]-[env]` has some flexibility in
+naming for brevity and clarity of purpose. No need to specify `[tool-name]` if
+it's the same as the namespace, or `[env]` if there is never going to be a
+second environment. Some examples:
+
+- odk-frontend-prod.field-tm.k8s-prod.hotosm.org
+- api-dev.field-tm.k8s-prod.hotosm.org
+- eoapi-backend-prod.imagery-services.k8s-prod.hotosm.org
+- oam-uploader-dev.imagery-services.k8s-prod.hotosm.org
+- fastapi-prod.tasking-manager.k8s-prod.hotosm.org
+
+Below is the list of accepted `project` and `tool` tags to be used for cluster
+namespace and tool naming. We also have a list of accepted environment tags:
+`dev`, `staging`, `production`, `demo`, and `testing`. Example components could
+be `api`, `frontend`, `backend`, `uploader`, `scheduler`, `worker`, `database`,
+or `storage`.
+
+| Project Tags     | Tool Tags                                 |
+| ---------------- | ----------------------------------------- |
+| imagery-services | oam, marblecutter, eoapi                  |
+| tasking-manager  | tasking-manager, hot-dataservice          |
+| fmtm             | fieldtm, odk                              |
+| fair, fAIr       | fair, fair-api, fair-predictor            |
+| map-data-access  | raw-data-api, overture, export-tool, umap |
 
 ### Consequences
 
