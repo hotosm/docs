@@ -149,4 +149,4 @@ solvers: **>=**.
 > An example of a library that should probably be capped is GDAL.
 
 Some more in depth technical reading can be found
-[here](https://iscinumpy.dev/post/bound-version-constraints/#tldr).
+[in this useful breakdown](https://iscinumpy.dev/post/bound-version-constraints/#tldr).

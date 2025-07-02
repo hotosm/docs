@@ -5,6 +5,12 @@
 A way to consistently implement OSM login (via underlying OAuth2) in
 our applications.
 
+## [Drone Flightplan](https://github.com/hotosm/drone-flightplan)
+
+A module within DroneTM that can generate flightplans for various
+drone models standalone. Useful to integrating into workflows
+outside of DroneTM, such as within QGIS plugins.
+
 ## [PG Nearest City](https://hotosm.github.io/pg-nearest-city)
 
 A very simple tool for reverse-geocoding points to the nearest

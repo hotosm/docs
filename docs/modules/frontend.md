@@ -7,7 +7,7 @@ Consistent styling and component functionality across all of our projects.
 Currently in design and prototype stage,
 but will be rolled out for all projects eventually.
 
-[link](https://github.com/hotosm/ui)
+[link to the related docs](https://github.com/hotosm/ui)
 
 ## Shared Map Components
 
@@ -28,6 +28,18 @@ The plan would be to support various cloud optimised geo data formats:
 - flatgeobuf
 - GeoParquet
 - PMTiles
+
+## GCP Editor
+
+HOT's [GCP Editor](https://github.com/hotosm/gcp-editor) is a web component
+that can be embedded into any web application.
+
+It's purpose is to mark Ground Control Points on collected aerial imagery,
+assisting the processing workflow for accurately matching collected
+imagery to known coordinates in the field.
+
+The goal is to work alongside the OpenDroneMap team and possibly have this
+as a shared component amongst tools.
 
 ## QR Codes
 

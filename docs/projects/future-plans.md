@@ -7,15 +7,17 @@ projects.
 If you are software developer and wish to contribute to something new,
 fun, and exciting, feel free to reach out about one of these ideas.
 
-## End-To-End concept
+## End-To-End Concept
 
 - We are hard at work building a full end-to-end mapping workflow, leveraging
   our suite of available tools.
 - A conceptual diagram of this can be seen on the
   [home page](https://docs.hotosm.org/#the-hot-ecosystem-of-tools)
   of this site.
-- The goal is to allow the mapping commmunity to go trhough the entire mapping proces through community ownership and tools.
-  Tools in the end-to-end mapping worklfow include a spectrum of solutions one can use depending on the need, not necessearily full set of tools.
+- The goal is to allow the mapping commmunity to go trhough the entire
+  mapping proces through community ownership and tools.
+  Tools in the end-to-end mapping worklfow include a spectrum of solutions one
+  can use depending on the need, not necessearily full set of tools.
   This can include:
   - Creating a map, starting from absolutely nothing using the entire
     suite of tools. Imagery --> digitize (extract data) --> field map --> export.
@@ -35,7 +37,9 @@ fun, and exciting, feel free to reach out about one of these ideas.
   - Showcase the tools used in E2E and their capabilities.
   - Some hand-holding tutorials to easily link together all the tools
     required to successfully carry out an E2E mapping project.
-    For the latter, we target an **interactive** tutorial, where the user can start by drawing an AOI for where they need to map,
+    For the latter, we target an **interactive** tutorial, where the user
+    can start by drawing an AOI for where they need to map,
+
     then each step will be explained, with helper buttons and visualisations to assist
     in the E2E mapping journey.
 
@@ -63,7 +67,7 @@ fun, and exciting, feel free to reach out about one of these ideas.
 
 ### Building Tools With Community In Mind
 
-The full [end-to-end](#end-to-end) mapping flow is built with community
+The full [end-to-end](#end-to-end-concept) mapping flow is built with community
 mappers in mind. Empowering groups of people who wish to map the area
 they live in, and produce open data for the benefit of others.
 
@@ -81,7 +85,8 @@ they live in, and produce open data for the benefit of others.
 - **Export Tool**: simple data export from OpenStreetMap, as a free service
   to the OSM community and mappers globally.
 
-  Each of these tools needs continuous improvement. User roadmaps are available on the respective github pages
+  Each of these tools needs continuous improvement. User roadmaps are available
+  on the respective github pages
 
 ## Growing Our Software Dev Community
 

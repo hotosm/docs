@@ -129,13 +129,11 @@ Management of tasks and code via Github.
 - Label / tag issues where appropriate, for example as `backend` or `frontend`.
 
 - Priorities can be assigned:.
-
   - `priority:critical`: blocking current tasks or user workflow.
   - `priority:high`: should be addressed as a priority.
   - `priority:low`: backlog of tasks that will be addressed in time.
 
 - Difficulty can be **estimated** (and may not be accurate):
-
   - `effort:low`: small task, likely a few hours.
   - `effort:medium`: larger task, may take a day or two.
   - `effort:high`: a broader scope task with unclear timeline.
@@ -143,7 +141,6 @@ Management of tasks and code via Github.
     > If there are, consider breaking them down to smaller tasks.
 
 - The testing status can be tracked:
-
   - `testing:ready`: the issue has been fixed and is ready to test.
   - `testing:fail`: the issue was not fixed as intended and requires additional
     work from the developer.
@@ -312,7 +309,7 @@ Example:
 - Partly used to document the design decisions we have taken.
 - Tag people specially for input, as it makes them more likely to add ideas.
 - We can also use these for the staging server tests on each release cycle,
-  e.g. <https://github.com/hotosm/fmtm/discussions/1335>
+  e.g. <https://github.com/hotosm/field-tm/discussions/1335>
 
 #### Release Notes
 
@@ -323,9 +320,9 @@ Example:
     ```md
     <details>
       <summary>Technical Summary</summary>
-        * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/fmtm/pull/1555
-        * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/fmtm/pull/1559
-        * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/fmtm/pull/1557
+        * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/field-tm/pull/1555
+        * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/field-tm/pull/1559
+        * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/field-tm/pull/1557
     </details>
     ```
 

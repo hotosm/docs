@@ -40,7 +40,7 @@ W3 maintains a guide on
 - A multiline textbox can have `aria-multiline` to better communicate this.
 - `aria-selected` can be attached to each item in a dropdown to indicate
   selected state.
-- Full W3 guide [here](https://www.w3.org/TR/wai-aria-1.1/)
+- [Full W3 guide](https://www.w3.org/TR/wai-aria-1.1/)
 
 ### ARIA Labels For Function
 

@@ -20,7 +20,6 @@ The HOT community principles are:
 - **Be welcoming.** We strive to be a community that welcomes and supports
   people of all backgrounds and identities. Some examples of behavior that
   contributes to creating a positive environment include:
-
   - Using welcoming and inclusive language.
 
   - Being respectful of differing viewpoints and experiences.
@@ -49,7 +48,6 @@ The HOT community principles are:
   professionals, and we conduct ourselves professionally. Be kind to others. Do
   not insult or put down other participants. Harassment and other exclusionary
   behavior aren't acceptable. This includes, but is not limited to:
-
   - Violent threats or language directed against another person.
 
   - Discriminatory jokes and language.
@@ -142,7 +140,7 @@ means of enforcement for our community standards. You start it by emailing
 [complaints@hotosm.org](mailto:compaints@hotosm.org) with a description of
 your complaint, your name, and the name of the offending party.
 All complaints will be considered confidential.
-The full process is described [here][13] .
+The full process is [described here][13] .
 
 [1]: https://www.hotosm.org/code-of-conduct
 [3]: https://adainitiative.org/2014/02/18/howto-design-a-code-of-conduct-for-your-community/

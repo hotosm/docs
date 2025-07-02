@@ -1,7 +1,7 @@
 # JavaScript Frameworks
 
-One of the lead devs writing these docs made a presentation about this
-[here](https://gitlab.com/spwoodcock/presentations/-/tree/main/2024?ref_type=heads)
+One of the lead devs writing these docs made a
+[presentation about this](https://gitlab.com/spwoodcock/presentations/-/tree/main/2024?ref_type=heads)
 
 ## Recommendations Summary
 
@@ -13,7 +13,7 @@ One of the lead devs writing these docs made a presentation about this
 
 ### Local-First
 
-- Detailed info [here](https://localfirstweb.dev/)
+- [Various resources](https://localfirstweb.dev) related to local-first development.
 - In summary, this is possibly the future of web development.
 - Instead of managing state on the frontend, we host a database
   entirely in the frontend using WASM.
