@@ -39,6 +39,7 @@ fun, and exciting, feel free to reach out about one of these ideas.
     required to successfully carry out an E2E mapping project.
     For the latter, we target an **interactive** tutorial, where the user
     can start by drawing an AOI for where they need to map,
+
     then each step will be explained, with helper buttons and visualisations to assist
     in the E2E mapping journey.
 
