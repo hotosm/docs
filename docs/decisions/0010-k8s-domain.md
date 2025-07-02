@@ -1,4 +1,5 @@
-# Use [component]-[env].[tool].[cluster-namespace].hotosm.org for kubernetes namespace
+# Use [component]-[env].[tool].[cluster-namespace].hotosm.org for kubernetes
+  namespace
 
 ## Context and Problem Statement
 
@@ -15,7 +16,9 @@ initial setup.
 Our tools have:
 
 - [project] which is an internal designator for project tracking
-- [tool-name] which may be the same as [project] but can also designate a specific tool within that project. Examples include `tasking-manager`, `openaerialmap`, `fair-predictor`, and `eoapi`
+- [tool-name] which may be the same as [project] but can also designate a
+  specific tool within that project. Examples include `tasking-manager`,
+  `openaerialmap`, `fair-predictor`, and `eoapi`
 - [env] such as `dev`, `staging`, and `production`
 
 In the Tasking Manager (running on ECS), we have:
@@ -55,14 +58,15 @@ For the kubernetes namespace we will go with the following naming scheme:
 
 > [component]-[env].[tool].[cluster-namespace].hotosm.org
 
-Our cluster namespace will be "k8s-prod" (including the environment), so the OAM eoAPI will
-be _backend-prod.eoapi.k8s-prod.hotosm,org_ which will resolve to _oam-api.hotosm.org_.
+Our cluster namespace will be "k8s-prod" (including the environment), so the OAM
+eoAPI will be _backend-prod.eoapi.k8s-prod.hotosm,org_ which will resolve
+to _oam-api.hotosm.org_.
 
 We have a list of tools already in use as required AWS tags: `oam`,
 `tasking-manager`, `fmtm`, `dronetm`, `fair`, `export-tool`, `raw-data-api`. We
 also have a list of accepted environment tags: `dev`, `staging`, `production`,
-`demo`, and `testing`. Example components could be `api`, `frontend`, `backend`,
-`uploader`, `scheduler`, `worker`, `database`, or `storage`.
+`demo`, and `testing`. Example components could be `api`, `frontend`,
+`backend`, `uploader`, `scheduler`, `worker`, `database`, or `storage`.
 
 ### Consequences
 
