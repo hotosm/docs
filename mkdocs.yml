@@ -156,6 +156,7 @@ nav:
           - API Documentation: decisions/0002-mkdocs.md
           - Technical Diagrams: decisions/0001-draw-io.md
           - Load Testing: decisions/0009-load-testing.md
+          - Kubernetes Domain Name Scheme: decisions/0010-k8s-domain.md
   - DevOps:
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
       - Kubernetes: https://github.com/hotosm/k8s-infra
