@@ -264,3 +264,21 @@ entirely in the web browser.
     Before embarking on these plugin ideas, we should first assess if there
     is an actual need amongst communities first. Nothing worse than developing
     something that isn't actually needed / wanted.
+
+### XLSForm Builder & Repository
+
+Two problems:
+
+1. XLSForms can be a bit tricky to build directly. Via a drag-and-drop
+   web-ui would be easier.
+2. Lots of duplication of XLSForms across projects. People would benefit
+   from a centralised place to access some existing XLSForms.
+
+Idea:
+
+- We create a basic website that has an embedded form builder.
+- The website also acts as an XLSForm resository, where any user
+  can upload and contribute the XLSForm they designed, along with
+  a description for what they were mapping.
+- The form builder part should be a web component, so it can also
+  be embedded into other sites too.
