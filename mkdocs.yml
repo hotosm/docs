@@ -158,6 +158,7 @@ nav:
           - Load Testing: decisions/0009-load-testing.md
           - Kubernetes Domain Name Scheme: decisions/0010-k8s-domain.md
   - DevOps:
+      - AWS Permissions: devops/aws-iam.md
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
       - Kubernetes: https://github.com/hotosm/k8s-infra
   - Other Sites:
