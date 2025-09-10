@@ -18,6 +18,7 @@ We need a form of shared authentication to:
   passkeys with biometrics (bonus).
 
 Other requirements:
+
 - An option to delete user profiles when requested.
 - Easy way for self-hosters of our tool to include Hanko.
 
