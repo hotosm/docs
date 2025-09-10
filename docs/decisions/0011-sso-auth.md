@@ -17,6 +17,10 @@ We need a form of shared authentication to:
 - It would also be nice to integrate modern passwordless logins such as
   passkeys with biometrics (bonus).
 
+Other requirements:
+- An option to delete user profiles when requested.
+- Easy way for self-hosters of our tool to include Hanko.
+
 ## Considered Options
 
 - Authelia
@@ -46,6 +50,16 @@ services like a reverse proxy — it just handles the login flow:
 - The user clicks to 'log in' and does an OAuth redirect flow.
 - The user is returned to the web frontend, with a JWT set in a secure cookie.
 - The cookie is sent to the API, verifying that the user is logged in.
+
+In order to delete a user profile, this is still done per-app database (not changed).
+The user info stored in the Hanko db from OAuth is minimal and does not need to be
+considered.
+
+As for self-hosting, we can provide the lightweight Hanko binary / container as part
+of the docker compose config for self-hosters to include (the binary footprint is
+minimal / microservice). HOT will use a single centralized Hanko instance, while
+self-hosters will primarily have a bundled Hanko instance per tool (it's unlikely
+they will be deploying all of our tools together).
 
 ## Consequences
 
