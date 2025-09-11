@@ -72,17 +72,17 @@ nav:
           - Roadmap: https://github.com/hotosm/tasking-manager/tree/main?tab=readme-ov-file#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/28
       - Field Mapping TM (FMTM):
-          - Landing Page: https://fmtm.dev
+          - Landing Page: https://fmtm.hotosm.org
           - Summary: https://www.hotosm.org/tech-suite/field-mapping-tasking-manager
           - Pitch: https://docs.google.com/presentation/d/1FS__AH10sCzoS23ejXCWZGks9zbZ-YUS_97yzJtFwRE
-          - Docs: https://docs.fmtm.dev
+          - Docs: https://docs.fieldtm.hotosm.org
           - Roadmap: https://github.com/hotosm/field-tm/tree/main?tab=readme-ov-file#roadmap
-          - Development: https://roadmap.fmtm.dev
+          - Development: https://roadmap.fieldtm.hotosm.org
       - Drone TM:
           - Landing Page: https://dronetm.org
           - Summary: https://www.hotosm.org/tech-suite/drone-tasking-manager
           - Pitch: https://docs.google.com/presentation/d/16OjWN6sMJJYs435W7g0j5lb7hZBltNA0jxG7eC0zRbg
-          - Docs: https://hotosm.github.io/drone-tm
+          - Docs: https://docs.dronetm.hotosm.org
           - Roadmap: https://github.com/hotosm/drone-tm/tree/main?tab=readme-ov-file#roadmap
           - Development: https://github.com/orgs/hotosm/projects/39
       - fAIr:
