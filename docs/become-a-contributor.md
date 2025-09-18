@@ -82,7 +82,31 @@ Please inform a maintainer as soon as possible, including the CVE code.
 Message via the [HOTOSM Slack][2] or [direct email][3] would be preferred,
 but via Github issue is also possible.
 
-### 🤝 Thank You 🤝
+## How to get started
+
+We have had a few people ask how they can get started on open-source projects.
+
+A summarized brief workflow is:
+
+1. See an issue you want to work on.
+2. Comment on the issue to seek any clarifications if needed (the maintainer
+   will provide further details as needed).
+3. (Optional) The maintainer can assign the issue to you if you like (for
+   tracking / to indicate to others you are working on it).
+4. Fork the repo.
+5. Clone your fork to your machine and make a branch.
+6. Work on your branch.
+7. Test your changes locally.
+8. Push the fork to your repo.
+9. Go to Github and create a Pull Request against the original repo.
+10. Provide a description of what you did, what issue it related to, how to
+    test it, and other relevant info (often there will be a template to follow).
+11. The maintainer reviews & comments where needed.
+12. (Optional) If changes / fixes are needed, then are made and push to the branch
+    (the PR gets updated automatically).
+13. Changes get merged when ready & you are now officially a contributor!
+
+## 🤝 Thank You 🤝
 
 Thank you very much in advance for your contributions!!
 
