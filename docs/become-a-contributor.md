@@ -23,7 +23,7 @@ If you have any questions, please ask our community 😊
 
 ## What Can I Help With?
 
-### 🧪 Testing 🧪
+### 🧪 Testing
 
 We warmly welcome your input in testing our tools and sharing your feedback.
 
@@ -38,7 +38,7 @@ This could be via either:
 Feedback can be given either via the Github repository for the tool, or via our
 community discussion channels.
 
-### 👨‍💻 Code 👨‍💻
+### 👨‍💻 Code
 
 Contributing code is a certain way to benefit the team and the end-user communities
 of our tools!
@@ -60,7 +60,7 @@ Skills with the following would be beneficial:
 - Docker
 - CI/CD workflows
 
-### 📝 Report bugs / suggest improvements 📝
+### 📝 Report bugs / suggest improvements
 
 The issue queue for a tool on Github is the best way to get started here.
 
@@ -75,14 +75,14 @@ should be implemented are valuable.
 Please use Github discussions or the community discussion channels to discuss
 topics and provide your insight.
 
-### 🔒 Report security vulnerabilities 🔒
+### 🔒 Report security vulnerabilities
 
 Please inform a maintainer as soon as possible, including the CVE code.
 
 Message via the [HOTOSM Slack][2] or [direct email][3] would be preferred,
 but via Github issue is also possible.
 
-## How to get started
+## 🏃 How to get started
 
 We have had a few people ask how they can get started on open-source projects.
 
@@ -106,7 +106,7 @@ A summarized brief workflow is:
     (the PR gets updated automatically).
 13. Changes get merged when ready & you are now officially a contributor!
 
-## 🤝 Thank You 🤝
+## 🤝 Thank You
 
 Thank you very much in advance for your contributions!!
 
