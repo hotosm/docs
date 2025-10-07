@@ -462,6 +462,37 @@ These stages go in order, from local development, through to production deployme
     stats and better tracking of mapping progress across
     projects.
 
+!!! note
+
+    To add the `repo:repo-name` automatically for each new issue,
+    we can create the following Github workflow
+
+    ```yaml
+    # We add a label `repo:repo-name` to each new issue,
+    # for easier tracking in external systems
+
+    name: 🏷️ Issue Label
+
+    on:
+      issues:
+        types:
+          - opened
+
+    jobs:
+      issue-label:
+        runs-on: ubuntu-latest
+        permissions:
+          issues: write
+
+        steps:
+          - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+            env:
+              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              GH_REPO: ${{ github.repository }}
+              NUMBER: ${{ github.event.issue.number }}
+              LABELS: repo:drone-tm
+    ```
+
 ### Public roadmap
 
 - We have a public roadmap linking all tools together under
