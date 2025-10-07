@@ -422,3 +422,64 @@ These stages go in order, from local development, through to production deployme
   - The workflow will deploy to the server remotely when the branch is pushed to.
   - This approach is less preferred, as the user requires write access to the
     Github repo.
+
+## Note About Linear
+
+- The information above is due to an overhaul!
+- We have decided to use Linear as a project management tool,
+  allowing for easier thematic linking of tasks across projects.
+- The Linear tool itself is only accessible by HOT staff, but
+  absolutely everything there is synced publicly and bi-directionally
+  to Github!
+
+### Issue management
+
+- **Issues**: lowest level, per repo.
+  - Each issue should have a label `repo:repo-name` to allow for
+    easier sorting in Linear (a small workaround to ensure we
+    remain on the 'free' tier).
+  - Issues and all info are synced automatically from Github,
+    but the only manual step we need is adding the mentioned
+    label.
+  - Developers should interact and comment on Github issues.
+  - Managers can track progress, group issues, and make
+    dashboards via Linear.
+  - 💡 Example: Add additional endpoints to backend for gathering
+    user stats on a dashboard.
+- **Milestones**: these are an _optional_ part of the workflow
+  capturing multiple issues that have a specific _deadline_ and
+  purpose, e.g. linked to a specific contract.
+  - 💡 Example: Add badges to user profile, based on stats
+    generated in each mapping category. Due 29/10/2025.
+- **Projects**: a grouping of issues and milestones around a
+  particular theme, i.e. essentially an epic in other tools.
+  These can include issues from multiple repos, if they tie
+  together.
+  - 💡 Example: Super Mapper feature in Tasking Manager.
+- **Initiatives**: a very high level goal we wish to achieve,
+  encompasing multiple projects.
+  - 💡 Example: Better user engagement by providing useful
+    stats and better tracking of mapping progress across
+    projects.
+
+### Public roadmap
+
+- We have a public roadmap linking all tools together under
+  [https://hotosm.steelsync.io/tech-roadmap](https://hotosm.steelsync.io/tech-roadmap)
+- This is made using a tool called SteelSync (paid unfortunately,
+  but cheap), that gathers data from the Linear API and easily
+  creates a public dashboard.
+- We chose the approach to save the overhead of developing
+  our own roadmap page using the Linear API.
+
+### Feature requests
+
+- Technical users can still make issues and bug reports via
+  each Github repo.
+- For general user requests (public, or internal to HOT),
+  we can all use the 'Request' button available on the
+  mentioned public roadmap page above.
+- Each request will create an issue in Linear. The tech team
+  will triage and add the issue to the relevant Github code
+  repository, then place within a project / initative with
+  timelines.
