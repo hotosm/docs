@@ -69,44 +69,49 @@ nav:
           - Summary: https://www.hotosm.org/tech-suite/tasking-manager
           - Pitch: https://docs.google.com/presentation/d/1Ce_ESKLvvg1I7vYN9ieDXXDHpCDUTIgRwPXtVEySs9k
           - Docs: https://hotosm.github.io/tasking-manager/
-          - Roadmap: https://github.com/hotosm/tasking-manager/tree/main?tab=readme-ov-file#product-roadmap
+          - Roadmap: https://github.com/hotosm/tasking-manager/tree/main#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/28
       - Field Mapping TM (FMTM):
           - Landing Page: https://fmtm.hotosm.org
           - Summary: https://www.hotosm.org/tech-suite/field-mapping-tasking-manager
           - Pitch: https://docs.google.com/presentation/d/1FS__AH10sCzoS23ejXCWZGks9zbZ-YUS_97yzJtFwRE
           - Docs: https://docs.fieldtm.hotosm.org
-          - Roadmap: https://github.com/hotosm/field-tm/tree/main?tab=readme-ov-file#roadmap
+          - Roadmap: https://github.com/hotosm/field-tm/tree/main#roadmap
           - Development: https://roadmap.fieldtm.hotosm.org
       - Drone TM:
           - Landing Page: https://dronetm.org
           - Summary: https://www.hotosm.org/tech-suite/drone-tasking-manager
           - Pitch: https://docs.google.com/presentation/d/16OjWN6sMJJYs435W7g0j5lb7hZBltNA0jxG7eC0zRbg
           - Docs: https://docs.dronetm.hotosm.org
-          - Roadmap: https://github.com/hotosm/drone-tm/tree/main?tab=readme-ov-file#roadmap
+          - Roadmap: https://github.com/hotosm/drone-tm/tree/main#roadmap
           - Development: https://github.com/orgs/hotosm/projects/39
       - fAIr:
           - Landing Page: https://fair.hotosm.org
           - Summary: https://www.hotosm.org/tech-suite/fair
           - Pitch: https://drive.google.com/file/d/1Ft4oldxHqACb6XovbpsMcGT3swNlm6EA
           - Docs: https://fair-dev.hotosm.org/
-          - Roadmap: https://github.com/hotosm/fair/tree/main?tab=readme-ov-file#product-roadmap
+          - Roadmap: https://github.com/hotosm/fair/tree/main#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/30/views/1
       - OpenAerialMap:
           - Landing Page: https://openaerialmap.org
           - Summary: https://www.hotosm.org/tech-suite/open-aerial-map
           - Pitch: https://drive.google.com/file/d/1fr_Nj5zXSjXDHT8nh9XEMSRPnT7gbtLE
           - More Details: projects/openaerialmap.md
+      - ChatMap:
+          - Landing Page: https://chatmap.hotosm.org
+          - Docs: https://github.com/hotosm/chatmap/blob/master/docs/index.md
+          - Roadmap: https://github.com/hotosm/chatmap/#roadmap
+          - Development: https://github.com/orgs/hotosm/projects/46
       - Export Tool:
           - Landing Page: https://export.hotosm.org
           - Summary: https://www.hotosm.org/tech-suite/export-tool
           - Docs: https://export.hotosm.org/v3/learn
-          - Roadmap: https://github.com/hotosm/osm-export-tool/tree/master?tab=readme-ov-file#product-roadmap
+          - Roadmap: https://github.com/hotosm/osm-export-tool/tree/master#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
       - Raw Data API:
           - Landing Page: https://api-prod.raw-data.hotosm.org/v1/redoc
           - Docs: https://hotosm.github.io/raw-data-api/
-          - Roadmap: https://github.com/hotosm/raw-data-api/tree/master?tab=readme-ov-file#product-roadmap
+          - Roadmap: https://github.com/hotosm/raw-data-api/tree/master#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
       - Future Plans / Ideas: projects/future-plans.md
   - Modularization:
