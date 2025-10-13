@@ -24,8 +24,9 @@ focal points to contact.
 
 <!-- markdownlint-enable -->
 
-!!! note  
- Slack is preferred, but email is also possible.
+!!! note
+
+    Slack is preferred, but email is also possible.
 
 [1]: slack://channel?team=T042TUWCB&id=C042TUWCV "General Slack"
 [2]: mailto:tech-data@hotosm.org "Tech email"
