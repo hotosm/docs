@@ -3,8 +3,8 @@
 For general enquiries please contact us via the  
 [Slack General Channel][1].
 
-Alternatively, you can contact the entire tech team via  
-[tech-data@hotosm.org][2].
+Alternatively, you can contact the community lead for the tech
+team [Petya][18] (or via [email][19]).
 
 If you need support for a specific tool, here are the most recent
 focal points to contact.
@@ -29,7 +29,6 @@ focal points to contact.
     Slack is preferred, but email is also possible.
 
 [1]: slack://channel?team=T042TUWCB&id=C042TUWCV "General Slack"
-[2]: mailto:tech-data@hotosm.org "Tech email"
 [3]: slack://channel?team=T042TUWCB&id=C319P09PB "TM channel"
 [4]: slack://channel?team=T042TUWCB&id=C04PCBFDEGN "FieldTM channel"
 [5]: slack://channel?team=T042TUWCB&id=C089CAULJFP "DroneTM channel"
@@ -45,3 +44,5 @@ focal points to contact.
 [15]: mailto:omran.najjar@hotosm.org "Omran email"
 [16]: slack://user?team=T042TUWCB&id=U03792XTA6M "Emi on Slack"
 [17]: mailto:emilio.mariscal@hotosm.org "Emi email"
+[18]: slack://user?team=T042TUWCB&id=U02U2505SM8 "Petya on slack"
+[19]: mailto:petya.kangalova@hotosm.org "Petya email"
