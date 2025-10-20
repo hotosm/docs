@@ -446,21 +446,20 @@ These stages go in order, from local development, through to production deployme
     dashboards via Linear.
   - 💡 Example: Add additional endpoints to backend for gathering
     user stats on a dashboard.
-- **Milestones**: these are an _optional_ part of the workflow
-  capturing multiple issues that have a specific _deadline_ and
-  purpose, e.g. linked to a specific contract.
-  - 💡 Example: Add badges to user profile, based on stats
-    generated in each mapping category. Due 29/10/2025.
+- **Milestones**: group similar issues with an overarching goal
+  and thematic link (e.g. backend, frontend, devops parts of
+  a bigger deliverable).
+  - 💡 Example: Add backend components to store user badge
+    information for the super-mapper profile page.
+    Due 29/10/2025.
 - **Projects**: a grouping of issues and milestones around a
-  particular theme, i.e. essentially an epic in other tools.
+  particular theme - a user facing deliverable, i.e. essentially
+  an epic in other tools.
   These can include issues from multiple repos, if they tie
   together.
-  - 💡 Example: Super Mapper feature in Tasking Manager.
-- **Initiatives**: a very high level goal we wish to achieve,
-  encompasing multiple projects.
-  - 💡 Example: Better user engagement by providing useful
-    stats and better tracking of mapping progress across
-    projects.
+  - 💡 Example: Add Super Mapper status in Tasking Manager.
+- ~~Initiatives~~: we don't use these, as they don't integrate
+  well with external tools (yet).
 
 !!! note
 
@@ -491,6 +490,24 @@ These stages go in order, from local development, through to production deployme
               GH_REPO: ${{ github.repository }}
               NUMBER: ${{ github.event.issue.number }}
               LABELS: repo:drone-tm
+    ```
+
+    Also, to bulk tag existing issues in a repo, use Github CLI:
+
+    ```bash
+    docker run --rm -it --entrypoint sh maniator/gh
+    gh auth login
+
+    REPO="hotosm/chatmap"
+    LABEL="repo:chatmap"
+
+    gh label create "${LABEL}" --repo "${REPO}" --color "#ededed"
+
+    for issue in $(gh issue list --repo "${REPO}" \
+      --state open --limit 1000 --json number --jq '.[].number') \
+    ; do
+      gh issue edit $issue --repo "${REPO}" --add-label "${LABEL}"
+    done
     ```
 
 ### Public roadmap
