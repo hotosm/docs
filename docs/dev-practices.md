@@ -47,8 +47,8 @@ software development practices.
 - Once we have gathered feedback, this should be divided up into actionable Git
   issues by the PO / Tech Lead and grouped into milestones or releases.
 
-  > See the [milestones](#milestones) and [releases](#releases) sections
-  > for details about grouping tasks into themes.
+  > See the [project management](#project-management) and [releases](#releases)
+  > sections for details about grouping tasks into themes.
 
 #### Gathering Direct Technical Feedback
 
@@ -84,10 +84,9 @@ Users can keep informed about ongoing tasks in various ways:
 - Public announcements on [Slack](https://slack.hotosm.org) / blog posts on HOT's
   website, OSM Diaries, Dev.to, or other platforms.
 - Releases on Github and included release notes.
-- The overarching [roadmap](#roadmaps), showing progress for milestones and releases.
-- Progress towards specific [milestones](#milestones), for new features.
-- The [task tracker](#task-board) for individual issue progress (particularly
-  for bugs).
+- The [user roadmap](#user-roadmap) tracking progress for each repo.
+- The overarching [public roadmap](#public-roadmap), showing progress for projects
+  and milestones.
 - Any [discussions](#discussions) around particular features that have not been agreed
   upon and translated into an issue / milestone.
 
@@ -225,46 +224,107 @@ code!
 
 ### Project Management
 
-Still related to Github, but describing higher level project management
-and project direction.
+We use Linear for easier project coordination, but everything is
+synced to public-facing tools such as Github for transparency.
 
-#### Milestones
+- **Issues**:
+  - Track individual development tasks, two-way synced to Github
+    to work in the open.
+  - Each issue should have a label `repo:repo-name` to allow for
+    easier sorting in Linear (a small workaround to ensure we
+    remain on the 'free' tier).
+  - 💡 Example: Add and endpoint to list individual user
+    contributions.
 
-- Encapsulates a set of issues into a logical bigger task, with or without
-  an assigned deadline.
-- Discussed in team meetings and decided on via priorities.
-- Project Owner (PO) decides on priorities, tech lead decides on which tasks
-  are required to achieve that goal.
-- Milestones are grouped into a release, which has a set deadline.
+- **Milestones**:
+  - Group similar tech issues into an overall tech
+    goal (i.e. the combined frontend, backend, devops effort).
+  - Milestones are **not an essential part of the workflow**,
+    however, they are generally defined by the lead dev on
+    a project to better define how to accomplish a task.
+    Instead, 'Projects' can contain 'Issues' directly.
+  - 💡 Example: Add backend endpoints that provide user
+    statistics for a dashboard.
+
+- **Projects**:
+  - The user 'story' or user facing feature or fix. Easily
+    understood by a non-tech audience.
+  - Can incorporate multiple milestones to achieve the goal.
+  - These are defined by the Product Owner of the tool, using
+    the progress described [above](#defining-what-we-build).
+  - 💡 Example: Create a user stats dashboard so users can
+    easily track their overall progress.
+
+- **Initiatives**:
+  - We use these as a tech roadmap for 'Projects' grouped
+    _per quarter_.
+  - This allows us to track the progress of multiple features
+    or fixes across multiple tools, for a given time chunk.
+
+!!! note
+
+    To add the `repo:repo-name` automatically for each new issue,
+    we can create the following Github workflow
+
+    ```yaml
+    # We add a label `repo:repo-name` to each new issue,
+    # for easier tracking in external systems
+
+    name: 🏷️ Issue Label
+
+    on:
+      issues:
+        types:
+          - opened
+
+    jobs:
+      issue-label:
+        runs-on: ubuntu-latest
+        permissions:
+          issues: write
+
+        steps:
+          - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+            env:
+              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              GH_REPO: ${{ github.repository }}
+              NUMBER: ${{ github.event.issue.number }}
+              LABELS: repo:drone-tm
+    ```
+
+    Also, to bulk tag existing issues in a repo, use Github CLI:
+
+    ```bash
+    docker run --rm -it --entrypoint sh maniator/gh
+    gh auth login
+
+    REPO="hotosm/chatmap"
+    LABEL="repo:chatmap"
+
+    gh label create "${LABEL}" --repo "${REPO}" --color "#ededed"
+
+    for issue in $(gh issue list --repo "${REPO}" \
+      --state open --limit 1000 --json number --jq '.[].number') \
+    ; do
+      gh issue edit $issue --repo "${REPO}" --add-label "${LABEL}"
+    done
+    ```
 
 #### Releases
 
-- A release encompasses multiple milestones, plus additional bugfixes
-  and minor improvements.
-- Releases are tracked on the roadmap and have an _approximate_ deadline.
-- Ideally releases should be around once a month at minimum, to regularly
-  deliver incremental updates to the user (~agile project management).
+- Releases are mostly dictated by the
+  [semantic versioning](./dev-guide/repo-management/version-control.md)
+  of a tool.
+- In general, a group of 'Projects' will result in a near release being
+  made (on approximately a monthly / bi-monthly basis).
 
 #### Roadmaps
 
-##### Technical Roadmap
-
-- Higher level roadmap based on releases and milestones.
-- Managed on Github, linked in the README.
-- The roadmap should include:
-  - Milestones (with optional dates) and issues linked to releases.
-  - Releases labelled over the top, showing the anticipated next release date.
-
-Example (from FMTM):
-
-![technical roadmap](./images/dev-practices/technical-roadmap-example.png)
-
 ##### User Roadmap
 
-- Most users do not want to delve into Github roadmaps and issues.
-- A simpler user-centric roadmap can be written in simple Markdown
-  table syntax.
-- The table is a chronological timeline, divided into three categories:
+- A summary of Linear 'Projects' are placed in the README of each tool
+  on Github.
+- This is a simple table, showing the 'Project', and the status:
   - ✅ for done tasks
   - ⚙️ for ongoing tasks
   - [no emoji] for upcoming tasks
@@ -273,35 +333,27 @@ Example user roadmap (from Drone TM):
 
 ![user roadmap](./images/dev-practices/user-roadmap-example.png)
 
-!!! note
+##### Public Roadmap
 
-    Previously we used to use a three-column table with categories:
-    - In Progress
-    - Next
-    - Future
+- We have a public roadmap linking all tools together under
+  [https://hotosm.steelsync.io/tech-roadmap](https://hotosm.steelsync.io/tech-roadmap)
+- This is made using a tool called SteelSync (paid unfortunately,
+  but cheap), that gathers data from the Linear API and easily
+  creates a public dashboard.
+- We chose the approach to save the overhead of developing
+  our own roadmap page using the Linear API.
 
-    However after agreeing as a team, we decided to streamline the approach to
-    be less verbose, and to better show the ordering of priorities, as above.
+#### Feature requests
 
-    The user-story based wording was also partially replaced using emojis for
-    the context of each feature (for brevity when used in a README file / front page).
-
-#### Task Board
-
-- An optional stage to easier visualise developer time.
-- Should be as automated as possible:
-  - Issues added to a project are added to the backlog.
-  - Issues assigned to a dev are moved to 'In Progress'.
-  - Issues labelled with `QA Ready` are moved to 'Review'.
-  - Issues completed should be moved to 'Complete'.
-- By automating this processes, the developer does not have duplicated work.
-- Ideally we can keep track of which developer is working on
-  what task.
-- This becomes especially important when we also have outside collaborators.
-
-Example:
-
-![dev task board](./images/dev-practices/dev-task-board-example.png)
+- Technical users can still make issues and bug reports via
+  each Github repo.
+- For general user requests (public, or internal to HOT),
+  we can all use the 'Request' button available on the
+  mentioned public roadmap page above.
+- Each request will create an issue in Linear. The tech team
+  will triage and add the issue to the relevant Github code
+  repository, then place within a project / initative with
+  timelines.
 
 #### Discussions
 
@@ -422,112 +474,3 @@ These stages go in order, from local development, through to production deployme
   - The workflow will deploy to the server remotely when the branch is pushed to.
   - This approach is less preferred, as the user requires write access to the
     Github repo.
-
-## Note About Linear
-
-- The information above is due to an overhaul!
-- We have decided to use Linear as a project management tool,
-  allowing for easier thematic linking of tasks across projects.
-- The Linear tool itself is only accessible by HOT staff, but
-  absolutely everything there is synced publicly and bi-directionally
-  to Github!
-
-### Issue management
-
-- **Issues**: lowest level, per repo.
-  - Each issue should have a label `repo:repo-name` to allow for
-    easier sorting in Linear (a small workaround to ensure we
-    remain on the 'free' tier).
-  - Issues and all info are synced automatically from Github,
-    but the only manual step we need is adding the mentioned
-    label.
-  - Developers should interact and comment on Github issues.
-  - Managers can track progress, group issues, and make
-    dashboards via Linear.
-  - 💡 Example: Add additional endpoints to backend for gathering
-    user stats on a dashboard.
-- **Milestones**: group similar issues with an overarching goal
-  and thematic link (e.g. backend, frontend, devops parts of
-  a bigger deliverable).
-  - 💡 Example: Add backend components to store user badge
-    information for the super-mapper profile page.
-    Due 29/10/2025.
-- **Projects**: a grouping of issues and milestones around a
-  particular theme - a user facing deliverable, i.e. essentially
-  an epic in other tools.
-  These can include issues from multiple repos, if they tie
-  together.
-  - 💡 Example: Add Super Mapper status in Tasking Manager.
-- ~~Initiatives~~: we don't use these, as they don't integrate
-  well with external tools (yet).
-
-!!! note
-
-    To add the `repo:repo-name` automatically for each new issue,
-    we can create the following Github workflow
-
-    ```yaml
-    # We add a label `repo:repo-name` to each new issue,
-    # for easier tracking in external systems
-
-    name: 🏷️ Issue Label
-
-    on:
-      issues:
-        types:
-          - opened
-
-    jobs:
-      issue-label:
-        runs-on: ubuntu-latest
-        permissions:
-          issues: write
-
-        steps:
-          - run: gh issue edit "$NUMBER" --add-label "$LABELS"
-            env:
-              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              GH_REPO: ${{ github.repository }}
-              NUMBER: ${{ github.event.issue.number }}
-              LABELS: repo:drone-tm
-    ```
-
-    Also, to bulk tag existing issues in a repo, use Github CLI:
-
-    ```bash
-    docker run --rm -it --entrypoint sh maniator/gh
-    gh auth login
-
-    REPO="hotosm/chatmap"
-    LABEL="repo:chatmap"
-
-    gh label create "${LABEL}" --repo "${REPO}" --color "#ededed"
-
-    for issue in $(gh issue list --repo "${REPO}" \
-      --state open --limit 1000 --json number --jq '.[].number') \
-    ; do
-      gh issue edit $issue --repo "${REPO}" --add-label "${LABEL}"
-    done
-    ```
-
-### Public roadmap
-
-- We have a public roadmap linking all tools together under
-  [https://hotosm.steelsync.io/tech-roadmap](https://hotosm.steelsync.io/tech-roadmap)
-- This is made using a tool called SteelSync (paid unfortunately,
-  but cheap), that gathers data from the Linear API and easily
-  creates a public dashboard.
-- We chose the approach to save the overhead of developing
-  our own roadmap page using the Linear API.
-
-### Feature requests
-
-- Technical users can still make issues and bug reports via
-  each Github repo.
-- For general user requests (public, or internal to HOT),
-  we can all use the 'Request' button available on the
-  mentioned public roadmap page above.
-- Each request will create an issue in Linear. The tech team
-  will triage and add the issue to the relevant Github code
-  repository, then place within a project / initative with
-  timelines.
