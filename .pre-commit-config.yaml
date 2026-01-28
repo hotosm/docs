@@ -11,4 +11,4 @@ repos:
     rev: v0.46.0
     hooks:
       - id: markdownlint
-        args: [--fix, --ignore, docs/techdoc]
+        args: [--fix, --ignore, docs/techdoc, --disable, MD046]

@@ -1,5 +1,14 @@
 # Testing with Kubernetes Locally
 
+!!! note
+
+    This page was created before we had our
+    [k8s-infra](https://github.com/hotosm/k8s-infra) repository.
+
+    It is recommend to follow the guides on the
+    [docs page](https://hotosm.github.io/k8s-infra) for that repo,
+    including how to set up a local cluster using TalosOS instead.
+
 We will use an official tool Kubernetes-In-Docker (KIND) to run Kubernetes via
 Docker locally.
 
