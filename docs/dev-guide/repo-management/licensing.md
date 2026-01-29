@@ -34,15 +34,16 @@ GPLv3 or AGPLv3, with some older code using the BSD license.
   distributed via a network (i.e. a website), whereas, GPL can be
   used for all other code (e.g. PyPi packages, compiled code).
 
-> Originally HOT was using BSD-2-Clause, which is more permissive
-> and not copyleft, meaning it is fully open but there is no protection
-> from commercial exploitation.
->
-> Tools using BSD-2-Clause:
->
-> - Tasking Manager
-> - Export Tool
-> - Open Aerial Map
+!!! note
+
+    Originally HOT was using BSD-2-Clause, which is more permissive
+    and not copyleft, meaning it is fully open but there is no protection
+    from commercial exploitation.
+
+    Tools using BSD-2-Clause:
+
+    - Tasking Manager
+    - Export Tool
 
 ## Other Content is CC-BY
 
