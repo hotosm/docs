@@ -57,6 +57,7 @@ Training large language models requires enormous computational resources. Each q
 - Use AI deliberately, not habitually.
 - Avoid vendor lock-in, maintaining the flexibility to shift to more efficient or open alternatives as they emerge.
 - Acknowledge environmental cost explicitly in AI use policies.
+- Consider offset strategies with regards to energy usage and emissions.
 
 ### 1.4 Labour and Exploitation
 
@@ -72,6 +73,9 @@ The refinement of AI models often relies on low-paid human labour for data label
 ### 1.5 Intellectual Property and Copyright
 
 Current AI models raise unresolved questions about copyright. The LLVM Project's AI policy states it clearly: using AI tools to regenerate copyrighted material does not remove the copyright, and contributors remain responsible for ensuring nothing infringing enters their work [4]. The risk includes inadvertently incorporating copyrighted code or text into publicly released outputs.
+
+Unfortunately, there are not many strategies to avoid the underlying ethical concern of stolen intellectual property, aside from not using the models.
+Even 'open' models will generally contain traces of stolen training material.
 
 **Mitigation approaches:**
 
