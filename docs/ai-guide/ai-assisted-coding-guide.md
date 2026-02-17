@@ -150,6 +150,8 @@ AI can make you faster, but it can also make you dependent if you are not delibe
 | **AI code review tools**                   | Only if they keep a human in the loop. Fully automated review bots may post comments about code, but cannot change the content without human approval.                                                                                                                            |
 | **AI agents** (autonomous)                 | Not permitted to update code directly on shared platforms (e.g. within PRs) without explicit human approval of each action. They may be used on local machines, such as in a developers IDE, as long as workflows are manually approved and the final code is quality controlled. |
 
+In summary, it is essential to **not allow automated commits from AI agents**, but most other usage is permitted.
+
 ---
 
 ## Policy Review
