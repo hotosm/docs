@@ -121,6 +121,21 @@ Assisted-by: Claude
 
 This is becoming a de facto standard across open source (LLVM, Fedora, QGIS are all adopting similar conventions). It helps maintainers calibrate review attention without being punitive.
 
+### 5. Maintain a solid CI pipeline
+
+AI-generated code can appear correct while introducing subtle security issues, hallucinated dependencies, or untested paths.
+
+CI pipeline tools can catch what human review misses:
+
+- **Pre-commit hooks**: simple sanity and code quality checks can be run _even before a commit is made_.
+- **Tests**: whatever tooling you already use to ensure ongoing functionality of code. Code coverage may also be assessed too as a rough proxy.
+- **Static code analysis**: Checkov for infrastructure code and Semgrep for application code.
+- **Dynamic analysis**: Tools like zaproxy can be used to scan for various vulnerabilities in your web application, during runtime. This involves a bit more complexity than other analysis types listed here.
+- **Code quality**: SonarQube Cloud is free for open source projects to use, assisting code quality and security compliance.
+- **Dependency checking**: OWASP [DependencyCheck](https://github.com/dependency-check/DependencyCheck) or [OSV Scanner](https://github.com/google/osv-scanner) can be used to ensure dependencies are updated to avoid latest security vulnerabilities. It's also recommended to use [Renovate bot](https://github.com/renovatebot/renovate) to regularly update dependencies.
+- **Secrets scanning**: [GitLeaks](https://github.com/gitleaks/gitleaks) can be integrated as a pre-commit hooks or CI action to prevent accidental commit of org secrets.
+- **Licensing and copyright**: [ScanCode Toolkit](https://github.com/aboutcode-org/scancode-toolkit) can be used to scan for copyright breaches in your code and non-compliance with license requirements.
+
 ### 6. Handling AI-assisted PRs (Maintainers)
 
 **Key points for reviewers:**
