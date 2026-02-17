@@ -27,7 +27,7 @@ This is not punitive. It is the same standard we hold for any tool: if you use a
 ## What AI Is Bad At (Be Cautious Here)
 
 - **Architecture decisions:** AI does not understand your system's history, constraints, or users. It will happily suggest a redesign that ignores your actual context.
-- **Security-sensitive code:** AI-generated code frequently has vulnerabilities — missing input validation, insecure defaults, outdated patterns. All security-relevant code must be manually reviewed.
+- **Security-sensitive code:** AI-generated code frequently has vulnerabilities — missing input validation, insecure defaults, outdated patterns. All security-relevant code must be manually engineered and reviewed.
 - **Domain-specific logic:** AI often fails on edge cases unique to your domain. _(Example from geospatial: AI routinely mishandles anti-meridian polygon wrapping because it does not understand spherical geometry unless explicitly guided.)_
 - **Choosing dependencies:** LLMs frequently generate custom implementations instead of using well-tested libraries. Always check: does a maintained library already solve this? If yes, use it.
 - **Anything involving beneficiary or sensitive data:** Never paste personal data, donor information, or internal strategy into AI tools.
