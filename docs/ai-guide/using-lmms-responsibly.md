@@ -22,14 +22,16 @@ AI adoption is not just a tooling decision. It is a values decision. Below are t
 
 ### 1.1 Data Privacy and Security
 
-Prompts sent to proprietary AI services may be stored or reused. Pasting sensitive data - beneficiary records, donor information, strategy documents, personnel details - into a commercial AI tool creates privacy and security exposure. Research published in _Nature Scientific Reports_ highlights the cybersecurity risks inherent in AI-generated code, including injection vulnerabilities, insecure templates, and insufficient input validation [2].
+Prompts sent to proprietary AI services may be stored or reused. Pasting sensitive data - beneficiary records, donor information, strategy documents, personnel details - into a commercial AI tool creates privacy and security exposure. However, this risk is not as present during software development.
+
+Research published in _Nature Scientific Reports_ highlights the cybersecurity risks inherent in AI-generated code, including injection vulnerabilities, insecure templates, and insufficient input validation [2].
 
 **Mitigation approaches:**
 
-- Establish strict data boundaries: no beneficiary data, personnel data, donor information, or confidential datasets may be entered into commercial AI systems.
-- Apply sensitivity classification to datasets, with stricter rules than those applied to open-source code.
 - Treat all AI-generated code as untrusted third-party code, subject to mandatory human review before merging.
 - Require at least two human reviewers for every change entering a codebase.
+- Always ensure input documents and data are sanitized or anonymized before feeding into agents.
+- Maintain best practice automated security review for repos: static code analysis, dependency scanning, vulnerability scanning, CI-based tests before merge.
 
 ### 1.2 Bias and Discrimination
 
