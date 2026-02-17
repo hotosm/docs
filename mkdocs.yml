@@ -119,6 +119,7 @@ nav:
       - LLMs Usage Framework: ai-guide/using-lmms-responsibly.md
       - Practical Guide For Agentic Coding: ai-guide/ai-assisted-coding-guide.md
       - Prepare Your Repository For AI: ai-guide/managing-ai-contributions.md
+      - Recommended Open Models: ai-guide/recommended-open-models.md
   - Developer Guide:
       - Intro: dev-guide/intro.md
       - Managing Repos:

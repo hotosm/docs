@@ -8,17 +8,17 @@
 
 **You are the author. You are accountable.**
 
-If you used AI to generate code, documentation, or analysis — and it is wrong, insecure, biased, or breaks something — that is on you. Not the tool. You submitted it. You own it.
+If you used AI to generate code, documentation, or analysis - and it is wrong, insecure, biased, or breaks something - that is on you. Not the tool. You submitted it. You own it.
 
 This is not punitive. It is the same standard we hold for any tool: if you use a calculator and enter the wrong numbers, the mistake is yours.
 
 ---
 
-## What AI Is Good For (Use It Here)
+## What AI Is Good For (Appropriate To Use Here)
 
 - **First drafts and boilerplate:** Config files, repetitive scaffolding, test stubs, standard templates.
 - **Explaining unfamiliar code:** "What does this function do?" is a great use of AI. Treat it like a patient colleague who may occasionally be confidently wrong.
-- **Brainstorming approaches:** "What are three ways I could structure this migration?" — then evaluate each with your own judgement.
+- **Brainstorming approaches:** "What are three ways I could structure this migration?" - then evaluate each with your own judgement.
 - **Drafting documentation:** Let AI produce a first pass, then rewrite it in your own words to ensure accuracy.
 - **Debugging assistance:** Paste an error message and ask for possible causes. Verify before applying.
 - **Refactoring suggestions:** AI can suggest cleaner patterns. Review every change it proposes.
@@ -31,6 +31,7 @@ This is not punitive. It is the same standard we hold for any tool: if you use a
 - **Domain-specific logic:** AI often fails on edge cases unique to your domain. _(Example from geospatial: AI routinely mishandles anti-meridian polygon wrapping because it does not understand spherical geometry unless explicitly guided.)_
 - **Choosing dependencies:** LLMs frequently generate custom implementations instead of using well-tested libraries. Always check: does a maintained library already solve this? If yes, use it.
 - **Anything involving beneficiary or sensitive data:** Never paste personal data, donor information, or internal strategy into AI tools.
+  HOT staff can refer to the [internal AI Policy](https://docs.google.com/document/d/13bGovnFVOouF7iRv0CVxSYjP3ky048KQYkrdg4mIcHU) for more details.
 
 ## What AI Must Not Be Used For
 
@@ -45,7 +46,7 @@ This is not punitive. It is the same standard we hold for any tool: if you use a
 
 ### 1. Think First, Then Prompt
 
-Before asking AI anything, spend a few minutes forming your own mental model of the problem. What are the constraints? What approaches come to mind? This is the "pre-testing effect" — trying to answer a question yourself, even imperfectly, before consulting AI produces better understanding and retention.
+Before asking AI anything, spend a few minutes forming your own mental model of the problem. What are the constraints? What approaches come to mind? This is the "pre-testing effect" - trying to answer a question yourself, even imperfectly, before consulting AI produces better understanding and retention.
 
 ### 2. Write a Clear Spec, Not a Vague Request
 
@@ -77,7 +78,7 @@ This is not about shame. It is about transparency and helping reviewers calibrat
 
 ### 6. Do Not Iterate Blindly
 
-If AI gives you broken code and you keep pasting the error back in hoping it will fix itself — stop. After two or three failed attempts, step back and debug manually. Blindly looping with an AI wastes time and teaches you nothing.
+If AI gives you broken code and you keep pasting the error back in hoping it will fix itself - stop. After two or three failed attempts, step back and debug manually. Blindly looping with an AI wastes time and teaches you nothing.
 
 ---
 
@@ -91,7 +92,7 @@ Every PR you submit costs someone time to review. Before submitting AI-assisted 
 
 - Read the project's contributing guidelines and AI policy (if one exists).
 - Ensure the contribution is high quality, well-tested, and clearly explained.
-- Write the PR description yourself — do not let AI generate it.
+- Write the PR description yourself - do not let AI generate it.
 - Be prepared to answer questions about your code during review.
 
 ### Do Not Chase Volume
@@ -134,7 +135,7 @@ Before merging any AI-generated code, verify:
 AI can make you faster, but it can also make you dependent if you are not deliberate about learning.
 
 - **Space your learning.** Do not cram an entire AI-assisted session into one marathon. Come back to the same problem area across multiple days.
-- **Diversify tasks.** If AI is handling the rote work, use the free time for deeper exploration — reading documentation, understanding architecture, reviewing others' code.
+- **Diversify tasks.** If AI is handling the rote work, use the free time for deeper exploration - reading documentation, understanding architecture, reviewing others' code.
 - **Explain what you learned.** After an AI-assisted session, write a short note (even just for yourself) about what you now understand that you did not before.
 - **Maintain manual skills.** Regularly write code, debug problems, and read error messages without AI. Like any skill, it atrophies without practice.
 
@@ -142,12 +143,12 @@ AI can make you faster, but it can also make you dependent if you are not delibe
 
 ## Approved Tools and Data Boundaries
 
-| Category                                   | Guidance                                                                                                                  |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| **Code completion** (e.g. Copilot, Cursor) | Permitted for non-sensitive code. Review all suggestions.                                                                 |
-| **Chat-based AI** (e.g. Claude, ChatGPT)   | Permitted for general development questions. Never paste sensitive data.                                                  |
-| **AI code review tools**                   | Only if they keep a human in the loop. Fully automated review bots that post without human approval are not permitted.    |
-| **AI agents** (autonomous)                 | Not permitted to act in shared spaces (issue trackers, PRs, shared repos) without explicit human approval of each action. |
+| Category                                   | Guidance                                                                                                                                                                                                                                                                          |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Code completion** (e.g. Copilot, Cursor) | Permitted for non-sensitive code. Review all suggestions.                                                                                                                                                                                                                         |
+| **Chat-based AI** (e.g. Claude, ChatGPT)   | Permitted for general development questions. Never paste sensitive data.                                                                                                                                                                                                          |
+| **AI code review tools**                   | Only if they keep a human in the loop. Fully automated review bots may post comments about code, but cannot change the content without human approval.                                                                                                                            |
+| **AI agents** (autonomous)                 | Not permitted to update code directly on shared platforms (e.g. within PRs) without explicit human approval of each action. They may be used on local machines, such as in a developers IDE, as long as workflows are manually approved and the final code is quality controlled. |
 
 ---
 

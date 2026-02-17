@@ -10,7 +10,7 @@ _Draft for consultation - February 2026_
 
 AI coding tools have moved from novelty to daily workflow in under two years. Andrej Karpathy coined the term "vibe coding" in early 2025 - describing developers who prompt AI, accept all suggestions, and barely read the output. By early 2026, he had already moved on, calling the practice outdated and advocating instead for "agentic engineering": careful, supervised AI-assisted development with full human oversight [1].
 
-This trajectory tells us something important: the tools are real and improving rapidly, but the hype cycle consistently outpaces responsible adoption. For any organisation working in the public interest, adopting AI is not optional - but _how_ it is adopted is an ethical choice that must be made deliberately.
+This trajectory tells us something important: the tools are real and improving rapidly, but the hype cycle consistently outpaces responsible adoption. For any organisation working in the public interest, the adoption of AI cannot be ignored - but _how_ it is adopted is an ethical choice that must be made deliberately.
 
 This document provides a framework in three parts: the ethical concerns AI adoption raises and how to mitigate them; the specific responsibilities that arise when AI intersects with open-source practice; and the human dimensions - learning, craft, and cognition - that must be protected as these tools become pervasive.
 
@@ -65,7 +65,7 @@ The refinement of AI models often relies on low-paid human labour for data label
 
 **Mitigation approaches:**
 
-- Preference for open models where viable.
+- Preference for open models where viable. See [recommended open models page](./recommended-open-models.md).
 - Maintain tooling flexibility to reduce dependence on a single corporate provider.
 - Ensure transparency in usage, especially when contributing to open source.
 - Advocate for equitable AI access through support of local, open solutions.
@@ -79,9 +79,8 @@ Even 'open' models will generally contain traces of stolen training material.
 
 **Mitigation approaches:**
 
-- All contributors must review and understand AI-generated output before submission.
-- No blind acceptance of generated code.
-- Contributors must be able to explain any submitted changes.
+- Contributors must review and understand generated code, without blindly accepting it.
+- Using code analysers and copyright detection tools such as ScanCode Toolkit, built into CI pipelines.
 - Substantial AI-generated contributions must be disclosed in commit messages.
 - Recognise that producing open-source work means it may itself become training data - but that does not remove the responsibility to ensure no infringements enter the commons.
 
