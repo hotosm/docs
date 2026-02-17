@@ -1,0 +1,147 @@
+# Repo Checklist: Accepting AI-Assisted Contributions
+
+**What every repo needs to handle AI contributions responsibly.**
+
+---
+
+## The Checklist
+
+### 1. `AGENTS.md` in repo root
+
+This file is read by AI coding agents (Copilot, Claude Code, Cursor, etc.) when they work on your codebase. It tells the AI what your standards are, what's off-limits, and how to behave. Think of it as onboarding instructions — but for machines.
+
+**What to include:**
+
+- Project description and mission context
+- Tech stack and versions
+- Commands to build, test, lint, and check security
+- Project structure (where source, tests, and docs live)
+- Critical paths where AI must not generate code unsupervised (auth, data handling, security)
+- Acceptable areas for AI assistance (UI, boilerplate, test scaffolding, docs)
+- Patterns to avoid (e.g. `eval()`, unparameterised queries, disabling security)
+- Commit message conventions
+- A reminder that the human is accountable
+
+Keep it under 200 lines. AI context windows are finite — concise beats comprehensive.
+
+### 2. AI section in `CONTRIBUTING.md`
+
+A short, human-readable section that sets expectations for contributors. Link to the full org-wide policy if one exists, but keep the essentials in-repo so contributors don't have to chase links.
+
+**Minimum content:**
+
+```markdown
+## AI Tool Usage
+
+You may use AI tools to assist your contributions. You are fully responsible
+for everything you submit.
+
+- **Understand it**: You must be able to explain every line of your code.
+- **Test it**: AI-generated code must pass all tests and security checks.
+- **Disclose it**: Mark AI-assisted PRs using the PR template.
+- **Own it**: You are the author. If a reviewer asks "why?", you answer — not the AI.
+
+AI tools must not be used to fix issues labelled `good first issue`.
+These exist for human learning.
+
+For full policy details, see: https://docs.hotosm.org/ai-assisted-coding
+```
+
+### 3. PR template with AI disclosure
+
+Update `.github/PULL_REQUEST_TEMPLATE.md` to include an AI section. It should be lightweight — one checkbox and a few optional fields. Don't make it burdensome or people will skip it.
+
+**Recommended template:**
+
+```markdown
+## What type of PR is this? (check all applicable)
+
+- [ ] 🍕 Feature
+- [ ] 🐛 Bug Fix
+- [ ] 📝 Documentation
+- [ ] 🧑‍💻 Refactor
+- [ ] ✅ Test
+- [ ] 🤖 Build or CI
+- [ ] ❓ Other (please specify)
+
+## Related Issue
+
+Fixes #
+
+## Describe this PR
+
+A brief description of what this changes and why — in your own words.
+
+## AI Tool Usage
+
+- [ ] No AI tools were used
+- [ ] AI tools were used (complete below)
+
+**If AI-assisted:**
+
+- Tool(s) used:
+- What was generated:
+- What you reviewed and changed:
+
+## Screenshots
+
+If applicable.
+
+## Alternative Approaches Considered
+
+Did you consider other approaches? Why this one?
+
+## Review Guide
+
+How should a reviewer test this? Anything to watch for?
+
+## Checklist
+
+- [ ] I have read the [Contributing Guide](./CONTRIBUTING.md)
+- [ ] I have read the [Code of Conduct](https://docs.hotosm.org/code-of-conduct)
+- [ ] PR is focused and small
+- [ ] Tests are included or updated
+- [ ] I understand all code in this PR and can answer questions about it
+- [ ] No secrets, credentials, or sensitive data are included
+- [ ] Commit messages are descriptive
+- [ ] Related docs and screenshots are updated
+
+## [optional] What gif best describes this PR or how it makes you feel?
+```
+
+### 4. Commit message convention
+
+Include a trailer for AI-assisted commits:
+
+```
+feat: add password strength indicator to registration
+
+Assisted-by: Claude
+```
+
+This is becoming a de facto standard across open source (LLVM, Fedora, QGIS are all adopting similar conventions). It helps maintainers calibrate review attention without being punitive.
+
+### 5. Handling AI-assisted PRs (Maintainers)
+
+**Key points for reviewers:**
+
+- If a PR is marked AI-assisted, ask "why this approach?" — the answer tells you if the contributor understands the code.
+- Watch for: verbose AI-style PR descriptions, generic variable names, unnecessary complexity, dependencies that seem unrelated.
+- Use a standard response for non-compliant PRs (template below).
+- If a contributor cannot answer basic questions about their code, the PR is not ready.
+
+**Response template for non-compliant PRs:**
+
+> Thanks for this contribution. It doesn't currently meet our standards for AI-assisted work — please review our Contributing Guide and ensure you can explain the design decisions in this PR. Happy to help once you've had a chance to review the code more thoroughly.
+
+---
+
+## Quick Reference: What Goes Where
+
+| File                               | Purpose                            | Audience     |
+| ---------------------------------- | ---------------------------------- | ------------ |
+| `AGENTS.md`                        | Machine-readable project standards | AI tools     |
+| `CONTRIBUTING.md` (AI section)     | Human-readable contribution rules  | Contributors |
+| `.github/PULL_REQUEST_TEMPLATE.md` | PR disclosure and checklist        | Contributors |
+| Commit trailer (`Assisted-by:`)    | Attribution in git history         | Maintainers  |
+| Docs site policy page              | Full ethical framework and rules   | Everyone     |

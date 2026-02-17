@@ -115,20 +115,10 @@ nav:
           - Roadmap: https://github.com/hotosm/raw-data-api/tree/master#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
       - Future Plans / Ideas: projects/future-plans.md
-  - Modularization:
-      - Info: modules.md
-      - Backend: modules/backend.md
-      - Frontend: modules/frontend.md
-      - UI / Design:
-          - UI Components: https://hotosm.github.io/ui/
-      - Python Modules:
-          - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
-          - raw-data-api-py: https://hotosm.github.io/raw-data-api-py/
-          - pg-nearest-city: https://hotosm.github.io/pg-nearest-city/
-          - geojson-aoi-parser: https://hotosm.github.io/geojson-aoi-parser/
-          - OSM Login: https://hotosm.github.io/osm-login-python/
-          - FieldTM Splitter: https://hotosm.github.io/fmtm-splitter/
-          - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
+  - AI Guide:
+      - LLMs Usage Framework: ai-guide/using-lmms-responsibly.md
+      - Practical Guide For Agentic Coding: ai-guide/ai-assisted-coding-guide.md
+      - Prepare Your Repository For AI: ai-guide/managing-ai-contributions.md
   - Developer Guide:
       - Intro: dev-guide/intro.md
       - Managing Repos:
@@ -168,6 +158,20 @@ nav:
       - AWS Permissions: devops/aws-iam.md
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
       - Kubernetes: https://github.com/hotosm/k8s-infra
+  - Modularization:
+      - Info: modules.md
+      - Backend: modules/backend.md
+      - Frontend: modules/frontend.md
+      - UI / Design:
+          - UI Components: https://hotosm.github.io/ui/
+      - Python Modules:
+          - OSM Fieldwork: https://hotosm.github.io/osm-fieldwork/
+          - raw-data-api-py: https://hotosm.github.io/raw-data-api-py/
+          - pg-nearest-city: https://hotosm.github.io/pg-nearest-city/
+          - geojson-aoi-parser: https://hotosm.github.io/geojson-aoi-parser/
+          - OSM Login: https://hotosm.github.io/osm-login-python/
+          - FieldTM Splitter: https://hotosm.github.io/fmtm-splitter/
+          - fAIr Utilities: https://hotosm.github.io/fAIr-utilities/
   - Other Sites:
       - Toolbox: https://toolbox.hotosm.org
       - Learn OSM: https://learnosm.org
