@@ -148,6 +148,7 @@ Project responses range from cautious acceptance to outright bans. The landscape
 - **LLVM Project** - AI use permitted but must be disclosed. Contributors must understand and explain their code. "Good first issues" are reserved for human learning [4].
 - **Linux Kernel** - AI code accepted, but undisclosed use results in the contributor being banned [12].
 - **cURL** - AI contributions accepted with mandatory disclosure. Policy breach means a permanent ban. The bug bounty was cancelled after AI reports overwhelmed the team - only 5% of submissions identified real vulnerabilities [13, 10].
+- **CloudNativePG** - Permits AI-assisted contributions under strict human accountability rules. Contributors must fully understand and maintain AI-generated code, disclose usage via commit trailers, and _guarantee legal provenance_. "Shotgun refactoring" (wide-scale refactoring or clean-up), hallucinated features, and AI-written PR descriptions are explicitly prohibited. Maintainers reserve the right to close low-effort AI PRs without detailed critique [19].
 
 **Still navigating:**
 
@@ -248,6 +249,7 @@ This framework is intended as a starting point for consultation among NGOs, civi
 16. [OpenDroneMap AI contribution policy discussion.](https://github.com/OpenDroneMap/documents/pull/4)
 17. [Debian AI General Resolution withdrawn.](https://lwn.net/Articles/1020968/)
 18. Hicks, C. [Cognitive helmets for the AI bicycle.](https://www.fightforthehuman.com/cognitive-helmets-for-the-ai-bicycle-part-1/)
+19. [Cloud Native PG AI Usage Policy](https://github.com/cloudnative-pg/governance/blob/main/AI_POLICY.md)
 
 [1]: https://x.com/karpathy/status/2019137879310836075 "Karpathy, A. (2025–2026). From 'vibe coding' to 'agentic engineering.'"
 [2]: https://www.nature.com/articles/s41598-025-34350-3 "Nature Scientific Reports (2026). Cybersecurity risks in AI-generated code."
@@ -267,6 +269,7 @@ This framework is intended as a starting point for consultation among NGOs, civi
 [16]: https://github.com/OpenDroneMap/documents/pull/4 "OpenDroneMap AI contribution policy discussion."
 [17]: https://lwn.net/Articles/1020968/ "Debian AI General Resolution withdrawn."
 [18]: https://www.fightforthehuman.com/cognitive-helmets-for-the-ai-bicycle-part-1/ "Hicks, C. Cognitive helmets for the AI bicycle."
+[19]: https://github.com/cloudnative-pg/governance/blob/main/AI_POLICY.md "Cloud Native PG AI Usage Policy."
 
 ## Additional Sources
 
