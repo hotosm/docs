@@ -139,16 +139,16 @@ AI tools are demonstrably helpful when assisting someone who already understands
 
 ### 2.3 What Leading Projects Are Doing
 
-Project responses range from cautious acceptance to outright bans. The landscape is moving fast, but the following represent the most significant approaches as of early 2026. Notably, the platforms hosting open-source projects have been slow to provide maintainer tooling for filtering or flagging AI-generated contributions — several projects cite this as a direct driver of their restrictive policies [10]. OSS foundations, meanwhile, have largely focused on licensing questions rather than the quality and burnout crisis maintainers are facing now [10].
+Project responses range from cautious acceptance to outright bans. The landscape is moving fast, but the following represent the most significant approaches as of early 2026. Notably, the platforms hosting open-source projects have been slow to provide maintainer tooling for filtering or flagging AI-generated contributions - several projects cite this as a direct driver of their restrictive policies [10]. OSS foundations, meanwhile, have largely focused on licensing questions rather than the quality and burnout crisis maintainers are facing now [10].
 
 **Disclosure and accountability:**
 
-- **Apache Spark** - Every PR must disclose AI use. Of ~8,500 commits over 2.5 years, only ~1.5% disclosed AI, but the rate is accelerating sharply [11].
-- **Apache Airflow** - Updated contributing guidelines to require AI disclosure after a surge of low-quality AI-generated PRs [11].
 - **LLVM Project** - AI use permitted but must be disclosed. Contributors must understand and explain their code. "Good first issues" are reserved for human learning [4].
 - **Linux Kernel** - AI code accepted, but undisclosed use results in the contributor being banned [12].
 - **cURL** - AI contributions accepted with mandatory disclosure. Policy breach means a permanent ban. The bug bounty was cancelled after AI reports overwhelmed the team - only 5% of submissions identified real vulnerabilities [13, 10].
 - **CloudNativePG** - Permits AI-assisted contributions under strict human accountability rules. Contributors must fully understand and maintain AI-generated code, disclose usage via commit trailers, and _guarantee legal provenance_. "Shotgun refactoring" (wide-scale refactoring or clean-up), hallucinated features, and AI-written PR descriptions are explicitly prohibited. Maintainers reserve the right to close low-effort AI PRs without detailed critique [19].
+- **Apache Spark** - Every PR must disclose AI use. Of ~8,500 commits over 2.5 years, only ~1.5% disclosed AI, but the rate is accelerating sharply [11].
+- **Apache Airflow** - Updated contributing guidelines to require AI disclosure after a surge of low-quality AI-generated PRs [11].
 
 **Still navigating:**
 

@@ -18,19 +18,19 @@ This is not punitive. It is the same standard we hold for any tool: if you use a
 
 - **First drafts and boilerplate:** Config files, repetitive scaffolding, test stubs, standard templates.
 - **Explaining unfamiliar code:** "What does this function do?" is a great use of AI. Treat it like a patient colleague who may occasionally be confidently wrong.
-- **Brainstorming approaches:** "What are three ways I could structure this migration?" - then evaluate each with your own judgement.
+- **Brainstorming approaches:** "What are three ways I could structure this migration?" - then evaluate each with your own judgement. Note that LLMs are trained to be agreeable an tend to affirm your opinion. Try to phrase questions in an unbiased way, and be wary that the response may not account for all possible options.
 - **Drafting documentation:** Let AI produce a first pass, then rewrite it in your own words to ensure accuracy.
 - **Debugging assistance:** Paste an error message and ask for possible causes. Verify before applying.
-- **Refactoring suggestions:** AI can suggest cleaner patterns. Review every change it proposes.
+- **Refactoring suggestions:** AI can suggest cleaner patterns. Be aware that often LLMs are prone to mission-creep. If you need a small refactor, then be sure to nail down exactly what is needed and set guardrails, else the scope of the refactor may quickly grow.
 - **Learning new libraries or languages:** Use AI as a tutor, not a substitute for understanding.
 
 ## What AI Is Bad At (Be Cautious Here)
 
 - **Architecture decisions:** AI does not understand your system's history, constraints, or users. It will happily suggest a redesign that ignores your actual context.
 - **Security-sensitive code:** AI-generated code frequently has vulnerabilities — missing input validation, insecure defaults, outdated patterns. All security-relevant code must be manually engineered and reviewed.
-- **Domain-specific logic:** AI often fails on edge cases unique to your domain. _(Example from geospatial: AI routinely mishandles anti-meridian polygon wrapping because it does not understand spherical geometry unless explicitly guided.)_
+- **Domain-specific logic:** AI often fails on edge cases unique to your domain. _(Example from geospatial: AI routinely mishandles anti-meridian polygon wrapping because it does not understand spherical geometry unless explicitly guided.)_. It may help to provide domain specific context and add more specific instructions. In some cases, LLMs are just not appropriate tools: using general models to pinpoint specialized knowledge.
 - **Choosing dependencies:** LLMs frequently generate custom implementations instead of using well-tested libraries. Always check: does a maintained library already solve this? If yes, use it.
-- **Anything involving beneficiary or sensitive data:** Never paste personal data, donor information, or internal strategy into AI tools.
+- **Anything involving beneficiary or sensitive data:** Never paste personal data, donor information, or internal strategy into AI tools. Ensure access restrictions are set when sharing your code repository containing secret files such as `.env` files with agents.
   HOT staff can refer to the [internal AI Policy](https://docs.google.com/document/d/13bGovnFVOouF7iRv0CVxSYjP3ky048KQYkrdg4mIcHU) for more details.
 
 ## What AI Must Not Be Used For
@@ -46,14 +46,14 @@ This is not punitive. It is the same standard we hold for any tool: if you use a
 
 ### 1. Think First, Then Prompt
 
-Before asking AI anything, spend a few minutes forming your own mental model of the problem. What are the constraints? What approaches come to mind? This is the "pre-testing effect" - trying to answer a question yourself, even imperfectly, before consulting AI produces better understanding and retention.
+Before asking AI anything, spend enough time forming your own mental model of the problem. What are the constraints? What approaches come to mind? This is the "pre-testing effect" - trying to answer a question yourself, even imperfectly, before consulting AI produces better understanding and retention.
 
 ### 2. Write a Clear Spec, Not a Vague Request
 
 - **Bad:** "Make this work better."
 - **Good:** "Refactor this function to handle null input gracefully. Return an empty list instead of throwing. Keep the existing API signature. Add a unit test for the null case."
 
-The more precise your prompt, the more useful the output. Think of it as delegation: you are managing the AI, not the other way around.
+The more precise your prompt, the more useful the output.
 
 ### 3. Review Everything
 
@@ -61,6 +61,8 @@ The more precise your prompt, the more useful the output. Think of it as delegat
 - Check that it uses existing project libraries and patterns rather than reinventing solutions.
 - Run the tests. If there are no tests, write them before accepting the code.
 - Ask yourself: "Could I explain this to a colleague?" If not, dig deeper before committing.
+- Ask yourself: "Am I overcomplicating this? Could this be achieved with a simpler pattern?" LLMs can have a tendency to apply complex patterns to solve what are often simple problems (particularly if they can be solved with an already well developed and maintained tool / library).
+- Where possible, add detailed comments as to **why** a line of code is needed (not explaining _what_ the line of code does, which should be self-explanatory, and is often what LLMs do).
 
 ### 4. Keep Changes Small
 
