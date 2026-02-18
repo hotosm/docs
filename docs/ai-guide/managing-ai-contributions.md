@@ -151,6 +151,7 @@ CI pipeline tools can catch what human review misses:
   - Hugging face LLM models for AI content detection.
 - There is also a worrying trend of fully automated bot 'agents' making PRs to open-source projects:
   - It's _generally_ possible to identify this as an AI _for now_, by asking questions about the code and checking responses.
+  - Telltale signs of a bot account: frequency of PRs open across a large range of repos, number of forks made in a short space of time, integration with OpenClaw or other 'AI assistant' tools.
   - Perhaps a list of 'bot' accounts could be compiled and included in a CI action to flag PRs as AI?
 
 ### 7. Handling AI-assisted PRs (Maintainers)
