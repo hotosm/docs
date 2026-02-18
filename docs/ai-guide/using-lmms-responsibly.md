@@ -61,7 +61,7 @@ Training large language models requires enormous computational resources. Each q
 
 ### 1.4 Labour and Exploitation
 
-The refinement of AI models often relies on low-paid human labour for data labelling and content moderation, frequently in low- and middle-income economies. The training data itself was often collected without consent from its creators. Using these tools means participating in a supply chain with unresolved ethical questions about consent, compensation, and intellectual property [3].
+The refinement of AI models often relies on low-paid human labour for data labelling and content moderation, frequently in low- and middle-income economies. The training data itself was often collected without consent from its creators. Using these tools means participating in a supply chain with unresolved ethical questions about consent, compensation, and intellectual property [20].
 
 **Mitigation approaches:**
 
@@ -250,6 +250,7 @@ This framework is intended as a starting point for consultation among NGOs, civi
 17. [Debian AI General Resolution withdrawn.](https://lwn.net/Articles/1020968/)
 18. Hicks, C. [Cognitive helmets for the AI bicycle.](https://www.fightforthehuman.com/cognitive-helmets-for-the-ai-bicycle-part-1/)
 19. [Cloud Native PG AI Usage Policy](https://github.com/cloudnative-pg/governance/blob/main/AI_POLICY.md)
+20. Regilme, S.S.F. (2024). [Artificial Intelligence Colonialism](https://doi.org/10.1353/sais.2024.a950958)
 
 [1]: https://x.com/karpathy/status/2019137879310836075 "Karpathy, A. (2025–2026). From 'vibe coding' to 'agentic engineering.'"
 [2]: https://www.nature.com/articles/s41598-025-34350-3 "Nature Scientific Reports (2026). Cybersecurity risks in AI-generated code."
@@ -270,6 +271,7 @@ This framework is intended as a starting point for consultation among NGOs, civi
 [17]: https://lwn.net/Articles/1020968/ "Debian AI General Resolution withdrawn."
 [18]: https://www.fightforthehuman.com/cognitive-helmets-for-the-ai-bicycle-part-1/ "Hicks, C. Cognitive helmets for the AI bicycle."
 [19]: https://github.com/cloudnative-pg/governance/blob/main/AI_POLICY.md "Cloud Native PG AI Usage Policy."
+[20]: https://doi.org/10.1353/sais.2024.a950958 "Artificial Intelligence Colonialism."
 
 ## Additional Sources
 
