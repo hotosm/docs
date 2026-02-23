@@ -20,11 +20,76 @@ gaps to aid an effective response.
 
 ### 1. Imagery Collection
 
-![e2e-imagery](./diagrams/e2e-1-imagery.drawio)
+```mermaid
+flowchart TD
+  subgraph Capture
+    Drones["Drones"]
+    DroneTM["DroneTM"]
+    DroneDeploy["DroneDeploy"]
+    Litchi["Litchi"]
+    WaypointFiles["Waypoint Files"]
+    DGPS["DGPS Receiver"]
+  end
+
+  subgraph Processing
+    ODM["OpenDroneMap"]
+    K8s["Kubernetes"]
+    S3["S3 Object Storage"]
+  end
+
+  subgraph Access
+    OAM["OpenAerialMap"]
+  end
+
+  DroneTM -- "Photos, Metadata, CRS" --> ODM
+  ODM -- "Merged Imagery" --> DroneTM
+  DroneTM -- "Orthophoto Tile Map Service" --> OAM
+  DroneTM --> DroneDeploy
+  DroneTM --> Litchi
+  DroneTM --> WaypointFiles
+  DroneDeploy --> Drones
+  Litchi --> Drones
+  WaypointFiles --> Drones
+  Drones -- "Raw Imagery" --> DroneTM
+  DroneTM -- "Photos, Metadata, CRS" --> DGPS
+  DGPS -- "Ground Control Points" --> DroneTM
+  DroneTM -- "COG (2D), COPC (3D)" --> S3
+  ODM --> K8s
+  K8s -- "Job Autoscaling" --> ODM
+```
 
 ### 2. Digitization
 
-![e2e-digitization](./diagrams/e2e-2-digitization.drawio)
+```mermaid
+flowchart TD
+  subgraph HOTTools
+    TM["Tasking Manager"]
+    OSM["OpenStreetMap"]
+    Sandbox["OSM Sandbox"]
+    FAIR["fAIr"]
+    MapSwipe["MapSwipe"]
+    Rapid["Rapid"]
+    UMap["uMap"]
+  end
+
+  subgraph External
+    OtherSources["Other Data Sources"]
+    Overture["Overture"]
+  end
+
+  TM -- "Training Data" --> FAIR
+  UMap -- "Training Data Outside HOT Ecosystem" --> FAIR
+  FAIR -- "Validation of Model Output" --> MapSwipe
+  MapSwipe -- "Re-training of AI Model" --> FAIR
+  TM --> Sandbox
+  OtherSources --> TM
+  Overture --> TM
+  FAIR -- "Final Model Predictions" --> TM
+  TM -- "Final Output Validation (Optional)" --> MapSwipe
+  TM -- "Conflation UI" --> Rapid
+  TM -- "No Imagery, fAIr Feature / Generation Not Possible" --> TM
+  OSM --> TM
+```
 
 ## Block Model Diagram
 

@@ -24,4 +24,55 @@ tools. There is more info about [modularization](modules.md) of our code.
 
 ## The HOT Ecosystem of Tools
 
-![hot-tools-ecosystem](./diagrams/e2e-ecosystem.drawio)
+```mermaid
+flowchart TD
+  subgraph Imagery
+    DroneTM["DroneTM"]
+    OpenAccessSatellite["Open Access Satellite Imagery"]
+    OpenAerialMap["OpenAerialMap"]
+  end
+
+  subgraph Digitization
+    TaskingManager["Tasking Manager"]
+    OpenStreetMap["OpenStreetMap"]
+    FieldMappingTM["Field MappingTM"]
+    Fair["fAIr"]
+    MapSwipe["MapSwipe"]
+  end
+
+  subgraph ExternalData
+    RawDataAPI["Raw Data API"]
+    ExportTool["Export Tool"]
+    HDX["Humanitarian Data Exchange"]
+    Visualization["Visualization"]
+    OtherData["Other Data"]
+    OhsomeNow["ohsomeNow"]
+    CustomUmap["Custom uMap Data"]
+    NonOSMData["Non-OSM Data"]
+    Conflation["Conflation Software"]
+    QField["QField"]
+  end
+
+  DroneTM --> OpenAerialMap
+  OpenAccessSatellite --> OpenAerialMap
+  OpenAerialMap --> TaskingManager
+  OpenAerialMap --> Fair
+  TaskingManager --> OpenStreetMap
+  TaskingManager --> Fair
+  OpenStreetMap --> MapSwipe
+  MapSwipe --> Fair
+  OpenStreetMap --> FieldMappingTM
+  FieldMappingTM --> OpenStreetMap
+  FieldMappingTM --> NonOSMData
+  FieldMappingTM --> Conflation
+  FieldMappingTM --> QField
+  OpenStreetMap --> RawDataAPI
+  RawDataAPI --> ExportTool
+  RawDataAPI --> HDX
+  HDX --> DroneTM
+  ExportTool --> Visualization
+  HDX --> Visualization
+  CustomUmap --> FieldMappingTM
+  OhsomeNow --> TaskingManager
+  OtherData --> TaskingManager
+```

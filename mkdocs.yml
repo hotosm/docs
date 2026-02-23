@@ -34,20 +34,20 @@ exclude_docs: |
 extra_css:
   - css/extra.css
 
-extra_javascript:
-  - https://viewer.diagrams.net/js/viewer-static.min.js
-  - javascript/drawio-reload.js
-
 markdown_extensions:
   - tables
   - toc:
       permalink: true
       title: Page contents
+  - pymdownx.extra
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight
-  - pymdownx.extra
   - pymdownx.emoji:
   - pymdownx.tabbed:
       alternate_style: true
@@ -55,7 +55,6 @@ markdown_extensions:
 
 plugins:
   - search
-  - drawio
 
 nav:
   - Home: index.md

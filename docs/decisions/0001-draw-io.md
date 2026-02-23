@@ -1,4 +1,4 @@
-# Use draw.io (diagrams.net) for technical diagrams
+# Use Mermaid for technical diagrams
 
 ## Context and Problem Statement
 
@@ -18,27 +18,18 @@ technical components.
 
 ## Decision Outcome
 
-- The author deemed UML to be useful for certain circumstances, but
-  largely an academic exercise. It shines at creating relationship
-  diagrams between Object-oriented code, which is not what we need.
-  It also looks pretty bad when public facing.
-- Tools like Diagrams and Mermaid could be great to use in certain
-  instances (Mermaid is probably favoured for the simplicity of
-  markdown). However, they are still not very approachable if
-  a non-technical user wishes to edit these diagrams.
-- Diagrams.net (draw.io) has many advantages and hence was chosen:
+- The team needs diagrams that are easy to diff, review, and update with
+  small textual changes.
+- Mermaid diagrams are stored directly in markdown and render in both
+  MkDocs Material and GitHub, which keeps authoring and review in one place.
+- This also enables LLM-assisted updates where diagram structure can be
+  edited from plain text descriptions.
 
 ### Consequences
 
-- Good, because draw.io uses an open XML standard to save, plus can be exported in
-  SVG or PNG format as needed
-- Good, because it's super simple to use, particularly if exported to SVG for
-  editing. Anyone should be able to edit the diagrams.
-- Good, because draw.io is open-source, with a permisive license even for
-  commercial use.
-- Good, because the diagrams.net wrapper has Git integration where you save straight
-  to a repo, meaning we can auto-deploy docs when diagrams are edited.
-- Bad, it is slightly more manual with the design / placement than code --> diagram
-  options such as Diagrams or Mermaid.
-- Bad, because diagrams.net could decide to shut down or change their license.
-  But this would not be a huge deal due to open standards / easy migration.
+- Good, because Mermaid source is plain text and review-friendly in PRs.
+- Good, because diagrams can be generated and updated programmatically.
+- Good, because there is no dependency on a visual editor for routine edits.
+- Bad, because advanced layout control and custom iconography are more limited
+  than in draw.io.
+- Bad, because larger diagrams can need manual tuning for readability.
