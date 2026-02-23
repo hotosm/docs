@@ -1,0 +1,5964 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation index across HOT's tools.">
+      
+      
+      
+        <link rel="canonical" href="https://www.hotosm.org/dev-guide/web-backend/">
+      
+      
+        <link rel="prev" href="../repo-management/licensing/">
+      
+      
+        <link rel="next" href="../web-frontend/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Backend - HOTOSM Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-apis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="HOTOSM Docs" class="md-header__button md-logo" aria-label="HOTOSM Docs" data-md-component="logo">
+      
+  <img src="../../assets/images/hot_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HOTOSM Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Backend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hotosm/docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hotosm/docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HOTOSM Docs" class="md-nav__button md-logo" aria-label="HOTOSM Docs" data-md-component="logo">
+      
+  <img src="../../assets/images/hot_logo.png" alt="logo">
+
+    </a>
+    HOTOSM Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hotosm/docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hotosm/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../become-a-contributor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Become a Contributor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/tools-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/e2e-mapping" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    End-to-End Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasking Manager
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tasking Manager
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://tasks.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hotosm.org/tech-suite/tasking-manager" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/1Ce_ESKLvvg1I7vYN9ieDXXDHpCDUTIgRwPXtVEySs9k" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pitch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/tasking-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/tasking-manager/tree/main#product-roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/orgs/hotosm/projects/28" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Field Mapping TM (FMTM)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Field Mapping TM (FMTM)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fmtm.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hotosm.org/tech-suite/field-mapping-tasking-manager" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/1FS__AH10sCzoS23ejXCWZGks9zbZ-YUS_97yzJtFwRE" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pitch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.field.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/field-tm/tree/main#roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/field-tm#roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Drone TM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Drone TM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://dronetm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hotosm.org/tech-suite/drone-tasking-manager" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/presentation/d/16OjWN6sMJJYs435W7g0j5lb7hZBltNA0jxG7eC0zRbg" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pitch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.drone.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/drone-tm/tree/main#roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/orgs/hotosm/projects/39" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fAIr
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fAIr
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fair.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hotosm.org/tech-suite/fair" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://drive.google.com/file/d/1Ft4oldxHqACb6XovbpsMcGT3swNlm6EA" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pitch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fair-dev.hotosm.org/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/fair/tree/main#product-roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/orgs/hotosm/projects/30/views/1" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAerialMap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenAerialMap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://openaerialmap.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hotosm.org/tech-suite/open-aerial-map" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://drive.google.com/file/d/1fr_Nj5zXSjXDHT8nh9XEMSRPnT7gbtLE" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pitch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/openaerialmap/tree/main#roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/openaerialmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    More Details
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatMap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ChatMap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://chatmap.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/chatmap/blob/master/docs/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/chatmap/#roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/orgs/hotosm/projects/46" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export Tool
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Export Tool
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://export.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hotosm.org/tech-suite/export-tool" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://export.hotosm.org/v3/learn" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/osm-export-tool/tree/master#product-roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/orgs/hotosm/projects/29" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raw Data API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Raw Data API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://api-prod.raw-data.hotosm.org/v1/redoc" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/raw-data-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/raw-data-api/tree/master#product-roadmap" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/orgs/hotosm/projects/29" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/future-plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Future Plans / Ideas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modularization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modularization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI / Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI / Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Components
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/osm-fieldwork/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSM Fieldwork
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/raw-data-api-py/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    raw-data-api-py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/pg-nearest-city/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pg-nearest-city
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/geojson-aoi-parser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geojson-aoi-parser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/osm-login-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSM Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/fmtm-splitter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FieldTM Splitter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/fAIr-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fAIr Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Managing Repos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Managing Repos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repo-management/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repo-management/monorepos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monorepos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repo-management/pre-commit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pre-Commit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repo-management/version-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repo-management/dependencies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependency Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repo-management/licensing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REST
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GraphQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#others" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Others
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-choose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What To Choose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frameworks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frameworks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastAPI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FastAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#async-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Async Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workers-processes-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workers, Processes, Threads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-synchronous-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Synchronous Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-using-sync-code-within-an-async-def-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Using sync code within an async def function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-running-multiple-standard-def-from-within-an-async-def-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Running multiple standard def from within an async def function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-running-an-async-def-within-a-sync-def" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Running an async def within a sync def
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-efficiency-running-batch-async-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Efficiency running batch async tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-running-computationally-intensive-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Running computationally intensive tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices / Tips
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices / Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-logical-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Logical Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-use-the-correct-response-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Use the Correct Response Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-use-pydantic-for-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Use Pydantic for Validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Use Pydantic for Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-data-serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Data Serialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-fastapi-dependencies-depends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. FastAPI Dependencies (Depends)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. FastAPI Dependencies (Depends)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-of-additional-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation of additional constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reuse-chain-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reuse &amp; chain dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-call-are-cached" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency call are cached
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies-can-include-route-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies can include route parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-always-use-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Always Use Typing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-use-rest-endpoint-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Use REST Endpoint Naming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-save-files-in-chunks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Save Files in Chunks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-file-uploads-alongside-other-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. File Uploads Alongside Other Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../accessibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accessibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-doc-gen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatically Generated Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://diataxis.fr" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diátaxis Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Containers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Containers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/containers-101/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/kubernetes-local-kind/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containers/production-db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production DB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tech Decisions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tech Decisions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0003-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0004-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend language
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0005-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code hosting + CI/CD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0006-slack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community engagement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0007-pnpm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0008-uv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0002-mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0001-draw-io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Diagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0009-load-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Load Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0010-k8s-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Domain Name Scheme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decisions/0011-sso-auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Authentication (SSO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DevOps
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devops/aws-iam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/gh-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reusable Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/k8s-infra" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Sites
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Other Sites
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://toolbox.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toolbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://learnosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn OSM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sdgs.hotosm.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SDG Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/hotosm/data_protection_project" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Protection For Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://uav-guidelines.openaerialmap.org" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UAV Mapping Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/pdc-documentation" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDC Training
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hotosm.github.io/tracing-guides" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tracing Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Our Development Practices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-contacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tech Contacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-of-conduct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code of Conduct
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hotosm.org/privacy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Page contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Page contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REST
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GraphQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#others" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Others
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-to-choose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What To Choose
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frameworks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frameworks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastAPI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FastAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#async-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Async Programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workers-processes-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workers, Processes, Threads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-synchronous-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Synchronous Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-using-sync-code-within-an-async-def-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Using sync code within an async def function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-running-multiple-standard-def-from-within-an-async-def-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Running multiple standard def from within an async def function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-running-an-async-def-within-a-sync-def" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Running an async def within a sync def
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-efficiency-running-batch-async-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Efficiency running batch async tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-running-computationally-intensive-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Running computationally intensive tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Note
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices / Tips
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices / Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-logical-project-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Logical Project Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-use-the-correct-response-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Use the Correct Response Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-use-pydantic-for-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Use Pydantic for Validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Use Pydantic for Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-data-serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Data Serialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-fastapi-dependencies-depends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. FastAPI Dependencies (Depends)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. FastAPI Dependencies (Depends)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-of-additional-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation of additional constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reuse-chain-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reuse &amp; chain dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-call-are-cached" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependency call are cached
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies-can-include-route-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies can include route parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-always-use-typing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Always Use Typing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-use-rest-endpoint-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Use REST Endpoint Naming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-save-files-in-chunks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Save Files in Chunks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-file-uploads-alongside-other-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. File Uploads Alongside Other Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="web-apis">Web APIs<a class="headerlink" href="#web-apis" title="Permanent link">&para;</a></h1>
+<h2 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h2>
+<p>As a small aside, REST is not the only standard available when it
+comes to web APIs.</p>
+<h3 id="rest">REST<a class="headerlink" href="#rest" title="Permanent link">&para;</a></h3>
+<p>REST has dominated the scene for quite a few years.</p>
+<p>URLs are mapped to different HTTP methods (GET, POST, PUT, DELETE)
+to perform an action when called.</p>
+<p>Responses can be divided between Data APIs (return JSON) vs Hypermedia
+APIs (return HTML).</p>
+<h3 id="graphql">GraphQL<a class="headerlink" href="#graphql" title="Permanent link">&para;</a></h3>
+<p>Without going into the details, this standard has many advantages over
+REST Data APIs, with much more efficient queries being possible.</p>
+<h3 id="rpc">RPC<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h3>
+<p>The Remote Procedure Call (RPC) protocol can return XML or JSON responses.</p>
+<p>It is used to trigger code remotely, so good for internal communication
+between different services.
+HOT uses gRPC for internal communication between tools, outside of their
+REST API.</p>
+<p>While a RESTful API returns a document, the response from an RPC server is
+confirmation that the function was triggered, or an error indicating why
+it failed to run.</p>
+<h3 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h3>
+<p>SOAP is a historic API design using XML, and is no longer recommended.</p>
+<h3 id="what-to-choose">What To Choose<a class="headerlink" href="#what-to-choose" title="Permanent link">&para;</a></h3>
+<p>As of 2023, Data APIs have been key for the adoption of Single Page
+Applications (SPA) and Javascript frameworks (where JSON data is manipulated
+by the frontend).</p>
+<p>Going forward, Hypermedia APIs are re-emerging as an increasingly important
+alternative, where the entire page is rendered before being returned (reducing
+the need for things like Server Side Rendering (SSR)).</p>
+<p>The <a href="https://htmx.org/essays/">HTMX</a> website has many interesting essays
+on this topic.</p>
+<p><strong>In summary, it is probably best to default to a Hypermedia REST API, with a
+simple web framework like HTMX. If a much more complex frontend is required
+(such as a word processor, graphics editor, complex map), then a Data REST API
+is the best option</strong>.</p>
+<h2 id="frameworks">Frameworks<a class="headerlink" href="#frameworks" title="Permanent link">&para;</a></h2>
+<p>API Frameworks are generally divided into synchronous and asynchronous.</p>
+<p>Async is a newer paradigm in Python, often slightly more complex to code,
+but should be faster and more suited to a web API.</p>
+<p>Synchronous frameworks include <strong>flask</strong>, <strong>Django</strong>, etc.</p>
+<p>The asynchronous framework we recommend at HOT, as of 2024, is <strong>FastAPI</strong>.
+It's what we use for most projects.</p>
+<p>There is a great <a href="https://fastapi.tiangolo.com/alternatives/">comparison</a>
+with other frameworks in the ecosystem available.</p>
+<p>Another contender would be <a href="https://github.com/litestar-org/litestar">LiteStar</a>,
+a project spawned from some frustrations with the governance of FastAPI.</p>
+<h3 id="fastapi">FastAPI<a class="headerlink" href="#fastapi" title="Permanent link">&para;</a></h3>
+<p>These docs provide some helpful info for FastAPI best practices.</p>
+<h4 id="async-programming">Async Programming<a class="headerlink" href="#async-programming" title="Permanent link">&para;</a></h4>
+<p>Asynchronous programming can be a learning curve for Python developers.</p>
+<ul>
+<li>FastAPI is an asynchronous web framework that is built to use async code.</li>
+<li>Using async (<code>async def</code>) function with await is more scalable than
+  using synchronous code <code>def</code>, so this is always the preferred default
+  approach.</li>
+<li>Using synchronous code is possible, but devs should be aware of the pitfalls:
+  if the code runs for a long time, it will block the async event loop
+  (i.e. block the thread until the process completes).<ul>
+<li>Bear in mind that 'synchronous' code could be from what you write
+  in the crud functions, OR could be from a library that you use
+  (e.g. osm-fieldwork is synchronous for the most part).</li>
+</ul>
+</li>
+</ul>
+<h4 id="workers-processes-threads">Workers, Processes, Threads<a class="headerlink" href="#workers-processes-threads" title="Permanent link">&para;</a></h4>
+<ul>
+<li>FastAPI uses <code>uvicorn</code> as the actual web server.</li>
+<li>Uvicorn has a number of <code>workers</code> defined. One worker equals
+  one process running on the system (using multiprocessing underneath).<ul>
+<li>Each process is independent and does not share memory.</li>
+<li>Each process is essentially a separate Python interpreter.</li>
+</ul>
+</li>
+<li>Each worker process will have it's own <code>event loop</code> for running async
+  code:<ul>
+<li>The event loop runs in the main thread of the worker process.</li>
+<li>This main thread handles all incoming requests, <strong>unless</strong> offloaded
+  to a different thread or process.</li>
+</ul>
+</li>
+<li>If the main thread blocks (e.g., via a sync function doing heavy I/O or
+  CPU work), then the API server inside that worker becomes unresponsive!</li>
+<li>To mitigate this, we must either:<ul>
+<li>Use a <strong>ThreadPoolExecutor</strong> (run_in_threadpool()): runs blocking tasks
+  in a separate thread inside the same worker process.</li>
+<li>Use a <strong>ProcessPoolExecutor</strong>: spawns a new process outside the worker
+  process to handle CPU-heavy tasks.</li>
+<li>Use <strong>BackgroundTasks</strong> (FastAPI feature): Runs tasks after returning
+  the response, often in a separate thread inside the same worker process.</li>
+</ul>
+</li>
+</ul>
+<p>Workers / processes --&gt; event loop --&gt; threads.</p>
+<h4 id="using-synchronous-code">Using Synchronous Code<a class="headerlink" href="#using-synchronous-code" title="Permanent link">&para;</a></h4>
+<p>It is of course possible to use synchronous code, but if necessary, be
+sure to run this in <strong>another thread</strong>.</p>
+<p>To do this you have several options.</p>
+<h4 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h4>
+<h5 id="1-using-sync-code-within-an-async-def-function">1) Using sync code within an <code>async def</code> function<a class="headerlink" href="#1-using-sync-code-within-an-async-def-function" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Use FastAPI BackgroundTasks, with polling for the task completion.<ul>
+<li>The task should be written as a standard <code>def</code>. FastAPI will handle
+  this automatically and ensure it runs in a separate thread.</li>
+</ul>
+</li>
+<li>Alternatively, if you wish to run the task in the foreground and return
+  the response, use the FastAPI helper <code>run_in_threadpool</code>.<ul>
+<li>This will run the function in a separate thread to ensure that the main
+  thread does not get blocked.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.concurrency</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_in_threadpool</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">long_running_sync_task</span><span class="p">(</span><span class="n">time_to_sleep</span><span class="p">):</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="n">time_to_sleep</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">some_func</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">run_in_threadpool</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">long_running_sync_task</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<h5 id="2-running-multiple-standard-def-from-within-an-async-def-function">2) Running multiple standard <code>def</code> from within an <code>async def</code> function<a class="headerlink" href="#2-running-multiple-standard-def-from-within-an-async-def-function" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Sometimes you need to run multiple <code>def</code> functions in parallel.</li>
+<li>To do this, you can use ThreadPoolExecutor:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">wait</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">a_synchronous_function</span><span class="p">(</span><span class="n">db</span><span class="p">):</span>
+    <span class="c1"># Run with expensive task via threadpool</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrap_generate_task_files</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Func to wrap and return errors from thread.</span>
+
+<span class="sd">        Also passes it&#39;s own database session for thread safety.</span>
+<span class="sd">        If we pass a single db session to multiple threads,</span>
+<span class="sd">        there may be inconsistencies or errors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">generate_task_files</span><span class="p">(</span>
+                <span class="nb">next</span><span class="p">(</span><span class="n">get_db</span><span class="p">()),</span>
+                <span class="n">project_id</span><span class="p">,</span>
+                <span class="n">task</span><span class="p">,</span>
+                <span class="n">xlsform</span><span class="p">,</span>
+                <span class="n">form_type</span><span class="p">,</span>
+                <span class="n">odk_credentials</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+    <span class="c1"># Use a ThreadPoolExecutor to run the synchronous code in threads</span>
+    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="c1"># Submit tasks to the thread pool</span>
+        <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">wrap_generate_task_files</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks_list</span>
+        <span class="p">]</span>
+        <span class="c1"># Wait for all tasks to complete</span>
+        <span class="n">wait</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Note</strong> that in the above example, we cannot pass the db object from the parent
+function into the functions spawned in threads.
+This is becaue a single database connection should not be written to by
+multiple processes at the same time, as you may get data inconsistencies.
+To solve this we generate a new db connection within the pool for each separate
+task we run in a thread.</p>
+<blockquote>
+<p>To avoid issues, look into limiting the thread usage via:
+<a href="https://stackoverflow.com/questions/73195338/how-to-avoid-database-connection-pool-from-being-exhausted-when-using-fastapi-in">https://stackoverflow.com/questions/73195338/how-to-avoid-database-connection-pool-from-being-exhausted-when-using-fastapi-in</a></p>
+</blockquote>
+<h5 id="3-running-an-async-def-within-a-sync-def">3) Running an <code>async def</code> within a sync <code>def</code><a class="headerlink" href="#3-running-an-async-def-within-a-sync-def" title="Permanent link">&para;</a></h5>
+<ul>
+<li>As we try to write most functions async for FastAPI, sometime we need to
+  run some <code>async def</code> logic within a sync <code>def</code>. This is not possible normally.</li>
+<li>To avoid having to write a duplicated <code>def</code> equivalent of the <code>async def</code>
+  code, we can use the package <code>asgiref</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">asgiref.sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">async_to_sync</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_project</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">project_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">something</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">a_sync_function</span><span class="p">():</span>
+     <span class="n">get_project_sync</span> <span class="o">=</span> <span class="n">async_to_sync</span><span class="p">(</span><span class="n">get_project</span><span class="p">)</span>
+     <span class="n">project</span> <span class="o">=</span> <span class="n">get_project_sync</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">project_id</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">project</span>
+</code></pre></div>
+<h5 id="4-efficiency-running-batch-async-tasks">4) Efficiency running batch async tasks<a class="headerlink" href="#4-efficiency-running-batch-async-tasks" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Sometime you may have a very efficient async task you need to call
+  within a for loop.</li>
+<li>Instead of that, you can use <code>asyncio.gather</code> to much more efficiently
+  collect and return the async data (e.g. async web requests, or async
+  file requests, or async db requests):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">gather</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parent_func</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">no_of_buildings</span><span class="p">,</span> <span class="n">has_data_extracts</span><span class="p">):</span>
+    <span class="o">...</span> <span class="n">some</span> <span class="n">other</span> <span class="n">code</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">split_multi_geom_into_tasks</span><span class="p">():</span>
+        <span class="c1"># Use asyncio.gather to concurrently process the async generator</span>
+        <span class="n">split_poly</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">split_polygon_into_tasks</span><span class="p">(</span>
+                <span class="n">db</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">no_of_buildings</span><span class="p">,</span> <span class="n">has_data_extracts</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">boundary_geoms</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Use asyncio.gather with list to collect results from the</span>
+        <span class="c1"># async generator</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="k">await</span> <span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">split_poly</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span> <span class="k">if</span> <span class="n">sublist</span>
+        <span class="p">)</span>
+
+    <span class="n">geoms</span> <span class="o">=</span> <span class="k">await</span> <span class="n">split_multi_geom_into_tasks</span><span class="p">()</span>
+</code></pre></div>
+<h5 id="5-running-computationally-intensive-tasks">5) Running computationally intensive tasks<a class="headerlink" href="#5-running-computationally-intensive-tasks" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Most code on a web server is typically IO-bound, meaning a related to
+  file operations, or a web request.</li>
+<li>But sometimes we must run code that demands high CPU usage over time.</li>
+<li>In these cases, it is best to use <code>concurrent.futures.ProcessPoolExecutor</code>
+  built into Python.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_running_loop</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run_generate_project_basemap</span><span class="p">():</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">get_running_loop</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span>
+            <span class="n">pool</span><span class="p">,</span>  <span class="c1"># process pool</span>
+            <span class="n">project_crud</span><span class="o">.</span><span class="n">generate_project_basemap</span><span class="p">,</span>  <span class="c1"># function</span>
+            <span class="n">db_pool</span><span class="p">,</span>  <span class="c1"># args</span>
+            <span class="n">project_id</span><span class="p">,</span>
+            <span class="n">org_id</span><span class="p">,</span>
+            <span class="n">background_task_id</span><span class="p">,</span>
+            <span class="n">basemap_in</span><span class="o">.</span><span class="n">tile_source</span><span class="p">,</span>
+            <span class="n">basemap_in</span><span class="o">.</span><span class="n">file_format</span><span class="p">,</span>
+            <span class="n">basemap_in</span><span class="o">.</span><span class="n">tms_url</span><span class="p">,</span>
+        <span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Note this is very similar to MultiProcessing in Python, but the
+code is much simpler to use (requires less manual config).</p>
+</blockquote>
+<h5 id="note">Note<a class="headerlink" href="#note" title="Permanent link">&para;</a></h5>
+<ul>
+<li>If you regularly find you are running out of workers/threads and the
+  server is overloaded, it may be time to add a task queuing system to your stack.</li>
+<li>Celery is made for just this - defer tasks to a queue, and run gradually
+  to reduce the immediate load.</li>
+</ul>
+<h4 id="best-practices-tips">Best Practices / Tips<a class="headerlink" href="#best-practices-tips" title="Permanent link">&para;</a></h4>
+<h5 id="1-logical-project-structure">1. Logical Project Structure<a class="headerlink" href="#1-logical-project-structure" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Group together related code into units.</li>
+<li>An example template could be:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>fastapi-project
+├──<span class="w"> </span>src
+│<span class="w">   </span>├──<span class="w"> </span>projects
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>routes.py<span class="w">  </span><span class="c1"># endpoints + router</span>
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>schemas.py<span class="w">  </span><span class="c1"># pydantic models</span>
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>logic.py<span class="w">  </span><span class="c1"># logic separate from routes for easier testing</span>
+│<span class="w">   </span>├──<span class="w"> </span>tasks
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>routes.py
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>schemas.py
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>logic.py
+│<span class="w">   </span>├──<span class="w"> </span>db
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>models.py<span class="w">  </span><span class="c1"># global database models (can also be per subdir)</span>
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>enums.py<span class="w">  </span><span class="c1"># enum mapping for the database</span>
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>database.py<span class="w">  </span><span class="c1"># database connection config</span>
+│<span class="w">   </span>├──<span class="w"> </span>config.py<span class="w">  </span><span class="c1"># global settings</span>
+│<span class="w">   </span>└──<span class="w"> </span>main.py
+├──<span class="w"> </span>tests/
+</code></pre></div>
+<h5 id="2-use-the-correct-response-type">2. Use the Correct Response Type<a class="headerlink" href="#2-use-the-correct-response-type" title="Permanent link">&para;</a></h5>
+<ul>
+<li>FastAPI has many in-built Response types:<ul>
+<li>HTMLResponse: this would be useful paired with a HTMX frontend.</li>
+<li>JSONResponse: to return a JSON.</li>
+<li>ORJSONResponse: a faster JSON encoder. If you need to encode a large number
+  of object, this might be a good choice.</li>
+<li>RedirectResponse: use this for linking to an S3 file, to avoid handling it
+  in the FastAPI server (frontend goes directly to S3).</li>
+<li>FileResponse: load an entire file from disk and serve to the user.</li>
+<li>StreamingResponse: better for serving large file in chunks.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Don't forget to include the correct HTTP <code>status_code</code> with your response:<ul>
+<li>200: Success, used as the final return for most endpoints.</li>
+<li>204: Success, but no response data necessary.</li>
+<li>400: Bad request, usually malformed syntax or incorrect HTTP method (POST/GET).</li>
+<li>401: Unauthorized, if the client does did not provide an auth token.</li>
+<li>403: Forbidden, if the client does not have permission to access the content.</li>
+<li>404: Not found, if the requested content is not present. E.g. wrong project id.</li>
+<li>422: Unprocessable entity, if the request data is in the incorrect format.
+  e.g. a string provided in a form body variable when it should be an int.</li>
+<li>500: Generic error if no other error is provided, like Exception in Python.</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-use-pydantic-for-validation">3. Use Pydantic for Validation<a class="headerlink" href="#3-use-pydantic-for-validation" title="Permanent link">&para;</a></h5>
+<h6 id="settings-config">Settings Config<a class="headerlink" href="#settings-config" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">PostgresDsn</span><span class="p">,</span> <span class="n">ValidationInfo</span><span class="p">,</span> <span class="n">field_validator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic_settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">SettingsConfigDict</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Settings</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main settings class, defining environment variables.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Required field</span>
+    <span class="n">VAR1</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="c1"># Required field, but nullable</span>
+    <span class="n">VAR2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="c1"># Required field, with default</span>
+    <span class="n">VAR3</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;7050&quot;</span>
+    <span class="c1"># Not required field</span>
+    <span class="n">VAR4</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">DB_HOST</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fmtm-db&quot;</span>
+    <span class="n">DB_USER</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fmtm&quot;</span>
+    <span class="n">DB_PASSWORD</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fmtm&quot;</span>
+    <span class="n">DB_NAME</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fmtm&quot;</span>
+
+    <span class="n">FMTM_DB_URL</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PostgresDsn</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Using a field validator to build a variable</span>
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">&quot;FMTM_DB_URL&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">assemble_db_connection</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">info</span><span class="p">:</span> <span class="n">ValidationInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build Postgres connection from environment variables.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">v</span>
+        <span class="n">pg_url</span> <span class="o">=</span> <span class="n">PostgresDsn</span><span class="o">.</span><span class="n">build</span><span class="p">(</span>
+            <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;postgresql&quot;</span><span class="p">,</span>
+            <span class="n">username</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">),</span>
+            <span class="n">password</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">),</span>
+            <span class="n">host</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">),</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DB_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">pg_url</span>
+
+    <span class="c1"># Using env_file param loads from .env</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">SettingsConfigDict</span><span class="p">(</span>
+        <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">env_file</span><span class="o">=</span><span class="s2">&quot;.env&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s2">&quot;allow&quot;</span>
+    <span class="p">)</span>
+
+<span class="c1"># lru_cache prevents building obj every time settings.var is invoked</span>
+<span class="nd">@lru_cache</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_settings</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cache settings when accessed throughout app.&quot;&quot;&quot;</span>
+    <span class="n">_settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">_settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded settings: </span><span class="si">{</span><span class="n">_settings</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_settings</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">get_settings</span><span class="p">()</span>
+</code></pre></div>
+<h6 id="model-validation">Model Validation<a class="headerlink" href="#model-validation" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Used for 'incoming' (user provided) data that needs to be validated.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnyUrl</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">EmailStr</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">constr</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MusicBand</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+   <span class="n">AEROSMITH</span> <span class="o">=</span> <span class="s2">&quot;AEROSMITH&quot;</span>
+   <span class="n">QUEEN</span> <span class="o">=</span> <span class="s2">&quot;QUEEN&quot;</span>
+   <span class="n">ACDC</span> <span class="o">=</span> <span class="s2">&quot;AC/DC&quot;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UserBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">first_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">username</span><span class="p">:</span> <span class="n">constr</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;^[A-Za-z0-9-_]+$&quot;</span><span class="p">,</span> <span class="n">to_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strip_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">ge</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># must be greater or equal to 18</span>
+    <span class="c1"># only &quot;AEROSMITH&quot;, &quot;QUEEN&quot;, &quot;AC/DC&quot; values are allowed to be inputted</span>
+    <span class="n">favorite_band</span><span class="p">:</span> <span class="n">MusicBand</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">website</span><span class="p">:</span> <span class="n">AnyUrl</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">valid_genre</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">boolean</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">&quot;valid_genre&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;before&quot;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_genre_from_band_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">ValidationInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get genre from band name.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">band</span> <span class="o">:=</span> <span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;favorite_band&quot;</span><span class="p">):</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Determining genre from band </span><span class="si">{</span><span class="n">band</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">genre</span> <span class="o">=</span> <span class="n">band_genre_mapping</span><span class="p">(</span><span class="n">band</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">genre</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+<h6 id="model-data-serialization">Model Data Serialization<a class="headerlink" href="#model-data-serialization" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Used to format 'outgoing' data that is returned to a user.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TaskBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base Task model to inherit.&quot;&quot;&quot;</span>
+    <span class="c1"># ConfigDict has many options</span>
+    <span class="c1"># https://docs.pydantic.dev/latest/api/config/</span>
+    <span class="c1"># E.g. use_enum_values automatically runs .value on enums</span>
+    <span class="c1"># So a returned object will have</span>
+    <span class="c1">#   `somefield: 1`</span>
+    <span class="c1"># instead of</span>
+    <span class="c1">#   `somefield: SomeEnum.TYPE1`</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span>
+        <span class="n">use_enum_values</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">validate_default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Exclude fields: for example we want to get these values from the database,</span>
+    <span class="c1"># and then process them into different fields in our returned model.</span>
+    <span class="c1"># outline (a WKB element from Postgis) --&gt; outline_geojson</span>
+    <span class="n">outline</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">lock_holder</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">outline_geojson</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Feature</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">task_history</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TaskHistoryBase</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskOut</span><span class="p">(</span><span class="n">TaskBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Task to return from endpoint.&quot;&quot;&quot;</span>
+
+    <span class="n">locked_by_uid</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">outline_geojson</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@field_serializer</span><span class="p">(</span><span class="s2">&quot;locked_by_uid&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_locked_by_uid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get lock uid from lock_holder details.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock_holder</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lock_holder</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@field_serializer</span><span class="p">(</span><span class="s2">&quot;outline_geojson&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_geojson_from_outline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">ValidationInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get outline_geojson from Shapely geom.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">outline</span> <span class="o">:=</span> <span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;outline&quot;</span><span class="p">):</span>
+            <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;fid&quot;</span><span class="p">:</span> <span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;project_task_index&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;uid&quot;</span><span class="p">:</span> <span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;project_task_name&quot;</span><span class="p">),</span>
+            <span class="p">}</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Converting task outline to geojson&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">geometry_to_geojson</span><span class="p">(</span><span class="n">outline</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+<h6 id="response-models">Response models<a class="headerlink" href="#response-models" title="Permanent link">&para;</a></h6>
+<ul>
+<li>FastAPI integrates Pydantic very nicely.</li>
+<li>Endpoints allow us to define a <code>response_model</code>, which is a Pydantic model.</li>
+<li>This specifies the fields that must be present in the endpoint JSON response.</li>
+<li>Validators and serialisers are all called when a response_model is used.<ul>
+<li>This means that formatting and validation of the returned data does not
+  need to be done in the endpoint code.</li>
+<li>It is instead handled by Pydantic, and will throw an error if validation
+  does not pass.</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># project_schemas.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProjectBase</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProjectInt</span><span class="p">(</span><span class="n">ProjectBase</span><span class="p">)</span>
+    <span class="n">organization</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># org abbreviation provided by frontend</span>
+
+    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">&quot;organization&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;before&quot;</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_org_long_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">get_org_long_name_from_abbreviation</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ProjectOut</span><span class="p">(</span><span class="n">ProjectBase</span><span class="p">):</span>
+    <span class="n">date_created</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span>
+
+    <span class="nd">@field_serializer</span><span class="p">(</span><span class="s2">&quot;date_created&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">format_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
+          <span class="c1"># Format: Monday 01 2023</span>
+          <span class="k">return</span> <span class="n">last_active</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %Y&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># project_routes.py</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">ProjectOut</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">update_project</span><span class="p">(</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">project_info</span><span class="p">:</span> <span class="n">ProjectIn</span><span class="p">,</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">database</span><span class="o">.</span><span class="n">get_db</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update an existing project by ID.&quot;&quot;&quot;</span>
+    <span class="n">project</span> <span class="o">=</span> <span class="k">await</span> <span class="n">project_crud</span><span class="o">.</span><span class="n">update_project_info</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">project_info</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">project</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">422</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Project update failed&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">project</span>
+</code></pre></div>
+<h5 id="4-fastapi-dependencies-depends">4. FastAPI Dependencies (Depends)<a class="headerlink" href="#4-fastapi-dependencies-depends" title="Permanent link">&para;</a></h5>
+<h6 id="validation-of-additional-constraints">Validation of additional constraints<a class="headerlink" href="#validation-of-additional-constraints" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Pydantic can only validate the 'incoming' data from client input.</li>
+<li>Use dependencies (Depends) to validate input against other constraints:<ul>
+<li>Database constraints, such as project or email already exists, user not found.</li>
+<li>Auth constraints, where the users level of authorization should be assessed
+  in an endpoint.</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># logic.py (where the dependency is written)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">valid_post_id</span><span class="p">(</span><span class="n">post_id</span><span class="p">:</span> <span class="n">UUID4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">:</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="k">await</span> <span class="n">service</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PostNotFound</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">post</span>
+
+
+<span class="c1"># routes.py (where Depends is used)</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/posts/</span><span class="si">{post_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">PostResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_post_by_id</span><span class="p">(</span><span class="n">post</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">valid_post_id</span><span class="p">)):</span>
+    <span class="k">return</span> <span class="n">post</span>
+
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;/posts/</span><span class="si">{post_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">PostResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">update_post</span><span class="p">(</span>
+    <span class="n">update_data</span><span class="p">:</span> <span class="n">PostUpdate</span><span class="p">,</span>
+    <span class="n">post</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">valid_post_id</span><span class="p">),</span>
+<span class="p">):</span>
+    <span class="n">updated_post</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="k">await</span> <span class="n">service</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">post</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">update_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">updated_post</span>
+</code></pre></div>
+<p>If we didn't put data validation in a dependency, we would have to do the same
+checks for on each endpoint (duplicating code).</p>
+<h6 id="reuse-chain-dependencies">Reuse &amp; chain dependencies<a class="headerlink" href="#reuse-chain-dependencies" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Dependencies can use other dependencies and repeating code.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># logic.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">OAuth2PasswordBearer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jose</span><span class="w"> </span><span class="kn">import</span> <span class="n">JWTError</span><span class="p">,</span> <span class="n">jwt</span>
+
+<span class="c1"># Depends on pre-existing FastAPI dependency OAuth2PasswordBearer</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse_jwt_data</span><span class="p">(</span>
+    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">OAuth2PasswordBearer</span><span class="p">(</span><span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;/auth/token&quot;</span><span class="p">))</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="s2">&quot;JWT_SECRET&quot;</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;HS256&quot;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">JWTError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidCredentials</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]}</span>
+
+<span class="c1"># Depends on parse_jwt_data (chained)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">valid_owned_post</span><span class="p">(</span>
+    <span class="n">post</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">valid_post_id</span><span class="p">),</span>
+    <span class="n">token_data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">parse_jwt_data</span><span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;creator_id&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">token_data</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="n">UserNotOwner</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">post</span>
+
+<span class="c1"># routes.py (where the final Depends is used)</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{user_id}</span><span class="s2">/posts/</span><span class="si">{post_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">PostResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_user_post</span><span class="p">(</span><span class="n">post</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">valid_owned_post</span><span class="p">)):</span>
+    <span class="k">return</span> <span class="n">post</span>
+</code></pre></div>
+<h6 id="dependency-call-are-cached">Dependency call are cached<a class="headerlink" href="#dependency-call-are-cached" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Dependencies can be reused multiple times, and they won't be recalculated.</li>
+<li>FastAPI caches dependency's result within a <strong>request's scope</strong> by default:<ul>
+<li>If a dependency makes a DB call, this can be cached when the dependency is
+  called again.</li>
+<li>With this in mind, try to de-couple dependencies, i.e. write smaller
+  functions that do specific things, then chain them.</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># logic.py (contains dependencies here)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">BackgroundTasks</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">OAuth2PasswordBearer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jose</span><span class="w"> </span><span class="kn">import</span> <span class="n">JWTError</span><span class="p">,</span> <span class="n">jwt</span>
+
+
+<span class="c1"># Dependency 1</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">valid_post_id</span><span class="p">(</span><span class="n">post_id</span><span class="p">:</span> <span class="n">UUID4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">:</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="k">await</span> <span class="n">service</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">post_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">post</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">PostNotFound</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">post</span>
+
+<span class="c1"># Dependency 2</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse_jwt_data</span><span class="p">(</span>
+    <span class="n">token</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">OAuth2PasswordBearer</span><span class="p">(</span><span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;/auth/token&quot;</span><span class="p">))</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="s2">&quot;JWT_SECRET&quot;</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;HS256&quot;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">JWTError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidCredentials</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]}</span>
+
+<span class="c1"># Dependency 3 uses both 1 &amp; 2</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">valid_owned_post</span><span class="p">(</span>
+    <span class="n">post</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">valid_post_id</span><span class="p">),</span>
+    <span class="n">token_data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">parse_jwt_data</span><span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;creator_id&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">token_data</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="n">UserNotOwner</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">post</span>
+
+<span class="c1"># Dependency 4 also uses dependency 2 (and is cached)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">valid_active_creator</span><span class="p">(</span>
+    <span class="n">token_data</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">parse_jwt_data</span><span class="p">),</span>
+<span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">users_service</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">token_data</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;is_active&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="n">UserIsBanned</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;is_creator&quot;</span><span class="p">]:</span>
+       <span class="k">raise</span> <span class="n">UserNotCreator</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">user</span>
+
+
+<span class="c1"># routes.py (uses both Dependency 3 &amp; 4)</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/users/</span><span class="si">{user_id}</span><span class="s2">/posts/</span><span class="si">{post_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">PostResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_user_post</span><span class="p">(</span>
+    <span class="n">worker</span><span class="p">:</span> <span class="n">BackgroundTasks</span><span class="p">,</span>
+    <span class="n">post</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">valid_owned_post</span><span class="p">),</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">Mapping</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">valid_active_creator</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get post that belong the active user.&quot;&quot;&quot;</span>
+    <span class="n">worker</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="n">notifications_service</span><span class="o">.</span><span class="n">send_email</span><span class="p">,</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">post</span>
+</code></pre></div>
+<h6 id="dependencies-can-include-route-parameters">Dependencies can include route parameters<a class="headerlink" href="#dependencies-can-include-route-parameters" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Sometimes a dependency requires additional variables to run it's logic.</li>
+<li>As an example we can imagine an app that has users and projects:<ul>
+<li>To determine if a user has permission to access a project we need both:<ul>
+<li>The user id</li>
+<li>The project id</li>
+</ul>
+</li>
+<li>The user id could be determined via another dependency.</li>
+<li>However, the project id must be passed in by the user.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># logic.py (where dependencies are located)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">app.auth.osm</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuthUser</span><span class="p">,</span> <span class="n">login_required</span> <span class="c1"># imported dependency</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validator</span><span class="p">(</span>
+    <span class="n">project_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="c1"># The route parameter</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">),</span>
+    <span class="n">user_data</span><span class="p">:</span> <span class="n">AuthUser</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">login_required</span><span class="p">),</span> <span class="c1"># from imported dependency</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AuthUser</span><span class="p">:</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_uid</span><span class="p">(</span><span class="n">user_data</span><span class="p">)</span>
+
+    <span class="n">match</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">DbUserRoles</span><span class="p">)</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">project_id</span><span class="o">=</span><span class="n">project_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">403</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;User has no access to project&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">role</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">ProjectRole</span><span class="o">.</span><span class="n">VALIDATOR</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">403</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;User is not a validator for this project&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">user_data</span>
+
+<span class="c1"># routes.py (endpoints)</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/get_validator/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validator</span><span class="p">(</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">database</span><span class="o">.</span><span class="n">get_db</span><span class="p">),</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">AuthUser</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">validator</span><span class="p">),</span>
+<span class="p">):</span>
+    <span class="k">return</span> <span class="n">user</span>
+</code></pre></div>
+<p>When the user calls the <code>/get_validator</code> endpoint, they will need to provide the
+parameter <code>project_id</code>, as it is present in the <code>validator</code> sub dependency.</p>
+<h5 id="5-always-use-typing">5. Always Use Typing<a class="headerlink" href="#5-always-use-typing" title="Permanent link">&para;</a></h5>
+<ul>
+<li>FastAPI relies on Typing heavily for it's functionality.</li>
+<li>Typing also helps linting and IDE code completion.</li>
+<li>Pydantic models can be used as types.</li>
+<li>If endpoints often reference data in the same format, it's useful to have a model.</li>
+</ul>
+<p>For example an authenticated user model:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AuthUser</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">img_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+<span class="c1"># Usage</span>
+<span class="n">user</span><span class="p">:</span> <span class="n">AuthUser</span> <span class="o">=</span> <span class="n">get_auth_user</span><span class="p">()</span>
+</code></pre></div>
+<p>For FastAPI routes, it's good to use the <code>Annotated</code> class:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/me&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">FMTMUser</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">my_data</span><span class="p">(</span>
+    <span class="n">db</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Connection</span><span class="p">,</span> <span class="n">Depends</span><span class="p">(</span><span class="n">db_conn</span><span class="p">)],</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">AuthUser</span><span class="p">,</span> <span class="n">Depends</span><span class="p">(</span><span class="n">login_required</span><span class="p">)],</span>
+    <span class="n">another_param</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="kc">None</span><span class="p">],</span>
+<span class="p">):</span>
+</code></pre></div>
+<blockquote>
+<p>It allows us to very effectively define params, including defaults,
+and dependency injection.</p>
+</blockquote>
+<h5 id="6-use-rest-endpoint-naming">6. Use REST Endpoint Naming<a class="headerlink" href="#6-use-rest-endpoint-naming" title="Permanent link">&para;</a></h5>
+<p>REST APIs are formatted as such:</p>
+<div class="highlight"><pre><span></span><code>GET<span class="w"> </span>/projects/:project_id
+GET<span class="w"> </span>/projects/:project_id/tasks/:task_id/submissions
+GET<span class="w"> </span>/users/:user_id
+</code></pre></div>
+<p>In summary:</p>
+<ul>
+<li><code>projects</code> is the noun in this example.</li>
+<li>Always use plural nouns: <code>projects/xxx</code> vs <code>project/xxx</code>.</li>
+<li>Never use verbs in endpoint: <code>projects/11/create</code><ul>
+<li>Instead use GET, POST, PUT, PATCH, DELETE methods.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>It is also recommended to add a version, e.g. <code>/v2/projects</code>, to the API.</p>
+<p>However, if the project is small, this may not always be necessary.</p>
+</blockquote>
+<h5 id="7-save-files-in-chunks">7. Save Files in Chunks<a class="headerlink" href="#7-save-files-in-chunks" title="Permanent link">&para;</a></h5>
+<ul>
+<li>If the API needs to receive a large file from a user, receive it in chunks:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">aiofiles</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">UploadFile</span>
+
+<span class="n">DEFAULT_CHUNK_SIZE</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">50</span>  <span class="c1"># 50 megabytes</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_video</span><span class="p">(</span><span class="n">video_file</span><span class="p">:</span> <span class="n">UploadFile</span><span class="p">):</span>
+   <span class="k">async</span> <span class="k">with</span> <span class="n">aiofiles</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/file/path/name.mp4&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+     <span class="k">while</span> <span class="n">chunk</span> <span class="o">:=</span> <span class="k">await</span> <span class="n">video_file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">DEFAULT_CHUNK_SIZE</span><span class="p">):</span>
+         <span class="k">await</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="8-file-uploads-alongside-other-data">8. File Uploads Alongside Other Data<a class="headerlink" href="#8-file-uploads-alongside-other-data" title="Permanent link">&para;</a></h5>
+<ul>
+<li>FormData is the only request type that can include both data <strong>fields</strong> and
+  data <strong>files</strong> at the same time.</li>
+<li>In the following example we have an endpoint that accepts params <code>submission_xml</code>
+  (large text field), and <code>device_id</code> (small text field), plus a list of attached
+  <code>submission_attachments</code> files uploaded alongside the data:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># First we create a dependency for file uploads - this could easily be generic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">UploadFile</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">read_submission_uploads</span><span class="p">(</span>
+    <span class="n">submission_files</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">UploadFile</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">BytesIO</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read all uploaded submission attachments for upload to ODK Central.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">submission_files</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">file_data_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">filename</span><span class="p">:</span> <span class="n">BytesIO</span><span class="p">(</span><span class="k">await</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">submission_files</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">file_data_dict</span>
+
+<span class="c1"># Then we define our endpoint and variables</span>
+<span class="c1"># Imports here...</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">CentralSubmissionOut</span><span class="p">)</span> <span class="c1"># response model for serialisation</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create_submission</span><span class="p">(</span>
+    <span class="n">project_user</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">ProjectUserDict</span><span class="p">,</span> <span class="n">Depends</span><span class="p">(</span><span class="n">mapper</span><span class="p">)],</span> <span class="c1"># check auth</span>
+    <span class="n">submission_xml</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Body</span><span class="p">(</span><span class="n">embed</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span> <span class="c1"># embed=True puts var in FormData</span>
+    <span class="n">device_id</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Body</span><span class="p">(</span><span class="n">embed</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">submission_attachments</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+        <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">BytesIO</span><span class="p">]],</span> <span class="n">Depends</span><span class="p">(</span><span class="n">submission_deps</span><span class="o">.</span><span class="n">read_submission_uploads</span><span class="p">)</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="c1"># We use a dependency to get the uploaded file name and file data</span>
+              <span class="c1"># then wrap them in a dict {filename1: bytesio_data1, ...}</span>
+<span class="p">):</span>
+    <span class="c1"># Say we want to write the file data somewhere</span>
+    <span class="k">for</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_data</span> <span class="ow">in</span> <span class="n">submission_attachments</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">temp_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/tmp/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">temp_path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp_file</span><span class="p">:</span>
+            <span class="n">temp_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_data</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hotosm/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/hotosm" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.hotosm.org" target="_blank" rel="noopener" title="www.hotosm.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mermaid-diagrams.js"></script>
+      
+    
+  </body>
+</html>

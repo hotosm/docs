@@ -1,0 +1,51 @@
+:root {
+  --hot-color-red-700: #c53639;
+  --hot-color-red-600: #d73f3f;
+  --hot-color-red-300: #e27a7d;
+  --hot-color-blue-500: #344f7b;
+  --hot-color-blue-50: #e6e9ee;
+  --hot-color-cyan-700: #459ba0;
+  --hot-color-cyan-50: #e3f8f8;
+  --hot-color-yellow-800: #f77d0f;
+  --hot-color-yellow-100: #ffebcf;
+  --hot-color-gray-700: #615f66;
+  --hot-color-gray-50: #f3f3f3;
+
+  --md-primary-fg-color: var(--hot-color-red-600);
+  --md-primary-fg-color--light: var(--hot-color-red-300);
+  --md-primary-fg-color--dark: var(--hot-color-red-700);
+}
+
+.mermaid-viewport {
+  border: 1px solid var(--hot-color-gray-700);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  max-width: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 20rem;
+  background: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+  touch-action: none;
+}
+
+.mermaid-diagram {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+.mermaid-diagram > svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .mermaid-viewport {
+    aspect-ratio: 4 / 3;
+    min-height: 18rem;
+  }
+}
