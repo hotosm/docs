@@ -17,6 +17,6 @@ Links:
 - [Imagery browser][2]
 - [API][3]
 
-[1]: /images/OAM-overview.jpg "OAM overview"
+[1]: ../images/OAM-overview.jpg "OAM overview"
 [2]: https://hotosm.github.io/oam-browser "OAM browser"
 [3]: https://hotosm.github.io/oam-api "OAM API"

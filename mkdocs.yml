@@ -146,7 +146,6 @@ nav:
           - Accessibility: dev-guide/accessibility.md
       - Testing: dev-guide/testing.md
       - Documentation:
-          - Intro: techdoc/README.md
           - Automatically Generated Docs: dev-guide/api-doc-gen.md
           - Diátaxis Framework: https://diataxis.fr
       - Containers:

@@ -27,6 +27,7 @@ flowchart LR
       direction TB
       DroneDeploy@{ img: "/images/logos/dronedeploy-logo.svg", label: "DroneDeploy", pos: "b", w: 120, h: 50 }
       Litchi@{ img: "/images/logos/litchi-logo.png", label: "Litchi", pos: "b", w: 92, h: 50 }
+      DJIFly@{ img: "/images/logos/dji-logo.svg", label: "DJI Fly", pos: "b", w: 92, h: 50 }
     end
     subgraph OpenGCS["Open-Source / MAVLink"]
       direction TB
@@ -56,9 +57,11 @@ flowchart LR
 
   DroneTM -- "Waypoint files" --> DroneDeploy
   DroneTM -- "Waypoint files" --> Litchi
+  DroneTM -- "Waypoint files" --> DJIFly
   DroneTM -- "Waypoint files" --> QGroundControl
   DroneDeploy -- "Automated flight" --> Drones
   Litchi -- "Automated flight" --> Drones
+  DJIFly -- "Automated flight" --> Drones
   QGroundControl -- "Automated flight" --> Drones
   DGPS -- "Ground Control Points" --> DroneTM
   Drones -- "Raw imagery" --> DroneTM
@@ -141,11 +144,11 @@ flowchart LR
   OSM@{ img: "/images/logos/osm-logo.svg", label: "OpenStreetMap", pos: "b", w: 80, h: 80 }
 
   OAM -- "Imagery basemap" --> FMTM
-  FMTM -- "Create Coordinate Mapping Project" --> ODK
-  FMTM -- "Create Coordinate Mapping Project" --> KoBoToolbox
-  FMTM -- "Create Coordinate Mapping Project" --> QField
-  FMTM -- "Create Coordinate Mapping Project" --> ChatMap
-  FMTM -- "Create Coordinate Mapping Project" --> ONA
+  FMTM -- "Coordinate Mapping Project" --> ODK
+  FMTM --> KoBoToolbox
+  FMTM --> QField
+  FMTM --> ChatMap
+  FMTM --> ONA
   ODK -- "Submit data" --> FMTM
   KoBoToolbox -- "Submit data" --> FMTM
   QField -- "Submit data" --> FMTM

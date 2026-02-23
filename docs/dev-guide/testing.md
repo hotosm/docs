@@ -2,7 +2,7 @@
 
 ## Types of Testing
 
-![test-pyramid](/images/test_pyramid.webp)
+![test-pyramid](../images/test_pyramid.webp)
 
 ### Unit Testing
 
