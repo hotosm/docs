@@ -10,7 +10,7 @@ _Draft for consultation - February 2026_
 
 AI coding tools have moved from novelty to daily workflow in under two years. Andrej Karpathy coined the term "vibe coding" in early 2025 - describing developers who prompt AI, accept all suggestions, and barely read the output. By early 2026, he had already moved on, calling the practice outdated and advocating instead for "agentic engineering": careful, supervised AI-assisted development with full human oversight [1].
 
-This trajectory tells us something important: the tools are real and improving rapidly, but the hype cycle consistently outpaces responsible adoption. For any organisation working in the public interest, the adoption of AI cannot be ignored - but _how_ it is adopted is an ethical choice that must be made deliberately.
+This trajectory tells us something important: the tools are real and improving rapidly, but the hype cycle consistently outpaces responsible adoption. For any organisation working in the public interest and given the prevalence of LLM use in software in this moment, a governance approach that provides deliberate attention to the ethics of LLM use in software is required.
 
 This document provides a framework in three parts: the ethical concerns AI adoption raises and how to mitigate them; the specific responsibilities that arise when AI intersects with open-source practice; and the human dimensions - learning, craft, and cognition - that must be protected as these tools become pervasive.
 
