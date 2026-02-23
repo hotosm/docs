@@ -55,14 +55,14 @@ flowchart LR
   OAM@{ img: "/images/logos/oam-logo.svg", label: "OpenAerialMap", pos: "b", w: 56, h: 56 }
   Satellite@{ img: "/images/logos/satellite-icon.svg", label: "Open Satellite Imagery", pos: "b", w: 54, h: 54 }
 
-  DroneTM -- "Waypoint files" --> DroneDeploy
-  DroneTM -- "Waypoint files" --> Litchi
-  DroneTM -- "Waypoint files" --> DJIFly
-  DroneTM -- "Waypoint files" --> QGroundControl
-  DroneDeploy -- "Automated flight" --> Drones
-  Litchi -- "Automated flight" --> Drones
-  DJIFly -- "Automated flight" --> Drones
-  QGroundControl -- "Automated flight" --> Drones
+  DroneTM -- "Waypoint file" --> DroneDeploy
+  DroneTM -- "Waypoint file" --> Litchi
+  DroneTM -- "Waypoint file" --> DJIFly
+  DroneTM -- "Waypoint file" --> QGroundControl
+  DroneDeploy -- "Flight control" --> Drones
+  Litchi -- "Flight control" --> Drones
+  DJIFly -- "Flight control" --> Drones
+  QGroundControl -- "Flight control" --> Drones
   DGPS -- "Ground Control Points" --> DroneTM
   Drones -- "Raw imagery" --> DroneTM
   DroneTM -- "Photos + metadata" --> ScaleODM
@@ -128,7 +128,7 @@ flowchart LR
 
   subgraph HOT["Maintained by HOT"]
     direction TB
-    FMTM@{ img: "/images/logos/hot-logo.svg", label: "Field Mapping TM", pos: "b", w: 96, h: 58 }
+    FieldTM@{ img: "/images/logos/hot-logo.svg", label: "Field Mapping TM", pos: "b", w: 96, h: 58 }
   end
 
   subgraph Mobile["Mobile Data Collection"]
@@ -143,22 +143,19 @@ flowchart LR
   Panoramax@{ img: "/images/logos/panoramax-logo.svg", label: "Panoramax", pos: "b", w: 52, h: 52 }
   OSM@{ img: "/images/logos/osm-logo.svg", label: "OpenStreetMap", pos: "b", w: 80, h: 80 }
 
-  OAM -- "Imagery basemap" --> FMTM
-  FMTM -- "Coordinate Mapping Project" --> ODK
-  FMTM --> KoBoToolbox
-  FMTM --> QField
-  FMTM --> ChatMap
-  FMTM --> ONA
-  ODK -- "Submit data" --> FMTM
-  KoBoToolbox -- "Submit data" --> FMTM
-  QField -- "Submit data" --> FMTM
-  ChatMap -- "Submit data" --> FMTM
-  ONA -- "Submit data" --> FMTM
+  OAM -- "Imagery basemap" --> FieldTM
+  FieldTM -- "Coordinate Mapping Project" --> ODK
+  FieldTM --> KoBoToolbox
+  FieldTM --> QField
+  FieldTM --> ChatMap
+  FieldTM --> ONA
   ODK -. "Street imagery" .-> Panoramax
-  KoBoToolbox -. "Street imagery" .-> Panoramax
-  QField -. "Street imagery" .-> Panoramax
+  KoBoToolbox --> Panoramax
+  QField --> Panoramax
+  ChatMap --> Panoramax
+  ONA --> Panoramax
   Panoramax -- "ML-extracted tags" --> OSM
-  FMTM -- "Geometries and Tags" --> OSM
+  FieldTM -- "Geometries and Tags" --> OSM
 
   style HOT fill:#FDD0D6,stroke:#D73F3F,stroke-width:2px
   style Mobile fill:#FFF59B,stroke:#FAA71E,stroke-width:2px
