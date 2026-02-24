@@ -10,29 +10,29 @@
 
 If you used AI to generate code, documentation, or analysis - and it is wrong, insecure, biased, or breaks something - that is on you. Not the tool. You submitted it. You own it.
 
-This is not punitive. It is the same standard we hold for any tool: if you use a calculator and enter the wrong numbers, the mistake is yours.
+This is not punitive. It is the same standard we hold for any tool.
+
+Using AI is like delegating work to a junior team member. It can move fast and produce useful output, but it still requires your review, judgment, and sign-off. The final responsibility sits with you.
 
 ---
 
 ## What AI Is Good For (Appropriate To Use Here)
 
-- **First drafts and boilerplate:** Config files, repetitive scaffolding, test stubs, standard templates.
-- **Explaining unfamiliar code:** "What does this function do?" is a great use of AI. Treat it like a patient colleague who may occasionally be confidently wrong.
-- **Brainstorming approaches:** "What are three ways I could structure this migration?" - then evaluate each with your own judgement. Note that LLMs are trained to be agreeable an tend to affirm your opinion. Try to phrase questions in an unbiased way, and be wary that the response may not account for all possible options.
-- **Creating quick prototypes:** If you need to assess the feasibility of an idea, nothing beats creating a quick prototype to test, before planning the well architected solution. LLMs can generate a throw away test quite quickly.
+- **First drafts, boilerplate, prototyping:** Config files, repetitive scaffolding, test stubs, standard templates. And if you need to assess the feasibility of an idea, AI can generate a throwaway test quickly, before planning a well-architected solution.
+- **Explaining unfamiliar code:** "What does this function do?" is a great use of AI.
+- **Brainstorming approaches:** "What are three ways I could structure this migration?" - then evaluate each with your own judgement. Note that LLMs tend to be agreeable and may affirm your framing. Phrase questions in a neutral way, and be aware the response may not surface all options.
 - **Drafting documentation:** Let AI produce a first pass, then rewrite it in your own words to ensure accuracy.
 - **Debugging assistance:** Paste an error message and ask for possible causes. Verify before applying.
-- **Refactoring suggestions:** AI can suggest cleaner patterns. Be aware that often LLMs are prone to mission-creep. If you need a small refactor, then be sure to nail down exactly what is needed and set guardrails, else the scope of the refactor may quickly grow.
-- **Learning new libraries or languages:** Use AI as a tutor, not a substitute for understanding.
+- **Refactoring suggestions:** AI can suggest cleaner patterns. If you only need a small refactor, be explicit about scope - AI has a tendency toward mission creep, and a tightly scoped request can expand quickly if you're not specific.
+- **Splitting PRs into smaller chunks:** Sometimes PRs (particularly those produced by LLMs) can be far too large to properly review. AI can suggest a logical division of code into separate PRs / commits, allowing for easier human review.
 
 ## What AI Is Bad At (Be Cautious Here)
 
-- **Architecture decisions:** AI does not understand your system's history, constraints, or users. It will happily suggest a redesign that ignores your actual context.
-- **Security-sensitive code:** AI-generated code frequently has vulnerabilities — missing input validation, insecure defaults, outdated patterns. All security-relevant code must be manually engineered and reviewed.
-- **Domain-specific logic:** AI often fails on edge cases unique to your domain. _(Example from geospatial: AI routinely mishandles anti-meridian polygon wrapping because it does not understand spherical geometry unless explicitly guided.)_. It may help to provide domain specific context and add more specific instructions. In some cases, LLMs are just not appropriate tools: using general models to pinpoint specialized knowledge.
-- **Choosing dependencies:** LLMs frequently generate custom implementations instead of using well-tested libraries. Always check: does a maintained library already solve this? If yes, use it.
-- **Anything involving beneficiary or sensitive data:** Never paste personal data, donor information, or internal strategy into AI tools. Ensure access restrictions are set when sharing your code repository containing secret files such as `.env` files with agents.
-  HOT staff can refer to the [internal AI Policy](https://docs.google.com/document/d/13bGovnFVOouF7iRv0CVxSYjP3ky048KQYkrdg4mIcHU) for more details.
+- **Architecture decisions:** AI does not understand your system's history, constraints, or users. It will happily suggest a redesign that ignores your actual context. These decisions are yours to make.
+- **Security-sensitive code:** AI-generated code frequently has vulnerabilities - missing input validation, insecure defaults, outdated patterns. All security-relevant code must be manually engineered and reviewed.
+- **Domain-specific logic:** AI often fails on edge cases unique to your domain. _(Example from geospatial: AI routinely mishandles anti-meridian polygon wrapping because it doesn't understand spherical geometry unless explicitly guided.)_ Providing domain-specific context in your prompt can help, but in some cases general models are simply not the right tool for specialised knowledge.
+- **Choosing dependencies:** LLMs frequently generate custom implementations instead of using well-tested libraries. Always ask: does a maintained library already solve this? If yes, use it.
+- **Anything involving beneficiary or sensitive data:** Never paste personal data, donor information, or internal strategy into AI tools. Ensure access restrictions are set when sharing code repositories with agents (including ensuring `.env` files and secrets are not exposed). HOT staff can refer to the [internal AI Policy](https://docs.google.com/document/d/13bGovnFVOouF7iRv0CVxSYjP3ky048KQYkrdg4mIcHU) for more details.
 
 ## What AI Must Not Be Used For
 
