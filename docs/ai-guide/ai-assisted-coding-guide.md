@@ -67,7 +67,11 @@ Matching your mode of assistance to the task matters. Some options to consider:
 
 The more precise your prompt, the more useful the output.
 
-### 4. Review Everything
+### 4. Give AI a Way to Verify Its Own Work
+
+Where possible, set the AI up with a feedback loop - a way to run tests, check output, or validate behaviour. This significantly improves result quality. Without verification, the AI is guessing. With it, it can iterate until things actually work. This might mean running a test suite, executing a bash command that confirms expected behaviour, or checking a UI in a browser. The form of testing matters less than the existence of it.
+
+### 5. Review Everything
 
 - Read every line of generated code.
 - Check that it uses existing project libraries and patterns rather than reinventing solutions.
