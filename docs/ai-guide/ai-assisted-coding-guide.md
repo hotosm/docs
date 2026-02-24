@@ -47,14 +47,18 @@ Using AI is like delegating work to a junior team member. It can move fast and p
 
 ### 1. Think First, Then Prompt
 
-Before asking AI anything, spend enough time forming your own mental model of the problem. What are the constraints? What approaches come to mind? This is the "pre-testing effect" - trying to answer a question yourself, even imperfectly, before consulting AI produces better understanding and retention.
+Before asking AI anything, spend enough time forming your own mental model of the problem. What are the constraints? What approaches come to mind? Trying to answer a question yourself, even imperfectly, before consulting AI produces better understanding and retention.
 
-### 2. Decide How You Would Like To Be Assisted
+### 2. Decide How You Want to Be Assisted
 
-- **Ideas only**: xxx. Most appropriate for xxx
-- **Pair programming**: xxx. Most appropriate for xxx
-- **Agentic mode**: xxx. Most appropriate for xxx
-- **Review only**: xxx. Most appropriate for xxx
+Matching your mode of assistance to the task matters. Some options to consider:
+
+- **Ideas only:** Ask for options or approaches, then decide yourself. Good for architecture questions or unfamiliar territory.
+- **Pair programming:** Work step by step alongside the AI, reviewing each small change before continuing. Good for most coding tasks.
+- **Agentic / autonomous mode:** The AI plans and executes a larger task with less oversight. Use sparingly - see note below.
+- **Review only:** Write your code first, then ask AI to review it. Good for learning and for catching issues before you commit.
+
+> **A note on agentic coding:** As noted in [the ethical framework](./using-lmms-responsibly.md), agentic coding may erode understanding of a codebase and actually reduce productivity. If you use agentic mode, keep tasks small and reviewable, check in regularly, and don't walk away expecting a finished feature. If the agent is struggling after two or three iterations, step in and debug manually rather than looping indefinitely.
 
 ### 3. Write a Clear Spec, Not a Vague Request
 
