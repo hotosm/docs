@@ -169,6 +169,7 @@ CI pipeline tools can catch what human review misses:
 - Watch for: verbose AI-style PR descriptions, generic variable names, unnecessary complexity, dependencies that seem unrelated.
 - Use a standard response for non-compliant PRs (template below).
 - If a contributor cannot answer basic questions about their code, the PR is not ready.
+- If a contributor intentionally breaks rules laid out in the provided AI contribution policy, they may be subject to a 'ban' of future submissions (in the worst case, it is possible to block someone from interacting with an organization / personal account repos).
 
 **Response template for non-compliant PRs:**
 
