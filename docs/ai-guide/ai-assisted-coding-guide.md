@@ -77,16 +77,18 @@ Where possible, set the AI up with a feedback loop - a way to run tests, check o
 - Check that it uses existing project libraries and patterns rather than reinventing solutions.
 - Run the tests. If there are no tests, write them before accepting the code.
 - Ask yourself: "Could I explain this to a colleague?" If not, dig deeper before committing.
-- Ask yourself: "Am I overcomplicating this? Could this be achieved with a simpler pattern?" LLMs can have a tendency to apply complex patterns to solve what are often simple problems (particularly if they can be solved with an already well developed and maintained tool / library).
+- Ask yourself: "Am I overcomplicating this?" LLMs often apply complex patterns to problems that have simpler, well-maintained solutions (see [prefer existing libraries](#prefer-existing-libraries)).
 - Where possible, add detailed comments as to **why** a line of code is needed (not explaining _what_ the line of code does, which should be self-explanatory, and is often what LLMs do).
 
-### 5. Keep Changes Small
+### 6. Keep Changes Small
 
-Do not ask AI to generate an entire feature in one shot. Break work into small, reviewable increments. This mirrors good engineering practice regardless of whether AI is involved.
+Do not ask AI to generate an entire feature in one shot. Break work into small, reviewable increments. Smaller steps are easier to steer, easier to understand, and easier to debug. This mirrors good engineering practice regardless of whether AI is involved.
 
-### 6. Label AI-Assisted Work
+If you catch the AI going in the wrong direction, it's better to catch it early than after it has compounded the mistake across many files.
 
-When committing code or submitting PRs that include substantial AI-generated content, note it. A simple convention:
+### 7. Label AI-Assisted Work
+
+When committing code or submitting PRs that include substantial AI-generated content, note it in a Git `trailer`:
 
 ```
 Assisted-by: [tool name, e.g. Claude, Copilot]
@@ -94,7 +96,7 @@ Assisted-by: [tool name, e.g. Claude, Copilot]
 
 This is not about shame. It is about transparency and helping reviewers calibrate their attention. It is also becoming standard practice in major open source projects (LLVM, QGIS, Drupal, Fedora).
 
-### 7. Do Not Iterate Blindly
+### 8. Do Not Iterate Blindly
 
 If AI gives you broken code and you keep pasting the error back in hoping it will fix itself - stop. After two or three failed attempts, step back and debug manually. Blindly looping with an AI wastes time and teaches you nothing.
 
@@ -119,17 +121,11 @@ One excellent, well-tested PR is worth more than ten AI-generated patches that e
 
 ### Prefer Existing Libraries
 
-This is critical: LLMs have a strong tendency to generate bespoke implementations rather than using established libraries. Before accepting AI-generated code that solves a common problem, ask:
-
-- Is there an existing library the project already uses for this?
-- Is there a community-standard solution?
-- Will a maintainer look at this custom code and wonder why the standard library was not used?
-
-If the answer to any of these is yes, use the library. This reduces maintenance burden and aligns with open source norms.
+LLMs have a strong tendency to generate bespoke implementations rather than using established libraries. Before accepting AI-generated code that solves a common problem, ask: is there an existing library the project already uses for this? If yes, use it.
 
 ### Do Not Use AI for "Good First Issues"
 
-Several projects (including LLVM) explicitly forbid this. These issues exist as learning opportunities for new contributors. Using AI to solve them defeats the purpose and displaces human growth. This applies even if the project has not formalised the rule.
+Several projects (including LLVM) explicitly forbid this. These issues exist as learning opportunities for new contributors. Using AI to solve them defeats the purpose and displaces human growth - even if the project has not formalised the rule.
 
 ---
 
@@ -152,23 +148,24 @@ Before merging any AI-generated code, verify:
 
 AI can make you faster, but it can also make you dependent if you are not deliberate about learning.
 
-- **Space your learning.** Do not cram an entire AI-assisted session into one marathon. Come back to the same problem area across multiple days.
+- **Space your learning.** Do not cram an entire AI-assisted session into one marathon. Return to the same problem area across multiple days.
 - **Diversify tasks.** If AI is handling the rote work, use the free time for deeper exploration - reading documentation, understanding architecture, reviewing others' code.
 - **Explain what you learned.** After an AI-assisted session, write a short note (even just for yourself) about what you now understand that you did not before.
 - **Maintain manual skills.** Regularly write code, debug problems, and read error messages without AI. Like any skill, it atrophies without practice.
+- **Breadth helps.** The developers getting the best results from AI tools tend to be broadly skilled - able to evaluate whether the AI's choices make sense across the stack, not just in a narrow slice.
 
 ---
 
 ## Approved Tools and Data Boundaries
 
-| Category                                   | Guidance                                                                                                                                                                                                                                                                          |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code completion** (e.g. Copilot, Cursor) | Permitted for non-sensitive code. Review all suggestions.                                                                                                                                                                                                                         |
-| **Chat-based AI** (e.g. Claude, ChatGPT)   | Permitted for general development questions. Never paste sensitive data.                                                                                                                                                                                                          |
-| **AI code review tools**                   | Only if they keep a human in the loop. Fully automated review bots may post comments about code, but cannot change the content without human approval.                                                                                                                            |
-| **AI agents** (autonomous)                 | Not permitted to update code directly on shared platforms (e.g. within PRs) without explicit human approval of each action. They may be used on local machines, such as in a developers IDE, as long as workflows are manually approved and the final code is quality controlled. |
+| Category                                   | Guidance                                                                                                                                                                                                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Code completion** (e.g. Copilot, Cursor) | Permitted for non-sensitive code. Review all suggestions.                                                                                                                                                                                                    |
+| **Chat-based AI** (e.g. Claude, ChatGPT)   | Permitted for general development questions. Never paste sensitive data.                                                                                                                                                                                     |
+| **AI code review tools**                   | Only if they keep a human in the loop. Automated review bots may post comments, but cannot change content without human approval.                                                                                                                            |
+| **AI agents** (autonomous)                 | Not permitted to update code directly on shared platforms (e.g. within PRs) without explicit human approval of each action. May be used locally (e.g. in a developer's IDE) as long as workflows are manually approved and final code is quality controlled. |
 
-In summary, it is essential to **not allow automated commits from AI agents**, but most other usage is permitted.
+In summary: **do not allow automated commits from AI agents**. Most other usage is permitted, with the boundaries described above.
 
 ---
 
