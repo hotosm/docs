@@ -8,7 +8,7 @@ _Draft for consultation - February 2026_
 
 ## Introduction
 
-AI coding tools have moved from novelty to daily workflow in under two years. Andrej Karpathy coined the term "vibe coding" in early 2025 - describing developers who prompt AI, accept all suggestions, and barely read the output. By early 2026, he had already moved on, calling the practice outdated and advocating instead for "agentic engineering": careful, supervised AI-assisted development with full human oversight [1].
+AI coding tools have moved from novelty to daily workflow in under two years. Andrej Karpathy coined the term "vibe coding" in early 2025 - describing developers who prompt AI, accept all suggestions, and barely read the output. By early 2026, he had already moved on, calling the practice outdated and advocating instead for "agentic engineering": careful, supervised AI-assisted development with full human oversight [1]. While early-2025 AI models were shown in some cases to have a net negative impact on developer productivity [21], models have improved significantly by early 2026, alongside growing efforts within open-source communities to establish appropriate governance and usage policies.
 
 This trajectory tells us something important: the tools are real and improving rapidly, but the hype cycle consistently outpaces responsible adoption. For any organisation working in the public interest and given the prevalence of LLM use in software in this moment, a governance approach that provides deliberate attention to the ethics of LLM use in software is required.
 
@@ -175,26 +175,32 @@ AI tools are powerful, but they interact with human cognition in ways that requi
 
 ### 3.1 Cognitive Risks
 
-Psychologically, several patterns may be reinforced by AI if left unchecked [18]:
+Research confirms what many developers suspect: how AI is used matters as much as whether it is used. In a randomized study, participants who relied solely on generated code scored just 24–39% on follow-up comprehension tests, while those who asked for explanations scored 65–86% [22]. The delegation group finished fastest - but retained the least.
 
+Several patterns can erode skill if left unchecked:
+
+- **Cognitive offloading:** Delegating thinking to AI rather than using it to support thinking. Debugging is a particular risk area - repeatedly asking AI to fix errors without understanding why they occurred correlates with both slower completion times and worse comprehension.
 - **Cramming effect:** AI can flood you with information in a single session, creating a false sense of learning. Spaced, deliberate engagement produces better long-term retention.
-- **Reduced pre-testing:** Trying to solve a problem yourself before consulting AI creates stronger understanding than going straight to the generated answer. Skipping this attempt phase weakens learning.
-- **Metacognitive erosion:** The ability to monitor your own thinking is more important than ever. Developers who passively accept AI output without reflection lose the ability to evaluate it critically over time.
+- **Reduced pre-testing:** Trying to solve a problem yourself before consulting AI produces stronger understanding than going straight to the generated answer. Skipping this weakens learning even when the final code is correct.
+- **Metacognitive erosion:** The ability to monitor your own thinking is more important than ever. Developers who passively accept AI output without reflection gradually lose the ability to evaluate it critically.
 
-For small teams, this is a serious risk. If developers stop deeply understanding the systems they maintain, there is no safety net.
+For small teams, this is a serious risk. If developers stop deeply understanding the systems they maintain, there is no safety net - and the people least equipped to debug AI-written code may be those whose skills were eroded by relying on it.
 
 **Mitigation approaches:**
 
 - Attempt problem-solving before consulting AI.
+- When using AI for code generation, follow up with questions that build understanding - ask for explanations, probe edge cases, read the output critically.
 - Use AI as a pair-programmer, not an answer machine.
 - Encourage discussion of approach before generation.
-- Prioritise learning over speed.
+- Prioritise learning over speed, especially on unfamiliar tasks or technologies.
 - Conduct regular internal reviews of architectural understanding.
 - Encourage spacing and reflection, not continuous prompting.
 
 ### 3.2 Preserving the Craft of Engineering
 
 AI can generate syntactically correct code quickly. But framing the right problem, designing architecture, evaluating trade-offs, aligning with stakeholder needs, and mentoring others - these remain deeply human tasks. As AI handles more of the mechanical work of coding, it becomes _more_ important, not less, for human interaction to focus on problem framing, approach discussion, and alignment before setting AI to do the implementation work.
+
+This applies with particular force to junior developers. The errors and dead ends that feel frustrating during independent work are also where the deepest learning happens. Skipping that struggle in favour of AI-generated solutions can create a gap between apparent productivity and actual competence - one that may not become visible until something breaks in production.
 
 **Practical commitments:**
 
@@ -251,6 +257,8 @@ This framework is intended as a starting point for consultation among NGOs, civi
 18. Hicks, C. [Cognitive helmets for the AI bicycle.](https://www.fightforthehuman.com/cognitive-helmets-for-the-ai-bicycle-part-1/)
 19. [Cloud Native PG AI Usage Policy](https://github.com/cloudnative-pg/governance/blob/main/AI_POLICY.md)
 20. Regilme, S.S.F. (2024). [Artificial Intelligence Colonialism](https://doi.org/10.1353/sais.2024.a950958)
+21. [Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study)
+22. Shen, H.S & Tamkin, A. (2026). [How AI Impacts Skill Formation](https://arxiv.org/abs/2601.20245)
 
 [1]: https://x.com/karpathy/status/2019137879310836075 "Karpathy, A. (2025–2026). From 'vibe coding' to 'agentic engineering.'"
 [2]: https://www.nature.com/articles/s41598-025-34350-3 "Nature Scientific Reports (2026). Cybersecurity risks in AI-generated code."
@@ -272,6 +280,8 @@ This framework is intended as a starting point for consultation among NGOs, civi
 [18]: https://www.fightforthehuman.com/cognitive-helmets-for-the-ai-bicycle-part-1/ "Hicks, C. Cognitive helmets for the AI bicycle."
 [19]: https://github.com/cloudnative-pg/governance/blob/main/AI_POLICY.md "Cloud Native PG AI Usage Policy."
 [20]: https://doi.org/10.1353/sais.2024.a950958 "Artificial Intelligence Colonialism."
+[21]: https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study "Early-2025 AI-dev productivity"
+[22]: https://arxiv.org/abs/2601.20245 "How AI Impacts Skill Formation"
 
 ## Additional Sources
 
