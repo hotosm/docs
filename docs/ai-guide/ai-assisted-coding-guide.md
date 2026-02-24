@@ -19,6 +19,7 @@ This is not punitive. It is the same standard we hold for any tool: if you use a
 - **First drafts and boilerplate:** Config files, repetitive scaffolding, test stubs, standard templates.
 - **Explaining unfamiliar code:** "What does this function do?" is a great use of AI. Treat it like a patient colleague who may occasionally be confidently wrong.
 - **Brainstorming approaches:** "What are three ways I could structure this migration?" - then evaluate each with your own judgement. Note that LLMs are trained to be agreeable an tend to affirm your opinion. Try to phrase questions in an unbiased way, and be wary that the response may not account for all possible options.
+- **Creating quick prototypes:** If you need to assess the feasibility of an idea, nothing beats creating a quick prototype to test, before planning the well architected solution. LLMs can generate a throw away test quite quickly.
 - **Drafting documentation:** Let AI produce a first pass, then rewrite it in your own words to ensure accuracy.
 - **Debugging assistance:** Paste an error message and ask for possible causes. Verify before applying.
 - **Refactoring suggestions:** AI can suggest cleaner patterns. Be aware that often LLMs are prone to mission-creep. If you need a small refactor, then be sure to nail down exactly what is needed and set guardrails, else the scope of the refactor may quickly grow.
@@ -48,14 +49,21 @@ This is not punitive. It is the same standard we hold for any tool: if you use a
 
 Before asking AI anything, spend enough time forming your own mental model of the problem. What are the constraints? What approaches come to mind? This is the "pre-testing effect" - trying to answer a question yourself, even imperfectly, before consulting AI produces better understanding and retention.
 
-### 2. Write a Clear Spec, Not a Vague Request
+### 2. Decide How You Would Like To Be Assisted
+
+- **Ideas only**: xxx. Most appropriate for xxx
+- **Pair programming**: xxx. Most appropriate for xxx
+- **Agentic mode**: xxx. Most appropriate for xxx
+- **Review only**: xxx. Most appropriate for xxx
+
+### 3. Write a Clear Spec, Not a Vague Request
 
 - **Bad:** "Make this work better."
 - **Good:** "Refactor this function to handle null input gracefully. Return an empty list instead of throwing. Keep the existing API signature. Add a unit test for the null case."
 
 The more precise your prompt, the more useful the output.
 
-### 3. Review Everything
+### 4. Review Everything
 
 - Read every line of generated code.
 - Check that it uses existing project libraries and patterns rather than reinventing solutions.
@@ -64,11 +72,11 @@ The more precise your prompt, the more useful the output.
 - Ask yourself: "Am I overcomplicating this? Could this be achieved with a simpler pattern?" LLMs can have a tendency to apply complex patterns to solve what are often simple problems (particularly if they can be solved with an already well developed and maintained tool / library).
 - Where possible, add detailed comments as to **why** a line of code is needed (not explaining _what_ the line of code does, which should be self-explanatory, and is often what LLMs do).
 
-### 4. Keep Changes Small
+### 5. Keep Changes Small
 
 Do not ask AI to generate an entire feature in one shot. Break work into small, reviewable increments. This mirrors good engineering practice regardless of whether AI is involved.
 
-### 5. Label AI-Assisted Work
+### 6. Label AI-Assisted Work
 
 When committing code or submitting PRs that include substantial AI-generated content, note it. A simple convention:
 
@@ -78,7 +86,7 @@ Assisted-by: [tool name, e.g. Claude, Copilot]
 
 This is not about shame. It is about transparency and helping reviewers calibrate their attention. It is also becoming standard practice in major open source projects (LLVM, QGIS, Drupal, Fedora).
 
-### 6. Do Not Iterate Blindly
+### 7. Do Not Iterate Blindly
 
 If AI gives you broken code and you keep pasting the error back in hoping it will fix itself - stop. After two or three failed attempts, step back and debug manually. Blindly looping with an AI wastes time and teaches you nothing.
 
