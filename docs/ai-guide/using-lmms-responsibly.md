@@ -57,7 +57,7 @@ Training large language models requires enormous computational resources. Each q
 - Use AI deliberately, not habitually.
 - Avoid vendor lock-in, maintaining the flexibility to shift to more efficient or open alternatives as they emerge.
 - Acknowledge environmental cost explicitly in AI use policies.
-- Consider offset strategies with regards to energy usage and emissions.
+- Consider offset strategies with regards to energy usage and emissions. Approximations in the [calculations appendix](#appendix-a-methodology-for-estimating-llm-energy--co-emissions-and-donation-proxy) recommend that HOT should donate ~$300 anually to offset.
 
 ### 1.4 Labour and Exploitation
 
@@ -259,6 +259,11 @@ This framework is intended as a starting point for consultation among NGOs, civi
 20. Regilme, S.S.F. (2024). [Artificial Intelligence Colonialism](https://doi.org/10.1353/sais.2024.a950958)
 21. [Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study)
 22. Shen, H.S & Tamkin, A. (2026). [How AI Impacts Skill Formation](https://arxiv.org/abs/2601.20245)
+23. Epoch AI. [How much energy does ChatGPT use?](https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use)
+24. OpenAI. [Data Residency Docs](https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt)
+25. International Energy Agency. [Global Emissions Report](https://www.iea.org/reports/electricity-2025/emissions)
+26. Founders Pledge. [Climate And Lifestyle Report](https://www.founderspledge.com/research/climate-and-lifestyle-report)
+    27: Effective Environmentalism. [Climate Charity Recommendations](https://www.effectiveenvironmentalism.org/climate-charities)
 
 [1]: https://x.com/karpathy/status/2019137879310836075 "Karpathy, A. (2025–2026). From 'vibe coding' to 'agentic engineering.'"
 [2]: https://www.nature.com/articles/s41598-025-34350-3 "Nature Scientific Reports (2026). Cybersecurity risks in AI-generated code."
@@ -282,6 +287,11 @@ This framework is intended as a starting point for consultation among NGOs, civi
 [20]: https://doi.org/10.1353/sais.2024.a950958 "Artificial Intelligence Colonialism."
 [21]: https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study "Early-2025 AI-dev productivity"
 [22]: https://arxiv.org/abs/2601.20245 "How AI Impacts Skill Formation"
+[23]: https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use "How much energy does ChatGPT use?"
+[24]: https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt "OpenAI Data Residency Docs"
+[25]: https://www.iea.org/reports/electricity-2025/emissions "International Energy Agency Global Emissions Report"
+[26]: https://www.founderspledge.com/research/climate-and-lifestyle-report "Founders Pledge Climate And Lifestyle Report"
+[27]: https://www.effectiveenvironmentalism.org/climate-charities "Effective Environmentalism Climate Charity Recommendations"
 
 ## Additional Sources
 
@@ -296,3 +306,53 @@ The following sources informed the development of this framework but are not dir
 ---
 
 _Disclaimer: Initial content summarised by Claude Opus 4.6 from the sources listed above, then manually reviewed and edited. This document is released for consultation and collaborative refinement._
+
+---
+
+## Appendix A: Methodology for Estimating LLM Energy & CO₂ Emissions and Donation Proxy
+
+There is no easy way to estimate energy usage of LLM queries.
+
+Below are some simple 'back-of-the-envelope' calculations to give a rough estimation of the potential magnitude of energy consumption.
+
+### 1. Approximate LLM Usage
+
+The most accurate approach would be to average token use per team member on a given provider.
+
+However, as we do not have a procriptive usage policy, and developers can use open models, we need approximations:
+
+- 5 team members using LLMs.
+- 64hrs potential LLM usage per team member, per month (4 day work week, 8hrs a day, average of 4hrs available for coding).
+- Prompts per hour: ~20
+
+**6400 prompts per month**
+
+### 2. Convert Queries to Electricty Usage
+
+- A recent analysis by Epoch AI [23] gave an estimate of ~0.0003 kWh per query to GPT-4o, for a 100 word context.
+- There are no official published per-query figures for models like Opus 4.6.
+- If we take the approximation from the analysis and multiply by a fudge factor of 50x, considering larger context loaded from a codebase, and longer spent on reasoning problems, plus a 1.2x multiplier for datacenter overhead:
+
+Energy per query: ~0.018 kWh
+
+**115.2 kWh usage per month** (for a 5 person team)
+
+### 3. Convert Electricity to CO₂ Emissions
+
+- This depends on **where the compute actually runs**, which is hard to determine.
+- For example, OpenAI API inference can be hosted in multiple regions (Europe, USA, Singapore, Japan, India), as per their [data residency docs][24]
+- Based on an International Energy Agency 2025 report [25], global grid CO₂ intensity can be estimated at ~445 gCO₂/kWh.
+- More accurate estimates per-country can be found via the [Electricity Maps Project](https://www.electricitymaps.com)
+
+tCO₂e = kWh_total × (gCO₂/kWh / 1000 / 1000)
+
+**0.051 tonnes CO₂ equivalent produced per month**
+
+### 4. Convert Emissions to Donation Proxy
+
+- Research by Founders Pledge, suggests that donating 1000 USD to effective climate advocacy charities could avert approximately 100 tCO₂ from being omitted (expected-value estimate for high-impact policy/advocacy orgs) [26].
+- **This does not offset emissions made, nor negate your personal responsibility to reduce your footprint**.
+- However, considering how uncommon this type of donation is (for corporate entities that typically do not care much), it could be argued that this is an acceptable mitigation strategy at this scale, by proxy.
+- Let's add another fudge factor of 100x to factor in additional uncertainties: model used and frequency used, inaccuracies in various approximations. This is gives us a nicely pesimistic estimate of ~2.55 tCO₂.
+
+Recommendation: **~26 USD donation per month**, for a team of 5 devs using LLM assistance.
