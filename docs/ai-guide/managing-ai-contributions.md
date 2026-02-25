@@ -135,6 +135,7 @@ CI pipeline tools can catch what human review misses:
 - **Dependency checking**: OWASP [DependencyCheck](https://github.com/dependency-check/DependencyCheck) or [OSV Scanner](https://github.com/google/osv-scanner) can be used to ensure dependencies are updated to avoid latest security vulnerabilities. It's also recommended to use [Renovate bot](https://github.com/renovatebot/renovate) to regularly update dependencies.
 - **Secrets scanning**: [GitLeaks](https://github.com/gitleaks/gitleaks) can be integrated as a pre-commit hooks or CI action to prevent accidental commit of org secrets.
 - **Licensing and copyright**: [ScanCode Toolkit](https://github.com/aboutcode-org/scancode-toolkit) can be used to scan for copyright breaches in your code and non-compliance with license requirements.
+- **Contributor signature**: it's possible to add a Github workflow prompting a contributor to sign and agree to contribution terms within a new PR. This should filter out some bot contributions, and at least make human contributors think before continuing. An example can be found [here](https://github.com/hotosm/field-tm/blob/dev/.github/workflows/cla.yml).
 
 ### 7. Thoroughly Document Architectural Decisions
 
