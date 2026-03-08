@@ -62,7 +62,7 @@ However, there is an important distinction between two types of package:
 - Libraries: An underlying Python module that is used _within_ another tool.
 - Applications: A software tool. Typically not installable.
   Such as HOT's web APIs that underpin it's tools
-  (raw-data-api, TM, FMTM, etc).
+  (raw-data-api, TM, FieldTM, etc).
 
 > Capping **upper limits** for library dependencies has long term negative
 > effects, and should never be taken lightly.
@@ -120,7 +120,7 @@ Examples would be:
 - [osm-login-python](https://github.com/hotosm/osm-login-python)
 - [osm-fieldwork](https://github.com/hotosm/osm-fieldwork)
 - [osm-rawdata](https://github.com/hotosm/osm-rawdata)
-- [fmtm-splitter](https://github.com/hotosm/fmtm-splitter)
+- [area-splitter](https://github.com/hotosm/fmtm-splitter)
 
 In these cases, the packages requires underlying dependencies to function.
 

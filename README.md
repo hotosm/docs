@@ -41,7 +41,7 @@ flowchart LR
 
   subgraph FieldMapping["3) Field Mapping"]
     direction TB
-    FMTM@{ img: "/images/logos/hot-logo.svg", label: "Field Mapping TM", pos: "b", w: 96, h: 58 }
+    FieldTM@{ img: "/images/logos/hot-logo.svg", label: "Field Mapping TM", pos: "b", w: 96, h: 58 }
     ChatMap@{ img: "/images/logos/hot-logo.svg", label: "ChatMap", pos: "b", w: 96, h: 58 }
     Panoramax@{ img: "/images/logos/panoramax-logo.svg", label: "Panoramax", pos: "b", w: 52, h: 52 }
   end
@@ -71,15 +71,15 @@ flowchart LR
   OSM --> TM
   MapSwipe --> FAIR
   TM --> OSM
-  OSM --> FMTM
-  FMTM --> OSM
-  FMTM --> Panoramax
+  OSM --> FieldTM
+  FieldTM --> OSM
+  FieldTM --> Panoramax
   Panoramax --> OSM
   OSM --> ChatMap
   OSM --> RawDataAPI
   RawDataAPI --> ExportTool
   RawDataAPI --> HDX
-  UMap --> FMTM
+  UMap --> FieldTM
   OhsomeNow --> TM
   Overture --> TM
 

@@ -38,7 +38,7 @@ software development practices.
 - Our main feedback mechanism is through user testing. This should be done in
   collaboration with our hubs and partners to determine: what works well, and what
   doesn't. The general public will also use our tools and provide feedback.
-- For field-based tools (FMTM, DroneTM), this would involve running mapping campaigns
+- For field-based tools (FieldTM, DroneTM), this would involve running mapping campaigns
   and gathering feedback from the teams involved.
 - For desk-based tools (everything else), we mostly gather feedback through informal
   channels such as Slack.

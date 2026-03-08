@@ -71,26 +71,18 @@ additional value:
 
 With the above as context, HOT's tools roughly can be categorised as such:
 
-### Tool Division
+### Overview
 
-#### Input
-
-| Tool         | Description                                  |
-| ------------ | -------------------------------------------- |
-| Drone TM     | Get base imagery.                            |
-| OAM          | Stored and accessible base imagery.          |
-| Raw Data API | Extract data from OSM easily _for software_. |
-
-> Note: input may be into our own tools, or workflows of others.
-
-#### Output
-
-| Tool        | Description                                               |
-| ----------- | --------------------------------------------------------- |
-| TM          | Digitize map features remotely.                           |
-| fAIr        | Speed up the remote digitization process                  |
-| FMTM        | Add extra information to digitised features in the field. |
-| Export Tool | Extract data from OSM easily _for humans_.                |
+| Tool         | Description                                               |
+| ------------ | --------------------------------------------------------- |
+| Drone TM     | Get base imagery.                                         |
+| OAM          | Stored and accessible base imagery.                       |
+| Raw Data API | Extract data from OSM easily _for software_.              |
+| TM           | Digitize map features remotely.                           |
+| fAIr         | Speed up the remote digitization process                  |
+| FieldTM      | Add extra information to digitised features in the field. |
+| Export Tool  | Extract data from OSM easily _for humans_.                |
+| ChatMap      | Collect field data using messaging apps.                  |
 
 ### Project Summaries
 
@@ -165,7 +157,7 @@ a model that can be used to predict vector features from a raster image.
 
 Integration into TM means mapping of features can be a lot faster.
 
-#### FMTM
+#### FieldTM
 
 Adding useful tags, in the field, from the vector data created in TM.
 
@@ -173,10 +165,18 @@ The tags provide extra information about what features actually are in OSM.
 
 Again, the mapping can be crowdsourced, but more likely organised by NGOs / govs.
 
-The FMTM mapping could also provide a feedback loop to TM, helping to
+The FieldTM mapping could also provide a feedback loop to TM, helping to
 validate that features were mapped correctly.
 
 > As with TM, another tool, StreeComplete, can help with this & may be
 > part of the solution.
 >
-> However, FMTM allows mapping to be done **collaboratively**.
+> However, FieldTM allows mapping to be done **collaboratively**.
+
+#### ChatMap
+
+- A simple tool for collecting data in a group messaging chat
+  (WhatsApp, Signal, etc), then exporting and parsing the
+  collected data onto a web map.
+- 'Data' in this context may be descriptive text, photos, videos,
+  or audio taken at a particular field location.

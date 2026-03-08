@@ -35,7 +35,7 @@ pip install pre-commit
 ### Add pre-commit-config.yaml
 
 - Add a `pre-commit-config.yaml` to your repo root.
-- A best practice config file, taken from FMTM:
+- A best practice config file, taken from FieldTM:
 
 ```yaml
 repos:
