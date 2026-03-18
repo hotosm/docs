@@ -133,6 +133,7 @@ nav:
           - Backend: dev-guide/web-backend.md
           - Frontend: dev-guide/web-frontend.md
           - Accessibility: dev-guide/accessibility.md
+          - Wrapping In Mobile Apps: dev-guide/building-mobile-wrappers.md
       - Testing: dev-guide/testing.md
       - Documentation:
           - Intro: techdoc/README.md
