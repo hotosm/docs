@@ -141,7 +141,7 @@ Project responses range from cautious acceptance to outright bans. The landscape
 
 - **LLVM Project** - AI use permitted but must be disclosed. Contributors must understand and explain their code. "Good first issues" are reserved for human learning [4].
 - **Linux Kernel** - AI code accepted, but undisclosed use results in the contributor being banned [12].
-- **cURL** - AI contributions accepted with mandatory disclosure. Policy breach means a permanent ban. The bug bounty was cancelled after AI reports overwhelmed the team - only 5% of submissions identified real vulnerabilities [13, 10].
+- **cURL** - AI contributions accepted with mandatory disclosure. Policy breach means a permanent ban. The bug bounty was cancelled after AI reports overwhelmed the team - only 5% of submissions identified real vulnerabilities [13], [10].
 - **CloudNativePG** - Permits AI-assisted contributions under strict human accountability rules. Contributors must fully understand and maintain AI-generated code, disclose usage via commit trailers, and _guarantee legal provenance_. "Shotgun refactoring" (wide-scale refactoring or clean-up), hallucinated features, and AI-written PR descriptions are explicitly prohibited. Maintainers reserve the right to close low-effort AI PRs without detailed critique [19].
 - **Apache Spark** - Every PR must disclose AI use. Of ~8,500 commits over 2.5 years, only ~1.5% disclosed AI, but the rate is accelerating sharply [11].
 - **Apache Airflow** - Updated contributing guidelines to require AI disclosure after a surge of low-quality AI-generated PRs [11].
