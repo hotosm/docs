@@ -2,7 +2,7 @@
 
 **A living framework for NGOs, civil society organisations, and mission-driven teams navigating AI adoption in software development**
 
-_Draft for consultation - February 2026_
+_First draft - due to update May 2026_
 
 ---
 
