@@ -28,7 +28,7 @@ Using AI is like delegating work to a junior team member. It can move fast and p
 
 ## What AI Is Bad At (Be Cautious Here)
 
-- **Architecture decisions:** AI does not understand your system's history, constraints, or users. It will happily suggest a redesign that ignores your actual context. These decisions are yours to make.
+- **Architecture decisions:** AI does not understand your system's history, constraints, or users. It will happily suggest a redesign and large refactors that ignores your actual context. These decisions are yours to make.
 - **Security-sensitive code:** AI-generated code frequently has vulnerabilities - missing input validation, insecure defaults, outdated patterns. All security-relevant code must be manually engineered and reviewed.
 - **Domain-specific logic:** AI often fails on edge cases unique to your domain. _(Example from geospatial: AI routinely mishandles anti-meridian polygon wrapping because it doesn't understand spherical geometry unless explicitly guided.)_ Providing domain-specific context in your prompt can help, but in some cases general models are simply not the right tool for specialised knowledge.
 - **Choosing dependencies:** LLMs frequently generate custom implementations instead of using well-tested libraries. Always ask: does a maintained library already solve this? If yes, use it.
@@ -74,10 +74,10 @@ Where possible, set the AI up with a feedback loop - a way to run tests, check o
 ### 5. Review Everything
 
 - Read every line of generated code.
-- Check that it uses existing project libraries and patterns rather than reinventing solutions.
+- Check that it uses existing project libraries and patterns rather than reinventing solutions (see [prefer existing libraries](#prefer-existing-libraries)).
 - Run the tests. If there are no tests, write them before accepting the code.
 - Ask yourself: "Could I explain this to a colleague?" If not, dig deeper before committing.
-- Ask yourself: "Am I overcomplicating this?" LLMs often apply complex patterns to problems that have simpler, well-maintained solutions (see [prefer existing libraries](#prefer-existing-libraries)).
+- Ask yourself: "Am I overcomplicating this?". Often a problem is poorly framed & LLMs apply complex patterns to solve them. Perhaps reframing might lead to a simpler solution.
 - Where possible, add detailed comments as to **why** a line of code is needed (not explaining _what_ the line of code does, which should be self-explanatory, and is often what LLMs do).
 
 ### 6. Keep Changes Small
@@ -133,14 +133,14 @@ Several projects (including LLVM) explicitly forbid this. These issues exist as 
 
 Before merging any AI-generated code, verify:
 
-- [ ] Input validation is present and correct
+- [ ] Input validation is present and correct (see [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html))
 - [ ] No hardcoded secrets, tokens, or credentials
-- [ ] Dependencies are pinned and from trusted sources
-- [ ] Error handling does not leak sensitive information
-- [ ] No unnecessary permissions or access scopes
-- [ ] SQL queries are parameterised (no string concatenation)
-- [ ] File paths are sanitised against traversal attacks
-- [ ] Output encoding is appropriate for the context (HTML, JSON, etc.)
+- [ ] Dependencies are pinned and from trusted sources (see [OWASP Vulnerable Dependency Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Vulnerable_Dependency_Management_Cheat_Sheet.html))
+- [ ] Error handling does not leak sensitive information (see [OWASP Error Handling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html))
+- [ ] No unnecessary permissions or access scopes (apply [least privilege](https://owasp.org/www-community/controls/Least_Privilege_Principle))
+- [ ] SQL queries are parameterised (no string concatenation; see [OWASP SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html))
+- [ ] File paths are sanitised against [traversal attacks](https://owasp.org/www-community/attacks/Path_Traversal).
+- [ ] Output encoding is appropriate for the context (HTML, JSON, etc.; see [OWASP Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html))
 
 ---
 

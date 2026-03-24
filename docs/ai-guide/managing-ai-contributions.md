@@ -16,6 +16,8 @@ This file is read by AI coding agents (Copilot, Claude Code, Cursor, etc.) when 
 - Tech stack and versions
 - Commands to build, test, lint, and check security
 - Project structure (where source, tests, and docs live)
+- Relevant MADRs or architecture decision records (see [Thoroughly Document Architectural Decisions](#7-thoroughly-document-architectural-decisions)).
+- Tech decisions and paths already explored and rejected, so AI does not keep retrying them.
 - Critical paths where AI must not generate code unsupervised (auth, data handling, security)
 - Acceptable areas for AI assistance (UI, boilerplate, test scaffolding, docs)
 - Patterns to avoid (e.g. `eval()`, unparameterised queries, disabling security)
@@ -44,7 +46,7 @@ for everything you submit.
 AI tools must not be used to fix issues labelled `good first issue`.
 These exist for human learning.
 
-For full policy details, see: https://docs.hotosm.org/ai-assisted-coding
+For full policy details, see: [AI-assisted coding guide](./ai-assisted-coding-guide.md)
 ```
 
 ### 3. PR template with AI disclosure
@@ -167,7 +169,7 @@ CI pipeline tools can catch what human review misses:
 **Key points for reviewers:**
 
 - If a PR is marked AI-assisted, ask "why this approach?" - the answer tells you if the contributor understands the code.
-- Watch for: verbose AI-style PR descriptions, generic variable names, unnecessary complexity, dependencies that seem unrelated.
+- Review for the same signs described in [Identifying AI-assisted Code](#8-identifying-ai-assisted-code).
 - Use a standard response for non-compliant PRs (template below).
 - If a contributor cannot answer basic questions about their code, the PR is not ready.
 - If a contributor intentionally breaks rules laid out in the provided AI contribution policy, they may be subject to a 'ban' of future submissions (in the worst case, it is possible to block someone from interacting with an organization / personal account repos).

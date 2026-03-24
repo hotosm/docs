@@ -131,11 +131,7 @@ While AI can be effective for quickly getting something up and running, it creat
 
 AI tools are demonstrably helpful when assisting someone who already understands the codebase and the broader technical landscape, but they are far less reliable as a substitute for that understanding.
 
-**Guidance on appropriate AI use:**
-
-- _Suitable for:_ generating tests, explaining unfamiliar codebases, focused and scoped implementation tasks.
-- _Not suitable for:_ large-scale refactors, major architectural features, core structural redesign.
-- Understanding remains mandatory. If no one on the team can explain a piece of code, it should not be in the codebase.
+See [AI Assisted Coding Guide](./ai-assisted-coding-guide.md#what-ai-is-good-for-appropriate-to-use-here) for details on appropriate usage of LLMs.
 
 ### 2.3 What Leading Projects Are Doing
 
