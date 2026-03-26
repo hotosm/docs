@@ -117,11 +117,7 @@ nav:
           - Roadmap: https://github.com/hotosm/raw-data-api/tree/master#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
       - Future Plans / Ideas: projects/future-plans.md
-  - AI Guide:
-      - LLMs Usage Framework: ai-guide/using-lmms-responsibly.md
-      - Practical Guide For Agentic Coding: ai-guide/ai-assisted-coding-guide.md
-      - Prepare Your Repository For AI: ai-guide/managing-ai-contributions.md
-      - Recommended Open Models: ai-guide/recommended-open-models.md
+  - AI Guide: https://responsibleai.guide
   - Developer Guide:
       - Intro: dev-guide/intro.md
       - Managing Repos:
