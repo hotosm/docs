@@ -141,6 +141,7 @@ nav:
           # - Cheat Sheet: dev-guide/containers/containers-cheat-sheet.md
           - Local Kubernetes: dev-guide/containers/kubernetes-local-kind.md
           - Production DB: dev-guide/containers/production-db.md
+          - Tailscale Cluster Access: dev-guide/containers/tailscale-cluster-access.md
       - Tech Decisions:
           - Frontend framework: decisions/0003-react.md
           - Backend language: decisions/0004-python.md
