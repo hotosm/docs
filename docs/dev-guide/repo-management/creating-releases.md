@@ -14,14 +14,14 @@ Most repos track a single version through a few files:
 
 !!! note
 
-    Ideally all of these versions are in sync.
+      Ideally all of these versions are in sync.
 
-    Common release processes for bigger teams / products do allow for
-    separate versioning of the different components (frontend, backend,
-    helm chart, etc).
+      Common release processes for bigger teams / products do allow for
+      separate versioning of the different components (frontend, backend,
+      helm chart, etc).
 
-    Due to small team size and simplicity, we opt to keep the version
-    consistent across all components.
+      Due to small team size and simplicity, we opt to keep the version
+      consistent across all components.
 
 ## 2. Making the release in Github
 
@@ -38,18 +38,18 @@ Most repos track a single version through a few files:
 
 !!! note
 
-    For Python / NPM packages, this should trigger a publishing workflow,
-    making the package available publicly.
+      For Python / NPM packages, this should trigger a publishing workflow,
+      making the package available publicly.
 
-    For tools, this will trigger a build pipeline in Github to create
-    versioned container images & publish the helm chart for deployment.
+      For tools, this will trigger a build pipeline in Github to create
+      versioned container images & publish the helm chart for deployment.
 
 ## 3. Deploy to Kubernetes
 
 !!! note
 
-    This step might be automated, depending on the outcome of:
-    [https://github.com/hotosm/k8s-infra/issues/90](https://github.com/hotosm/k8s-infra/issues/90)
+      This step might be automated, depending on the outcome of:
+      [https://github.com/hotosm/k8s-infra/issues/90](https://github.com/hotosm/k8s-infra/issues/90)
 
 1. Within the [k8s-infra](https://github.com/hotosm/k8s-infra)
    repository, we deploy our tools using a 'pull' approach via
@@ -72,7 +72,7 @@ Most repos track a single version through a few files:
 
 !!! note
 
-You can also view the progress in the ArgoCD UI.
+      You can also view the progress in the ArgoCD UI.
 
 ## 5. Revert a release
 
@@ -93,11 +93,11 @@ Worst case:
 
 !!! note
 
-In theory, the database schema / migrations should not be an issue and
-will hopefully roll back. Especially for e.g. DroneTM, which uses alembic.
+      In theory, the database schema / migrations should not be an issue and
+      will hopefully roll back. Especially for e.g. DroneTM, which uses alembic.
 
-Worst case here is to connect to the database and manually revert the
-schema to be compatible with the rollback release...
+      Worst case here is to connect to the database and manually revert the
+      schema to be compatible with the rollback release...
 
-To connect to the db, see
-[production database](../containers/production-db.md#accessing--exposing-the-db)
+      To connect to the db, see
+      [production database](../containers/production-db.md#accessing--exposing-the-db)
