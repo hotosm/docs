@@ -108,9 +108,8 @@ This will:
     # Revert the commit
     git reset --soft HEAD~1
 
-    # Delete the branch
-    git branch -d v0.x.x
-    git push --delete origin v0.x.x
+    # Delete the tag
+    git tag -d 0.x.x
     ```
 
 <!-- markdownlint-enable -->
@@ -127,17 +126,3 @@ This will:
   uv --project=./packages/project1 build
   uv --project=./packages/project1 publish
   ```
-
-## Creating Releases
-
-1. Update the version throughout the code ([Bumping a Version](#bumping-a-version)).
-2. Go to the Releases page of your repo
-   (<https://github.com/ORG/REPO/releases>).
-3. Click `Draft a new release`.
-4. Click `Choose a tag`, then input the current version number and press
-   enter (this will automatically create a matching tag for your release).
-5. Set the `Release title` to v`x.x.x`, replacing with your version number.
-6. Add a description if possible, then release.
-
-This should trigger the PyPi publishing workflow (for HOT repos), and
-your version will be available on [PyPi.org](https://www.pypi.org).

@@ -333,3 +333,32 @@ spec:
 - Instead, if external access is in fact required, we can use an Nginx Ingress.
 - Documentation for this is available in
   [CloudNativePG docs](https://cloudnative-pg.io/documentation/1.21/expose_pg_services)
+
+Another good alternative, if you have issues with the above (the approach I
+personally use) is to create a socat port-forward container:
+
+Fish shell function:
+
+```fish
+function forward-db
+    set -l ns postgres
+    set -l proxy "db-proxy-$argv[1]"
+    set -l svc (kubectl get svc -n $ns -o name | grep $argv[1] | grep -- '-rw$' | sed 's|service/||')
+    test -z "$svc" && echo "No -rw service found matching '$argv[1]'" && return 1
+    function __forward_db_cleanup --on-signal INT --on-signal TERM
+        kubectl delete pod -n postgres $proxy --ignore-not-found --wait=false
+        functions -e __forward_db_cleanup
+    end
+    kubectl run -n $ns $proxy --image=alpine/socat --restart=Never -- \
+        tcp-listen:5432,fork,reuseaddr "tcp-connect:$svc:5432"
+    kubectl wait -n $ns --for=condition=Ready pod/$proxy --timeout=30s
+    echo "Forwarding localhost:5432 -> $svc"
+    kubectl port-forward -n $ns $proxy 5432:5432
+    kubectl delete pod -n $ns $proxy --ignore-not-found --wait=false
+    functions -e __forward_db_cleanup
+end
+
+# To use, e.g.
+forward-db dronetm
+# Then the database will be available on 'http://localhost:5432'.
+```

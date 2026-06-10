@@ -125,6 +125,7 @@ nav:
           - Monorepos: dev-guide/repo-management/monorepos.md
           - Pre-Commit: dev-guide/repo-management/pre-commit.md
           - Version Control: dev-guide/repo-management/version-control.md
+          - Creating Releases: dev-guide/repo-management/creating-releases.md
           - Dependency Management: dev-guide/repo-management/dependencies.md
           - Licensing: dev-guide/repo-management/licensing.md
       - Web Development:
