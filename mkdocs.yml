@@ -155,6 +155,7 @@ nav:
           - Load Testing: decisions/0009-load-testing.md
           - Kubernetes Domain Name Scheme: decisions/0010-k8s-domain.md
           - Shared Authentication (SSO): decisions/0011-sso-auth.md
+          - Dependency Refresh Tools: decisions/0012-dependency-refresh.md
   - DevOps:
       - AWS Permissions: devops/aws-iam.md
       - Reusable Workflows: https://hotosm.github.io/gh-workflows/
