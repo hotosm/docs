@@ -137,12 +137,9 @@ nav:
       - Documentation:
           - Automatically Generated Docs: dev-guide/api-doc-gen.md
           - Diátaxis Framework: https://diataxis.fr
-      - Containers:
+      - Containers Basics:
           - Intro: dev-guide/containers/containers-101.md
-          # - Cheat Sheet: dev-guide/containers/containers-cheat-sheet.md
           - Local Kubernetes: dev-guide/containers/kubernetes-local-kind.md
-          - Production DB: dev-guide/containers/production-db.md
-          - Tailscale Cluster Access: dev-guide/containers/tailscale-cluster-access.md
       - Tech Decisions:
           - Frontend framework: decisions/0003-react.md
           - Backend language: decisions/0004-python.md
@@ -157,9 +154,13 @@ nav:
           - Shared Authentication (SSO): decisions/0011-sso-auth.md
           - Dependency Refresh Tools: decisions/0012-dependency-refresh.md
   - DevOps:
+      - Our Deployment Process: devops/deployment-process.md
       - AWS Permissions: devops/aws-iam.md
-      - Reusable Workflows: https://hotosm.github.io/gh-workflows/
-      - Kubernetes: https://github.com/hotosm/k8s-infra
+      - Frontends Via S3 + Cloudfront: devops/cloudfront-s3-frontends.md
+      - Production DB: devops/production-db.md
+      - Tailscale Cluster Access: devops/tailscale-cluster-access.md
+      - Reusable CI Workflows: https://hotosm.github.io/gh-workflows/
+      - Kubernetes: https://hotosm.github.io/k8s-infra
   - Modularization:
       - Info: modules.md
       - Backend: modules/backend.md

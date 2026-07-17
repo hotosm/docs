@@ -45,7 +45,7 @@ afterwards - **this is not what we want**.
 
 Instead, we need a true Identity Provider that issues and verifies tokens,
 which our APIs can validate independently. The IdP does not sit 'in front' of
-services like a reverse proxy — it just handles the login flow:
+services like a reverse proxy - it just handles the login flow:
 
 - The frontend is public.
 - The user clicks to 'log in' and does an OAuth redirect flow.

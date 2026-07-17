@@ -117,8 +117,8 @@ Management of tasks and code via Github.
 
 - Generally our repos will have three key branches:
   - **dev**: the ongoing development to which PRs are made.
-  - **stage**: optional branch where new features pass additional testing
-    stages prior to deployment to the main website.
+  - **stage** / **staging**: optional branch where new features pass additional
+    testing prior to deployment (name varies per repo).
   - **main**: the code that is currently deployed to the main website.
 
 #### Issues \ Features
@@ -210,10 +210,8 @@ code!
 
 #### Marking Issues As Solved
 
-- Once merged, code should be deployed automatically from the `dev` branch
-  to the `dev` server.
-- This allows for the Project Owner / Manager to thoroughly test the changes
-  and either close the issue, or add the `testing:fail` tag.
+- Once merged to `dev`, changes are tested and the Project Owner / Manager
+  can either close the issue, or add the `testing:fail` tag.
 - Once closed, this will be reflected on the milestone percentage, roadmap
   progress, and task board complete tasks.
 
@@ -385,47 +383,37 @@ Example:
 
 ### Deployment Flow
 
-These stages go in order, from local development, through to production deployment.
+These stages go in order, from local development through to production. We use a
+**GitOps pull model**: CI only builds artifacts (images + Helm chart), and
+[ArgoCD](https://argo-cd.readthedocs.io) deploys them. For the full mechanics see
+[Our Deployment Process](./devops/deployment-process.md).
 
 #### Local Development
 
-- Devs develop features on their local instance.
-- Use `docker-compose.yml` setup for testing.
-- Once feature and testing complete, make a PR to the `dev` branch.
+- Devs develop and test features locally using the `docker compose` setup.
+- Once complete, make a PR to the `dev` branch.
+- There is no shared dev server yet - local is the dev environment for now.
 
-#### Development Deployment
+#### Staging Deployment (ephemeral)
 
-- Once a PR is approved, it is merged to `dev`.
-- This triggers a workflow to automatically deploy the code changes on the dev server.
-- The purpose of this stage is for:
-  - Fast CI, i.e. the developer sees their code in action quickly.
-  - Easy QA tests by the project manager on the dev server.
+- Purpose: regularly test release candidates before production.
+- At a set interval (approx bi-weekly), merge `dev` into `staging` (or
+  `stage`, depending on the repo) to stabilise features. If branches have
+  diverged badly, reset instead: `git reset --hard origin/dev`.
+- Opening a **PR from `staging` → `main`** spins up an **ephemeral staging env**
+  (ArgoCD's PR generator), built from the PR's own commit. Pushing more commits
+  to `staging` rolls it automatically.
+- Test and patch here (on `dev` then merge up, or directly on `staging`).
+- The env is **torn down when the PR is closed or merged**.
 
-#### Staging Deployment
+#### Production Deployment (via ArgoCD)
 
-- The purpose of this step is to regularly release versions of the software that
-  power users (and the project owners) can test.
-  - Anyone who doesn't mind occasional breakage is welcome to use this server publicly.
-- At a set interval (approx bi-weekly), the updates made on `dev` are merged into
-  `staging` for feature stabilisation.
-  - This can be done via PR, although sometimes there may be merge conflicts to resolve.
-  - Alternatively, the branch can be reset to the latest `dev` and built upon:
-    `git reset --hard origin/dev`
-- Once merged, the functionality is thoroughly tested and patched (if required).
-  - Patches can either me made on `dev` and merged into `staging`.
-  - Or be made directly to `staging` if there branches have diverged significantly.
-- Once approved, the `staging` branch auto-deploys to the staging server.
-
-#### Production Deployment
-
-- The staging server instance is thoroughly tested by the product owner, and
-  bug reports filed.
-- The release is hardened into longer interval (approx bi-monthly) production releases.
-- A PR is made from `staging` to `main` branch.
-- Once approved and the code merged, a Github **release** is made.
-- A release is available on Github, including all relevant release notes for
-  what has been updated.
-- The **release** will trigger the workflow to deploy to the production server.
+- Once staging is approved, **merge the `staging` → `main` PR**.
+- Cut a GitHub **release** on `main` (with release notes). CI builds the
+  container images and publishes the Helm chart.
+- ArgoCD then deploys it: automatically for auto-track apps, or via a version
+  bump PR in [k8s-infra](https://github.com/hotosm/k8s-infra) for pinned apps.
+  See [Creating Releases](./dev-guide/repo-management/creating-releases.md).
 
 ##### Hotfixes
 
@@ -454,23 +442,3 @@ These stages go in order, from local development, through to production deployme
     review process (CI workflows).
 - Fixes should be pushed through to production as soon as possible, as a
   `hotfix` branch including the updated image/package version or code.
-
-#### Other: Feature Demo Releases
-
-- A feature demo release is a throwaway instance of the tool with a particular purpose.
-- Functionality is developed here for various reasons:
-  - Specific updates for a single project that won't be used elsewhere.
-  - Very fast updating of the server, without interfering with the typical release
-    flow.
-- The key point is that these branch instances are **single use** and will be
-  **shut down** once the project has ended.
-- The easiest approach is probably to:
-  - Create and login to a server.
-  - Clone the repo and checkout to the feature branch `feature-demo/some-feature`.
-  - Run the commands to build and run the tool.
-- Alternatively, a workflow can be made to auto-deploy:
-  - Triggering on a branch naming convention: `feature-demo/some-feature`.
-  - The user will have to enter an SSH key into the Gitlab secrets.
-  - The workflow will deploy to the server remotely when the branch is pushed to.
-  - This approach is less preferred, as the user requires write access to the
-    Github repo.

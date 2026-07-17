@@ -62,7 +62,7 @@ Most repos track a single version through a few files:
 
 ## 4. View the deployment in k8s
 
-- Access the cluster via [Tailscale](../containers/tailscale-cluster-access.md).
+- Access the cluster via [Tailscale](../../devops/tailscale-cluster-access.md).
 - Go to the correct namespace, e.g. `drone`.
 - View the pods in the namespace `kubectl get all`.
 - You will see a rolling release happening, as the new pods are deployed
@@ -100,4 +100,4 @@ Worst case:
       schema to be compatible with the rollback release...
 
       To connect to the db, see
-      [production database](../containers/production-db.md#accessing--exposing-the-db)
+      [production database](../../devops/production-db.md#accessing--exposing-the-db)
