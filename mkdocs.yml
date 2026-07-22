@@ -153,6 +153,7 @@ nav:
           - Kubernetes Domain Name Scheme: decisions/0010-k8s-domain.md
           - Shared Authentication (SSO): decisions/0011-sso-auth.md
           - Dependency Refresh Tools: decisions/0012-dependency-refresh.md
+          - Using Kubernetes: decisions/0013-kubernetes.md
   - DevOps:
       - Our Deployment Process: devops/deployment-process.md
       - AWS Permissions: devops/aws-iam.md
