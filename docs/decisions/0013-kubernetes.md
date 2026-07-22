@@ -41,7 +41,9 @@ practical compromises.
 The tipping point came in 2025. DevelopmentSeed's rebuild of the OpenAerialMap
 backend gave us the choice of Kubernetes or Docker Compose. We had been
 thinking about Kubernetes for a while, the Senior Tech Lead had used it before,
-and DevSeed could help, so we took the plunge.
+and DevSeed could help, so we took the plunge. Not long after, we also
+need to deploy osm-sandbox-dashboard for Tasking Manager, a tool that
+also requires Kubernetes mandatorily.
 
 ## Decision Outcome
 
@@ -49,10 +51,11 @@ We chose Kubernetes as the standard way to deploy our tools, running on AWS EKS
 as the control plane. We are moving tools onto it slowly, not all at once.
 
 The migration is gradual and limited on purpose. OpenAerialMap moved first
-(Sep '25). Shared Login, ChatMap, and others are in progress. Importantly,
-Tasking Manager and Raw Data API are not currently planned for migration: where
-the effort is not worth the benefit, tools stay where they are. Kubernetes is
-the default, but not a hard requirement.
+(Sep '25), with DroneTM & FieldTM not long after.
+Shared Login, ChatMap, and others are in progress. Importantly,
+all of Tasking Manager and Raw Data API are not currently planned for migration:
+where the effort is not worth the benefit, tools stay where they are.
+Kubernetes is the default, but not a hard requirement.
 
 The cluster runs a set of well-known open-source tools:
 
