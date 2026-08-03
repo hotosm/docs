@@ -1,11 +1,11 @@
 # Licensing
 
 With so many options for licensing code, the topic can be quite
-confusing. Many projects like Boost, Eclipse, Apache, etc.. have their
-own license, often based on the
-[GPL](https://en.wikipedia.org/wiki/GNU_General_Public_License), which
-only apply to that project, so aren't appropriate for use at
-HOT. There are two primary types of licenses, permissive and
+confusing. Some projects, like Boost, Eclipse, and Apache, write their
+own custom licenses. These vary a lot: some are permissive and some are
+[copyleft](https://en.wikipedia.org/wiki/Copyleft). Because each one was
+written for a specific project, they aren't a good general-purpose choice
+for HOT. There are two primary types of licenses, permissive and
 non-permissive. Non permissive licenses may appear to be open source,
 but often it's a few clauses in the licenses that make them unable to
 be used in other open source projects.
@@ -20,11 +20,13 @@ GPLv3 or AGPLv3, with some older code using the BSD license.
 
 ## The GPLv3 and AGPLv3
 
-- These are strong 'copyleft' licences, meaning that anyone
-  modifiying the software is required to make those changes openly
-  available. This is commonly called the derivative work clause. Any
-  derivative software must be contributes it back to the original
-  software project with no restrictions.
+- These are strong 'copyleft' licences. In plain terms: if you build on
+  our software and share your version with other people, you must also
+  give those people the full source code, under the same open license.
+
+- This means improvements can't be quietly locked away or turned into
+  closed, proprietary software. They stay open, so the whole community
+  can keep benefiting from them.
 
 - The main purpose of this license is to prevent commercial
   exploitation of open code, making any modifications open so the
@@ -33,6 +35,18 @@ GPLv3 or AGPLv3, with some older code using the BSD license.
 - The distinction between the two is that AGPL is used for code
   distributed via a network (i.e. a website), whereas, GPL can be
   used for all other code (e.g. PyPi packages, compiled code).
+
+## Why Our Software Can't Be Taken Away
+
+- Our projects are built by a whole community of contributors, and each
+  person keeps the copyright to the part they wrote.
+- To switch a project to a closed or restrictive license later, you would
+  need permission from **every single person** who has ever contributed.
+- With dozens or hundreds of contributors, getting everyone to agree is
+  practically impossible, so it simply doesn't happen.
+- This is a good thing. It means no company, funder, or future owner can
+  take our software and lock it away. The copyleft license and the wide
+  community of contributors protect it together, keeping it open for good.
 
 !!! note
 
