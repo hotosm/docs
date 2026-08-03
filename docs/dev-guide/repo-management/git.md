@@ -180,3 +180,26 @@ git stash drop
 - In this case you have two options:
   - Merge `PR-1` and add the required updates to `PR-2`.
   - Update `PR-1` and merge, then rebase `PR-2` against the target branch.
+
+## Commit Sign-Off (DCO)
+
+All commits to HOT repositories should ideally be signed off under the
+[Developer Certificate of Origin](https://developercertificate.org) (DCO).
+
+The DCO is a simple, widely-used statement that you wrote the code (or
+otherwise have the right to submit it), and are happy for it to be included
+under the project's open license. It does **not** transfer your copyright:
+you keep ownership of the code you write.
+
+You agree to it by adding a `Signed-off-by` line to your commit footer, with
+a name and email that match those on your commit:
+
+```text
+Signed-off-by: John Doe <joe.doe@example.com>
+```
+
+Git can add this line for you automatically if you commit with the `-s` flag:
+
+```bash
+git commit -s -m "your message"
+```

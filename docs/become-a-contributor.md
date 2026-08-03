@@ -106,6 +106,29 @@ A summarized brief workflow is:
     (the PR gets updated automatically).
 13. Changes get merged when ready & you are now officially a contributor!
 
+## 🖋️ How Contributions Are Handled
+
+There are two small things we ask, and neither one takes any rights away
+from you - **you always keep the copyright to the code you write.**
+
+1. **A one-time contribution agreement.** The first time you open a pull
+   request, a bot asks you to leave a short comment confirming you have read
+   and agree to that repository's contribution guidelines. You only need to
+   do this once per repository.
+
+   Please note that this is **not** a Contributor License Agreement in the
+   usual sense: it does **not** assign your copyright to us, and it does
+   **not** give anyone the right to re-license your work. It exists only to
+   confirm you have read the guidelines, and to add a small barrier against
+   automated bot / AI accounts, which we do not accept contributions from.
+
+2. **A sign-off on each commit (the DCO).** See
+   [Commit Sign-Off (DCO)][dco] - a simple statement that you wrote the code
+   and are happy for it to be included under the project's open license.
+
+Together these keep the project's history clear about who wrote what, while
+keeping the code open and owned by the people who built it.
+
 ## 🤝 Thank You
 
 Thank you very much in advance for your contributions!!
@@ -119,4 +142,5 @@ channel.
 [1]: https://github.com/hotosm "HOT Github"
 [2]: https://slack.hotosm.org "HOT Slack"
 [3]: mailto:sysadmin@hotosm.org "Sysadmin email"
+[dco]: https://docs.hotosm.org/dev-guide/repo-management/git/#commit-sign-off-dco "Commit Sign-Off (DCO)"
 [4]: https://docs.hotosm.org/code-of-conduct "Code of conduct"
