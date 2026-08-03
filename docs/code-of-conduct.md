@@ -1,6 +1,6 @@
 # 📜 Code of conduct
 
-(The latest version can be found at [https://www.hotosm.org/code-of-conduct][1]
+(The latest version can be found at [https://hotosm.org/en/policies/hots-code-of-conduct][1])
 
 Welcome to Humanitarian OpenStreetMap Team. HOT is committed to providing a
 welcoming and safe environment for people of all races, gender identities,
@@ -142,7 +142,7 @@ your complaint, your name, and the name of the offending party.
 All complaints will be considered confidential.
 The full process is [described here][13] .
 
-[1]: https://www.hotosm.org/code-of-conduct
+[1]: https://hotosm.org/en/policies/hots-code-of-conduct
 [3]: https://adainitiative.org/2014/02/18/howto-design-a-code-of-conduct-for-your-community/
 [4]: https://github.com/drtortoise/critical-algorithm-studies/blob/master/code-of-conduct.md
 [5]: https://github.com/AmericanRedCross/team-code-of-conduct
