@@ -15,8 +15,9 @@ software](https://en.wikipedia.org/wiki/Free_software) culture, while
 following the collaborative development processes common for open
 source software projects.
 
-All of the software at HOT uses permissive licenses, mostly the
-GPLv3 or AGPLv3, with some older code using the BSD license.
+All of the software at HOT uses open source licenses, mostly the
+copyleft GPLv3 or AGPLv3, with some older code using the more
+permissive BSD license.
 
 ## The GPLv3 and AGPLv3
 
@@ -88,6 +89,7 @@ here.
 - Public Domain
 - Mozilla Public License (MPL) version 2.0
 - Apache License 2.0
+- MIT (Expat) license
 - Modified BSD license
 - Intel Open Source License
 - FreeBSD license
@@ -104,6 +106,11 @@ Typically we would defer to an authority such as the FSF.
 These licenses may include, but are not limited to:
 
 - EUPL-1.2
+
+The FSF considers the EUPL
+[GPL-incompatible](https://www.gnu.org/licenses/license-list.en.html#EUPL-1.2),
+but EUPL-1.2 lists GPLv3 and AGPLv3 as 'Compatible Licences', allowing
+a derivative to be relicensed to ours. EUPL-1.1 has no such route.
 
 For the moment we do not expressly forbid their usage, but the
 rationale for doing so should be explained on a case-by-case basis.
@@ -126,6 +133,6 @@ Licenses that can't be used for any code in HOT software projects:
 - Common Development and Distribution License (CDDL), version 1.0
 - Common Public Attribution License 1.0 (CPAL)
 - Common Public License Version 1.0
-- European Union Public License (EUPL) version 1.1 and 1.2
+- European Union Public License (EUPL) version 1.1
 - IBM Public License, Version 1.0
 - Open Software License, all versions through 3.0
