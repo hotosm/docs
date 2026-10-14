@@ -65,3 +65,6 @@ dist
 site
 .cache
 docs.egg-info
+
+.codex
+.claude
