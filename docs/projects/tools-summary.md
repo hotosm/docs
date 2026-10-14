@@ -84,6 +84,7 @@ With the above as context, HOT's tools roughly can be categorised as such:
 | Export Tool  | Extract data from OSM easily _for humans_.                |
 | ChatMap      | Collect field data using messaging apps.                  |
 | uMap         | Share simple interactive maps of the results.             |
+| Portal       | Connect tools, data and people in a single place.         |
 
 ### When should I use each tool?
 
@@ -163,14 +164,13 @@ But you may only need to use a single tool.
 #### ChatMap
 
 - **What it does:** turns locations, photos, videos and messages shared in a
-  group chat (e.g. WhatsApp) into a map. A chatbot can guide people through a
-  simple survey.
-- **Use it when:** you need fast ground reports from people who already use
-  messaging apps and won't install anything new, e.g. damage, shelters or
-  blocked roads after a disaster.
-- **Probably not when:** you need structured, consistent data for every feature
-  (FieldTM), or nobody can review incoming reports: public chat groups
-  produce inconsistent data that needs moderating.
+  chat into a map. A chatbot can guide people through a simple survey.
+- **Use it when:** you need to collect local knowledge from the field and create
+maps without a complex setup, using existing apps like WhatsApp, Telegram
+or Signal.
+- **Probably not when:** you need complex structured data, geometry drawing 
+and/or other advanced survey or GIS features (ODK, QField), direct OSM contribution
+(StreetComplete, EveryDoor) or high quality street-level imagery (Panoramax).
 
 #### Export Tool
 
@@ -196,11 +196,18 @@ But you may only need to use a single tool.
   progress) with partners or the public quickly.
 - **Probably not when:** you need analysis or very large datasets (use QGIS).
 
+#### Portal
+
+- **What it does:** connects open mapping tools, data and people in a single place
+- **Use it when:** you want to get quick access to tools, projects, share and find data,
+buy services or become a vendor in the open mapping marketplace
+- **Probably not when:** you need a complex geoportal (GeoNode)
+
 ### How they fit together
 
 - **Disaster response** (e.g. the 2026 Venezuela earthquake): fAIr density and
   damage models to prioritise areas → MapSwipe to validate the predictions →
   TM to map the building baseline in detail → ChatMap for ground reports →
-  data shared on HDX and in uMap.
+  HDX datasets / uMap visualizations → Portal for sharing all together
 - **Community mapping:** Drone TM → OAM → TM (with fAIr to speed it up) →
   FieldTM → Export Tool / uMap.

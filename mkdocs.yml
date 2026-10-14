@@ -103,7 +103,7 @@ nav:
       - ChatMap:
           - Landing Page: https://chatmap.hotosm.org
           - Docs: https://github.com/hotosm/chatmap/blob/master/docs/index.md
-          - Roadmap: https://github.com/hotosm/chatmap/#roadmap
+          - Roadmap: https://github.com/hotosm/chatmap#roadmap-2026
           - Development: https://github.com/orgs/hotosm/projects/46
       - Export Tool:
           - Landing Page: https://export.hotosm.org
@@ -116,6 +116,11 @@ nav:
           - Docs: https://hotosm.github.io/raw-data-api/
           - Roadmap: https://github.com/hotosm/raw-data-api/tree/master#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
+      - Portal:
+          - Landing Page: https://portal.hotosm.org
+          - Docs: https://github.com/hotosm/portal/blob/main/ARCHITECTURE.md
+          - Roadmap: https://github.com/hotosm/portal#roadmap
+          - Development: https://github.com/orgs/hotosm/projects/48
       - Future Plans / Ideas: projects/future-plans.md
   - AI Guide: https://responsibleai.guide
   - Developer Guide:

@@ -20,6 +20,7 @@ focal points to contact.
 | fAIr            | [Here][13]       | Omran: [Slack][14], [Email][15]     |
 | ChatMap         | [Use general][1] | Emi: [Slack][16], [Email][17]       |
 | uMap            | [Use general][1] | Emi: [Slack][16], [Email][17]       |
+| Portal          | [Use general][1] | Emi: [Slack][16], [Email][17]       |
 | Export Tool     | [Use general][1] | Sam: [Slack][8], [Email][9]         |
 
 <!-- markdownlint-enable -->
