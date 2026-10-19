@@ -1,6 +1,6 @@
 # Use React as our main frontend library
 
-> Amended by [0015 - Allow Svelte for new frontends](./0015-svelte-frontends.md).
+> Amended by [0015 - Choose the frontend by the job, and allow Svelte](./0015-frontend-right-tool.md).
 
 ## Context and Problem Statement
 
