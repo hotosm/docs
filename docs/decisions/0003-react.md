@@ -1,5 +1,7 @@
 # Use React as our main frontend library
 
+> Amended by [0015 - Allow Svelte for new frontends](./0015-svelte-frontends.md).
+
 ## Context and Problem Statement
 
 At HOTOSM we mostly develop web applications, which require a frontend

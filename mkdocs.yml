@@ -160,6 +160,7 @@ nav:
           - Dependency Refresh Tools: decisions/0012-dependency-refresh.md
           - Using Kubernetes: decisions/0013-kubernetes.md
           - UI Font Selection: decisions/0014-ui-fonts.md
+          - Svelte Frontends: decisions/0015-svelte-frontends.md
   - DevOps:
       - Our Deployment Process: devops/deployment-process.md
       - AWS Permissions: devops/aws-iam.md
