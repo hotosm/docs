@@ -3,11 +3,12 @@
 We use Tailscale to keep Kubernetes control planes off the public internet.
 
 Instead of opening the Kubernetes API to public IP addresses, approved devices
-join a private HOT network called a tailnet. `kubectl` can then reach the
-control plane through its Tailscale IP.
+join a private HOT network called a tailnet. `kubectl` then reaches the
+cluster through the Tailscale operator's API server proxy.
 
-Tailscale only handles the network path. Kubernetes access is still controlled
-by your kubeconfig and Kubernetes RBAC permissions.
+The proxy identifies you by your Tailscale identity, and the tailnet policy
+maps your group to Kubernetes RBAC permissions. No personal credentials are
+stored in your kubeconfig.
 
 ## Access Model
 
@@ -15,7 +16,8 @@ Cluster access has three layers:
 
 - Tailscale account access: you must be allowed into the HOT tailnet.
 - Device approval: your laptop must be approved by a tailnet admin.
-- Kubernetes access: your kubeconfig and RBAC permissions decide what you can do.
+- Kubernetes access: your tailnet group (e.g. admin, read-only, contractor)
+  decides your RBAC permissions.
 
 ## Privacy And Device Access
 
@@ -42,11 +44,7 @@ You need:
 - Tailscale installed on your machine.
 - `kubectl` installed.
 - Access to the correct HOT GitHub account or organization.
-- A kubeconfig from a cluster admin.
 - Device approval from a Tailscale admin.
-
-Keep your kubeconfig private. It is the credential that tells Kubernetes who you
-are and what you can access.
 
 ## Connecting As Staff
 
@@ -61,9 +59,14 @@ are and what you can access.
 tailscale status
 ```
 
-7. Add the kubeconfig provided by the cluster admin.
-8. Make sure the kubeconfig points to the cluster control plane Tailscale IP.
-9. Test access:
+7. Generate your kubeconfig. This adds a context for the cluster to
+   `~/.kube/config` and switches to it:
+
+```bash
+tailscale configure kubeconfig hotosm-k8s-operator
+```
+
+8. Test access:
 
 ```bash
 kubectl get namespaces
@@ -80,7 +83,12 @@ Contractor access is more restricted than staff access.
 2. Open Tailscale and sign in with the GitHub account provided for the contract.
 3. Select the `hotosm-contractors@hotosm` tailnet.
 4. Ask a Tailscale admin to approve your device.
-5. Add the kubeconfig provided for your work.
+5. Generate your kubeconfig:
+
+```bash
+tailscale configure kubeconfig hotosm-k8s-operator
+```
+
 6. Test access:
 
 ```bash
@@ -97,11 +105,12 @@ If `kubectl` cannot connect:
 - Check that Tailscale is running.
 - Check that you joined the correct tailnet.
 - Check that your device has been approved.
-- Check that the kubeconfig server address is the cluster control plane
-  Tailscale IP.
+- Check that your current context is the operator
+  (`kubectl config current-context`), pointing at
+  `https://hotosm-k8s-operator.banded-armadillo.ts.net`.
 
 If `kubectl` connects but says `Forbidden`, the network is working. Ask a
-cluster admin to check your Kubernetes RBAC permissions.
+Tailscale admin to check you are in the right tailnet group.
 
 If you no longer need access, ask a Tailscale admin to remove your device from
 the tailnet.
