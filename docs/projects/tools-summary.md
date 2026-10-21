@@ -166,11 +166,11 @@ But you may only need to use a single tool.
 - **What it does:** turns locations, photos, videos and messages shared in a
   chat into a map. A chatbot can guide people through a simple survey.
 - **Use it when:** you need to collect local knowledge from the field and create
-maps without a complex setup, using existing apps like WhatsApp, Telegram
-or Signal.
-- **Probably not when:** you need complex structured data, geometry drawing 
-and/or other advanced survey or GIS features (ODK, QField), direct OSM contribution
-(StreetComplete, EveryDoor) or high quality street-level imagery (Panoramax).
+  maps without a complex setup, using existing apps like WhatsApp, Telegram
+  or Signal.
+- **Probably not when:** you need complex structured data, geometry drawing
+  and/or other advanced survey or GIS features (ODK, QField), direct OSM contribution
+  (StreetComplete, EveryDoor) or high quality street-level imagery (Panoramax).
 
 #### Export Tool
 
@@ -198,9 +198,11 @@ and/or other advanced survey or GIS features (ODK, QField), direct OSM contribut
 
 #### Portal
 
-- **What it does:** connects open mapping tools, data and people in a single place
-- **Use it when:** you want to get quick access to tools, projects, share and find data,
-buy services or become a vendor in the open mapping marketplace
+- **What it does:** connects open mapping tools, data and people in a single place.
+  Plans group projects across tools into one end-to-end workflow.
+- **Use it when:** you want quick access to tools, to coordinate projects
+  across tools, share and find data, buy services or become a vendor
+  in the open mapping marketplace. See [Portal](portal.md).
 - **Probably not when:** you need a complex geoportal (GeoNode)
 
 ### How they fit together

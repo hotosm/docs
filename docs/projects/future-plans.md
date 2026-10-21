@@ -25,46 +25,6 @@ fun, and exciting, feel free to reach out about one of these ideas.
     their map. For example, maybe they have great digitized features
     already, but need to field-verify them and add extra tag info.
 
-### A centralized E2E Site
-
-- We need a centralized entrypoint for E2E mapping to make the workflow more accessilbe.
-- Work a website to achieve this was started in
-  [this project](https://hotosm.github.io/e2e-mapping), however,
-  capacity has been limited to continue it so far.
-- We envision to have a central place that users
-  can access, to:
-  - Understand what E2E is, and what it enables.
-  - Showcase the tools used in E2E and their capabilities.
-  - Some hand-holding tutorials to easily link together all the tools
-    required to successfully carry out an E2E mapping project.
-    For the latter, we target an **interactive** tutorial, where the user
-    can start by drawing an AOI for where they need to map,
-
-    then each step will be explained, with helper buttons and visualisations to assist
-    in the E2E mapping journey.
-
-### Shared Login accross tools
-
-- All of our tools need a shared login mechanism.
-- Currently every tool has separate login, so a user visiting one tool
-  needs to log in again when accessing another in the E2E suite.
-- A very **nice to have** feature would be seamless login between our
-  entire suite of tools:
-  - **Simple**: the same auth cookie work across all apps, but user
-    information is managed per-app still. Users are seamlessly logged
-    in when moving between apps. This would be possible as every app
-    shares the domain hotosm.org.
-  - **Hard**: the authentication is managed somewhere centrally. The
-    user logs in and user details are stored in a centralised 'HOT' database.
-    The auth details are then passed to each application, but the app
-    doesn't store user data. This one is technically difficult and I
-    wouldn't advocate for it (we are essentially creating our own
-    OAuth provider). In this case I think it's better to centralise
-    around OSM auth.
-- This links in to [shared ui components](#shared-ui-components) below,
-  as the login will likely be faciliated within a 'header' component,
-  containing OAuth flows for various providers (OSM, Google, etc).
-
 ### Building Tools With Community In Mind
 
 The full [end-to-end](#end-to-end-concept) mapping flow is built with community
@@ -144,24 +104,6 @@ See [this page](../modules/frontend.md) for more details.
 - A few additional **helper** components will be designed and made available
   as part of the [HOTOSM UI](https://github.com/hotosm/ui) library. For
   example, a consistent header, footer, and sidebar for every tool.
-
-### Shared Map Components
-
-See [this page](../modules/frontend.md) for more details.
-
-- Historically we may have used OpenLayers and Leaflet in some places.
-  This should be consolidated around MapLibre.
-- We have many implementations of MapLibre in our different tools. Ideally
-  we can use the same wrapper implementation, improving developer experience
-  and speed of development.
-- **Option 1**: contribute to an existing established tool, that can compile
-  to plain JavaScript. This JS could be wrapped in a web-component for use in
-  any web app, any framework.
-  A top candidate would be
-  [svelte-maplibre](https://github.com/dimfeld/svelte-maplibre).
-- **Option 2**: build a web component wrapper for MapLibre from scratch. It
-  is anticipated that community support would be high for this, being entirely
-  framework agnostic and embeddable anywhere.
 
 ### Python Modules (Backend)
 
