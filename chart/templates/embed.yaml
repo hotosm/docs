@@ -34,13 +34,19 @@ spec:
           imagePullPolicy: {{ .Values.image.llama.pullPolicy }}
           {{- include "docs-chat.containerSecurity" . | nindent 10 }}
           args:
-            - --model=/models/{{ .Values.embed.hfFile }}
+            - --model
+            - "/models/{{ .Values.embed.hfFile }}"
             - --embedding
-            - --ctx-size=8192
-            - --parallel=4
-            - --batch-size=2048
-            - --ubatch-size=2048
-            - --threads={{ .Values.embed.threads }}
+            - --ctx-size
+            - "8192"
+            - --parallel
+            - "4"
+            - --batch-size
+            - "2048"
+            - --ubatch-size
+            - "2048"
+            - --threads
+            - {{ .Values.embed.threads | quote }}
             - --no-ui
           ports:
             - name: http

@@ -35,19 +35,29 @@ spec:
           imagePullPolicy: {{ .Values.image.llama.pullPolicy }}
           {{- include "docs-chat.containerSecurity" . | nindent 10 }}
           args:
-            - --model=/models/{{ .Values.llm.hfFile }}
+            - --model
+            - "/models/{{ .Values.llm.hfFile }}"
             # Load weights into RAM to avoid network mmap
-            - --load-mode=none
-            - --ctx-size={{ .Values.llm.ctxSize }}
-            - --parallel={{ .Values.llm.parallel }}
-            - --threads={{ .Values.llm.threads }}
-            - --flash-attn=on
+            - --load-mode
+            - "none"
+            - --ctx-size
+            - {{ .Values.llm.ctxSize | quote }}
+            - --parallel
+            - {{ .Values.llm.parallel | quote }}
+            - --threads
+            - {{ .Values.llm.threads | quote }}
+            - --flash-attn
+            - "on"
             # 8-bit KV cache: half the memory, negligible quality loss
-            - --cache-type-k=q8_0
-            - --cache-type-v=q8_0
+            - --cache-type-k
+            - "q8_0"
+            - --cache-type-v
+            - "q8_0"
             # Cache system prompt and history in RAM across requests
-            - --cache-ram=2048
-            - --reasoning-budget=0
+            - --cache-ram
+            - "2048"
+            - --reasoning-budget
+            - "0"
             - --metrics
             - --no-ui
             {{- range .Values.llm.extraArgs }}
