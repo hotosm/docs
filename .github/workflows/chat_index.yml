@@ -36,7 +36,8 @@ jobs:
       - name: Start embedding server
         run: |
           mkdir -p models
-          docker run --rm -v "$PWD/models:/models" -v "$PWD/chat/fetch-models.sh:/fetch.sh:ro" \
+          docker run --rm --user "$(id -u):$(id -g)" \
+            -v "$PWD/models:/models" -v "$PWD/chat/fetch-models.sh:/fetch.sh:ro" \
             --entrypoint /bin/sh curlimages/curl:8.22.0 /fetch.sh \
             ggml-org/bge-m3-Q8_0-GGUF bge-m3-q8_0.gguf
           docker run -d --name embed -p 8081:8080 -v "$PWD/models:/models" \
