@@ -4,9 +4,9 @@
 image:
   api:
     repository: ghcr.io/hotosm/docs/chat
-    # Defaults to Chart.AppVersion
-    tag: ""
-    pullPolicy: IfNotPresent
+    # Tracks main for now; set "" to use Chart.AppVersion
+    tag: main
+    pullPolicy: Always
   llama:
     repository: ghcr.io/ggml-org/llama.cpp
     tag: server-b11347
