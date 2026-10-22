@@ -1,5 +1,5 @@
 # Defaults fit a shared 4 vCPU / 16GB node (e.g. t3.xlarge).
-# Total requests: ~1.9 vCPU / ~8.4Gi RAM. 2 concurrent answers, others queue.
+# Total requests: ~1.9 vCPU / ~8.9Gi RAM. 2 concurrent answers, others queue.
 
 image:
   api:
@@ -64,8 +64,8 @@ embed:
   # Once ready, each question needs just one short query embedding.
   threads: 3
   resources:
-    requests: { cpu: 250m, memory: 1Gi }
-    limits: { memory: 2Gi }
+    requests: { cpu: 250m, memory: 1536Mi }
+    limits: { memory: 3Gi }
   persistence:
     size: 2Gi
     storageClass: ""
