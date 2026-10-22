@@ -1,0 +1,339 @@
+/* Experimental docs assistant (javascripts/chat-widget.js) */
+.hdc-root {
+  --hdc-accent: var(--md-primary-fg-color, #d73f3f);
+  --hdc-bg: var(--md-default-bg-color, #fff);
+  --hdc-fg: var(--md-default-fg-color, #222);
+  --hdc-muted: var(--md-default-fg-color--light, #666);
+  --hdc-border: var(--md-default-fg-color--lightest, #ddd);
+  --hdc-soft: var(--md-code-bg-color, #f5f5f5);
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+/* Keep the footer's social icons clear of the launcher */
+body:has(.hdc-root) .md-footer-meta__inner {
+  padding-right: 9rem;
+}
+
+.hdc-launcher {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--hdc-accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 20%);
+}
+.hdc-launcher .hdc-badge {
+  background: rgb(255 255 255 / 25%);
+  color: #fff;
+}
+.hdc-open .hdc-launcher {
+  display: none;
+}
+
+.hdc-badge {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: var(--hot-color-yellow-100, #ffebcf);
+  color: #8a4b00;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.hdc-panel {
+  display: none;
+  flex-direction: column;
+  width: min(26rem, calc(100vw - 2rem));
+  height: min(38rem, calc(100vh - 6rem));
+  border: 1px solid var(--hdc-border);
+  border-radius: 0.8rem;
+  background: var(--hdc-bg);
+  color: var(--hdc-fg);
+  box-shadow: 0 10px 40px rgb(0 0 0 / 25%);
+  overflow: hidden;
+}
+.hdc-open .hdc-panel {
+  display: flex;
+}
+
+.hdc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--hdc-accent);
+  color: #fff;
+}
+.hdc-title {
+  flex: 1;
+  font-weight: 700;
+}
+.hdc-icon {
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+}
+.hdc-icon:hover {
+  background: rgb(255 255 255 / 20%);
+}
+
+.hdc-disclaimer {
+  margin: 0;
+  padding: 0.4rem 0.8rem;
+  background: var(--hot-color-yellow-100, #ffebcf);
+  color: #5c3300;
+  font-size: 0.6rem;
+}
+
+.hdc-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hdc-msg {
+  display: flex;
+}
+.hdc-user {
+  justify-content: flex-end;
+}
+.hdc-bubble {
+  max-width: 92%;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.7rem;
+  background: var(--hdc-soft);
+  overflow-wrap: anywhere;
+}
+.hdc-user .hdc-bubble {
+  background: var(--hdc-accent);
+  color: #fff;
+  white-space: pre-wrap;
+}
+.hdc-bubble p {
+  margin: 0 0 0.4rem;
+}
+.hdc-bubble p:last-child {
+  margin-bottom: 0;
+}
+.hdc-bubble ul,
+.hdc-bubble ol {
+  margin: 0.2rem 0 0.4rem;
+  padding-left: 1.2rem;
+}
+.hdc-bubble pre {
+  margin: 0.4rem 0;
+  padding: 0.4rem;
+  overflow-x: auto;
+  background: var(--hdc-bg);
+  border-radius: 0.3rem;
+}
+.hdc-bubble a {
+  color: var(--md-typeset-a-color, var(--hdc-accent));
+}
+.hdc-cite a {
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0 0.1rem;
+}
+
+.hdc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+.hdc-options {
+  flex-direction: column;
+  align-items: stretch;
+}
+.hdc-chip {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--hdc-accent);
+  border-radius: 0.5rem;
+  background: var(--hdc-bg);
+  color: var(--hdc-fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.hdc-chip:hover {
+  background: var(--hdc-soft);
+}
+.hdc-chip.hdc-primary {
+  background: var(--hdc-accent);
+  color: #fff;
+}
+.hdc-link {
+  margin-top: 0.4rem;
+  border: 0;
+  background: none;
+  color: var(--hdc-muted);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+.hdc-text {
+  flex: 1;
+  min-width: 10rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--hdc-border);
+  border-radius: 0.4rem;
+  background: var(--hdc-bg);
+  color: var(--hdc-fg);
+  font: inherit;
+}
+
+.hdc-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--hdc-muted);
+  font-style: italic;
+}
+.hdc-dots {
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.4rem;
+  background: radial-gradient(circle, var(--hdc-muted) 40%, transparent 41%) 0
+    50% / 0.45rem 0.4rem repeat-x;
+  animation: hdc-pulse 1s infinite ease-in-out;
+}
+@keyframes hdc-pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hdc-dots {
+    animation: none;
+  }
+}
+.hdc-error {
+  color: var(--hot-color-red-700, #c53639);
+}
+
+.hdc-sources {
+  margin-top: 0.4rem;
+  font-size: 0.62rem;
+  color: var(--hdc-muted);
+}
+.hdc-sources summary {
+  cursor: pointer;
+}
+.hdc-sources ol {
+  margin: 0.2rem 0 0;
+}
+
+.hdc-feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+  color: var(--hdc-muted);
+  font-size: 0.62rem;
+}
+.hdc-feedback button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0 0.1rem;
+}
+
+.hdc-plan {
+  margin-bottom: 0.6rem;
+  padding: 0.5rem;
+  border: 1px solid var(--hdc-border);
+  border-radius: 0.5rem;
+  background: var(--hdc-bg);
+}
+.hdc-plan-scope {
+  font-weight: 700;
+  color: var(--hdc-accent);
+}
+.hdc-stage-label {
+  margin-top: 0.4rem !important;
+  font-weight: 700;
+}
+.hdc-tool {
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--hdc-accent);
+  margin: 0.25rem 0;
+}
+.hdc-tool a {
+  font-weight: 700;
+}
+.hdc-notes {
+  margin-top: 0.4rem !important;
+  color: var(--hdc-muted);
+}
+
+.hdc-composer {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--hdc-border);
+}
+.hdc-input {
+  flex: 1;
+  resize: none;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--hdc-border);
+  border-radius: 0.5rem;
+  background: var(--hdc-bg);
+  color: var(--hdc-fg);
+  font: inherit;
+}
+.hdc-send,
+.hdc-stop {
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0 0.7rem;
+  background: var(--hdc-accent);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+.hdc-stop {
+  background: var(--hdc-muted);
+}
+.hdc-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 30rem) {
+  body:has(.hdc-root) .md-footer-meta__inner {
+    padding-right: 0;
+    padding-bottom: 3rem;
+  }
+  .hdc-root {
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+  .hdc-panel {
+    width: calc(100vw - 1rem);
+    height: calc(100vh - 1rem);
+  }
+}

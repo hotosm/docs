@@ -1,0 +1,80 @@
+# Each case: question, expected keywords (any-case, all should appear),
+# a substring expected in at least one source URL, or refuse: true.
+- q: How do I make a map from a WhatsApp group with ChatMap?
+  expect: [export, chat, upload]
+  source: chatmap
+
+- q: What is the difference between Tasking Manager and Field-TM?
+  expect: [remote, field]
+  source: tools-summary
+
+- q: My satellite imagery is too old and cloudy. How can I get better imagery for a small town?
+  expect: [drone]
+  source: drone
+
+- q: How do I download OpenStreetMap data for my district as a shapefile or GeoPackage?
+  expect: [export]
+
+- q: What does fAIr do, and are its predictions added to OSM automatically?
+  expect: [predict, never]
+
+- q: How can I share my drone imagery so other people can map from it?
+  expect: [openaerialmap]
+
+- q: How do I validate a task in the Tasking Manager?
+  expect: [validat]
+
+- q: What is the capital of France?
+  refuse: true
+
+- q: Write me a python script to scrape Google Maps.
+  refuse: true
+
+# Third-party docs must not crowd out HOT pages for generic questions
+- q: How do I create a mapping project?
+  expect: [task]
+  source: hotosm
+
+- q: How do I add a choice list question to my survey form?
+  expect: [select_one]
+  source: xlsform
+
+- q: Can I use an external GNSS receiver with QField for better accuracy?
+  expect: [gnss]
+  source: qfield
+
+- q: Should I use CoMaps or Organic Maps for offline navigation?
+  expect: [comaps]
+  source: field-apps
+
+- q: Our community members don't have smartphones. How can they map local risks?
+  expect: [sketch map]
+  source: field-apps
+
+- q: What do I need permission for before flying a drone over a village?
+  expect: [permission]
+  source: drone
+
+# Real wording from community.openstreetmap.org threads
+- q: How can one person manage over 100 HOT Tasking Manager projects at once? Who validates them?
+  expect: [validat]
+
+- q: Old HOT tasks left badly drawn buildings in OSM that were never validated. What can I do about it?
+  expect: [validat]
+
+# Real wording from GitHub issues and discussions
+- q: Does Field-TM work offline if we have no mobile data in the field?
+  expect: [odk, qfield]
+  source: field
+
+- q: What is the maximum area for a Field-TM project?
+  expect: ["1,000"]
+  source: field
+
+- q: Can I use any drone to contribute to Drone TM, or does it need specific models?
+  expect: [dji]
+  source: drone
+
+- q: What if my Drone TM project area contains a no fly zone?
+  expect: [zone]
+  source: drone

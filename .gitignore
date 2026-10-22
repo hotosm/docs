@@ -68,3 +68,8 @@ docs.egg-info
 
 .codex
 .claude
+
+# Chat assistant
+tasks/
+chat/.data
+.env

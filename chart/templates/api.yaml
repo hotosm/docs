@@ -1,0 +1,70 @@
+{{- $name := "api" -}}
+{{- $fullname := printf "%s-%s" (include "docs-chat.fullname" .) $name -}}
+{{- $base := include "docs-chat.fullname" . -}}
+{{ include "docs-chat.pvc" (dict "ctx" . "name" $name "p" .Values.api.persistence) }}
+---
+{{ include "docs-chat.service" (dict "ctx" . "name" $name "port" 8000) }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullname }}
+  labels:
+    {{- include "docs-chat.labels" . | nindent 4 }}
+    app.kubernetes.io/component: {{ $name }}
+spec:
+  # In-memory queue and rate limits assume a single replica
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "docs-chat.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: {{ $name }}
+  template:
+    metadata:
+      labels:
+        {{- include "docs-chat.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: {{ $name }}
+    spec:
+      {{- include "docs-chat.podSecurity" . | nindent 6 }}
+      containers:
+        - name: api
+          image: "{{ .Values.image.api.repository }}:{{ .Values.image.api.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.api.pullPolicy }}
+          {{- include "docs-chat.containerSecurity" . | nindent 10 }}
+          env:
+            - { name: LLM_URL, value: "http://{{ $base }}-llm:8080" }
+            - { name: EMBED_URL, value: "http://{{ $base }}-embed:8080" }
+            - { name: LLM_SLOTS, value: {{ .Values.llm.parallel | quote }} }
+            - { name: MAX_QUEUE, value: {{ .Values.api.maxQueue | quote }} }
+            - { name: MAX_TOKENS, value: {{ .Values.api.maxTokens | quote }} }
+            - { name: TOP_K, value: {{ .Values.api.topK | quote }} }
+            - { name: MIN_SCORE, value: {{ .Values.api.minScore | quote }} }
+            - { name: ALLOWED_ORIGINS, value: {{ .Values.api.allowedOrigins | quote }} }
+            - { name: RATE_LIMIT_PER_MIN, value: {{ .Values.api.rateLimitPerMin | quote }} }
+            - { name: REFRESH_HOURS, value: {{ .Values.api.refreshHours | quote }} }
+            - { name: TRUST_PROXY, value: "true" }
+            {{- with .Values.api.githubTokenSecret }}
+            - name: GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef: { name: {{ . }}, key: GITHUB_TOKEN }
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: 8000
+          readinessProbe:
+            httpGet: { path: /livez, port: http }
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /livez, port: http }
+            periodSeconds: 30
+          resources:
+            {{- toYaml .Values.api.resources | nindent 12 }}
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ $fullname }}

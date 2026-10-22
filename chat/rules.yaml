@@ -1,0 +1,189 @@
+# Project planner: deterministic questions -> recommended HOT tool chain.
+# Based on docs/projects/tools-summary.md. Edit here to change recommendations;
+# the LLM only explains the result.
+
+questions:
+  - id: goal
+    type: text
+    text: What do you want to map?
+    placeholder: e.g. all the waste collection points in my city
+
+  - id: existing
+    text: Does this data already exist in OpenStreetMap or elsewhere?
+    options:
+      - { value: complete, label: "Yes, mostly complete" }
+      - { value: partial, label: "Partly" }
+      - { value: none, label: "No" }
+      - { value: unsure, label: "Not sure" }
+
+  - id: visible
+    text: Can the features be clearly seen from above, on satellite or drone imagery?
+    options:
+      - { value: "yes", label: "Yes (e.g. buildings, roads, rivers)" }
+      - {
+          value: partly,
+          label: "Partly: the shape is visible, key details aren't (e.g. building use)",
+        }
+      - {
+          value: "no",
+          label: "No: small objects or local knowledge (e.g. bins, water points, opening hours)",
+        }
+      - { value: unsure, label: "Not sure" }
+
+  - id: area
+    text: How big is the area?
+    options:
+      - { value: neighbourhood, label: "A neighbourhood or village (< 5 km²)" }
+      - { value: town, label: "A town or district (5–100 km²)" }
+      - { value: large, label: "A city, region or country (> 100 km²)" }
+
+  - id: imagery
+    text: Is recent, clear imagery available for the area?
+    ask_if: { visible: ["yes", partly, unsure] }
+    options:
+      - { value: good, label: "Yes, recent and clear" }
+      - { value: poor, label: "Only old, cloudy or blurry imagery" }
+      - { value: unsure, label: "Not sure" }
+
+  - id: drone
+    text: Could your team fly a small drone (permission to fly, ~US$1,000 drone)?
+    ask_if: { imagery: [poor, unsure], area: [neighbourhood, town] }
+    options:
+      - { value: "yes", label: "Yes" }
+      - { value: "no", label: "No" }
+
+  - id: team
+    text: How many people can go out into the field?
+    options:
+      - { value: none, label: "Nobody, we will work remotely" }
+      - { value: few, label: "1–2 people" }
+      - { value: small, label: "A small team (3–15)" }
+      - { value: large, label: "A large team (15+)" }
+
+  - id: remote
+    text: Can you mobilise people to map remotely from imagery (online volunteers or staff)?
+    ask_if: { visible: ["yes", partly, unsure] }
+    options:
+      - { value: "yes", label: "Yes" }
+      - { value: "no", label: "No" }
+
+  - id: detail
+    text: What do you need to record for each feature?
+    ask_if: { team: [few, small, large] }
+    options:
+      - { value: simple, label: "Location plus a photo or short note" }
+      - {
+          value: structured,
+          label: "A form with several fields (type, condition, capacity...)",
+        }
+
+  - id: experience
+    text: How much mapping experience does your team have?
+    options:
+      - { value: none, label: "None" }
+      - { value: some, label: "Some (used OpenStreetMap or a GIS a little)" }
+      - { value: expert, label: "Experienced mappers" }
+
+  - id: openness
+    text: Can the data be published openly (e.g. in OpenStreetMap)?
+    options:
+      - { value: open, label: "Yes, open data is fine" }
+      - { value: private, label: "No, it must stay private" }
+
+stages:
+  - { id: imagery, label: "1. Imagery" }
+  - { id: digitise, label: "2. Remote digitisation" }
+  - { id: field, label: "3. Field data collection" }
+  - { id: data, label: "4. Data access and sharing" }
+
+tools:
+  oam: { name: OpenAerialMap, stage: imagery, url: "https://openaerialmap.org" }
+  dronetm: { name: Drone TM, stage: imagery, url: "https://drone.hotosm.org" }
+  tm:
+    { name: Tasking Manager, stage: digitise, url: "https://tasks.hotosm.org" }
+  fair: { name: fAIr, stage: digitise, url: "https://fair.hotosm.org" }
+  fieldtm: { name: Field-TM, stage: field, url: "https://field.hotosm.org" }
+  chatmap: { name: ChatMap, stage: field, url: "https://chatmap.hotosm.org" }
+  export: { name: Export Tool, stage: data, url: "https://export.hotosm.org" }
+  umap: { name: uMap, stage: data, url: "https://umap.hotosm.org" }
+
+# Evaluated in order. `when` keys must all match; values are allowed answers.
+# add: tools to include, remove: tools to drop, note: advice shown to the user.
+rules:
+  - when: { existing: [complete] }
+    add: [export]
+    reason: The data may already exist. Download it first and check whether it is complete and up to date before mapping anything new.
+
+  - when: { visible: ["yes", partly], imagery: [poor, unsure], drone: ["yes"] }
+    add: [dronetm, oam]
+    reason: Current imagery isn't good enough. Drone TM lets a local team capture fresh ~5cm imagery and publish it to OpenAerialMap.
+
+  - when: { visible: ["yes", partly], imagery: [poor, unsure] }
+    unless: { drone: ["yes"] }
+    add: [oam]
+    reason: Search OpenAerialMap for openly licensed imagery of your area that is newer than the default satellite layers.
+
+  - when: { visible: ["yes", partly, unsure], remote: ["yes"] }
+    add: [tm]
+    reason: The features can be traced from imagery, so Tasking Manager can split the area into small tasks for remote mappers, followed by validation.
+
+  - when: { visible: ["yes"], area: [town, large] }
+    add: [fair]
+    reason: For a large area, fAIr's AI predictions (mainly buildings) speed up digitisation. People still check every prediction.
+
+  - when: { visible: [partly, "no", unsure], detail: [simple] }
+    add: [chatmap]
+    reason: People in the field can share a location and a photo or note in WhatsApp, Telegram or Signal, and ChatMap turns the chat into a map you can download (e.g. GeoJSON for QGIS or uMap). There is nothing to install and no training needed.
+
+  - when:
+      {
+        visible: [partly, "no", unsure],
+        detail: [structured],
+        team: [small, large],
+      }
+    add: [fieldtm]
+    reason: Field-TM splits the area into tasks for your field team and sets up a structured survey form in ODK or QField, so you can track who is mapping where.
+
+  - when: { visible: ["yes"], detail: [structured], team: [small, large] }
+    add: [fieldtm]
+    reason: Use Field-TM to add the attributes you can't see from above (use, condition and so on) to the features you digitised.
+
+  - when: { detail: [structured], team: [few] }
+    add: [chatmap]
+    note: With only 1–2 people, Field-TM's coordination is probably overkill. Use ODK or QField directly for structured forms, or ChatMap for quick location-plus-photo collection.
+
+  - when: { experience: [none], detail: [structured] }
+    unless: { team: [few] }
+    note: Structured surveys need some training. Run a practice session first, or start with ChatMap and add a form later.
+
+  - when: { visible: ["no"], team: [none] }
+    note: These features can't be seen from imagery, so someone has to visit them or local people have to report them. Consider partnering with a local group, who can report through ChatMap.
+
+  - when: { visible: [partly, "no", unsure], team: [none] }
+    unless: { remote: ["yes"] }
+    note: Without a field team or remote mappers, check whether the data already exists (Export Tool or HDX) before starting a new project.
+
+  - when: { openness: [open] }
+    add: [umap]
+    reason: Use uMap to share a simple interactive map of the results with partners or the public.
+
+  # Export Tool extracts OSM data, so only when the work lands in OSM
+  - when: { openness: [open], remote: ["yes"] }
+    add: [export]
+    reason: The mapped features go into OpenStreetMap. Use the Export Tool to download them in GIS formats (Shapefile, GeoPackage...).
+
+  - when: { openness: [open], detail: [structured], team: [small, large] }
+    add: [export]
+    reason: The mapped features go into OpenStreetMap. Use the Export Tool to download them in GIS formats (Shapefile, GeoPackage...).
+
+  - when: { openness: [private] }
+    remove: [tm, fair]
+    add: [umap]
+    note: Tasking Manager and fAIr produce public OpenStreetMap data. For private data, collect with ChatMap or Field-TM (data kept outside OSM). OpenAerialMap imagery is always CC BY 4.0.
+    reason: uMap can share maps with restricted access.
+
+  - when: { experience: [none] }
+    note: New to mapping? Start with the LearnOSM beginner guides (https://learnosm.org/en/beginner/) and pair new mappers with experienced validators.
+
+  - when: { area: [large], remote: ["no"], visible: ["yes", partly] }
+    note: A large area with no remote mappers takes a long time. Prioritise the most important sub-areas, or recruit volunteers through a Tasking Manager project.

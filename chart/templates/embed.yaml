@@ -1,0 +1,63 @@
+{{- $name := "embed" -}}
+{{- $fullname := printf "%s-%s" (include "docs-chat.fullname" .) $name -}}
+{{ include "docs-chat.pvc" (dict "ctx" . "name" $name "p" .Values.embed.persistence) }}
+---
+{{ include "docs-chat.service" (dict "ctx" . "name" $name "port" 8080) }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullname }}
+  labels:
+    {{- include "docs-chat.labels" . | nindent 4 }}
+    app.kubernetes.io/component: {{ $name }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "docs-chat.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: {{ $name }}
+  template:
+    metadata:
+      labels:
+        {{- include "docs-chat.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: {{ $name }}
+    spec:
+      {{- include "docs-chat.podSecurity" . | nindent 6 }}
+      initContainers:
+        {{- include "docs-chat.fetchModel" (dict "ctx" . "repo" .Values.embed.hfRepo "file" .Values.embed.hfFile) | nindent 8 }}
+      containers:
+        - name: llama
+          image: "{{ .Values.image.llama.repository }}:{{ .Values.image.llama.tag }}"
+          imagePullPolicy: {{ .Values.image.llama.pullPolicy }}
+          {{- include "docs-chat.containerSecurity" . | nindent 10 }}
+          args:
+            - --model=/models/{{ .Values.embed.hfFile }}
+            - --embedding
+            - --ctx-size=8192
+            - --parallel=4
+            - --batch-size=2048
+            - --ubatch-size=2048
+            - --threads={{ .Values.embed.threads }}
+            - --no-ui
+          ports:
+            - name: http
+              containerPort: 8080
+          startupProbe:
+            httpGet: { path: /health, port: http }
+            periodSeconds: 10
+            failureThreshold: 60
+          readinessProbe:
+            httpGet: { path: /health, port: http }
+            periodSeconds: 10
+          resources:
+            {{- toYaml .Values.embed.resources | nindent 12 }}
+          volumeMounts:
+            - name: models
+              mountPath: /models
+      volumes:
+        - name: models
+          persistentVolumeClaim:
+            claimName: {{ $fullname }}

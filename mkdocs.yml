@@ -1,7 +1,7 @@
 site_name: HOTOSM Docs
 site_description: Documentation index across HOT's tools.
 # strict: true
-site_url: "https://www.hotosm.org"
+site_url: "https://docs.hotosm.org/"
 
 repo_name: "hotosm/docs"
 repo_url: "https://github.com/hotosm/docs/"
@@ -33,9 +33,11 @@ exclude_docs: |
 
 extra_css:
   - css/extra.css
+  - css/chat-widget.css
 
 extra_javascript:
   - javascripts/mermaid-diagrams.js
+  - javascripts/chat-widget.js
 
 markdown_extensions:
   - tables
@@ -58,6 +60,9 @@ markdown_extensions:
 
 plugins:
   - search
+
+hooks:
+  - hooks/llms.py
 
 nav:
   - Home: index.md
@@ -117,11 +122,15 @@ nav:
           - Roadmap: https://github.com/hotosm/raw-data-api/tree/master#product-roadmap
           - Development: https://github.com/orgs/hotosm/projects/29
       - Portal:
+          - Overview: projects/portal.md
           - Landing Page: https://portal.hotosm.org
           - Docs: https://github.com/hotosm/portal/blob/main/ARCHITECTURE.md
           - Roadmap: https://github.com/hotosm/portal#roadmap
           - Development: https://github.com/orgs/hotosm/projects/48
       - Future Plans / Ideas: projects/future-plans.md
+  - Guides:
+      - Other Field Mapping Apps: guides/field-apps.md
+      - Share Results With uMap: guides/share-results-umap.md
   - AI Guide: https://responsibleai.guide
   - Developer Guide:
       - Intro: dev-guide/intro.md

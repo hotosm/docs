@@ -1,0 +1,21 @@
+[project]
+name = "hot-docs-chat"
+version = "0.1.0"
+description = "Experimental docs assistant for docs.hotosm.org (RAG + tool recommender)"
+readme = "README.md"
+license = "AGPL-3.0-only"
+requires-python = ">=3.13"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.32",
+  "httpx>=0.28",
+  "numpy>=2.1",
+  "pyyaml>=6.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3", "pytest-asyncio>=0.24"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["."]

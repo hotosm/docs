@@ -1,0 +1,91 @@
+# Defaults fit a shared 4 vCPU / 16GB node (e.g. t3.xlarge).
+# Total requests: ~1.9 vCPU / ~8.4Gi RAM. 2 concurrent answers, others queue.
+
+image:
+  api:
+    repository: ghcr.io/hotosm/docs/chat
+    # Defaults to Chart.AppVersion
+    tag: ""
+    pullPolicy: IfNotPresent
+  llama:
+    repository: ghcr.io/ggml-org/llama.cpp
+    tag: server-b11347
+    pullPolicy: IfNotPresent
+  # Resumable model downloads from Hugging Face
+  fetch:
+    repository: curlimages/curl
+    tag: "8.22.0"
+    pullPolicy: IfNotPresent
+
+api:
+  allowedOrigins: "https://docs.hotosm.org"
+  rateLimitPerMin: 10
+  refreshHours: 24
+  topK: 4
+  minScore: "0.45"
+  maxTokens: 700
+  maxQueue: 12
+  # Optional GITHUB_TOKEN secret to avoid refresh rate limits
+  githubTokenSecret: ""
+  resources:
+    requests: { cpu: 100m, memory: 384Mi }
+    limits: { memory: 768Mi }
+  persistence:
+    size: 2Gi
+    storageClass: ""
+
+llm:
+  # Google's QAT Q4_0: near bf16 quality at 4-bit.
+  # Higher quality (needs a 32GB node, ~8 vCPU): gemma-4-26B-A4B-it-qat-q4_0-gguf
+  # / gemma-4-26B_q4_0-it.gguf, parallel 3, ctxSize 24576, ~20Gi memory.
+  hfRepo: google/gemma-4-E4B-it-qat-q4_0-gguf
+  hfFile: gemma-4-E4B_q4_0-it.gguf
+  # Concurrent answers; sets API LLM_SLOTS automatically.
+  parallel: 2
+  # Shared across slots: 2 x 8192 tokens
+  ctxSize: 16384
+  # Leave a core for other pods on a shared 4 vCPU node.
+  # More threads than cores slows llama.cpp down.
+  threads: 3
+  extraArgs: []
+  resources:
+    # No CPU limit: throttling delays tokens. Idle between questions.
+    requests: { cpu: "1500m", memory: 7Gi }
+    limits: { memory: 8Gi }
+  persistence:
+    size: 10Gi
+    storageClass: ""
+
+embed:
+  hfRepo: ggml-org/bge-m3-Q8_0-GGUF
+  hfFile: bge-m3-q8_0.gguf
+  # Indexing uses spare node CPU while the LLM is idle (chat returns 503).
+  # With the prebuilt index (chat_index.yml), only changed chunks are embedded.
+  # Once ready, each question needs just one short query embedding.
+  threads: 3
+  resources:
+    requests: { cpu: 250m, memory: 1Gi }
+    limits: { memory: 2Gi }
+  persistence:
+    size: 2Gi
+    storageClass: ""
+
+ingress:
+  enabled: false
+  className: nginx
+  hostname: ""
+  # Merged with environment annotations (external-dns, cert-manager, etc.).
+  # Allow SSE streaming and slow CPU answers without buffering or timeouts.
+  # Set a key to null to remove it.
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-body-size: "64k"
+  tls:
+    enabled: true
+    secretName: docs-chat-tls
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

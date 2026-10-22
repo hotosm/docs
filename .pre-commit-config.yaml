@@ -5,6 +5,8 @@ repos:
     hooks:
       - id: prettier
         args: [--ignore-unknown]
+        # Helm templates contain Go template syntax, not plain YAML.
+        exclude: ^chart/templates/
 
   # Lint: Markdown
   - repo: https://github.com/igorshubovych/markdownlint-cli

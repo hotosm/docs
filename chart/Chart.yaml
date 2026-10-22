@@ -1,0 +1,6 @@
+apiVersion: v2
+name: docs-chat
+description: Experimental docs assistant for docs.hotosm.org (RAG + llama.cpp)
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

@@ -1,0 +1,69 @@
+name: 🔎 Chat Index
+
+# Publish prebuilt embeddings so deployments and local dev embed only changes.
+# The API downloads the release asset on first start (EMBED_SEED_URL).
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - docs/**
+      - chat/corpus.yaml
+      - chat/app/corpus.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: chat-index
+  cancel-in-progress: false
+
+env:
+  LLAMA_IMAGE: ghcr.io/ggml-org/llama.cpp:server-b11347
+  RELEASE_TAG: chat-index
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+
+      - name: Start embedding server
+        run: |
+          mkdir -p models
+          docker run --rm -v "$PWD/models:/models" -v "$PWD/chat/fetch-models.sh:/fetch.sh:ro" \
+            --entrypoint /bin/sh curlimages/curl:8.22.0 /fetch.sh \
+            ggml-org/bge-m3-Q8_0-GGUF bge-m3-q8_0.gguf
+          docker run -d --name embed -p 8081:8080 -v "$PWD/models:/models" \
+            ${{ env.LLAMA_IMAGE }} -m /models/bge-m3-q8_0.gguf \
+            --embedding -c 8192 -np 4 -b 2048 -ub 2048 -t "$(nproc)" --no-ui
+          timeout 300 sh -c 'until curl -fs localhost:8081/health; do sleep 2; done'
+
+      - name: Restore previous embeddings
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p chat/.data
+          gh release download "$RELEASE_TAG" -p 'embeddings-*.npz' -D chat/.data || true
+
+      - name: Embed new and changed chunks
+        working-directory: chat
+        env:
+          EMBED_URL: http://localhost:8081
+          DATA_DIR: .data
+          GITHUB_TOKEN: ${{ github.token }}
+        run: uv run python -m app.build_cache
+
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$RELEASE_TAG" >/dev/null 2>&1 || gh release create "$RELEASE_TAG" \
+            --prerelease --title "Docs assistant index" \
+            --notes "Prebuilt embeddings for chat/ (updated automatically, not a release)."
+          gh release upload "$RELEASE_TAG" chat/.data/embeddings-*.npz --clobber

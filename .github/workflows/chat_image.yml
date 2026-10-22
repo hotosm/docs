@@ -1,0 +1,36 @@
+name: 🚀 Chat Image
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - chat/**
+  pull_request:
+    paths:
+      - chat/**
+  # Release v0.1.0 publishes image tag 0.1.0, matching chart appVersion
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v7
+      - run: uv run --group dev pytest -q
+        working-directory: chat
+
+  build:
+    needs: test
+    if: github.event_name != 'pull_request'
+    uses: hotosm/gh-workflows/.github/workflows/image_build.yml@3.6.0
+    with:
+      image_name: ghcr.io/${{ github.repository }}/chat
+      context: chat
+      build_target: release

@@ -1,0 +1,329 @@
+# Documentation indexed by the assistant.
+# English user docs; no code.
+#
+# url.mode:
+#   mkdocs    -> {base}{path minus strip, .md removed}/
+#   starlight -> same as mkdocs, lowercased
+#   jekyll    -> {base}{front matter permalink}
+#   github    -> https://github.com/{repo}/blob/{ref}/{path}
+# url.paths: per-file URL overrides; titles: per-file title overrides.
+# weight: multiplier on retrieval rank (prefer guidance over dev notes).
+# local: optional path checked first (used by docker compose for live edits).
+# path_weights: per-glob weight overrides, first match wins.
+
+# Tool aliases. Comparisons retrieve each tool's docs separately.
+tools:
+  Tasking Manager: [tasking manager, hot tm, tm]
+  Field-TM: [field-tm, field tm, fieldtm, field tasking manager, fmtm, ftm]
+  Drone TM: [drone-tm, drone tm, dronetm, drone tasking manager, dtm]
+  OpenAerialMap: [openaerialmap, open aerial map, oam]
+  fAIr: [fAIr, FAIR] # case-sensitive: "fair" is a common word
+  ChatMap: [chatmap, chat map]
+  Export Tool: [export tool, hot export tool, osm export tool]
+  Raw Data API: [raw data api, raw-data-api]
+  uMap: [umap]
+  ODK: [odk, odk collect, odk central, xlsform]
+  KoboToolbox: [kobo, kobotoolbox, kobocollect]
+  QField: [qfield, qfieldcloud]
+  MapSwipe: [mapswipe]
+  Portal: [hot portal, portal]
+  CoMaps: [comaps, organic maps, maps.me]
+  Sketch Map Tool: [sketch map tool, sketchmaptool]
+  Panoramax: [panoramax]
+  DHIS2: [dhis2, dhis 2]
+
+defaults:
+  exclude:
+    - "**/decisions/**"
+    - "**/.github/**"
+    - "**/CHANGELOG.md"
+    - "**/CODE_OF_CONDUCT.md"
+    - "**/LICENSE.md"
+
+sources:
+  - name: HOT Docs
+    repo: hotosm/docs
+    ref: main
+    local: /corpus/hotosm-docs
+    include: ["docs/**/*.md"]
+    exclude: ["docs/devops/**", "docs/LICENSE.md"]
+    url: { mode: mkdocs, base: "https://docs.hotosm.org/", strip: "docs/" }
+    weight: 1.2
+    # Developer pages: only when nothing user-facing matches
+    path_weights:
+      "docs/dev-guide/**": 0.5
+      "docs/dev-practices.md": 0.5
+      "docs/modules/**": 0.5
+      "docs/diagrams.md": 0.5
+      "docs/tech-contacts.md": 0.5
+
+  # Archived Jan 2026 but the site is still live; tools-summary.md is newer
+  - name: End-to-End Mapping Guide
+    repo: hotosm/e2e-mapping
+    ref: main
+    include: ["src/content/docs/**/*.md", "src/content/docs/**/*.mdx"]
+    exclude: ["src/content/docs/es/**", "src/content/docs/fr/**"]
+    url:
+      {
+        mode: starlight,
+        base: "https://hotosm.github.io/e2e-mapping/",
+        strip: "src/content/docs/",
+      }
+    weight: 1.0
+
+  - name: Drone TM
+    repo: hotosm/drone-tm
+    ref: dev
+    include: ["docs/**/*.md"]
+    url:
+      { mode: mkdocs, base: "https://docs.drone.hotosm.org/", strip: "docs/" }
+
+  - name: Field-TM
+    repo: hotosm/field-tm
+    ref: dev
+    include: ["docs/**/*.md"]
+    url:
+      { mode: mkdocs, base: "https://docs.field.hotosm.org/", strip: "docs/" }
+
+  - name: OpenAerialMap
+    repo: hotosm/openaerialmap
+    ref: main
+    include: ["docs/**/*.md"]
+    url:
+      { mode: mkdocs, base: "https://docs.imagery.hotosm.org/", strip: "docs/" }
+
+  - name: ChatMap
+    repo: hotosm/chatmap
+    ref: master
+    include: ["docs/**/*.md", "README.md"]
+    url: { mode: github }
+
+  - name: fAIr
+    repo: hotosm/fAIr
+    ref: develop
+    include: ["docs/**/*.md", "README.md"]
+    url: { mode: github }
+
+  - name: Tasking Manager
+    repo: hotosm/tasking-manager
+    ref: develop
+    include: ["docs/**/*.md"]
+    url:
+      {
+        mode: mkdocs,
+        base: "https://hotosm.github.io/tasking-manager/",
+        strip: "docs/",
+      }
+    weight: 0.8
+
+  - name: Raw Data API
+    repo: hotosm/raw-data-api
+    ref: develop
+    include: ["docs/src/**/*.md"]
+    url:
+      {
+        mode: mkdocs,
+        base: "https://hotosm.github.io/raw-data-api/",
+        strip: "docs/src/",
+      }
+    weight: 0.8
+
+  - name: Export Tool
+    repo: hotosm/osm-export-tool
+    ref: main
+    include: ["README.md", "docs/index.md"]
+    url: { mode: github }
+    weight: 0.8
+
+  - name: LearnOSM
+    repo: hotosm/learnosm
+    ref: gh-pages
+    include: ["_posts/en/*.md"]
+    # Superseded Tasking Manager versions and unpublished drafts
+    exclude: ["**/*-tm2-*", "**/*-tm3-*", "**/draft*"]
+    url: { mode: jekyll, base: "https://learnosm.org" }
+    weight: 0.9
+
+  - name: Roadmap
+    repo: hotosm/roadmap
+    ref: main
+    include: ["data/data.json"]
+    transform: roadmap
+    url: { base: "https://roadmap.hotosm.org" }
+    weight: 1.1
+
+  # Feature list and roadmap; docs/projects/portal.md is the user guide
+  - name: Portal
+    repo: hotosm/portal
+    ref: main
+    include: ["README.md"]
+    url: { mode: github }
+    weight: 0.7
+
+  - name: ScaleODM
+    repo: hotosm/scaleodm
+    ref: main
+    include: ["README.md", "chart/README.md"]
+    url: { mode: github }
+    weight: 0.8
+
+  - name: MapSwipe Locate Tutorials
+    repo: hotosm/mapswipe-locate-tutorials
+    ref: main
+    include: ["README.md", "docs/**/*.md"]
+    url: { mode: github }
+    weight: 0.9
+
+  - name: OSM Country Exports
+    repo: hotosm/osm-country-exports
+    ref: main
+    include: ["Readme.md"]
+    url: { mode: github }
+    weight: 0.7
+
+  # Work in progress, not yet in production
+  - name: Humanitarian Map Style
+    repo: hotosm/humanitarian-map-style
+    ref: main
+    include: ["README.md", "proposal.md"]
+    url: { mode: github }
+    weight: 0.7
+
+  # hotosm.org has no API or sitemap: walks the public news listing
+  - name: HOT News
+    type: hotosm-news
+    url: "https://www.hotosm.org/en/news/"
+    max_age_days: 730
+    exclude_titles: ["staff spotlight"]
+    weight: 0.7
+
+  # Older (2020), but still the most complete HOT field campaign guide
+  - name: HOT Toolbox
+    repo: hotosm/toolbox
+    ref: master
+    include: ["content/en/pages/**/*.md"]
+    exclude: ["**/_index.md", "**/credits/**"]
+    url:
+      {
+        mode: starlight,
+        base: "https://toolbox.hotosm.org/",
+        strip: "content/en/",
+      }
+    weight: 0.8
+
+  - name: Responsible Drone Guide
+    repo: responsible-usage-guides/drone
+    ref: main
+    include: ["src/*.md"]
+    url:
+      { mode: mkdocs, base: "https://responsibledrone.guide/", strip: "src/" }
+
+  # Mostly about AI-assisted coding; only the humanitarian page is user-facing
+  - name: Responsible AI Guide
+    repo: responsible-usage-guides/ai
+    ref: main
+    include: ["src/humanitarian-usage.md"]
+    url: { mode: mkdocs, base: "https://responsibleai.guide/", strip: "src/" }
+    weight: 0.7
+
+  - name: fAIr Models
+    repo: hotosm/fAIr-models
+    ref: develop
+    include:
+      - docs/index.md
+      - docs/getting-started.md
+      - docs/architecture.md
+      - docs/contributing/*.md
+    url:
+      {
+        mode: mkdocs,
+        base: "https://hotosm.github.io/fAIr-models/",
+        strip: "docs/",
+      }
+    weight: 0.6
+
+  # Third-party docs: user guides only
+
+  # Collect, form design and Central usage; not server admin or developer APIs
+  - name: ODK
+    repo: getodk/docs
+    ref: master
+    include:
+      - docs/getting-started.rst
+      - docs/glossary.rst
+      - docs/data-collector-workflows.rst
+      - docs/xlsform.rst
+      - docs/web-forms-intro.rst
+      - docs/collect-*.rst
+      - docs/central-*.rst
+      - docs/form-*.rst
+      - docs/guide-*.rst
+      - docs/tutorial-*.rst
+      - docs/entities-*.rst
+    exclude:
+      - docs/collect-adb.rst
+      - docs/collect-api.rst
+      - docs/collect-external-apps.rst
+      - docs/collect-sms-submissions.rst
+      - docs/central-command-line.rst
+      - docs/central-customization.rst
+      - docs/central-server-audits.rst
+      - docs/central-usage-reporting.rst
+    url: { mode: mkdocs, base: "https://docs.getodk.org/", strip: "docs/" }
+    weight: 0.8
+    # Lower priority for Central hosting docs (supported by Field-TM)
+    path_weights:
+      "docs/central-install*.rst": 0.5
+      "docs/central-backup.rst": 0.5
+      "docs/central-upgrade.rst": 0.5
+
+  - name: XLSForm
+    repo: XLSForm/xlsform.github.io
+    ref: master
+    include: ["_sections/home-english.md", "_sections/ref-table-english.md"]
+    url:
+      paths:
+        _sections/home-english.md: "https://xlsform.org/en/"
+        _sections/ref-table-english.md: "https://xlsform.org/en/ref-table/"
+    titles:
+      _sections/home-english.md: XLSForm reference
+      _sections/ref-table-english.md: XLSForm question types and columns
+    weight: 0.8
+
+  - name: QField
+    repo: opengisch/QField-docs
+    ref: master
+    include:
+      - documentation/get-started/**/*.en.md
+      - documentation/how-to/**/*.en.md
+      - documentation/reference/troubleshoot.en.md
+      - documentation/reference/data-format.en.md
+    exclude:
+      - documentation/get-started/contribute.en.md
+      - documentation/get-started/how-to-contribute-translation.en.md
+      - documentation/get-started/license.en.md
+    url:
+      {
+        mode: mkdocs,
+        base: "https://docs.qfield.org/",
+        strip: "documentation/",
+      }
+    weight: 0.8
+
+  # English tutorials are stubs; bge-m3 matches French text to English questions
+  - name: uMap
+    repo: umap-project/umap
+    ref: master
+    include: ["docs-users/fr/tutorials/*.md", "docs-users/fr/support/*.md"]
+    url: { mode: github }
+    weight: 0.9
+
+  - name: OpenDroneMap
+    repo: OpenDroneMap/docs
+    ref: publish
+    include: ["source/**/*.rst"]
+    # Source copies of the generated argument pages
+    exclude: ["source/arguments_edit/**", "source/contributing.rst"]
+    url:
+      { mode: mkdocs, base: "https://docs.opendronemap.org/", strip: "source/" }
+    weight: 0.8

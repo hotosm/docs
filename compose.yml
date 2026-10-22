@@ -1,0 +1,109 @@
+# Local docs site + experimental assistant.
+#   just chat up    (or: docker compose up -d)
+#   open http://localhost:3000
+# First start downloads ~6GB of models into the `models` volume.
+# Keep LLM_THREADS and EMBED_THREADS each <= your physical core count.
+# Heavy embedding runs during indexing, before chat is available.
+# Override the model in .env; see chat/README.md.
+
+x-llama-image: &llama-image ghcr.io/ggml-org/llama.cpp:server-b11347
+
+volumes:
+  models:
+  chat-data:
+
+services:
+  docs:
+    image: ghcr.io/hotosm/gh-workflows/mkdocs:main
+    command: serve --dev-addr 0.0.0.0:3000
+    working_dir: /docs
+    volumes:
+      - .:/docs
+    ports:
+      - "3000:3000"
+
+  chat-api:
+    image: ghcr.io/hotosm/docs/chat:dev
+    build:
+      context: chat
+    # Reload backend on code changes
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    environment:
+      LLM_URL: http://llm:8080
+      EMBED_URL: http://embed:8080
+      LLM_SLOTS: ${LLM_SLOTS:-2}
+      ALLOWED_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      TRUST_PROXY: "false"
+      RATE_LIMIT_PER_MIN: "30"
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+    volumes:
+      - ./chat/app:/app/app:ro
+      - ./chat/rules.yaml:/app/rules.yaml:ro
+      - ./chat/corpus.yaml:/app/corpus.yaml:ro
+      # Use local docs for live edits
+      - .:/corpus/hotosm-docs:ro
+      - chat-data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      embed:
+        condition: service_healthy
+
+  # Download models once; resume interrupted downloads
+  models:
+    image: curlimages/curl:8.22.0
+    user: "0"
+    # Avoid Docker bridge MTU / IPv6 issues that stall large CDN downloads
+    network_mode: host
+    entrypoint: ["/bin/sh", "/fetch-models.sh"]
+    command:
+      - ${LLM_HF_REPO:-google/gemma-4-E4B-it-qat-q4_0-gguf}
+      - ${LLM_HF_FILE:-gemma-4-E4B_q4_0-it.gguf}
+      - ggml-org/bge-m3-Q8_0-GGUF
+      - bge-m3-q8_0.gguf
+    volumes:
+      - models:/models
+      - ./chat/fetch-models.sh:/fetch-models.sh:ro
+
+  embed:
+    image: *llama-image
+    command: >
+      -m /models/bge-m3-q8_0.gguf
+      --embedding -c 8192 -np 4 -b 2048 -ub 2048
+      -t ${EMBED_THREADS:-4} --no-ui
+    volumes:
+      - models:/models
+    depends_on:
+      models:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:8080/health"]
+      interval: 5s
+      retries: 30
+      start_period: 30s
+
+  llm:
+    image: *llama-image
+    # Flags explained in chat/README.md
+    command: >
+      -m /models/${LLM_HF_FILE:-gemma-4-E4B_q4_0-it.gguf}
+      -lm none
+      -c ${LLM_CTX:-16384} -np ${LLM_SLOTS:-2}
+      -t ${LLM_THREADS:-4}
+      -fa on -ctk q8_0 -ctv q8_0
+      --cache-ram 1024
+      --reasoning-budget 0
+      --metrics --no-ui
+    volumes:
+      - models:/models
+    depends_on:
+      models:
+        condition: service_completed_successfully
+    ports:
+      # Exposed for debugging (/slots, /metrics)
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:8080/health"]
+      interval: 10s
+      retries: 30
+      start_period: 60s

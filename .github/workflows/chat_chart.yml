@@ -1,0 +1,20 @@
+name: 🚀 Chat Chart
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - chart/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    uses: hotosm/gh-workflows/.github/workflows/just.yml@3.6.0
+    with:
+      environment: "test"
+      command: "chart publish"
+    secrets: inherit

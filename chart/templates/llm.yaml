@@ -1,0 +1,80 @@
+{{- $name := "llm" -}}
+{{- $fullname := printf "%s-%s" (include "docs-chat.fullname" .) $name -}}
+{{ include "docs-chat.pvc" (dict "ctx" . "name" $name "p" .Values.llm.persistence) }}
+---
+{{ include "docs-chat.service" (dict "ctx" . "name" $name "port" 8080) }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullname }}
+  labels:
+    {{- include "docs-chat.labels" . | nindent 4 }}
+    app.kubernetes.io/component: {{ $name }}
+spec:
+  replicas: 1
+  # RWO volume and RAM budget allow only one pod
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "docs-chat.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: {{ $name }}
+  template:
+    metadata:
+      labels:
+        {{- include "docs-chat.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: {{ $name }}
+    spec:
+      {{- include "docs-chat.podSecurity" . | nindent 6 }}
+      initContainers:
+        {{- include "docs-chat.fetchModel" (dict "ctx" . "repo" .Values.llm.hfRepo "file" .Values.llm.hfFile) | nindent 8 }}
+      containers:
+        - name: llama
+          image: "{{ .Values.image.llama.repository }}:{{ .Values.image.llama.tag }}"
+          imagePullPolicy: {{ .Values.image.llama.pullPolicy }}
+          {{- include "docs-chat.containerSecurity" . | nindent 10 }}
+          args:
+            - --model=/models/{{ .Values.llm.hfFile }}
+            # Load weights into RAM to avoid network mmap
+            - --load-mode=none
+            - --ctx-size={{ .Values.llm.ctxSize }}
+            - --parallel={{ .Values.llm.parallel }}
+            - --threads={{ .Values.llm.threads }}
+            - --flash-attn=on
+            # 8-bit KV cache: half the memory, negligible quality loss
+            - --cache-type-k=q8_0
+            - --cache-type-v=q8_0
+            # Cache system prompt and history in RAM across requests
+            - --cache-ram=2048
+            - --reasoning-budget=0
+            - --metrics
+            - --no-ui
+            {{- range .Values.llm.extraArgs }}
+            - {{ . | quote }}
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: 8080
+          # Init container handles downloads; allow time to load the model
+          startupProbe:
+            httpGet: { path: /health, port: http }
+            periodSeconds: 10
+            failureThreshold: 30
+          readinessProbe:
+            httpGet: { path: /health, port: http }
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /health, port: http }
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 5
+          resources:
+            {{- toYaml .Values.llm.resources | nindent 12 }}
+          volumeMounts:
+            - name: models
+              mountPath: /models
+      volumes:
+        - name: models
+          persistentVolumeClaim:
+            claimName: {{ $fullname }}
