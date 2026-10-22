@@ -1,3 +1,5 @@
+import re
+
 # Keep SYSTEM static: llama-server reuses its KV cache across requests.
 SYSTEM = """You are the HOTOSM Assistant, an experimental helper on docs.hotosm.org \
 for the Humanitarian OpenStreetMap Team's open source mapping tools: Tasking Manager, \
@@ -22,11 +24,13 @@ PLAN_ACK = "Understood. I will keep this plan and situation in mind."
 
 NO_CONTEXT = (
     "I couldn't find anything about that in the HOT documentation I have indexed, "
-    "so I'd rather not guess. You could try rephrasing, browse "
-    "[docs.hotosm.org](https://docs.hotosm.org), or ask in the "
-    "[HOT Slack](https://slack.hotosm.org). If you're planning a mapping project, "
+    "so I'd rather not guess. You could try rephrasing or browse "
+    "[docs.hotosm.org](https://docs.hotosm.org). If you're planning a mapping project, "
     "try **Plan a project** for a tailored tool recommendation."
 )
+
+# Matches the "could not find it in the docs" reply the SYSTEM rules ask for
+NOT_FOUND = re.compile(r"\b(could ?n[o']?t|can ?n[o']?t|unable to) find\b", re.I)
 
 
 def format_context(hits) -> str:

@@ -100,6 +100,9 @@ continuous batching with less setup.
 - **Wrong tool recommended**: edit `rules.yaml` and add a case to `tests/test_recommend.py`.
 - **Answer misses a page**: check that it's in `corpus.yaml`, or raise its `weight`.
 - **Refuses too often / guesses too much**: adjust `MIN_SCORE` (default 0.45).
+- **Support links**: when the docs fall short ("could not find…"), and after
+  every project plan, answers link to the tool's Slack channel from the table
+  in `docs/tech-contacts.md`.
 - Feedback (👍/👎) is logged as `feedback {...}` lines in the API logs.
 
 ## Deploy

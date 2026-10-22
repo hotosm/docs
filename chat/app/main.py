@@ -19,6 +19,7 @@ from .corpus import CorpusLoader, chunk_all
 from .index import Embedder, SearchIndex, find_tools
 from .llm import LLMClient, QueueFull, SlotQueue
 from .recommend import Planner
+from .support import CONTACTS_PATH, parse_contacts, support_line
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 log = logging.getLogger("chat")
@@ -29,6 +30,7 @@ class State:
     status: str = "starting"
     built_at: float = 0
     sources: dict[str, int] = {}
+    contacts: dict[str, str] = {}
 
 
 state = State()
@@ -45,6 +47,9 @@ async def build_index() -> None:
     loader = CorpusLoader(settings.corpus_file, settings.data_dir, settings.github_token)
     docs = await loader.load()
     chunks = chunk_all(docs)
+    for d in docs:
+        if d.source == "HOT Docs" and d.path == CONTACTS_PATH:
+            state.contacts = parse_contacts(d.text, tool_aliases) or state.contacts
     log.info("Embedding %d chunks from %d docs", len(chunks), len(docs))
     await embedder.init()
     texts = [c.text for c in chunks]
@@ -213,6 +218,13 @@ async def chat(req: ChatRequest, request: Request):
     plan = planner.recommend(req.plan_answers) if req.plan_answers else None
     plan_text = planner.describe(plan) if plan else None
     explaining_plan = plan is not None and not req.messages
+    if explaining_plan:
+        tools = [t["name"] for s in plan["stages"] for t in s["tools"]]
+    else:
+        # Include the previous question so follow-ups keep the tool
+        user_msgs = [m.content for m in req.messages if m.role == "user"]
+        tools = find_tools(" ".join(user_msgs[-2:]), tool_aliases)
+    support = support_line(tools, state.contacts)
 
     async def prepare() -> tuple[list, str | None]:
         if explaining_plan:
@@ -230,7 +242,6 @@ async def chat(req: ChatRequest, request: Request):
         question = user_msgs[-1]
         # Include the previous question to retrieve context for follow-ups
         query = " ".join(user_msgs[-2:])[-1000:]
-        tools = find_tools(question, tool_aliases)
         if tools:
             # Spell out abbreviations ("ftm") for the embedding model
             query = f"{query} ({', '.join(tools)})"
@@ -261,7 +272,7 @@ async def chat(req: ChatRequest, request: Request):
             yield sse("error", {"message": "Sorry, searching the docs failed. Please try again."})
             return
         if final_user is None:
-            yield sse("token", {"t": prompts.NO_CONTEXT})
+            yield sse("token", {"t": f"{prompts.NO_CONTEXT}\n\n{support}"})
             yield sse("done", {"grounded": False})
             return
 
@@ -287,8 +298,13 @@ async def chat(req: ChatRequest, request: Request):
                     yield sse("status", {"stage": "queued", "position": pos})
                 await asyncio.wait({ticket}, timeout=1)
             yield sse("status", {"stage": "thinking"})
+            answer = []
             async for token in llm.stream(build_messages(req, plan_text, final_user)):
+                answer.append(token)
                 yield sse("token", {"t": token})
+            # Point to the tool's support channel when the docs fell short
+            if explaining_plan or prompts.NOT_FOUND.search("".join(answer)):
+                yield sse("token", {"t": f"\n\n{support}"})
         except Exception:
             log.exception("LLM error")
             yield sse("error", {"message": "Sorry, something went wrong generating the answer."})
