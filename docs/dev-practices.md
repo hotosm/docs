@@ -163,6 +163,8 @@ Users can keep informed about ongoing tasks in various ways:
   [AI-Assisted Coding Guide](https://responsibleai.guide/ai-assisted-coding-guide).
 - AI coding assistants are fine to use, but your work should include meaningful human
   effort and judgement:
+  - Work should be AI-assisted, never AI-driven. Don't let autonomous agents
+    write code or open PRs without you directing and checking each change.
   - You own every line you submit, and should be able to explain any of it.
   - Say in the PR description where AI was used.
   - Write PR descriptions and comments yourself, don't paste LLM output.
@@ -171,7 +173,8 @@ Users can keep informed about ongoing tasks in various ways:
   accounts that repeatedly submit them blocked. Reviewing them costs us far
   more than it cost to create them (see
   [before requesting review](#before-requesting-review)).
-- AI review tools do not replace review by a human dev.
+- AI review tools do not replace review by a human dev. A PR reviewed only by
+  AI is not ready to submit.
 - AI-generated designs / mockups are a starting point only, and should be
   tested with real users before being built.
 
