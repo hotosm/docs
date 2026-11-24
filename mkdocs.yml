@@ -142,6 +142,7 @@ nav:
           - Creating Releases: dev-guide/repo-management/creating-releases.md
           - Dependency Management: dev-guide/repo-management/dependencies.md
           - Licensing: dev-guide/repo-management/licensing.md
+          - Issue Labels: dev-guide/repo-management/issue-labels.md
       - Web Development:
           - Backend: dev-guide/web-backend.md
           - Frontend: dev-guide/web-frontend.md

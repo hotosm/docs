@@ -1,14 +1,27 @@
 # HOT's Development Practices
 
-This was last updated on 12/07/2024 and details our idealised
-software development practices.
+This was last updated on 24/11/2026 and details how we build software.
+
+It applies to everyone writing code for our tools: HOT staff, contractors,
+and volunteers. Please read it before starting, and ask if anything is unclear.
+
+Devs new to HOT can start at [Defining How We Build](#defining-how-we-build).
+
+## Summary
+
+- We work in the open, and design features together with the devs building
+  them.
+- Bigger decisions are written down and agreed **before** code is written.
+- AI tools are fine to use, but **you own every line** you submit.
+- Every PR is reviewed by at least one human dev before merge.
+- Show it works: tests in CI, plus a demo and walkthrough of what was built.
 
 ## Open-Source Model
 
 - All code developed at HOT is open-source.
   - We rely heavily on community feedback to steer our development.
   - Contribution from **anyone** is welcome.
-- We follow a git-flow, or fork-and-pr model:
+- We follow a fork-and-PR model:
   - Developers should create a fork of the repo they wish to modify.
   - Code is added to a branch inside **the fork**.
   - A pull request (merge request or PR) is made against the development
@@ -30,9 +43,6 @@ software development practices.
 
 ### Gathering Requirements
 
-- When a project is first conceived, we have an idea of requirements / direction.
-- Over time the requirements are dynamic and interative. We have two approaches.
-
 #### Translating User Requirements Into Actions
 
 - Our main feedback mechanism is through user testing. This should be done in
@@ -40,15 +50,24 @@ software development practices.
   doesn't. The general public will also use our tools and provide feedback.
 - For field-based tools (FieldTM, DroneTM), this would involve running mapping campaigns
   and gathering feedback from the teams involved.
-- For desk-based tools (everything else), we mostly gather feedback through informal
-  channels such as Slack.
+- For desk-based tools (everything else), we mostly gather feedback through
+  [user requests](#user-requests) and Slack.
 - All tools have a public channel on Slack for discussion, providing feedback, and
   gathering requirements.
 - Once we have gathered feedback, this should be divided up into actionable Git
-  issues by the PO / Tech Lead and grouped into milestones or releases.
+  issues by the PO / Tech Lead and grouped into projects or releases.
 
   > See the [project management](#project-management) and [releases](#releases)
   > sections for details about grouping tasks into themes.
+
+#### User Requests
+
+- Anyone can submit a request via
+  [roadmap.hotosm.org](https://roadmap.hotosm.org/#tech-request), either as a
+  Github issue, or as a structured email.
+- This covers tool issues, feature requests, data access, data problems, etc.
+- Each request is reviewed by a member of the tech team, then addressed directly,
+  or added to the relevant Github repo and roadmap.
 
 #### Gathering Direct Technical Feedback
 
@@ -57,25 +76,31 @@ software development practices.
   feedback.
 - Most often this will be bug reports, which should generally be high priority for
   the next release (or a [hotfix](#hotfixes) to production if `critical` priority).
-- The PO / Tech Lead should triage tasks, assign priorities, and group into milestones
+- The PO / Tech Lead should triage tasks, assign priorities, and group into projects
   or releases.
 
   > See the [issue labels section](#issue-tags) for details about priority assignment.
 
+#### Co-Designing With Developers
+
+- When working with external developers, we don't provide a detailed spec and then
+  wait for a deliverable.
+- Product, UI/UX, and architecture decisions are made **together** with the devs
+  building them, whether staff, contractors, or volunteers.
+- This takes pressure off getting everything right up front (agile), and makes the
+  best use of everyone's experience.
+
 ### Setting Priorities
 
 - Generally bugs will take priority over new features, particularly those blocking
-  the users workflow.
-- Milestones for a tool will be assessed based on internal team discussion, in
+  the user's workflow.
+- Projects for a tool will be assessed based on internal team discussion, in
   addition to public Slack and Git-based discussion.
-- The determined priorities and milestones will be a tradeoff between:
+- The determined priorities and projects will be a tradeoff between:
   - Original vision and goals of the tool.
   - Most prominent user requests.
   - Global events and crisis response (activations).
   - Requirements from actively engaged stakeholders / organization.
-
-> In future, we would like to better involve the public via a technical steering
-> commitee or similar.
 
 ### Keeping Users Updated
 
@@ -85,29 +110,70 @@ Users can keep informed about ongoing tasks in various ways:
   website, OSM Diaries, Dev.to, or other platforms.
 - Releases on Github and included release notes.
 - The [user roadmap](#user-roadmap) tracking progress for each repo.
-- The overarching [public roadmap](#public-roadmap), showing progress for projects
-  and milestones.
+- The overarching [public roadmap](#public-roadmap), showing planned work across
+  all tools.
 - Any [discussions](#discussions) around particular features that have not been agreed
-  upon and translated into an issue / milestone.
+  upon and translated into an issue / project.
 
 ### Questions / Clarification
 
-- HOT works fully in the open and is accountable for being clear about changes
-  made to our tools.
-- If clarity is poor about what the vision of our tools are, features we are planning,
-  how we work, when requirements will be met, or anything else, then we have open
-  channels of communication:
-  - Via our public [Slack](https://slack.hotosm.org), either in channels related
-  to a tool, or as a private message to a member of the tech team.
+- HOT works fully in the open. If anything is unclear (the vision for a tool,
+  planned features, how we work, timelines), please ask:
+  - On our public [Slack](https://slack.hotosm.org), in a tool's channel, or as a
+  private message to a member of the tech team.
   <!-- markdownlint-disable -->
   - Via Github [issues](#issues-features) or [discussions](#discussions).
   <!-- markdownlint-enable -->
-  - Direct message or email to the Product Owner or Tech Lead of the tool in question.
+  - By message or email to the Product Owner or Tech Lead of the tool.
   - In the monthly 'Open Tech and Innovation Space' calls advertised on Slack.
-  - In future, we also hope to have something akin to a 'Technical Steering Commitee',
-    in which any tech-facing member of the public is welcome to provide input.
 
 ## Defining **How** We Build
+
+### Design Before Code
+
+- Bigger decisions should be written up as a Markdown Architectural Decision
+  Record (MADR), and agreed **before** coding starts.
+- Write one when a decision:
+  - Affects more than one part of the code, or the public API.
+  - Had real alternatives that were rejected.
+  - Couldn't be understood later from the code or git history alone.
+- Decisions already agreed in meetings can stay in the meeting notes.
+- Small choices with no real alternative are conventions, and can go in the
+  repo README or CONTRIBUTING instead.
+
+#### Writing A MADR
+
+- Add it to `docs/decisions/` in the repo via a PR, numbered in order:
+  `0001-short-title.md`, `0002-short-title.md`, etc.
+- Keep it short, with these sections:
+  - **Context**: the problem, and why it needs a decision now.
+  - **Options Considered**: the real alternatives, and why they lost.
+  - **Decision**: what we chose, stated plainly.
+  - **Consequences**: the good and the bad, including costs we accept.
+- The status is `Proposed` while the PR is open, and `Accepted` once merged.
+- Accepted MADRs are not rewritten, see
+  [replacing a decision](./decisions/README.md#replacing-a-decision).
+- Examples: our own [Tech Decisions](./decisions/README.md), or
+  [Drone-TM](https://github.com/hotosm/drone-tm/tree/main/docs/decisions).
+
+### Using AI Tools
+
+- Everyone must read and follow the
+  [Responsible AI Guide](https://responsibleai.guide), in particular the
+  [AI-Assisted Coding Guide](https://responsibleai.guide/ai-assisted-coding-guide).
+- AI coding assistants are fine to use, but your work should include meaningful human
+  effort and judgement:
+  - You own every line you submit, and should be able to explain any of it.
+  - Say in the PR description where AI was used.
+  - Write PR descriptions and comments yourself, don't paste LLM output.
+  - Never put secrets, user data, or partner data into AI tools.
+- PRs or comments that look automated or low effort will be closed, and
+  accounts that repeatedly submit them blocked. Reviewing them costs us far
+  more than it cost to create them (see
+  [before requesting review](#before-requesting-review)).
+- AI review tools do not replace review by a human dev.
+- AI-generated designs / mockups are a starting point only, and should be
+  tested with real users before being built.
 
 ### Git Repo Management
 
@@ -116,18 +182,18 @@ Management of tasks and code via Github.
 #### Branches
 
 - Generally our repos will have three key branches:
-  - **dev**: the ongoing development to which PRs are made.
+  - **dev** / **develop**: the ongoing development to which PRs are made.
   - **stage** / **staging**: optional branch where new features pass additional
     testing prior to deployment (name varies per repo).
   - **main**: the code that is currently deployed to the main website.
 
-#### Issues \ Features
+#### Issues / Features
 
 ##### Issue Tags
 
 - Label / tag issues where appropriate, for example as `backend` or `frontend`.
 
-- Priorities can be assigned:.
+- Priorities can be assigned:
   - `priority:critical`: blocking current tasks or user workflow.
   - `priority:high`: should be addressed as a priority.
   - `priority:low`: backlog of tasks that will be addressed in time.
@@ -162,7 +228,7 @@ Management of tasks and code via Github.
 ##### Issue Assignment
 
 - Assign issues to the dev who will work on it.
-- Issues can be assigned in advance if the devs is known.
+- Issues can be assigned in advance if the dev is known.
 - Devs can self-assign tasks.
 
 #### Writing & Merging Code
@@ -184,136 +250,104 @@ code!
 - The re-assigned dev can then assign the task back to the original dev for
   validation.
 
+##### Before Requesting Review
+
+- You should have put more time into a PR than it takes someone to review it.
+  Otherwise the reviewer could generate the code themselves, faster.
+- Add value by:
+  - Testing the work thoroughly, and iterating on it.
+  - Explaining exactly what it does and why, with screenshots / videos.
+- If two or more devs are working together (e.g. on a contract), they should
+  review each other's code and **both approve**, before requesting review
+  from HOT staff.
+
 ##### PR Review
 
 - Any developer can review a PR, **as long as one dev reviews** prior to
   merge.
-- In addition to a sanity check, a review should ideally be a **technical**
-  ideally suggesting feedback where code could be reused, best practices that
-  should be used, etc.
+- In addition to a sanity check, a review should ideally be **technical**,
+  suggesting where code could be reused, best practices that should be
+  used, etc.
 - **Assign** devs for review - frontend can review backend and vice versa.
+- For larger changes, the author should walk through the code on a call,
+  explaining the approach taken, rather than the reviewer reading it alone.
 - Once review is complete and the PR is out of draft state, then **any dev can
   merge**.
 
 !!! note
 
-    Once a PR is merged, the merged should ensure that the
+    Once a PR is merged, the merger should ensure that the
     `testing:ready` label is applied to the relevant issue, if required.
 
 ##### Linking Issues
 
-- Issues can be linked via either:
-  - `fixed #123` syntax to automatically close the issue on merge.
-  - `related #123` syntax to allow the Product Owner / Manager close the issue
-    manually once they are satisfied the issue is resolved fully.
-- Generally the second approach is preferred
+- Link issues in the PR description with `related #123`, so the Product Owner /
+  Manager can close the issue once they are satisfied it is resolved fully.
+- `fixed #123` can also be used, but closes the issue automatically on merge.
 
 #### Marking Issues As Solved
 
-- Once merged to `dev`, changes are tested and the Project Owner / Manager
+- Once merged to `dev`, changes are tested and the Product Owner / Manager
   can either close the issue, or add the `testing:fail` tag.
-- Once closed, this will be reflected on the milestone percentage, roadmap
-  progress, and task board complete tasks.
+- Once closed, this will be reflected in the project progress on the roadmap.
 
 !!! note
 
     Note the distinction here between the **technical code review** and the
-    the review of the solution from a **user perspective** via testing.
+    review of the solution from a **user perspective** via testing.
+
+### Testing And Proof Of Work
+
+Automated tests are useful, but don't cover everything. On top of that, ideally
+we have the following:
+
+- Automated tests should run in CI (Github Actions) on every PR.
+- Tests grouped by the user scenario or acceptance criteria they cover, with a
+  short doc in the repo explaining each group.
+  See the [testing guide](./dev-guide/testing.md).
+- Features should also be **tested manually** against agreed user scenarios,
+  rather than relying on users to find the issues.
+- At each milestone, or before work is accepted, provide:
+  - A recorded demo of the feature working.
+  - A code walkthrough, explaining the approach taken and why.
+  - Tests passing in CI.
+  - Results of testing against the agreed scenarios (screenshots, logs, etc).
 
 ### Project Management
 
 We use Linear for easier project coordination, but everything is
 synced to public-facing tools such as Github for transparency.
 
-- **Issues**:
-  - Track individual development tasks, two-way synced to Github
-    to work in the open.
-  - Each issue should have a label `repo:repo-name` to allow for
-    easier sorting in Linear (a small workaround to ensure we
-    remain on the 'free' tier).
-  - 💡 Example: Add and endpoint to list individual user
-    contributions.
-
-- **Milestones**:
-  - Group similar tech issues into an overall tech
-    goal (i.e. the combined frontend, backend, devops effort).
-  - Milestones are **not an essential part of the workflow**,
-    however, they are generally defined by the lead dev on
-    a project to better define how to accomplish a task.
-    Instead, 'Projects' can contain 'Issues' directly.
-  - 💡 Example: Add backend endpoints that provide user
-    statistics for a dashboard.
-
 - **Projects**:
-  - The user 'story' or user facing feature or fix. Easily
-    understood by a non-tech audience.
-  - Can incorporate multiple milestones to achieve the goal.
+  - The items on our [roadmap](#public-roadmap): a user facing feature
+    or fix, easily understood by a non-tech audience.
   - These are defined by the Product Owner of the tool, using
-    the progress described [above](#defining-what-we-build).
+    the process described [above](#defining-what-we-build).
   - 💡 Example: Create a user stats dashboard so users can
     easily track their overall progress.
 
-- **Initiatives**:
-  - We use these as a tech roadmap for 'Projects' grouped
-    _per quarter_.
-  - This allows us to track the progress of multiple features
-    or fixes across multiple tools, for a given time chunk.
+- **Issues**:
+  - The individual development tasks within a project, two-way
+    synced to Github to work in the open.
+  - Each issue should have a label `repo:repo-name` to allow for
+    easier sorting in Linear (a small workaround to ensure we
+    remain on the 'free' tier). This can be
+    [automated](./dev-guide/repo-management/issue-labels.md).
+  - 💡 Example: Add an endpoint to list individual user
+    contributions.
 
 !!! note
 
-    To add the `repo:repo-name` automatically for each new issue,
-    we can create the following Github workflow
-
-    ```yaml
-    # We add a label `repo:repo-name` to each new issue,
-    # for easier tracking in external systems
-
-    name: 🏷️ Issue Label
-
-    on:
-      issues:
-        types:
-          - opened
-
-    jobs:
-      issue-label:
-        runs-on: ubuntu-latest
-        permissions:
-          issues: write
-
-        steps:
-          - run: gh issue edit "$NUMBER" --add-label "$LABELS"
-            env:
-              GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              GH_REPO: ${{ github.repository }}
-              NUMBER: ${{ github.event.issue.number }}
-              LABELS: repo:drone-tm
-    ```
-
-    Also, to bulk tag existing issues in a repo, use Github CLI:
-
-    ```bash
-    docker run --rm -it --entrypoint sh maniator/gh
-    gh auth login
-
-    REPO="hotosm/chatmap"
-    LABEL="repo:chatmap"
-
-    gh label create "${LABEL}" --repo "${REPO}" --color "#ededed"
-
-    for issue in $(gh issue list --repo "${REPO}" \
-      --state open --limit 1000 --json number --jq '.[].number') \
-    ; do
-      gh issue edit $issue --repo "${REPO}" --add-label "${LABEL}"
-    done
-    ```
+    Github milestones can still be used to group a few related issues
+    in a repo, but they are not synced to Linear or part of the main
+    process.
 
 #### Releases
 
 - Releases are mostly dictated by the
   [semantic versioning](./dev-guide/repo-management/version-control.md)
   of a tool.
-- In general, a group of 'Projects' will result in a near release being
+- In general, a group of 'Projects' will result in a new release being
   made (on approximately a monthly / bi-monthly basis).
 
 #### Roadmaps
@@ -333,53 +367,31 @@ Example user roadmap (from Drone TM):
 
 ##### Public Roadmap
 
-- We have a public roadmap linking all tools together under
-  [https://hotosm.steelsync.io/tech-roadmap](https://hotosm.steelsync.io/tech-roadmap)
-- This is made using a tool called SteelSync (paid unfortunately,
-  but cheap), that gathers data from the Linear API and easily
-  creates a public dashboard.
-- We chose the approach to save the overhead of developing
-  our own roadmap page using the Linear API.
-
-#### Feature requests
-
-- Technical users can still make issues and bug reports via
-  each Github repo.
-- For general user requests (public, or internal to HOT),
-  we can all use the 'Request' button available on the
-  mentioned public roadmap page above.
-- Each request will create an issue in Linear. The tech team
-  will triage and add the issue to the relevant Github code
-  repository, then place within a project / initative with
-  timelines.
+- [roadmap.hotosm.org](https://roadmap.hotosm.org) is the overarching roadmap
+  for our tech tools, covering approximately the next year.
 
 #### Discussions
 
 - To discuss more general topics in the public, so that anyone can contribute.
-- Partly used to document the design decisions we have taken.
+- Design decisions should be written as a [MADR](#design-before-code) instead.
 - Tag people specially for input, as it makes them more likely to add ideas.
 - We can also use these for the staging server tests on each release cycle,
   e.g. <https://github.com/hotosm/field-tm/discussions/1335>
 
 #### Release Notes
 
-- No technical details, move those to a dropdown in markdown:
-
-Example:
-
-    ```md
-    <details>
-      <summary>Technical Summary</summary>
-        * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/field-tm/pull/1555
-        * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/field-tm/pull/1559
-        * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/field-tm/pull/1557
-    </details>
-    ```
-
-![release notes dropdown](./images/dev-practices/release-notes-technical-dropdown.png)
-
 - Higher level info on bugs fixed, new features added, things improved.
 - Add screenshots throughout.
+- No technical details, move those to a dropdown in markdown, for example:
+
+```md
+<details>
+  <summary>Technical Summary</summary>
+    * Add healthcare form category & minor fixes by @spwoodcock in https://github.com/hotosm/field-tm/pull/1555
+    * Fix/requested page redirection by @NSUWAL123 in https://github.com/hotosm/field-tm/pull/1559
+    * Test coverage for update project route by @azharcodeit in https://github.com/hotosm/field-tm/pull/1557
+</details>
+```
 
 ### Deployment Flow
 
@@ -427,18 +439,8 @@ These stages go in order, from local development through to production. We use a
 
 ##### Security Vulnerabilities
 
-- Vulnerabilities in software are an inevitability and may be reported by
-  users, developers, or automated CI tools.
-- They will typically be referenced by a Common Vulnerabilities and Exposures  
-  (CVE) reference ID, which can be looked up in various CVE tracking websites.
-- Once a vulnerability is reported and verified, actions can be taken:
-  - **System dependencies**: generally updating a container image version,
-    or rebuilding the image should fix these, as vendors update regularly.
-  - **Package dependencies**: an issue in your bundled sub-dependencies
-    may be fixed by updating the package version to the latest. CVEs are
-    generally fixed quickly by the package maintainer.
-  - **In our repo code**: these may be picked up by static and dynamic code
-    scanners and are generally fixed as part of the pre-commit or PR
-    review process (CI workflows).
-- Fixes should be pushed through to production as soon as possible, as a
-  `hotfix` branch including the updated image/package version or code.
+- Please report vulnerabilities to a maintainer as soon as possible, as described in
+  [Become a Contributor](./become-a-contributor.md#report-security-vulnerabilities).
+- Once verified, the fix is pushed to production as a [hotfix](#hotfixes).
+- Most fixes are an updated container image or package version. Issues in our own
+  code are usually caught by scanners in pre-commit or CI.
