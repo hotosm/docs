@@ -155,8 +155,10 @@ nav:
           - Intro: dev-guide/containers/containers-101.md
           - Local Kubernetes: dev-guide/containers/kubernetes-local-kind.md
       - Tech Decisions:
-          - Frontend framework: decisions/0003-react.md
+          - Overview: decisions/README.md
+          - Frontend framework: decisions/0015-frontend-right-tool.md
           - Backend language: decisions/0004-python.md
+          - Backend framework: decisions/0016-litestar.md
           - Code hosting + CI/CD: decisions/0005-github.md
           - Community engagement: decisions/0006-slack.md
           - Frontend dependencies: decisions/0007-pnpm.md
@@ -169,8 +171,8 @@ nav:
           - Dependency Refresh Tools: decisions/0012-dependency-refresh.md
           - Using Kubernetes: decisions/0013-kubernetes.md
           - UI Font Selection: decisions/0014-ui-fonts.md
-          - Frontend Choice (Svelte): decisions/0015-frontend-right-tool.md
-          - Backend Framework (Litestar): decisions/0016-litestar.md
+          - Amended / Superseded:
+              - React as default (amended by 0015): decisions/0003-react.md
   - DevOps:
       - Our Deployment Process: devops/deployment-process.md
       - AWS Permissions: devops/aws-iam.md

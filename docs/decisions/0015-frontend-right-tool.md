@@ -2,6 +2,12 @@
 
 Amends [0003 - React](./0003-react.md).
 
+> **Key takeaway:** our users often work from regional offices or the field, on
+> slow connections and low-spec phones. React adds a heavy runtime that every
+> user downloads, and its re-rendering costs CPU and battery. Svelte ships far
+> less JavaScript and updates the page directly, so tools load faster and run
+> lighter on the devices our communities actually use.
+
 ## Context and Problem Statement
 
 0003 standardised on React. Tasking Manager made React the default early on,
