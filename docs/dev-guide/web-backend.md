@@ -64,8 +64,9 @@ but should be faster and more suited to a web API.
 
 Synchronous frameworks include **flask**, **Django**, etc.
 
-The asynchronous framework we recommend at HOT, as of 2024, is **FastAPI**.
-It's what we use for most projects.
+The asynchronous framework we recommend at HOT for new projects is
+**Litestar** (see [0016](../decisions/0016-litestar.md)). Many existing
+projects use **FastAPI**, and can stay on it.
 
 There is a great [comparison](https://fastapi.tiangolo.com/alternatives/)
 with other frameworks in the ecosystem available.
